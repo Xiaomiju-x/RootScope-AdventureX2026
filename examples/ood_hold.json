@@ -1,0 +1,12 @@
+{
+  "semantic_label": "grass_clump",
+  "geometric_label": "grass_clump",
+  "semantic_confidence": 0.98,
+  "quality_passed": true,
+  "geometric_verified": true,
+  "ood_detected": true,
+  "evidence_fresh": true,
+  "device_safe": true,
+  "explanation": "OOD dominates the apparent class match."
+}
+

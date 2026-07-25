@@ -1,0 +1,12 @@
+{
+  "semantic_label": "young_tree",
+  "geometric_label": "low_shrub",
+  "semantic_confidence": 0.99,
+  "quality_passed": true,
+  "geometric_verified": true,
+  "ood_detected": false,
+  "evidence_fresh": true,
+  "device_safe": true,
+  "explanation": "Even a confident semantic result is held when evidence conflicts."
+}
+

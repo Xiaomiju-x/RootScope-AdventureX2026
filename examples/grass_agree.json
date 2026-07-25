@@ -1,0 +1,12 @@
+{
+  "semantic_label": "grass_clump",
+  "geometric_label": "grass_clump",
+  "semantic_confidence": 0.91,
+  "quality_passed": true,
+  "geometric_verified": true,
+  "ood_detected": false,
+  "evidence_fresh": true,
+  "device_safe": true,
+  "explanation": "Synthetic example only; this text has zero execution authority."
+}
+

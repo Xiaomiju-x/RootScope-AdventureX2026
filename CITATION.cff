@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+title: "RootScope: An Evidence-Grounded Edge AI Irrigation Chamber"
+message: "If you use this public reference implementation, please cite the project."
+type: software
+authors:
+  - name: "RootScope Team"
+repository-code: "https://github.com/Xiaomiju-x/RootScope-AdventureX2026"
+url: "https://xiaomiju.xyz/"
+license: Apache-2.0
+version: 0.1.0
+date-released: 2026-07-25
+keywords:
+  - AdventureX 2026
+  - embodied AI
+  - edge AI
+  - RDK X5
+  - irrigation
+
