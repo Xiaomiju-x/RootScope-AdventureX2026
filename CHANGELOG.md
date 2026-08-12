@@ -9,6 +9,24 @@ All notable changes to the public RootScope release are documented here. The for
 - Community-reviewed reproduction reports and portability fixes.
 - Documentation corrections that preserve the frozen competition facts.
 
+## [1.0.3] - 2026-08-13
+
+### Added
+
+- Show every released competition photo directly in the README, grouped by
+  demonstration, vision evidence, hardware, award, and event context.
+- Add lightweight animated README previews for the probe-descent and
+  water-delivery chapters while retaining all three full audit MP4 files.
+
+### Changed
+
+- Regenerate the demonstration poster and all three public video cuts without
+  obscuring the mineral-water collection bottle or its label, as directed by
+  the project owner; audio, container metadata, and the later portrait segment
+  remain excluded.
+- Make the media manifest test compare the complete derivative inventory rather
+  than relying on a fixed asset count.
+
 ## [1.0.2] - 2026-08-13
 
 ### Fixed
@@ -50,7 +68,8 @@ All notable changes to the public RootScope release are documented here. The for
 - Excluded and detected credentials, private device/network identity, absolute user paths, unsanitized receipts, and unlicensed assets.
 - Documented actuator-power isolation, staged bring-up, watchdog/timeout/latching behavior, and private vulnerability reporting.
 
-[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.2...HEAD
+[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.3...HEAD
+[1.0.3]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/releases/tag/v1.0.0

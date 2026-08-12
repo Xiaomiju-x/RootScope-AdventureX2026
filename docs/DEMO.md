@@ -4,9 +4,9 @@
 
 ## 1. 完整技术片段
 
-[![RootScope demo storyboard](../assets/media/demo/demo-overview.jpg)](../assets/media/demo/rootscope-probe-and-irrigation-demo.mp4)
+[![RootScope water-delivery poster](../assets/media/demo/demo-overview.jpg)](../assets/media/demo/rootscope-probe-and-irrigation-demo.mp4?raw=1)
 
-**[观看完整技术演示 MP4](../assets/media/demo/rootscope-probe-and-irrigation-demo.mp4)**
+**[观看/下载完整技术演示 MP4](../assets/media/demo/rootscope-probe-and-irrigation-demo.mp4?raw=1)**
 
 该片段来自现场原始竖屏录像，保留了约前 33 秒的装置技术内容，并转码为更适合浏览器的格式。裁切不改变动作顺序；原录像后段的人物交谈/人像内容未纳入技术演示。音频如在发布版中被移除，是出于隐私与清晰度考虑。
 
@@ -15,8 +15,8 @@
 | 原始时间段（约） | 公开章节 | 看点 | 边界 |
 |---|---|---|---|
 | 0–6 s | 灌溉头、目标卡、水容器 | 固定式舱体与目标区域 | 不能单独证明完整自动链 |
-| 6–24 s | [探针下降](../assets/media/demo/probe-descent.mp4) | 齿轮齿条、探针/软管相对运动 | 不提供厘米/根深换算 |
-| 24–31.5 s | [注水](../assets/media/demo/water-delivery.mp4) | 水泵与出水现象 | 一次现场片段，不是流量/长期统计 |
+| 6–24 s | [探针下降](../assets/media/demo/probe-descent.mp4?raw=1) | 齿轮齿条、探针/软管相对运动 | 不提供厘米/根深换算 |
+| 24–31.5 s | [注水](../assets/media/demo/water-delivery.mp4?raw=1) | 水泵与出水现象；接水瓶保持原貌 | 一次现场片段，不是流量/长期统计 |
 | 31–33.5 s | 目标卡回看 | 演示对象和固定卡合同 | 不是开放世界植物识别 |
 
 ## 2. 一次真实演示应如何讲
@@ -32,7 +32,7 @@
 | 图片 | 说明 | 可支持的结论 |
 |---|---|---|
 | [`assets/media/hero/rootscope-hero.jpg`](../assets/media/hero/rootscope-hero.jpg) | 最终装置整体 | 固定龙门、探针、水路与承载布局；可见轮式底盘只作承载 |
-| [`assets/media/demo/demo-overview.jpg`](../assets/media/demo/demo-overview.jpg) | 视频分镜 | 原录像中探针与注水片段的位置 |
+| [`assets/media/demo/demo-overview.jpg`](../assets/media/demo/demo-overview.jpg) | 注水视频封面 | 原录像 27 秒处的真实出水画面；矿泉水接水瓶未打码 |
 | [`assets/media/award/award-stage.jpg`](../assets/media/award/award-stage.jpg) | AdventureX D-Robotics 赛道舞台远景 | 赛事现场与赛道场景；**不能单独证明具体奖项/名次** |
 | [`assets/media/award/team-award.jpg`](../assets/media/award/team-award.jpg) | 团队获奖合影 | 银地瓜奖牌、两台 RDK X5 奖品和团队现场记录；奖项表述同时以项目获奖记录与结果说明为准 |
 
@@ -59,6 +59,7 @@ RootScope 在 AdventureX 2026 D-Robotics「Give AI a Body」赛道获得银奖�
 - 重新编码图片以去除 EXIF/GPS；
 - 裁掉时间/位置水印或其他不必要的定位信息；
 - 对敏感屏幕、胸牌、二维码等进行裁切或模糊；
+- 演示用矿泉水接水瓶不含项目秘密或私人身份信息，按项目方要求完整保留，不做标签模糊；
 - 视频裁切为技术段、浏览器兼容转码并移除不必要元数据；
 - 保留原始文件 SHA-256 与公开文件 SHA-256 的内部映射，不公开原设备身份；
 - 团队确认可发布的合影才进入公开仓。
