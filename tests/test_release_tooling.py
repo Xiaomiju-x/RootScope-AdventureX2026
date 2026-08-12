@@ -24,7 +24,7 @@ identity = load_tool("verify_release_identity")
 
 
 def test_release_identity_requires_strict_semver_and_matching_versions():
-    assert identity.validate_versions("v1.0.1", "1.0.1", "1.0.1") == "1.0.1"
+    assert identity.validate_versions("v1.0.2", "1.0.2", "1.0.2") == "1.0.2"
     for invalid in (
         "adventurex2026",
         "v1",
@@ -41,7 +41,7 @@ def test_release_identity_requires_strict_semver_and_matching_versions():
         else:
             raise AssertionError(f"invalid release tag was accepted: {invalid}")
     try:
-        identity.validate_versions("v1.0.1", "1.0.0", "1.0.1")
+        identity.validate_versions("v1.0.2", "1.0.1", "1.0.2")
     except ValueError as error:
         assert "do not agree" in str(error)
     else:
@@ -49,7 +49,12 @@ def test_release_identity_requires_strict_semver_and_matching_versions():
 
 
 def test_checked_in_release_versions_are_consistent():
-    assert identity.project_version() == identity.package_version() == "1.0.1"
+    assert identity.project_version() == identity.package_version() == "1.0.2"
+
+
+def test_checkout_free_publish_job_has_explicit_repository_context():
+    workflow = (ROOT / ".github/workflows/release.yml").read_text(encoding="utf-8")
+    assert "GH_REPO: ${{ github.repository }}" in workflow
 
 
 def test_release_lock_is_exact_and_hash_bound():

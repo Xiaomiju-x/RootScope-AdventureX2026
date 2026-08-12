@@ -8,7 +8,7 @@ authors:
 repository-code: "https://github.com/Xiaomiju-x/RootScope-AdventureX2026"
 url: "https://github.com/Xiaomiju-x/RootScope-AdventureX2026"
 license: Apache-2.0
-version: 1.0.1
+version: 1.0.2
 date-released: 2026-08-13
 abstract: >-
   RootScope is a stationary RDK X5 and STM32F103C8T6 root-zone irrigation
