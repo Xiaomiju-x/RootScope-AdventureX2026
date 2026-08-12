@@ -3,6 +3,7 @@ from __future__ import annotations
 import importlib.util
 import sys
 from pathlib import Path
+import re
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,6 +20,43 @@ def load_tool(name: str):
 
 builder = load_tool("build_release_bundle")
 verifier = load_tool("verify_release_bundle")
+identity = load_tool("verify_release_identity")
+
+
+def test_release_identity_requires_strict_semver_and_matching_versions():
+    assert identity.validate_versions("v1.0.1", "1.0.1", "1.0.1") == "1.0.1"
+    for invalid in (
+        "adventurex2026",
+        "v1",
+        "v1.0",
+        "v01.0.1",
+        "v1.0.1-01",
+        "v1.0.1-rc.1",
+        "v1.0.1+build.1",
+    ):
+        try:
+            identity.validate_versions(invalid, "1.0.1", "1.0.1")
+        except ValueError:
+            pass
+        else:
+            raise AssertionError(f"invalid release tag was accepted: {invalid}")
+    try:
+        identity.validate_versions("v1.0.1", "1.0.0", "1.0.1")
+    except ValueError as error:
+        assert "do not agree" in str(error)
+    else:
+        raise AssertionError("mismatched package metadata was accepted")
+
+
+def test_checked_in_release_versions_are_consistent():
+    assert identity.project_version() == identity.package_version() == "1.0.1"
+
+
+def test_release_lock_is_exact_and_hash_bound():
+    lock = (ROOT / "requirements/release-py312-linux.lock").read_text(encoding="utf-8")
+    entries = re.findall(r"(?m)^([A-Za-z0-9-]+)==([^ ]+) \\\n+    --hash=sha256:([0-9a-f]{64})$", lock)
+    assert len(entries) == 9
+    assert len({name.lower() for name, _, _ in entries}) == 9
 
 
 def test_bundle_role_separates_large_public_payloads():

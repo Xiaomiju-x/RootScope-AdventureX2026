@@ -39,10 +39,14 @@ Use this checklist from a clean clone of the candidate tag. A release is rejecte
 
 ## GitHub release
 
-- [ ] Version in `CITATION.cff`, package metadata, changelog, manifest, and tag agree.
+- [ ] `python tools/verify_release_identity.py --tag vX.Y.Z --commit <40_HEX>` passes after `origin/main` is fetched.
+- [ ] The strict SemVer tag commit is contained in `origin/main`; root package metadata, runtime `__version__`, citation, changelog, manifest, and tag agree.
+- [ ] Release verification dependencies install with `--require-hashes` from `requirements/release-py312-linux.lock` on Python 3.12 Linux.
 - [ ] Annotated, signed tag is created from the reviewed commit where signing is available.
 - [ ] Release notes list changes, checksums, migrations, limitations, and safety warnings.
 - [ ] CI succeeds on the tag; GitHub dependency/security features are enabled as appropriate.
+- [ ] The workflow verifies one SBOM, three archives, manifest, and checksum file; attestation and publishing download that exact six-file artifact.
+- [ ] The GitHub Release is created as a complete draft, all six assets are uploaded and counted, then it is published once (required for immutable releases).
 - [ ] Repository description/topics no longer say open-core.
 - [ ] Remote tag/release assets are fetched back and hashes verified.
 

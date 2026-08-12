@@ -9,6 +9,17 @@ All notable changes to the public RootScope release are documented here. The for
 - Community-reviewed reproduction reports and portability fixes.
 - Documentation corrections that preserve the frozen competition facts.
 
+## [1.0.1] - 2026-08-13
+
+### Security
+
+- Split read-only release verification, provenance attestation, and publishing
+  into least-privilege jobs with an exact six-asset handoff.
+- Require strict SemVer tags on commits contained in `origin/main`, with the
+  tag version bound to both package metadata and runtime `__version__`.
+- Hash-lock the Python 3.12 Linux dependencies used by release verification.
+- Publish releases through a complete draft before making them immutable.
+
 ## [1.0.0] - 2026-08-12
 
 ### Added
@@ -32,5 +43,6 @@ All notable changes to the public RootScope release are documented here. The for
 - Excluded and detected credentials, private device/network identity, absolute user paths, unsanitized receipts, and unlicensed assets.
 - Documented actuator-power isolation, staged bring-up, watchdog/timeout/latching behavior, and private vulnerability reporting.
 
-[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/releases/tag/v1.0.0
