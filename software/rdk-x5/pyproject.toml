@@ -13,7 +13,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-hardware = ["pyserial>=3.5", "opencv-python-headless>=4.8,<5"]
+hardware = ["pyserial>=3.5", "opencv-python-headless>=4.8,<6"]
 test = ["pytest>=8,<10"]
 
 [tool.setuptools.packages.find]
