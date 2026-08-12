@@ -93,10 +93,10 @@
     },
     {
       "distribution": "Pillow",
-      "version": "12.2.0",
-      "filename": "pillow-12.2.0-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
-      "bytes": 6269734,
-      "sha256": "a52edc8bfff4429aaabdf4d9ee0daadbbf8562364f940937b941f87a4290f5ff",
+      "version": "12.3.0",
+      "filename": "pillow-12.3.0-cp310-cp310-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl",
+      "bytes": 6253754,
+      "sha256": "5594fc43d548a7ed94949d139aa1341b270f1863f11cfd37f5a6c8b778a6b67f",
       "platform_scope": "linux_aarch64_cp310"
     },
     {

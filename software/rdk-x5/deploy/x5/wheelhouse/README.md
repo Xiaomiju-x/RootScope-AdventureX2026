@@ -8,7 +8,7 @@
 CROSS_DOWNLOADED_HASH_LOCKED_NOT_EXACT_TWIN_X5_QUALIFIED
 ```
 
-Pillow 已在 2026-08-13 从存在公开中危公告的 11.3.0 更新至 12.2.0。新 aarch64 wheel 来自 PyPI，文件名、大小和 SHA-256 已写入清单；这次 PC 侧安全刷新不构成新的 X5 真机验证。
+Pillow 已在 2026-08-13 从存在公开安全公告的 11.3.0 更新至 12.3.0。新 `manylinux_2_27_aarch64` wheel 来自 PyPI，文件名、大小和 SHA-256 已写入清单；这次 PC 侧安全刷新不构成新的 X5 真机验证。
 
 ## 1. 在联网 PC 上取得精确候选 wheel
 
