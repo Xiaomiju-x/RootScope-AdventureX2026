@@ -1,0 +1,198 @@
+{
+  "schema_version": "rootscope.ai_whole_plant_gpu_gate_policy.v1",
+  "result_schema_version": "rootscope.ai_whole_plant_gpu_gate_result.v1",
+  "stats_schema_version": "rootscope.ai_whole_plant_gpu_gate_stats.v1",
+  "receipt_schema_version": "rootscope.ai_whole_plant_gpu_gate_receipt.v1",
+  "production_inputs": {
+    "manifest_sha256": "e4b0735d1e1c6ecbf09f508abda0eb28adf91493822073927d754bb9484682bb",
+    "summary_sha256": "e0a03b17ae08ea9c47fb10654d548f0db88a22a3bcf0a384961a5d4ba3968b99",
+    "source_plan_sha256": "49c4bc433a232e8d4ec6e025cf3c40f0ba84ff63e8a42d54685680b13b05babf",
+    "image_binding_sha256": "164c2195f423e354d8f5129725af44f9ea4013e71e40a65e5aca1a95d29c81c3",
+    "expected_candidate_count": 90,
+    "expected_class_counts": {
+      "grass_clump": 30,
+      "low_shrub": 30,
+      "young_tree": 30
+    }
+  },
+  "model": {
+    "model_id": "google/big_vision-siglip2-b16-224@1739812968329031",
+    "backend": "local_openclip_bigvision_npz",
+    "openclip_model_name": "ViT-B-16-SigLIP2",
+    "context_length": 64,
+    "weights_raw_sha256": "74abfd2488a01f78c1cce5a38861dc929ea42aeabe8f622eaaa60ddfffeaad4e",
+    "tokenizer_artifact_sha256": "8cc97c5eb3bd5b2569f34a093c3c0aff57838a9216e618b4f973129335c6b67f",
+    "runtime_provenance_sha256": "cc63752320cb0d9506b3584fd2955518a5a4d68a9093618eefdf331f88d41070",
+    "require_cuda": true,
+    "network_access_at_inference": false
+  },
+  "prompts": {
+    "structural_anchors": [
+      {
+        "id": "anchor.whole_inside_frame",
+        "text": "a natural photograph of exactly one complete whole plant entirely inside the frame, from the soil-contact base to the highest crown"
+      },
+      {
+        "id": "anchor.base_visible",
+        "text": "one plant whose complete ground-contact base and lowest stems are clearly visible"
+      },
+      {
+        "id": "anchor.crown_visible",
+        "text": "one plant whose complete crown, canopy, or highest leaves are clearly visible inside the frame"
+      },
+      {
+        "id": "anchor.single_dominant",
+        "text": "exactly one isolated dominant plant, clearly separated from sparse background vegetation"
+      },
+      {
+        "id": "anchor.clear_natural_photo",
+        "text": "a clear natural-color field photograph of a plant, not a document, specimen, sign, or collage"
+      }
+    ],
+    "class_prompts": {
+      "grass_clump": [
+        {
+          "id": "class.grass_clump.whole_tussock",
+          "text": "one complete compact desert bunchgrass tussock with all narrow blades arising from one visible basal clump"
+        },
+        {
+          "id": "class.grass_clump.isolated_base",
+          "text": "an isolated whole grass clump on dry ground with its tufted base and entire top visible"
+        },
+        {
+          "id": "class.grass_clump.nonwoody",
+          "text": "one small non-woody tufted grass plant, not a bush or tree"
+        }
+      ],
+      "low_shrub": [
+        {
+          "id": "class.low_shrub.whole_bush",
+          "text": "one complete low woody desert shrub with a visible ground base and full compact crown"
+        },
+        {
+          "id": "class.low_shrub.multistem",
+          "text": "an isolated low bush with several woody stems arising near the ground and no tall dominant trunk"
+        },
+        {
+          "id": "class.low_shrub.full_canopy",
+          "text": "a full view of one small rounded scrub plant on dry ground, entirely inside the frame"
+        }
+      ],
+      "young_tree": [
+        {
+          "id": "class.young_tree.whole_sapling",
+          "text": "one complete young desert tree sapling with its ground base, slender trunk, and entire modest crown visible"
+        },
+        {
+          "id": "class.young_tree.juvenile_scale",
+          "text": "a small juvenile tree or seedling, clearly not a mature large tree"
+        },
+        {
+          "id": "class.young_tree.single_trunk",
+          "text": "one isolated upright sapling with a thin dominant trunk and compact canopy entirely in frame"
+        }
+      ]
+    },
+    "hard_reject_prompts": [
+      {
+        "id": "reject.closeup.flower_or_seedhead",
+        "text": "a close-up or macro photograph of a flower, grass seed head, inflorescence, fruit, or pod rather than a whole plant"
+      },
+      {
+        "id": "reject.closeup.branch_or_leaves",
+        "text": "a close-up of leaves, thorns, twigs, or one branch rather than a whole plant"
+      },
+      {
+        "id": "reject.closeup.bark_or_trunk",
+        "text": "a close-up of bark, a trunk, or cut wood rather than a whole plant"
+      },
+      {
+        "id": "reject.cropped.missing_base",
+        "text": "a cropped plant photograph where the ground-contact base or lower plant is outside the frame"
+      },
+      {
+        "id": "reject.cropped.missing_crown",
+        "text": "a cropped plant photograph where the crown, canopy, or upper plant is outside the frame"
+      },
+      {
+        "id": "reject.human.hand_or_person",
+        "text": "a human hand holding a plant part, or a person dominating the image"
+      },
+      {
+        "id": "reject.document.specimen_or_text",
+        "text": "a herbarium specimen, botanical plate, document, label, sign, map, screenshot, or text page"
+      },
+      {
+        "id": "reject.scene.plant_community",
+        "text": "a dense plant community, field, meadow, or thicket with many overlapping plants"
+      },
+      {
+        "id": "reject.scene.multiple_plants",
+        "text": "several separate plants share the foreground and no single isolated plant is the only subject"
+      },
+      {
+        "id": "reject.scene.wide_landscape",
+        "text": "a wide landscape where plants are small background objects and no single whole plant dominates"
+      },
+      {
+        "id": "reject.tree.mature_large",
+        "text": "a mature large tree with a thick trunk and broad established canopy, not a young sapling"
+      },
+      {
+        "id": "reject.tree.dead_or_silhouette",
+        "text": "a dead leafless tree, distant tree silhouette, or severely damaged tree"
+      },
+      {
+        "id": "reject.scene.manmade_or_vehicle",
+        "text": "a vehicle, machine, building, garden sign, or other man-made object is a major subject"
+      }
+    ]
+  },
+  "thresholds": {
+    "strict_positive": {
+      "minimum_whole_vs_max_individual_reject_margin": 0.7,
+      "minimum_base_vs_missing_base_margin": 0.5,
+      "minimum_crown_vs_missing_crown_margin": 0.5,
+      "minimum_single_vs_scene_reject_margin": 0.5,
+      "minimum_natural_photo_vs_document_hand_margin": 0.5,
+      "minimum_top1_probability": 0.65,
+      "minimum_top1_top2_margin": 0.2,
+      "require_acquisition_hint_agreement": true,
+      "young_tree_minimum_juvenile_vs_mature_margin": 0.8
+    },
+    "exclude": {
+      "minimum_max_individual_reject_vs_whole_margin": 2.5,
+      "minimum_specific_reject_vs_anchor_margin": 3.0,
+      "young_tree_minimum_mature_vs_juvenile_margin": 1.5
+    }
+  },
+  "output_contract": {
+    "directory_name": "ai_strict_gpu_gate_v1",
+    "results_filename": "machine_outcomes.jsonl",
+    "stats_filename": "stats.json",
+    "runtime_filename": "runtime_binding.json",
+    "contact_index_filename": "contact_sheet_index.json",
+    "receipt_filename": "receipt.json",
+    "status": "MACHINE_GPU_GATE_COMPLETE_NOT_HUMAN_REVIEWED_NOT_TRAIN_READY"
+  },
+  "authority": {
+    "human_review": false,
+    "visual_ground_truth": false,
+    "rights_approval": false,
+    "dataset_manifest_write": false,
+    "training_eligibility": false,
+    "split_assignment": false,
+    "print_eligibility": false,
+    "data_locked": false
+  },
+  "explicit_non_claims": [
+    "HUMAN_REVIEWED",
+    "VISUAL_GROUND_TRUTH",
+    "RIGHTS_APPROVED",
+    "TRAIN_READY",
+    "SPLIT_READY",
+    "PRINT_ELIGIBLE",
+    "DATA_LOCKED",
+    "MODEL_QUALIFIED"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "schema_version": "rootscope.ai_visual_triage_policy.v1",
+  "queue_schema_version": "rootscope.wikimedia_human_review_queue.v1",
+  "manifest_schema_version": "rootscope.wikimedia_candidate.v1",
+  "model_output_schema_version": "rootscope.ai_visual_model_output.v1",
+  "result_schema_version": "rootscope.ai_visual_triage_result.v1",
+  "low_confidence_schema_version": "rootscope.ai_visual_low_confidence.v1",
+  "stats_schema_version": "rootscope.ai_visual_triage_stats.v1",
+  "receipt_schema_version": "rootscope.ai_visual_triage_receipt.v1",
+  "production_input_roots": {
+    "candidate_review_queue_sha256": "675f481c28c9add53cd918b7d5cc2f76c72dd496aafae06fda888fe13eda4e5e",
+    "staging_manifest_sha256": "e802f731588212d12c44c10a93156f019670fbf32e92ddc5a3dc15d1d80bffb1",
+    "review_queue_summary_sha256": "3753c5df8eebacd520cfc20128e48c7d941292d35abf6adcb6fe926273cf65e4",
+    "integrity_audit_sha256": "74144898a325c22bf7008728f7318ab1123f3043a6f71302b4990ac8eb437760",
+    "class_contract_sha256": "865fb1178a79959faa8400ed06e42fcc7bf5c7daeb7d5df906b8c5a4722783e5"
+  },
+  "expected_candidate_count": 1333,
+  "expected_acquisition_hint_counts": {
+    "grass_clump": 300,
+    "low_shrub": 300,
+    "young_tree": 300,
+    "unknown": 433
+  },
+  "target_classes": [
+    "grass_clump",
+    "low_shrub",
+    "young_tree",
+    "unknown"
+  ],
+  "image_contract": {
+    "allowed_mime": [
+      "image/jpeg",
+      "image/png"
+    ],
+    "minimum_width": 448,
+    "minimum_height": 448,
+    "verify_decode": true
+  },
+  "inference": {
+    "supported_backends": [
+      "external_scores",
+      "transformers_siglip"
+    ],
+    "model_id_pattern": "^[A-Za-z0-9][A-Za-z0-9._/@:-]{1,127}$",
+    "normalization": "softmax_over_frozen_prompts",
+    "prompts": {
+      "grass_clump": "a whole desert grass clump with tufted narrow leaves on sand",
+      "low_shrub": "a whole low desert shrub with many branches and a rounded crown on sand",
+      "young_tree": "a whole young desert tree seedling with a visible trunk and small crown on sand",
+      "unknown": "an invalid or unknown scene such as bare sand, rock, hand, animal, text, blur, glare, occlusion, or no whole plant"
+    }
+  },
+  "thresholds": {
+    "minimum_top1_probability_by_class": {
+      "grass_clump": 0.65,
+      "low_shrub": 0.65,
+      "young_tree": 0.65,
+      "unknown": 0.7
+    },
+    "minimum_top1_top2_margin": 0.15,
+    "probability_sum_tolerance": 0.000001
+  },
+  "output_contract": {
+    "results_filename": "ai_visual_triage_results.jsonl",
+    "low_confidence_filename": "low_confidence_queue.jsonl",
+    "normalized_model_outputs_filename": "normalized_model_outputs.jsonl",
+    "stats_filename": "ai_visual_triage_stats.json",
+    "receipt_filename": "ai_visual_triage_receipt.json",
+    "status": "AI_VISUAL_TRIAGE_COMPLETE_NOT_HUMAN_REVIEWED_NOT_DATA_LOCKED"
+  },
+  "authority": {
+    "human_review": false,
+    "dataset_manifest_write": false,
+    "training_eligibility": false,
+    "split_assignment": false,
+    "print_eligibility": false,
+    "data_locked": false
+  },
+  "explicit_non_claims": [
+    "HUMAN_REVIEWED",
+    "VISUAL_LABEL_APPROVED",
+    "RIGHTS_APPROVED",
+    "DATA_LOCKED",
+    "TRAIN_READY",
+    "SPLIT_READY",
+    "PRINT_ELIGIBLE",
+    "MODEL_QUALIFIED"
+  ]
+}

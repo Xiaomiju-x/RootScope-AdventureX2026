@@ -1,0 +1,58 @@
+{
+  "commissioned": false,
+  "commissioning_id": "FIXTURE_PLACEHOLDER_NOT_FOR_PHYSICAL_USE",
+  "execution_mode": "PHYSICAL",
+  "expected_firmware_build_id": "FIXTURE_BUILD_NOT_FOR_PHYSICAL_USE",
+  "formal_perception_sources": [
+    "tag"
+  ],
+  "profiles": [
+    {
+      "channel": "Z1",
+      "hard_timeout_ms": 1000,
+      "settle_ms": 1000,
+      "minimum_mass_samples": 3,
+      "max_final_mass_span_mg": 50,
+      "morphology_label": "grass_clump",
+      "neighbor_spill_threshold": 0.5,
+      "profile_id": "Profile-A-FIXTURE",
+      "target_mass_mg": 1000,
+      "target_wetting_threshold": 0.5,
+      "tolerance_mg": 100
+    },
+    {
+      "channel": "Z2",
+      "hard_timeout_ms": 1000,
+      "settle_ms": 1000,
+      "minimum_mass_samples": 3,
+      "max_final_mass_span_mg": 50,
+      "morphology_label": "low_shrub",
+      "neighbor_spill_threshold": 0.5,
+      "profile_id": "Profile-B-FIXTURE",
+      "target_mass_mg": 1000,
+      "target_wetting_threshold": 0.5,
+      "tolerance_mg": 100
+    },
+    {
+      "channel": "Z3",
+      "hard_timeout_ms": 1000,
+      "settle_ms": 1000,
+      "minimum_mass_samples": 3,
+      "max_final_mass_span_mg": 50,
+      "morphology_label": "young_tree",
+      "neighbor_spill_threshold": 0.5,
+      "profile_id": "Profile-C-FIXTURE",
+      "target_mass_mg": 1000,
+      "target_wetting_threshold": 0.5,
+      "tolerance_mg": 100
+    }
+  ],
+  "protocol_version": 1,
+  "required_backend": "ROOTSCOPE_F407_SERIAL_V1",
+  "required_firmware_capabilities": [
+    "PUMP_SINGLE_CHANNEL_FIXTURE",
+    "MASS_TELEMETRY_FIXTURE",
+    "SAFETY_INPUTS_FIXTURE"
+  ],
+  "schema_version": "rootscope.config.v1"
+}

@@ -1,0 +1,177 @@
+{
+  "outputs": [
+    {
+      "card_height_mm": 148.5,
+      "card_width_mm": 210.0,
+      "cards_per_page": 2,
+      "center_cut_y_mm": 148.5,
+      "orientation": "portrait",
+      "page_count": 1,
+      "page_height_mm": 297.0,
+      "page_width_mm": 210.0,
+      "paper": "A4",
+      "pdf_bytes": 2100145,
+      "pdf_path_relative_to_adventurex": "output/pdf/RootScope_A4_half_page_cards_grass_shrub_20260724.pdf",
+      "pdf_sha256": "3081abd36c6142efcccdcb7a35ceda6c6fd7e488d6408709f5a2a49c16d6cc7b",
+      "placements": [
+        {
+          "artist": "Krzysztof Ziarnek, Kenraiz",
+          "class_id": "grass_clump",
+          "crop_box_px": [
+            0,
+            28,
+            1280,
+            933
+          ],
+          "crop_height_px": 905,
+          "crop_sha256": "d16fb6e68a6aa9cdd5a554718b8e78a7cc15bdda2bae14d253bbe614eb08af3c",
+          "crop_width_px": 1280,
+          "display_name_zh": "草丛",
+          "effective_dpi_x": 154.82,
+          "effective_dpi_y": 154.79,
+          "focal_point_normalized": [
+            0.5,
+            0.5
+          ],
+          "license": "CC BY-SA 4.0",
+          "position": "TOP",
+          "printed_height_mm": 148.5,
+          "printed_width_mm": 210.0,
+          "role": "REGISTERED_DEMO_REFERENCE_NOT_HOLDOUT",
+          "source_height_px": 960,
+          "source_page": "https://commons.wikimedia.org/wiki/File:Stipagrostis_plumosa_kz06.jpg",
+          "source_path_relative_to_adventurex": "datasets/rootscope_machine_curated_provisional_v3/images/grass_clump/grass_clump_163498042_b1f6262895c3.jpg",
+          "source_sha256": "b1f6262895c31e8e507be31cebba09140e2a2582aa4f266ab05261fe50751d23",
+          "source_width_px": 1280
+        },
+        {
+          "artist": "USDA NRCS Montana",
+          "class_id": "low_shrub",
+          "crop_box_px": [
+            39,
+            0,
+            1241,
+            850
+          ],
+          "crop_height_px": 850,
+          "crop_sha256": "a07dee09bc32104760d05ef485a7b61ced8702e2605bf58e169757481924aa93",
+          "crop_width_px": 1202,
+          "display_name_zh": "灌木",
+          "effective_dpi_x": 145.38,
+          "effective_dpi_y": 145.39,
+          "focal_point_normalized": [
+            0.5,
+            0.52
+          ],
+          "license": "Public domain",
+          "position": "BOTTOM",
+          "printed_height_mm": 148.5,
+          "printed_width_mm": 210.0,
+          "role": "REGISTERED_DEMO_REFERENCE_NOT_HOLDOUT",
+          "source_height_px": 850,
+          "source_page": "https://commons.wikimedia.org/wiki/File:Plants22_(27104657009).jpg",
+          "source_path_relative_to_adventurex": "datasets/rootscope_machine_curated_provisional_v3/images/low_shrub/low_shrub_68787114_810c7649ac72.jpg",
+          "source_sha256": "810c7649ac729105367b3213bfafc467a036f4054244c424613da6c027c73610",
+          "source_width_px": 1280
+        }
+      ]
+    },
+    {
+      "card_height_mm": 148.5,
+      "card_width_mm": 210.0,
+      "cards_per_page": 2,
+      "center_cut_y_mm": 148.5,
+      "orientation": "portrait",
+      "page_count": 1,
+      "page_height_mm": 297.0,
+      "page_width_mm": 210.0,
+      "paper": "A4",
+      "pdf_bytes": 1449297,
+      "pdf_path_relative_to_adventurex": "output/pdf/RootScope_A4_half_page_cards_tree_sand_20260724.pdf",
+      "pdf_sha256": "5c018daaa4948dc9a87803082be37209a6aabc713b2e1b15182e8c086d6e1ab7",
+      "placements": [
+        {
+          "artist": "Wogatha Kanyi",
+          "class_id": "young_tree",
+          "crop_box_px": [
+            0,
+            25,
+            1280,
+            930
+          ],
+          "crop_height_px": 905,
+          "crop_sha256": "e0ba440181b5e890260937311af9a9c8f8685e8e0152889cab28a2a35eb24641",
+          "crop_width_px": 1280,
+          "display_name_zh": "幼树",
+          "effective_dpi_x": 154.82,
+          "effective_dpi_y": 154.79,
+          "focal_point_normalized": [
+            0.5,
+            0.28
+          ],
+          "license": "CC BY-SA 4.0",
+          "position": "TOP",
+          "printed_height_mm": 148.5,
+          "printed_width_mm": 210.0,
+          "role": "REGISTERED_DEMO_REFERENCE_NOT_HOLDOUT",
+          "source_height_px": 1707,
+          "source_page": "https://commons.wikimedia.org/wiki/File:A_newly_planted_tree.jpg",
+          "source_path_relative_to_adventurex": "datasets/rootscope_machine_curated_provisional_v3/images/young_tree/young_tree_92774234_0d994e838a2d.jpg",
+          "source_sha256": "0d994e838a2d7787ab3edfd8646e317390c790d92588c7ef9109778b843b40eb",
+          "source_width_px": 1280
+        },
+        {
+          "artist": "Mostafameraji",
+          "class_id": "unknown",
+          "crop_box_px": [
+            37,
+            0,
+            1243,
+            853
+          ],
+          "crop_height_px": 853,
+          "crop_sha256": "605b010213f3388c1047f9d1008c64e5b19144a49ae65664bc85c1431bef2d5a",
+          "crop_width_px": 1206,
+          "display_name_zh": "无目标/裸沙",
+          "effective_dpi_x": 145.87,
+          "effective_dpi_y": 145.9,
+          "focal_point_normalized": [
+            0.5,
+            0.5
+          ],
+          "license": "CC BY-SA 4.0",
+          "position": "BOTTOM",
+          "printed_height_mm": 148.5,
+          "printed_width_mm": 210.0,
+          "role": "UNREGISTERED_NEGATIVE_NOT_ACCURACY_HOLDOUT",
+          "source_height_px": 853,
+          "source_page": "https://commons.wikimedia.org/wiki/File:A_sand_dune_in_the_Maranjab_Desert,_located_in_the_middle_of_the_Kavir_National_Park_IRAN_23.jpg",
+          "source_path_relative_to_adventurex": "datasets/rootscope_machine_curated_provisional_v3/images/unknown/unknown_157364276_04e7f49a1e66.jpg",
+          "source_sha256": "04e7f49a1e66186bda7a9a1102985560eac0e3a1bffcec892e6dc522868c985b",
+          "source_width_px": 1280
+        }
+      ]
+    }
+  ],
+  "print_settings": {
+    "color": true,
+    "cut": "one horizontal cut on the dashed center line",
+    "duplex": false,
+    "fit_to_page": false,
+    "orientation": "portrait",
+    "paper": "A4",
+    "quality": "high/photo",
+    "scale_percent": 100
+  },
+  "schema": "rootscope.event-demo-half-a4-print-sheets.v1",
+  "source_manifest_relative_to_adventurex": "output/pdf/RootScope_A4_four_up_field_cards_20260723_manifest.json",
+  "source_manifest_sha256": "5e23e6133e9a59d8327bd751c4d6e5434d0c5a86402fd920c9d99e547613d827",
+  "status": "BUILT_FOR_EVENT_DEMO_PRINT_AND_UVC_RECAPTURE_ONLY",
+  "truth_boundary": {
+    "accuracy_evidence": false,
+    "auto_training": false,
+    "holdout_claimed": false,
+    "intended_use": "EVENT_DEMO_PRINT_AND_UVC_RECAPTURE_ONLY",
+    "physical_or_irrigation_authority": false
+  }
+}

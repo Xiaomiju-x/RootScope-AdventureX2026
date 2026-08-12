@@ -1,0 +1,19 @@
+{
+  "archive": "rootscope_v3_pc_ready_20260724_bde610b5e429.tar",
+  "archive_bytes": 1677690880,
+  "archive_sha256": "c527a26466e7bf5a92fff256180aef2ac0f46fe8c4cb37f7d604b66e4d3c5aa3",
+  "authority": {
+    "execution_authority": false,
+    "external_network": false,
+    "gpio_write": false,
+    "physical_completion": false,
+    "pump_command": false,
+    "serial_write": false,
+    "state_machine_write": false
+  },
+  "candidate_id": "rootscope_v3_pc_ready_20260724_bde610b5e429",
+  "entry_contract_root_sha256": "bde610b5e429f8df918ceec4288732ce99322947f73928a4f7de4a9ce960753c",
+  "file_count": 287,
+  "schema": "rootscope.v3.release-build-receipt.v1",
+  "status": "PASS_PC_COMPLETE_X5_FINAL_CANDIDATE_ACCEPTANCE_PENDING"
+}

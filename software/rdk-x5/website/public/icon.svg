@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="RootScope">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2457d6"/><stop offset=".52" stop-color="#6848d8"/><stop offset="1" stop-color="#00a7b7"/></linearGradient></defs>
+  <rect width="64" height="64" rx="18" fill="url(#g)"/>
+  <path d="M35 10c-2 13-16 13-16 26 0 9 6 16 14 18 2-14 15-18 17-33-4 5-9 8-15 10 2-7 2-14 0-21Z" fill="#fff" fill-opacity=".92"/>
+  <path d="M31 33c2 8 1 15-1 22M31 42l-8-5M32 47l9-7" fill="none" stroke="#e7ffff" stroke-width="3" stroke-linecap="round"/>
+</svg>

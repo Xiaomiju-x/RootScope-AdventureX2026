@@ -1,0 +1,532 @@
+{
+  "schema_version": "2.0.0",
+  "contract_id": "rootscope.p0.plant_morphology.v2",
+  "task_type": "fixed_roi_image_classification",
+  "status": "FROZEN_E0_DATA_CONTRACT",
+  "scope": {
+    "project": "RootScope",
+    "claim": "visible_plant_morphology_only",
+    "forbidden_claims": [
+      "species_identification",
+      "root_depth_inference",
+      "agronomic_water_demand_inference",
+      "field_irrigation_prescription"
+    ]
+  },
+  "input": {
+    "source": "perspective_rectified_fixed_card_roi",
+    "color_order": "RGB",
+    "width": 224,
+    "height": 224,
+    "channels": 3
+  },
+  "class_order": [
+    "grass_clump",
+    "low_shrub",
+    "young_tree",
+    "unknown"
+  ],
+  "classes": [
+    {
+      "index": 0,
+      "class_id": "grass_clump",
+      "name_zh": "草丛型",
+      "visible_basis": "簇生、细长叶片、低矮轮廓",
+      "demo_profile": "Profile-A",
+      "demo_channel": "Z1",
+      "admission": "candidate_only"
+    },
+    {
+      "index": 1,
+      "class_id": "low_shrub",
+      "name_zh": "低矮灌木型",
+      "visible_basis": "多分枝、团状冠幅、无明显主干",
+      "demo_profile": "Profile-B",
+      "demo_channel": "Z2",
+      "admission": "candidate_only"
+    },
+    {
+      "index": 2,
+      "class_id": "young_tree",
+      "name_zh": "幼树苗型",
+      "visible_basis": "明显主干和小型树冠",
+      "demo_profile": "Profile-C",
+      "demo_channel": "Z3",
+      "admission": "candidate_only"
+    },
+    {
+      "index": 3,
+      "class_id": "unknown",
+      "name_zh": "未知或不合格",
+      "visible_basis": "裸沙、石块、空卡、手、动物、模糊、遮挡或合同外输入",
+      "demo_profile": null,
+      "demo_channel": null,
+      "admission": "reject"
+    }
+  ],
+  "dataset_contract": {
+    "record_schema_version": "2.0.0",
+    "source_group_partitions": [
+      "train",
+      "validation",
+      "decision_calibration",
+      "conversion_golden",
+      "natural_test",
+      "printed_test",
+      "print_demo",
+      "site_acceptance"
+    ],
+    "administrative_splits": [
+      "unassigned",
+      "excluded"
+    ],
+    "allowed_splits": [
+      "unassigned",
+      "train",
+      "validation",
+      "decision_calibration",
+      "conversion_golden",
+      "natural_test",
+      "printed_test",
+      "print_demo",
+      "site_acceptance",
+      "excluded"
+    ],
+    "model_development_splits": [
+      "train",
+      "validation",
+      "decision_calibration",
+      "conversion_golden"
+    ],
+    "partition_class_coverage": {
+      "train": [
+        "grass_clump",
+        "low_shrub",
+        "young_tree",
+        "unknown"
+      ],
+      "validation": [
+        "grass_clump",
+        "low_shrub",
+        "young_tree",
+        "unknown"
+      ],
+      "decision_calibration": [
+        "grass_clump",
+        "low_shrub",
+        "young_tree",
+        "unknown"
+      ],
+      "conversion_golden": [
+        "grass_clump",
+        "low_shrub",
+        "young_tree",
+        "unknown"
+      ],
+      "natural_test": [
+        "grass_clump",
+        "low_shrub",
+        "young_tree",
+        "unknown"
+      ]
+    },
+    "sealed_evaluation_splits": [
+      "natural_test",
+      "printed_test",
+      "print_demo",
+      "site_acceptance"
+    ],
+    "permanent_holdout_split": "print_demo",
+    "excluded_split": "excluded",
+    "domain_roles": {
+      "natural": [
+        "natural_web",
+        "local_negative"
+      ],
+      "printed_train": [
+        "printed_train"
+      ],
+      "printed_test": [
+        "printed_test"
+      ],
+      "print_demo": [
+        "print_demo_source",
+        "printed_demo_capture"
+      ],
+      "site_acceptance": [
+        "site_acceptance"
+      ]
+    },
+    "allowed_domains": [
+      "natural_web",
+      "local_negative",
+      "printed_train",
+      "printed_test",
+      "print_demo_source",
+      "printed_demo_capture",
+      "site_acceptance"
+    ],
+    "domain_split_matrix": {
+      "natural_web": [
+        "unassigned",
+        "train",
+        "validation",
+        "decision_calibration",
+        "conversion_golden",
+        "natural_test",
+        "excluded"
+      ],
+      "local_negative": [
+        "unassigned",
+        "train",
+        "validation",
+        "decision_calibration",
+        "conversion_golden",
+        "natural_test",
+        "excluded"
+      ],
+      "printed_train": [
+        "train",
+        "validation",
+        "decision_calibration",
+        "conversion_golden",
+        "excluded"
+      ],
+      "printed_test": [
+        "printed_test",
+        "excluded"
+      ],
+      "print_demo_source": [
+        "print_demo"
+      ],
+      "printed_demo_capture": [
+        "print_demo"
+      ],
+      "site_acceptance": [
+        "site_acceptance"
+      ]
+    },
+    "asset_roles": [
+      "source",
+      "crop",
+      "augmentation",
+      "print_capture",
+      "local_capture"
+    ],
+    "asset_role_domain_matrix": {
+      "source": [
+        "natural_web",
+        "local_negative",
+        "printed_train",
+        "printed_test",
+        "print_demo_source",
+        "site_acceptance"
+      ],
+      "crop": [
+        "natural_web",
+        "local_negative",
+        "printed_train",
+        "printed_test"
+      ],
+      "augmentation": [
+        "natural_web",
+        "local_negative",
+        "printed_train"
+      ],
+      "print_capture": [
+        "printed_train",
+        "printed_test",
+        "printed_demo_capture"
+      ],
+      "local_capture": [
+        "local_negative"
+      ]
+    },
+    "lineage_contract": {
+      "source_provider_id_field": "source_provider_id",
+      "origin_download_url_field": "download_url",
+      "origin_attribution_fields": [
+        "source_provider_id",
+        "source_provider",
+        "source_page",
+        "download_url",
+        "artist",
+        "license",
+        "license_url"
+      ],
+      "capture_operator_field": "capture_operator",
+      "require_exact_group_inheritance": true
+    },
+    "source_provider_registry": {
+      "wikimedia_commons": {
+        "display_name": "Wikimedia Commons",
+        "source_page_kind": "https_url",
+        "allowed_source_hosts": [
+          "commons.wikimedia.org"
+        ],
+        "download_locator_kind": "https_url",
+        "allowed_download_hosts": [
+          "upload.wikimedia.org"
+        ],
+        "origin_id_kind": "positive_decimal"
+      },
+      "rootscope_local_capture": {
+        "display_name": "RootScope Local Capture",
+        "source_page_kind": "rootscope_local_urn",
+        "allowed_source_hosts": [],
+        "download_locator_kind": "rootscope_local_urn",
+        "allowed_download_hosts": [],
+        "origin_id_kind": "rootscope_local_id"
+      }
+    },
+    "final_optics_evidence": {
+      "capture_asset_roles": {
+        "print_capture": [
+          "printed_train",
+          "printed_test",
+          "printed_demo_capture"
+        ],
+        "local_capture": [
+          "local_negative"
+        ]
+      },
+      "capture_condition_id_pattern": "^[a-z0-9][a-z0-9_.:-]{2,63}$",
+      "optical_domain_root_pattern": "^[0-9a-f]{64}$",
+      "require_one_consistent_root": true
+    },
+    "optical_domain_receipt": {
+      "canonicalization": "json_utf8_sort_keys_compact_sha256",
+      "receipt_schema_version": "1.0.0",
+      "required_top_level_fields": [
+        "schema_version",
+        "receipt_id",
+        "signed_roles",
+        "evidence_roots"
+      ],
+      "required_role_entry_fields": [
+        "member",
+        "signed",
+        "signer",
+        "approval_evidence_sha256"
+      ],
+      "required_signed_roles": {
+        "hardware": "B",
+        "mechanical": "C",
+        "operations": "D"
+      },
+      "require_distinct_signers": true,
+      "require_distinct_approval_evidence": true,
+      "approval_evidence_field": "approval_evidence_sha256",
+      "required_evidence_roots": [
+        "uvc",
+        "lighting",
+        "paper",
+        "printer",
+        "geometry"
+      ]
+    },
+    "image_validation": {
+      "minimum_width": 224,
+      "minimum_height": 224,
+      "require_decode": true
+    },
+    "perceptual_duplicate_audit": {
+      "algorithm": "dhash64",
+      "distance_threshold": 6,
+      "native_v2_required": true,
+      "compare_across_distinct_source_groups": true
+    },
+    "ptq_calibration": {
+      "selection_field": "ptq_calibration",
+      "allowed_split": "train",
+      "minimum_source_groups_per_class": 1
+    },
+    "unknown_scenarios": [
+      "empty_card",
+      "bare_sand",
+      "hand",
+      "occlusion",
+      "blur",
+      "glare",
+      "mixed_targets"
+    ],
+    "site_acceptance_unknown_policy": {
+      "requires_nonempty_scenario": true,
+      "requires_independent_source_groups": true
+    },
+    "approved_review_statuses": [
+      "approved",
+      "visual_and_license_approved"
+    ],
+    "rejected_review_statuses": [
+      "rejected_visual",
+      "rejected_license"
+    ],
+    "allowed_licenses": {
+      "Public domain": {
+        "url_required": false,
+        "canonical_url_pattern": "^(|https://creativecommons\\.org/publicdomain/mark/1\\.0/?)$"
+      },
+      "CC0 1.0": {
+        "url_required": true,
+        "canonical_url_pattern": "^https://creativecommons\\.org/publicdomain/zero/1\\.0/?$"
+      },
+      "CC BY 2.0": {
+        "url_required": true,
+        "canonical_url_pattern": "^https://creativecommons\\.org/licenses/by/2\\.0/?$"
+      },
+      "CC BY 2.5": {
+        "url_required": true,
+        "canonical_url_pattern": "^https://creativecommons\\.org/licenses/by/2\\.5/?$"
+      },
+      "CC BY 3.0": {
+        "url_required": true,
+        "canonical_url_pattern": "^https://creativecommons\\.org/licenses/by/3\\.0/?$"
+      },
+      "CC BY 4.0": {
+        "url_required": true,
+        "canonical_url_pattern": "^https://creativecommons\\.org/licenses/by/4\\.0/?$"
+      },
+      "CC BY-SA 2.0": {
+        "url_required": true,
+        "canonical_url_pattern": "^https://creativecommons\\.org/licenses/by-sa/2\\.0/?$"
+      },
+      "CC BY-SA 2.5": {
+        "url_required": true,
+        "canonical_url_pattern": "^https://creativecommons\\.org/licenses/by-sa/2\\.5/?$"
+      },
+      "CC BY-SA 3.0": {
+        "url_required": true,
+        "canonical_url_pattern": "^https://creativecommons\\.org/licenses/by-sa/3\\.0/?$"
+      },
+      "CC BY-SA 4.0": {
+        "url_required": true,
+        "canonical_url_pattern": "^https://creativecommons\\.org/licenses/by-sa/4\\.0/?$"
+      }
+    },
+    "ready_minimums": {
+      "natural_unique_source_groups": {
+        "grass_clump": 100,
+        "low_shrub": 100,
+        "young_tree": 100,
+        "unknown": 120
+      },
+      "natural_source_group_minimums_by_split": {
+        "train": {
+          "grass_clump": 50,
+          "low_shrub": 50,
+          "young_tree": 50,
+          "unknown": 60
+        },
+        "validation": {
+          "grass_clump": 10,
+          "low_shrub": 10,
+          "young_tree": 10,
+          "unknown": 10
+        },
+        "decision_calibration": {
+          "grass_clump": 10,
+          "low_shrub": 10,
+          "young_tree": 10,
+          "unknown": 10
+        },
+        "conversion_golden": {
+          "grass_clump": 20,
+          "low_shrub": 20,
+          "young_tree": 20,
+          "unknown": 20
+        },
+        "natural_test": {
+          "grass_clump": 10,
+          "low_shrub": 10,
+          "young_tree": 10,
+          "unknown": 20
+        }
+      },
+      "conversion_golden_qualifying_assets_total": 100,
+      "conversion_golden_qualifying_assets_per_class": 20,
+      "unknown_scenario_coverage": 6,
+      "local_negative_final_optics_scenario_coverage": 6,
+      "printed_train_source_groups_per_target_class": 12,
+      "printed_train_source_group_minimums_by_split": {
+        "train": {
+          "grass_clump": 6,
+          "low_shrub": 6,
+          "young_tree": 6
+        },
+        "validation": {
+          "grass_clump": 2,
+          "low_shrub": 2,
+          "young_tree": 2
+        },
+        "decision_calibration": {
+          "grass_clump": 2,
+          "low_shrub": 2,
+          "young_tree": 2
+        },
+        "conversion_golden": {
+          "grass_clump": 2,
+          "low_shrub": 2,
+          "young_tree": 2
+        }
+      },
+      "printed_train_captures_per_source_group": 4,
+      "printed_test_source_groups_per_target_class": 4,
+      "printed_test_captures_per_source_group": 4,
+      "print_demo_source_groups_per_target_class": 2,
+      "print_demo_captures_per_source_group": 10,
+      "site_acceptance_source_groups_per_target_class": 1,
+      "site_acceptance_unknown_source_groups": 10,
+      "site_acceptance_unknown_scenario_coverage": 6,
+      "require_all_source_group_partitions": true,
+      "require_reviewer_for_usable_rows": true
+    },
+    "migration": {
+      "migration_id": "rootscope.dataset_manifest.v1_to_v2.20260715",
+      "from_schema_version": "1.0.0",
+      "to_schema_version": "2.0.0",
+      "mode": "allowlisted_manifest_sha256_projection",
+      "accepted_manifest_sha256": [
+        "009645a3ab7571a11e00660e2b1cfa884c72549930bc89d4d171d5cbd34b06ae"
+      ],
+      "split_aliases": {
+        "val": "validation",
+        "test": "natural_test",
+        "calibration": "decision_calibration"
+      },
+      "domain_aliases": {
+        "printed_capture": "printed_demo_capture",
+        "printed_train_capture": "printed_train",
+        "printed_test_capture": "printed_test",
+        "site_acceptance_source": "site_acceptance",
+        "site_acceptance_capture": "site_acceptance"
+      },
+      "field_defaults": {
+        "record_schema_version": "2.0.0",
+        "ptq_calibration": false,
+        "permanent_holdout": false,
+        "sealed": false,
+        "unknown_scenario": null,
+        "reviewed_by": null,
+        "optical_domain_root": null,
+        "capture_id": null,
+        "capture_quality_pass": false,
+        "capture_operator": null,
+        "capture_condition_id": null,
+        "source_provider_id": "wikimedia_commons"
+      },
+      "field_derivations": {
+        "asset_id": "legacy:{pageid}",
+        "asset_sha256": "download_sha256",
+        "origin_pageid": "pageid",
+        "origin_sha256": "download_sha256",
+        "asset_role": "source",
+        "sealed": "split in sealed_evaluation_splits",
+        "permanent_holdout": "split == print_demo"
+      }
+    },
+    "grouping_rule": "Every source asset, crop, augmentation, print and recapture of one original remains in exactly one source_group and one source-group partition.",
+    "permanent_holdout_rule": "Every print_demo source_group and all derivatives are permanently excluded from model development, calibration, tests and site acceptance.",
+    "ptq_rule": "PTQ calibration is a frozen subset of train, never an independent tunable split."
+  }
+}

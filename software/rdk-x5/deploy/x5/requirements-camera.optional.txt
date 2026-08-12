@@ -1,0 +1,3 @@
+# Optional only; the locked capsule never imports or opens a camera.
+# A matching aarch64 wheel or board-native package must be qualified first.
+opencv-python-headless>=4.8,<5

@@ -1,12 +1,27 @@
-RootScope — Evidence-Grounded Edge AI Irrigation Chamber
+RootScope — AdventureX 2026 D-Robotics “Give AI a Body”
+Silver Award · Final 2nd Place
 Copyright 2026 Xiaomiju-x and RootScope contributors.
 
-The source code physically present in this repository is released under
-Apache License 2.0. RootScope names, logos, competition artwork, unpublished
-models, datasets, firmware, prompts, calibration data and deployment
-artifacts are not licensed by this notice.
+Project-authored source code in this repository is licensed under Apache
+License 2.0 unless a file states otherwise. Contributions from
+STMicroelectronics (HAL/CMSIS), Arm, model vendors, data/media authors, and
+other third parties retain their original copyright and license notices.
 
-RDK and D-Robotics are names or marks of their respective owners. This
-repository is an independent AdventureX 2026 project and is not an official
-D-Robotics product.
+Original editable hardware-design source is licensed under CERN-OHL-S-2.0.
+Project-authored documentation and approved public media are licensed under
+CC-BY-4.0. Some print-card sources use CC-BY-SA-4.0 or public-domain terms.
+The path-specific licence matrix and complete legal texts are in
+LICENSE_MATRIX.md and LICENSES/.
 
+Model, dataset, print-card, evidence, and media assets are governed by their
+adjacent model cards, manifests, attribution records, or license files. The
+repository-wide Apache-2.0 license does not replace an upstream model/data
+license or grant rights in a person's likeness, event artwork, or trademark.
+
+RootScope is an independent AdventureX 2026 project. AdventureX, D-Robotics,
+RDK, Scout Mini, STM32, Qwen, BGE, and other names and marks belong to their
+respective owners. Their appearance does not imply endorsement of derivative
+projects.
+
+No credential, private device identity, or unlicensed asset is intentionally
+distributed. See docs/OPEN_CORE_BOUNDARY.md for the public release policy.

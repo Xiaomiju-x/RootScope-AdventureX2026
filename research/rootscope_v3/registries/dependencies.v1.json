@@ -1,0 +1,77 @@
+{
+  "schema": "rootscope.v3.dependency-registry.v1",
+  "frozen_at": "2026-07-24",
+  "dependencies": [
+    {
+      "dependency_id": "python-x5-runtime",
+      "name": "CPython",
+      "version": "3.10.12",
+      "platform": "RDK_X5_AARCH64_UBUNTU_22_04",
+      "source": "RDK_OS_OR_EXISTING_V2_VENV",
+      "status": "BASELINE_X5_OBSERVED"
+    },
+    {
+      "dependency_id": "onnxruntime-x5-cpu",
+      "name": "onnxruntime",
+      "version": "1.22.1",
+      "platform": "CP310_AARCH64",
+      "source": "rootscope/deploy/x5/wheelhouse/candidate_cp310_aarch64",
+      "status": "BASELINE_OFFLINE_WHEELHOUSE"
+    },
+    {
+      "dependency_id": "numpy-x5-cpu",
+      "name": "numpy",
+      "version": "2.2.6",
+      "platform": "CP310_AARCH64",
+      "source": "rootscope/deploy/x5/wheelhouse/candidate_cp310_aarch64",
+      "status": "BASELINE_CPU_VENV_ONLY"
+    },
+    {
+      "dependency_id": "opencv-x5-cpu",
+      "name": "opencv-python-headless",
+      "version": "4.13.0.92",
+      "platform": "AARCH64",
+      "source": "rootscope/deploy/x5/wheelhouse/candidate_cp310_aarch64",
+      "status": "BASELINE_OFFLINE_WHEELHOUSE"
+    },
+    {
+      "dependency_id": "llama-server-aarch64",
+      "name": "llama.cpp llama-server",
+      "version": "b9637-aedb2a5e9ca3d4064148bbb919e0ddc0c1b70ab3",
+      "platform": "AARCH64_UBUNTU_22_04",
+      "source": "output/rootscope_llama_server_arm64_b9637_v1",
+      "status": "BASELINE_X5_OBSERVED"
+    },
+    {
+      "dependency_id": "hbm-runtime-x5",
+      "name": "hbm_runtime",
+      "version": "3.0.9",
+      "platform": "RDK_X5_SYSTEM_SITE_PACKAGES",
+      "source": "RDK_OS",
+      "status": "IMPORT_OBSERVED_PERSISTENT_ADAPTER_PENDING"
+    },
+    {
+      "dependency_id": "hobot-dnn-x5",
+      "name": "hobot_dnn",
+      "version": "3.0.9",
+      "platform": "RDK_X5_SYSTEM_SITE_PACKAGES",
+      "source": "RDK_OS",
+      "status": "LEGACY_IMPORT_OBSERVED_NOT_V3_DEFAULT"
+    },
+    {
+      "dependency_id": "hrt-model-exec-x5",
+      "name": "hrt_model_exec",
+      "version": "1.24.5",
+      "platform": "RDK_X5_SYSTEM_BINARY",
+      "source": "/usr/sbin/hrt_model_exec",
+      "sha256": "c3a47c77889bc82c8519b68a86b75f8205c6a4f9695339bb3d01da2713abcb04",
+      "status": "BASELINE_CANONICAL_CORRECTNESS_ORACLE"
+    }
+  ],
+  "abi_rules": [
+    "BPU venv must use system-site-packages for hbm_runtime/hobot_dnn",
+    "Do not install CPU venv NumPy 2.2.6 into the BPU system-site-packages environment",
+    "Do not upgrade RDK OS or miniboot in the competition candidate",
+    "All new Python and model artifacts require exact hashes before packaging"
+  ]
+}

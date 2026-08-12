@@ -1,0 +1,35 @@
+[Unit]
+Description=RootScope locked clean-X5 edge capsule (zero hardware authority)
+After=local-fs.target
+
+[Service]
+Type=simple
+User=rootscope
+Group=rootscope
+WorkingDirectory=/opt/rootscope/current
+EnvironmentFile=/etc/rootscope/rootscope.env
+ExecStart=/bin/bash /opt/rootscope/current/deploy/x5/scripts/start_rootscope.sh
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=10
+KillMode=mixed
+KillSignal=SIGINT
+MemoryMax=1800M
+CPUQuota=300%
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=rootscope-edge
+
+[Install]
+WantedBy=multi-user.target

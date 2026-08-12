@@ -1,0 +1,44 @@
+{
+  "schema": "rootscope.visual_irrigation.physical_cycle_summary.v1",
+  "run_id": "20260725T081830Z",
+  "executed_on": "rootscope-x5",
+  "passed": true,
+  "status": "COMPLETE_CONTINUOUS_TIMED_MOTION_AND_5S_PUMP_STOPPED_LOCKED",
+  "vision": {
+    "decision": "grass_clump",
+    "consecutive_confirmations": 3,
+    "confidences": [
+      0.804706871509552,
+      0.8093056082725525,
+      0.812509298324585
+    ]
+  },
+  "motion": {
+    "level": 1,
+    "steps": 1024,
+    "motion_wait_s": 15.8,
+    "motor_done_feedback_used_as_transition": false,
+    "intermediate_stop_sent": false,
+    "serial_reopened_between_motion_and_pump": false,
+    "automatic_return": false
+  },
+  "pump": {
+    "duration_ms": 5000,
+    "arm_write_count": 1,
+    "task_id": 7,
+    "automatic_retry": false
+  },
+  "final_safe_state": {
+    "verified": true,
+    "status": "STATUS,Z=0,P=0,LOCK=1,REASON=4,HB=0,TASK=0,ZHOME=0,ZUSED=1,ZLEVEL=1,ZSTEPS=1024",
+    "io_status": "IOSTATUS,PA=0x00,Z=0x0,PB6=1,PLOG=0"
+  },
+  "operator_observation": {
+    "physical_motion_confirmed": true,
+    "physical_water_flow_confirmed": true,
+    "state": "OPERATOR_CONFIRMED_SUCCESS"
+  },
+  "authoritative_receipt": "visual_irrigation_continuous_5s_20260725T081830Z_x5/cycle_receipt.json",
+  "authoritative_receipt_sha256": "d835243466d197a600a2e33e652973ab66aa514374c021b759097b46fd31e0eb",
+  "truth_boundary": "The protocol receipt proves the commanded and read-back controller state. The onsite operator explicitly confirmed successful visible probe motion and water flow."
+}

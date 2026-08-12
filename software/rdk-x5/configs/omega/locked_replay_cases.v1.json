@@ -1,0 +1,138 @@
+{
+  "schema_version": "rootscope.omega.locked-replay-cases.v1",
+  "release_id": "rootscope-omega-v3-alpha",
+  "execution_mode": "SIMULATION",
+  "execution_authority": false,
+  "cases": [
+    {
+      "case_id": "CASE01_NORMAL_VERIFIED",
+      "description": "ACK、质量减少和目标区湿润一致，证据闭环成立。",
+      "inputs": {
+        "camera_quality_ok": true,
+        "ood_detected": false,
+        "evidence_fresh": true,
+        "payload_hash_valid": true,
+        "firmware_connected": true,
+        "estop_clear": true,
+        "ack_ok": true,
+        "target_mass_mg": 12000,
+        "tolerance_mg": 1200,
+        "measured_mass_loss_mg": 11950,
+        "target_wetting_score": 0.42,
+        "target_wetting_threshold": 0.30,
+        "neighbor_wetting_score": 0.04,
+        "neighbor_spill_threshold": 0.12
+      },
+      "expected": {
+        "safety_decision": "ACCEPT",
+        "evidence_action": "NONE",
+        "terminal_state": "TARGET_WETTING_VERIFIED",
+        "completion_claim": "SIMULATED_EVIDENCE_COMPLETE"
+      }
+    },
+    {
+      "case_id": "CASE02_OOD_RECAPTURE",
+      "description": "遮挡、反光或 OOD 触发重拍，任何泵建议保持关闭。",
+      "inputs": {
+        "camera_quality_ok": false,
+        "ood_detected": true,
+        "evidence_fresh": true,
+        "payload_hash_valid": true,
+        "firmware_connected": true,
+        "estop_clear": true,
+        "ack_ok": false,
+        "target_mass_mg": 12000,
+        "tolerance_mg": 1200,
+        "measured_mass_loss_mg": 0,
+        "target_wetting_score": 0.0,
+        "target_wetting_threshold": 0.30,
+        "neighbor_wetting_score": 0.0,
+        "neighbor_spill_threshold": 0.12
+      },
+      "expected": {
+        "safety_decision": "HOLD",
+        "evidence_action": "RECAPTURE",
+        "terminal_state": "READY",
+        "completion_claim": "NO_COMPLETION"
+      }
+    },
+    {
+      "case_id": "CASE03_ACK_WITHOUT_MASS_LOSS",
+      "description": "控制 ACK 成功但质量未下降，判定空罐、堵塞或计量异常。",
+      "inputs": {
+        "camera_quality_ok": true,
+        "ood_detected": false,
+        "evidence_fresh": true,
+        "payload_hash_valid": true,
+        "firmware_connected": true,
+        "estop_clear": true,
+        "ack_ok": true,
+        "target_mass_mg": 12000,
+        "tolerance_mg": 1200,
+        "measured_mass_loss_mg": 80,
+        "target_wetting_score": 0.0,
+        "target_wetting_threshold": 0.30,
+        "neighbor_wetting_score": 0.0,
+        "neighbor_spill_threshold": 0.12
+      },
+      "expected": {
+        "safety_decision": "REJECT",
+        "evidence_action": "REWEIGH",
+        "terminal_state": "ABORTED_LOCKED",
+        "completion_claim": "NO_COMPLETION"
+      }
+    },
+    {
+      "case_id": "CASE04_NEIGHBOR_SPILL",
+      "description": "质量减少正常但邻区异常润湿，判定泄漏或串扰并锁定。",
+      "inputs": {
+        "camera_quality_ok": true,
+        "ood_detected": false,
+        "evidence_fresh": true,
+        "payload_hash_valid": true,
+        "firmware_connected": true,
+        "estop_clear": true,
+        "ack_ok": true,
+        "target_mass_mg": 12000,
+        "tolerance_mg": 1200,
+        "measured_mass_loss_mg": 11880,
+        "target_wetting_score": 0.40,
+        "target_wetting_threshold": 0.30,
+        "neighbor_wetting_score": 0.25,
+        "neighbor_spill_threshold": 0.12
+      },
+      "expected": {
+        "safety_decision": "REJECT",
+        "evidence_action": "HOLD",
+        "terminal_state": "ABORTED_LOCKED",
+        "completion_claim": "NO_COMPLETION"
+      }
+    },
+    {
+      "case_id": "CASE05_STALE_TAMPER_ESTOP",
+      "description": "stale/replay/tamper、F407 断连或急停任一出现即拒绝且不自动恢复。",
+      "inputs": {
+        "camera_quality_ok": true,
+        "ood_detected": false,
+        "evidence_fresh": false,
+        "payload_hash_valid": false,
+        "firmware_connected": false,
+        "estop_clear": false,
+        "ack_ok": false,
+        "target_mass_mg": 12000,
+        "tolerance_mg": 1200,
+        "measured_mass_loss_mg": 0,
+        "target_wetting_score": 0.0,
+        "target_wetting_threshold": 0.30,
+        "neighbor_wetting_score": 0.0,
+        "neighbor_spill_threshold": 0.12
+      },
+      "expected": {
+        "safety_decision": "REJECT",
+        "evidence_action": "HOLD",
+        "terminal_state": "ABORTED_LOCKED",
+        "completion_claim": "NO_COMPLETION"
+      }
+    }
+  ]
+}

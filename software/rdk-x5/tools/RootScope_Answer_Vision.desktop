@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RootScope 四卡视觉
+Comment=Insta360 four-card CPU ONNX + AKAZE/RANSAC demo
+Exec=xterm -T "RootScope Answer Vision" -geometry 110x28+20+20 -e /opt/rootscope/.local/bin/rootscope-answer-vision
+Icon=camera-web
+Terminal=false
+Categories=Science;Utility;
+StartupNotify=true

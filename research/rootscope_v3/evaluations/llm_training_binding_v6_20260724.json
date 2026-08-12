@@ -1,0 +1,47 @@
+{
+  "schema": "rootscope.v3.llm-training-binding.v1",
+  "status": "PASS_EXACT_DATA_ADAPTER_AND_LENGTH_BINDING",
+  "dataset": {
+    "receipt_sha256": "a57edc8c4bf9957a4e1c7ededc9e697ca51a13a10c88a0c67e10254f5264534c",
+    "files": {
+      "train.jsonl": {
+        "bytes": 1718048,
+        "sha256": "8821e622493d6ca4a2e81a528dd220907a89cb1912d8665ffebce97b5f4efa0d"
+      },
+      "validation.jsonl": {
+        "bytes": 224726,
+        "sha256": "79156e26ceb76962338b4b1c8481833039da2fee81a66f630664023e9b8f6bee"
+      },
+      "test.jsonl": {
+        "bytes": 306136,
+        "sha256": "a70727f265f4f7badb8f0c80863be52f1e4711a9017b1ff4ac2f2b7cde7aa0b7"
+      }
+    },
+    "rows": 1536,
+    "retrieval_bound_mismatch_count": 0,
+    "authority_violation_count": 0
+  },
+  "training": {
+    "receipt_sha256": "feebcc7219b7f231cb1c11aa2b6b0fcbb47d5eed60d920401c5ba693b0459e4a",
+    "adapter_sha256": "5720045c92e88096e1b3e6dc819e59e14b4ae2aac2c47e0ac8e0d5d7a1bd67c1",
+    "max_length": 448,
+    "full_sequence_max_tokens": 424,
+    "prompt_max_tokens": 242,
+    "truncated_sequence_count": 0,
+    "curriculum": {
+      "manifest_sha256": "c79375c2180efc9a862a7c508bd3b2145a45fbe78069393d121109d56ce3fb2a",
+      "curriculum_sha256": "cb01f5aadd4aaf3e86dd18434358f961b99e7636a5987daa6d7deec8be93e9ca",
+      "rows": 1890,
+      "unique_record_ids": 1173,
+      "held_out_record_count": 0
+    }
+  },
+  "qualification_boundary": "Deterministic structured-contract supervision with template-group split isolation; knowledge-source contents overlap across splits, so this is not an unseen-knowledge generalization claim.",
+  "authority": {
+    "execution_authority": false,
+    "serial_write": false,
+    "gpio_write": false,
+    "pump_command": false,
+    "physical_completion": false
+  }
+}

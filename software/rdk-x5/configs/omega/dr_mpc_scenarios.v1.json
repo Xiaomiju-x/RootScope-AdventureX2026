@@ -1,0 +1,57 @@
+{
+  "schema_version": "rootscope.omega.dr-mpc-scenarios.v1",
+  "scenarios": [
+    {
+      "scenario_id": "GRASS_CLUMP_DRY_ROOT",
+      "target_zone": 0,
+      "moisture_now": [0.10, 0.16, 0.18],
+      "target_band": [0.28, 0.38],
+      "target_gain_bounds_per_mg": [0.000018, 0.000023],
+      "neighbor_crosstalk_upper_per_mg": [0.0, 0.000002, 0.0000015],
+      "neighbor_spill_limit": 0.24,
+      "pulse_candidates_mg": [0, 2500, 5000],
+      "horizon": 2,
+      "maximum_total_dose_mg": 10000,
+      "expected_status": "PROPOSAL"
+    },
+    {
+      "scenario_id": "LOW_SHRUB_DRY_ROOT",
+      "target_zone": 1,
+      "moisture_now": [0.17, 0.14, 0.18],
+      "target_band": [0.30, 0.42],
+      "target_gain_bounds_per_mg": [0.000014, 0.000018],
+      "neighbor_crosstalk_upper_per_mg": [0.0000015, 0.0, 0.0000018],
+      "neighbor_spill_limit": 0.25,
+      "pulse_candidates_mg": [0, 3750, 7500],
+      "horizon": 2,
+      "maximum_total_dose_mg": 15000,
+      "expected_status": "PROPOSAL"
+    },
+    {
+      "scenario_id": "YOUNG_TREE_DRY_ROOT",
+      "target_zone": 2,
+      "moisture_now": [0.18, 0.19, 0.16],
+      "target_band": [0.34, 0.46],
+      "target_gain_bounds_per_mg": [0.000009, 0.000013],
+      "neighbor_crosstalk_upper_per_mg": [0.0000012, 0.0000014, 0.0],
+      "neighbor_spill_limit": 0.25,
+      "pulse_candidates_mg": [0, 5000, 10000],
+      "horizon": 2,
+      "maximum_total_dose_mg": 20000,
+      "expected_status": "PROPOSAL"
+    },
+    {
+      "scenario_id": "CROSSTALK_UNCERTAINTY_BLOCK",
+      "target_zone": 0,
+      "moisture_now": [0.10, 0.22, 0.23],
+      "target_band": [0.30, 0.40],
+      "target_gain_bounds_per_mg": [0.000012, 0.000018],
+      "neighbor_crosstalk_upper_per_mg": [0.0, 0.00002, 0.00002],
+      "neighbor_spill_limit": 0.25,
+      "pulse_candidates_mg": [0, 5000, 10000],
+      "horizon": 2,
+      "maximum_total_dose_mg": 20000,
+      "expected_status": "HOLD"
+    }
+  ]
+}

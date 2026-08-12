@@ -1,0 +1,19 @@
+title = "RootScope public-release Gitleaks policy"
+
+[extend]
+useDefault = true
+
+# Each allowlist requires both the exact test path and its inert fixture line.
+# A second credential-shaped value in the same file is still reported.
+[allowlist]
+description = "Synthetic negative-test inputs"
+condition = "AND"
+regexTarget = "line"
+paths = [
+  '''^pipelines/release/tests/test_rootscope_omega_v3_delta[.]py$''',
+  '''^software/rdk-x5/tests/test_read_only_explainer[.]py$''',
+]
+regexes = [
+  '''api[_]key\s*=\s*"abcdefghijklmnopqrstuvwxyz123456"''',
+  '''http[:]//user[:]pass@127[.]0[.]0[.]1:9080''',
+]

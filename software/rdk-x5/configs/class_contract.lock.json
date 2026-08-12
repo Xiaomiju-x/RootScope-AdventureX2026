@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "rootscope.dataset_contract.production.v2",
+  "contract_version": "2.0.0",
+  "class_contract_sha256": "865fb1178a79959faa8400ed06e42fcc7bf5c7daeb7d5df906b8c5a4722783e5"
+}

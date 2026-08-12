@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="zh-CN" data-visual-mode="vivid">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#eef8ff">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="RootScope 固定式根区灌溉舱：基于 RDK X5 与 STM32 的可解释、可拒绝、可追溯边缘具身 AI。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://xiaomiju.xyz/">
+  <meta property="og:site_name" content="RootScope">
+  <meta property="og:title" content="RootScope｜固定式根区灌溉舱">
+  <meta property="og:description" content="让 AI 的每一次浇水，都可解释、可拒绝、可追溯。">
+  <meta property="og:image" content="https://xiaomiju.xyz/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RootScope｜固定式根区灌溉舱">
+  <meta name="twitter:description" content="Evidence-Grounded Edge AI Irrigation Chamber">
+  <meta name="twitter:image" content="https://xiaomiju.xyz/og.png">
+  <title>RootScope｜固定式根区灌溉舱</title>
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="stylesheet" href="/styles.css?v=rootscope-public-v1">
+  <script>
+    (() => {
+      const allowed = new Set(["vivid", "defense", "minimal"]);
+      const stored = localStorage.getItem("rootscope-visual-mode");
+      document.documentElement.dataset.visualMode = allowed.has(stored) ? stored : "vivid";
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <div class="aurora" aria-hidden="true"><i></i><i></i><i></i></div>
+
+  <header class="topbar">
+    <a class="brand" href="#overview" aria-label="RootScope 首页">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i></span>
+      <span><b>RootScope</b><small>固定式根区灌溉舱</small></span>
+    </a>
+    <nav class="topnav" aria-label="主导航">
+      <a href="#overview">总览</a>
+      <a href="#loop">闭环</a>
+      <a href="#innovation">算法创新</a>
+      <a href="#evidence">真机证据</a>
+      <a href="#architecture">软硬件</a>
+      <a href="#team">团队</a>
+      <a href="#boundaries">边界</a>
+    </nav>
+    <div class="top-actions">
+      <span class="public-badge"><i></i>公网只读 · 免登录</span>
+      <button id="modeToggle" class="mode-toggle" type="button" aria-label="切换展示模式">
+        <span aria-hidden="true">◐</span><b id="modeLabel">完整</b>
+      </button>
+      <button id="menuToggle" class="menu-toggle" type="button" aria-label="展开导航" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <div class="nav-deck" id="navDeck" aria-label="章节导航">
+    <a href="#overview" class="active">总览</a>
+    <a href="#loop">具身闭环</a>
+    <a href="#rootsight">RootSight</a>
+    <a href="#rootmind">RootMind</a>
+    <a href="#omega">RootScope-Ω</a>
+    <a href="#compute">CPU / BPU</a>
+    <a href="#evidence">实测结果</a>
+    <a href="#architecture">硬件架构</a>
+    <a href="#future">应用前景</a>
+    <a href="#boundaries">事实边界</a>
+  </div>
+
+  <main id="main">
+    <section class="hero section" id="overview">
+      <div class="status-ribbon glass">
+        <span><i class="dot verified"></i>AdventureX 2026 · Give AI a Body</span>
+        <code>release rootscope-public-v1</code>
+        <a href="#evidence">查看验证状态 →</a>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">EDGE AI · EMBODIED ACTION · PUBLIC EVIDENCE</p>
+          <h1><span>RootScope</span><br>固定式根区灌溉舱</h1>
+          <p class="subtitle">An Evidence-Grounded Edge AI Irrigation Chamber</p>
+          <p class="lead">让 AI 的每一次浇水，都<strong>可解释、可拒绝、可追溯</strong>。在 RDK X5 上完成双证据视觉、本地 LLM/RAG 与安全决策，再由 STM32 独立执行有限探针和定时注水。</p>
+          <div class="hero-actions">
+            <a class="primary" href="#loop">看具身闭环 <span>→</span></a>
+            <a class="secondary" href="#innovation">看算法创新</a>
+          </div>
+          <div class="quick-facts" aria-label="核心技术">
+            <span>8GB RDK X5</span><span>STM32F103</span><span>RootSight</span>
+            <span>RootMind</span><span>RAG2</span><span>Safety Compiler</span>
+          </div>
+        </div>
+
+        <div class="hero-console glass" aria-label="系统状态摘要">
+          <div class="console-head">
+            <span><i></i>已验证历史实测</span>
+            <b>EDGE / READ-ONLY</b>
+          </div>
+          <div class="orbit" aria-hidden="true">
+            <div class="orbit-core"><span>RDK</span><b>X5</b><small>EDGE BRAIN</small></div>
+            <i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i>
+            <span class="sat s1">VISION</span><span class="sat s2">LLM</span>
+            <span class="sat s3">RAG</span><span class="sat s4">ACTION</span>
+          </div>
+          <div class="console-stats">
+            <article><span>固定卡识别</span><b>4 / 4</b><small>same-scene live</small></article>
+            <article><span>BPU 资格回放</span><b>43 / 43</b><small>two native paths</small></article>
+            <article><span>完整物理闭环</span><b>2 次</b><small>grass · 5 s</small></article>
+            <article><span>异常策略</span><b>HOLD</b><small>fail-closed</small></article>
+          </div>
+          <p class="offline-note"><span>●</span> X5 可离线；此页展示已封存结果，不伪装实时遥测。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="loop">
+      <div class="section-head">
+        <div><p class="eyebrow">FROM CHAT TO BOUNDED ACTION</p><h2>不是“识别后直接开泵”，而是证据驱动的具身闭环</h2></div>
+        <span class="section-index">01 / LOOP</span>
+      </div>
+      <div class="pipeline glass">
+        <article><b>01</b><span class="pipe-icon">◉</span><h3>Insta360</h3><p>1080p30 MJPG<br>受控现场画面</p></article>
+        <i>→</i>
+        <article><b>02</b><span class="pipe-icon">◇</span><h3>RootSight</h3><p>ResNet18 + AKAZE<br>双证据一致</p></article>
+        <i>→</i>
+        <article><b>03</b><span class="pipe-icon">⌁</span><h3>RootMind</h3><p>LLM + RAG2<br>只读解释</p></article>
+        <i>→</i>
+        <article><b>04</b><span class="pipe-icon">⌘</span><h3>Safety Compiler</h3><p>Plant2Action<br>白名单编译</p></article>
+        <i>→</i>
+        <article><b>05</b><span class="pipe-icon">▦</span><h3>STM32</h3><p>心跳 / 超时 / 急停<br>最终断泵权</p></article>
+        <i>→</i>
+        <article><b>06</b><span class="pipe-icon">⇣</span><h3>Probe + Pump</h3><p>有限档位下降<br>5 秒注水</p></article>
+      </div>
+      <div class="action-map">
+        <article class="glass level hold"><span>纯沙 / 非目标</span><b>LEVEL 0</b><p>不下降 · 不注水</p><strong>HOLD</strong></article>
+        <article class="glass level"><span>草丛</span><b>LEVEL 1</b><p>1024 步 · 5 秒</p><strong>SHALLOW</strong></article>
+        <article class="glass level"><span>灌木</span><b>LEVEL 2</b><p>1536 步 · 5 秒</p><strong>MEDIUM</strong></article>
+        <article class="glass level"><span>幼树</span><b>LEVEL 3</b><p>2048 步 · 5 秒</p><strong>DEEP</strong></article>
+      </div>
+      <p class="truth-note">“步数”仅代表当前机械结构的动作档位，不等于毫米、厘米或生物学根深。探针目前单向下降，下一轮需人工回顶。</p>
+    </section>
+
+    <section class="section" id="innovation">
+      <div class="section-head">
+        <div><p class="eyebrow">ALGORITHM STACK</p><h2>把复杂度堆在证据、权限和失败处理上</h2></div>
+        <span class="section-index">02 / INNOVATION</span>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature-card glass accent-cyan" id="rootsight">
+          <div class="feature-top"><span>ROOTSIGHT</span><b>01</b></div>
+          <h3>双证据视觉</h3>
+          <p>CPU ONNX ResNet18 提供语义证据，AKAZE / RANSAC homography 独立复核实体卡结构。两个分支同时成立才允许进入动作编译。</p>
+          <ul><li>质量门 / 偏黄灯光适配</li><li>Energy OOD + split-conformal 设计</li><li>未知、冲突、证据不足统一 HOLD</li></ul>
+          <div class="mini-flow"><span>CNN</span><i>+</i><span>GEOMETRY</span><i>→</i><b>DUAL EVIDENCE</b></div>
+        </article>
+
+        <article class="feature-card glass accent-violet" id="rootmind">
+          <div class="feature-top"><span>ROOTMIND</span><b>02</b></div>
+          <h3>本地逻辑微集群</h3>
+          <p>Fast Qwen2-0.5B、Deep RootScope Qwen3-1.7B 与 BM25/HOLD 按需换入，在有限内存上完成结构化解释和确定性降级。</p>
+          <ul><li>CPU 推理，ONE_MODEL_AT_A_TIME</li><li>只读 JSON 输出，无串口/GPIO 权限</li><li>模型异常仍可回退确定性模板</li></ul>
+          <div class="model-stack"><span>FAST · 0.5B</span><span>DEEP · 1.7B</span><span>BM25 · HOLD</span></div>
+        </article>
+
+        <article class="feature-card glass accent-blue" id="omega">
+          <div class="feature-top"><span>ROOTSCOPE-Ω</span><b>03</b></div>
+          <h3>证据到动作工具链</h3>
+          <p>让模型只“建议”，由确定性代码决定能否执行；把每个感知、状态、动作与失败写进可追溯证据图。</p>
+          <div class="tag-cloud">
+            <span>Evidence DAG</span><span>Hybrid Belief State</span><span>RB-VoE</span>
+            <span>Counterfactual Failure Core</span><span>Plant2Action</span>
+            <span>Safety Compiler</span><span>Truth Ribbon</span><span>Claim Ledger</span>
+          </div>
+        </article>
+
+        <article class="feature-card glass accent-green" id="compute">
+          <div class="feature-top"><span>HETEROGENEOUS COMPUTE</span><b>04</b></div>
+          <h3>CPU / BPU 可核验协同</h3>
+          <p>CPU ONNX 是当前动作感知权威；BPU 已通过 canonical 与 native persistent 两条独立资格链，但不越权决定水泵。</p>
+          <div class="metric-pair">
+            <div><span>BPU replay</span><b>43 / 43</b></div>
+            <div><span>mean cosine</span><b>1.000</b></div>
+            <div><span>Top-1</span><b>43 / 43</b></div>
+            <div><span>runtime</span><b>AUX</b></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="rag-banner glass">
+        <div><p class="eyebrow">RAG2 · EVIDENCE KNOWLEDGE BASE</p><h3>知识库不是动作控制器，而是可引用的解释层</h3></div>
+        <div class="rag-metrics">
+          <article><b>17</b><span>来源</span></article>
+          <article><b>42</b><span>知识块</span></article>
+          <article><b>92.19%</b><span>Recall@5</span></article>
+          <article><b>94.44%</b><span>Forbidden Recall@5</span></article>
+          <article><b>0</b><span>Citation Escape</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="evidence">
+      <div class="section-head">
+        <div><p class="eyebrow">VERIFIED ON SITE</p><h2>每一个“完成”都对应真实状态与边界</h2></div>
+        <span class="section-index">03 / EVIDENCE</span>
+      </div>
+
+      <div class="evidence-grid">
+        <article class="evidence-main glass">
+          <div class="evidence-title"><span><i class="dot verified"></i>现场验收摘要</span><code>2026-07-25</code></div>
+          <div class="evidence-list">
+            <div><b>四张固定卡实时识别</b><span>PASS</span><p>grass / shrub / tree / sand · 4/4</p></div>
+            <div><b>三档探针物理映射</b><span>PASS</span><p>0 / 1024 / 1536 / 2048</p></div>
+            <div><b>草丛完整物理闭环</b><span>2× PASS</span><p>识别 → 下降 → 5 秒注水 → 关泵锁存</p></div>
+            <div><b>STM32 安全终态</b><span>PASS</span><p>停止 / 泵关闭 / fail-closed 锁存</p></div>
+            <div><b>本地 LLM / RAG2</b><span>READ-ONLY</span><p>Fast / Deep / BM25 已加载，零执行权限</p></div>
+          </div>
+        </article>
+        <aside class="claim-card glass">
+          <p class="eyebrow">CLAIM LEDGER</p>
+          <h3>我们如何回答评委</h3>
+          <ol>
+            <li><b>事实</b><span>发生了什么</span></li>
+            <li><b>证据</b><span>由什么回执支持</span></li>
+            <li><b>边界</b><span>当前不能说明什么</span></li>
+            <li><b>下一步</b><span>如何走向真实部署</span></li>
+          </ol>
+          <p>不把 shadow、辅助 BPU、单次样本或人工确认升级描述为完全自主闭环。</p>
+        </aside>
+      </div>
+
+      <div class="plant-gallery">
+        <figure class="glass"><img src="/media/grass.webp" alt="答辩现场拍摄的草丛实体卡" loading="lazy"><figcaption><b>草丛</b><span>Level 1 · 1024</span></figcaption></figure>
+        <figure class="glass"><img src="/media/shrub.webp" alt="答辩现场拍摄的灌木实体卡" loading="lazy"><figcaption><b>灌木</b><span>Level 2 · 1536</span></figcaption></figure>
+        <figure class="glass"><img src="/media/tree.webp" alt="答辩现场拍摄的幼树实体卡" loading="lazy"><figcaption><b>幼树</b><span>Level 3 · 2048</span></figcaption></figure>
+        <figure class="glass hold-card"><img src="/media/sand.webp" alt="答辩现场拍摄的纯沙非目标实体卡" loading="lazy"><figcaption><b>纯沙 / 非目标</b><span>HOLD · NO ACTION</span></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section" id="architecture">
+      <div class="section-head">
+        <div><p class="eyebrow">HARDWARE × SOFTWARE</p><h2>上位机负责理解，下位机拥有最终断泵权</h2></div>
+        <span class="section-index">04 / ARCHITECTURE</span>
+      </div>
+
+      <div class="architecture-grid">
+        <article class="arch-panel glass brain">
+          <div class="arch-label">UPPER COMPUTER</div>
+          <h3>8GB RDK X5</h3>
+          <p>视觉采集、证据融合、本地 LLM、RAG2、动作编译、串口协议和证据记录。</p>
+          <div class="arch-chips"><span>CPU ONNX</span><span>BPU qualification</span><span>LLM CPU</span><span>RAG2</span></div>
+        </article>
+        <div class="arch-link"><span>CH340</span><i>USB-TTL</i><b>↔</b></div>
+        <article class="arch-panel glass mcu">
+          <div class="arch-label">LOWER COMPUTER</div>
+          <h3>STM32F103 · V15</h3>
+          <p>有限档位、心跳、超时、急停、断连关泵、任务锁存与最终安全状态。</p>
+          <div class="arch-chips"><span>PA0–PA3 Probe</span><span>PB6 Relay</span><span>Watchdog</span><span>ESTOP</span></div>
+        </article>
+      </div>
+
+      <div class="hardware-cards">
+        <article class="glass"><span>CAMERA</span><b>Insta360 Link 2C</b><p>支持 4K30 MJPG；当前稳定演示为 1080p30。</p></article>
+        <article class="glass"><span>PROBE</span><b>28BYJ-48 + ULN2003</b><p>单向向下三档；人工回顶；水平结构固定保留扩展位。</p></article>
+        <article class="glass"><span>WATER</span><b>PB6 继电器 + 单水泵</b><p>低有效开漏控制；固定 5 秒；最终关泵由 MCU 锁存。</p></article>
+        <article class="glass"><span>CHAMBER</span><b>固定式灌溉舱</b><p>固定相机、卡片、探针、水路与接水区，强调干湿分离。</p></article>
+      </div>
+
+      <div class="authority glass">
+        <div><p class="eyebrow">WRITE AUTHORITY</p><h3>谁可以控制执行器？</h3></div>
+        <div class="authority-row">
+          <span class="deny">网页 <b>NO</b></span><span class="deny">LLM <b>NO</b></span>
+          <span class="deny">RAG <b>NO</b></span><span class="deny">BPU <b>NO</b></span>
+          <span class="allow">Safety Compiler <b>BOUNDED</b></span><span class="allow">STM32 <b>FINAL</b></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="section-head">
+        <div><p class="eyebrow">FOUR-PERSON TEAM</p><h2>四条工作线围绕一条可演示闭环收口</h2></div>
+        <span class="section-index">05 / TEAM</span>
+      </div>
+      <div class="team-grid">
+        <article class="glass"><span>01</span><h3>队长 / 算法</h3><p>全部 RDK X5 代码；视觉训练与部署；CPU/BPU；RootMind；RAG2；RootScope-Ω；串口上位机；发布与联调。</p></article>
+        <article class="glass"><span>02</span><h3>硬件</h3><p>STM32、CH340、继电器、水泵、电机驱动、电源、固件烧录与电气安全。</p></article>
+        <article class="glass"><span>03</span><h3>机械结构</h3><p>固定灌溉舱、相机架、卡片定位、探针、水路、接水区、干湿分离与扩展接口。</p></article>
+        <article class="glass"><span>04</span><h3>运维 / 宣讲</h3><p>网站、海报、PPT、视频、展台流程、证据整理与答辩讲解。</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="future">
+      <div class="section-head">
+        <div><p class="eyebrow">ROBOT POTENTIAL</p><h2>从一个固定灌溉舱，扩展为分布式根区机器人网络</h2></div>
+        <span class="section-index">06 / FUTURE</span>
+      </div>
+      <div class="future-map glass">
+        <article><span>NOW</span><h3>现场可验证原型</h3><p>三类目标、纯沙 HOLD、三档探针、单水泵与公开证据。</p></article>
+        <i>→</i>
+        <article><span>NEXT</span><h3>真实湿润闭环</h3><p>含水率、称重、流量、漏水、液位和 RootSight-Delta。</p></article>
+        <i>→</i>
+        <article><span>SCALE</span><h3>多舱边缘协同</h3><p>苗圃、温室、荒漠育苗；太阳能、LoRa/4G 与多节点调度。</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="boundaries">
+      <div class="section-head">
+        <div><p class="eyebrow">TRUTH BOUNDARIES</p><h2>可信创新，来自对“还没完成”的诚实标注</h2></div>
+        <span class="section-index">07 / BOUNDARIES</span>
+      </div>
+      <div class="boundary-grid">
+        <article class="glass verified-card"><span>✓ 已验证</span><ul><li>固定四卡实时识别 4/4</li><li>三档探针物理映射</li><li>草丛完整链现场成功两次</li><li>STM32 最终关泵锁存</li><li>BPU 两条 43/43 资格链</li></ul></article>
+        <article class="glass limited-card"><span>△ 必须限定</span><ul><li>4K 是相机能力，实时演示为 1080p30</li><li>LLM 位于 CPU 且只读</li><li>BPU 不是当前动作权威</li><li>步数不是厘米或根深</li><li>下一轮需要人工回顶</li></ul></article>
+        <article class="glass future-card"><span>○ 下一阶段</span><ul><li>野外植物泛化</li><li>真实湿润覆盖与径流闭环</li><li>自动回升和水平定位</li><li>含水率、重量、流量、漏水与液位</li><li>多舱远程只读证据网络</li></ul></article>
+      </div>
+      <div class="public-contract glass">
+        <div><b>PUBLIC READ-ONLY CONTRACT</b><span>该网站不连接、不控制、不反向调用现场设备。</span></div>
+        <code>GET / HEAD / OPTIONS only · no upload · no actuator API · no telemetry claim</code>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand"><span class="brand-mark" aria-hidden="true"><i></i><i></i></span><div><b>RootScope</b><small>Evidence-Grounded Edge AI Irrigation Chamber</small></div></div>
+    <p>AdventureX 2026 · D-Robotics Give AI a Body</p>
+    <span>公开只读 · 已验证历史实测 · X5 离线可浏览</span>
+  </footer>
+
+  <script src="/app.js?v=rootscope-public-v1" defer></script>
+</body>
+</html>

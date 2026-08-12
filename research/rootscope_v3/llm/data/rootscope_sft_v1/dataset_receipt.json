@@ -1,0 +1,26 @@
+{
+  "schema": "rootscope.v3.sft-dataset-receipt.v1",
+  "status": "PASS_DETERMINISTIC_RULE_VALIDATED_NOT_CLOUD_TEACHER",
+  "total": 1536,
+  "splits": {
+    "train": 1173,
+    "validation": 154,
+    "test": 209
+  },
+  "unique_template_groups": {
+    "train": 443,
+    "validation": 58,
+    "test": 75
+  },
+  "file_sha256": {
+    "train.jsonl": "8821e622493d6ca4a2e81a528dd220907a89cb1912d8665ffebce97b5f4efa0d",
+    "validation.jsonl": "79156e26ceb76962338b4b1c8481833039da2fee81a66f630664023e9b8f6bee",
+    "test.jsonl": "a70727f265f4f7badb8f0c80863be52f1e4711a9017b1ff4ac2f2b7cde7aa0b7"
+  },
+  "authority_true_count": 0,
+  "citation_empty_count": 0,
+  "cloud_teacher_calls": 0,
+  "secret_values_read": false,
+  "adversarial_request_count": 308,
+  "adversarial_rejected_count": 308
+}

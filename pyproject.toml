@@ -4,8 +4,8 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rootscope-public"
-version = "0.1.0"
-description = "Safe, proposal-only reference interfaces for the RootScope AdventureX 2026 project"
+version = "1.0.0"
+description = "Complete reproducible source for the AdventureX 2026 D-Robotics Silver Award and 2nd Place RootScope irrigation chamber"
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
@@ -31,4 +31,3 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
-

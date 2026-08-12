@@ -1,0 +1,43 @@
+{
+  "schema": "rootscope.rag2.deploy-selection.v1",
+  "selected_default": "SQLITE_FTS5_BM25_V2",
+  "selected_artifacts": [
+    "pack/rootscope_rag_sources.v2.json",
+    "pack/rootscope_rag_corpus.v2.jsonl",
+    "pack/rootscope_rag_citation_allowlist.v2.json",
+    "pack/rag2_index.sqlite3",
+    "bm25_runtime.py"
+  ],
+  "optional_pc_research_artifacts": [
+    "pack/corpus_embeddings.f16.npy",
+    "pack/corpus_embeddings.v1.json",
+    "rootscope_v3/models/rag/bge-small-zh-v1.5-onnx-uint8/bge-small-zh-v1.5.dynamic-uint8.onnx"
+  ],
+  "dense_challenger": {
+    "model_id": "BAAI/bge-small-zh-v1.5",
+    "revision": "7999e1d3359715c523056ef9478215996d62a620",
+    "license": "MIT",
+    "pc_executed": true,
+    "hard_top3_gain_over_bm25": 0.0,
+    "paired_exact_p": 1.0,
+    "all_top3_delta": -0.015625,
+    "eligible": false,
+    "decision": "NOT_ELIGIBLE_KEEP_BM25_DEFAULT"
+  },
+  "bm25_pc_gate": {
+    "gold_count": 64,
+    "forbidden_count": 36,
+    "gold_recall_at_5": 0.921875,
+    "forbidden_boundary_recall_at_5": 0.9444444444444444,
+    "citation_allowlist_violations": 0,
+    "pc_p95_ms": 0.6949849993361564,
+    "qualified": true
+  },
+  "x5_status": "FINAL_CANDIDATE_ACCEPTANCE_PENDING",
+  "authority": {
+    "execution_authority": false,
+    "physical_authority": false,
+    "serial_write": false,
+    "pump_command": false
+  }
+}

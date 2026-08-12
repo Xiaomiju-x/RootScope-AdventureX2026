@@ -1,0 +1,50 @@
+{
+  "schema": "rootscope.xrd_llm_reuse_inventory.v2",
+  "generated_date": "2026-07-17",
+  "scope": "READ_ONLY_LOCAL_INVENTORY_AND_EXACT_STAGED_COPY_NO_X5_RUNTIME",
+  "selected_for_release_staging": {
+    "source_relative_to_adventurex": "../models/qwen2_05b_distill.Q4_K_M.gguf",
+    "size_bytes": 397805120,
+    "sha256": "6c8adc95de81b1d0103fcf900a5f369d5936d234e42ed64881dad56e0104e77b",
+    "intended_role": "CPU_LLAMA_CPP_READ_ONLY_EVIDENCE_EXPLANATION",
+    "selection_reason": "smallest existing general XRD GGUF; lower deployment and latency risk than the 1.5B/1.7B material-domain artifacts"
+  },
+  "alternatives_not_selected": [
+    {
+      "source_relative_to_adventurex": "../qwen25_15b_sft_v2.Q4_K_M.gguf",
+      "size_bytes": 986048000,
+      "sha256": "066532d1cace9dd6f02157fb74d6f7d744e9ea0e6fdbf63dc373dccc0dbdccc4",
+      "reason": "larger and XRD-material-domain tuned; no demonstrated RootScope benefit"
+    },
+    {
+      "source_relative_to_adventurex": "../models/qwen3_17b_nir.Q4_K_M.gguf",
+      "size_bytes": 1107408640,
+      "sha256": "a24214bbf72284e22bc608a4da46d41fd9141df722cbd20b4a2e8c7843c2bfcb",
+      "reason": "largest and NIR-domain tuned; unnecessary for a three-day read-only explainer"
+    }
+  ],
+  "artifact_facts": {
+    "model_copied_to_adventurex_release": true,
+    "destination_relative_to_adventurex": "output/rootscope_llm_readonly_release_v1/qwen2_05b_distill.Q4_K_M.gguf",
+    "copy_size_and_sha_verified": true,
+    "release_manifest_relative_to_adventurex": "output/rootscope_llm_readonly_release_v1/release_manifest.json"
+  },
+  "formal_flags": {
+    "human_reviewed": false,
+    "data_locked": false,
+    "model_candidate": false,
+    "model_qualified": false,
+    "llama_cpp_bundled": false,
+    "x5_validated": false,
+    "latency_measured": false,
+    "service_started": false,
+    "hardware_touched": false,
+    "network_touched": false,
+    "external_network_allowed": false,
+    "tool_execution": false,
+    "actuator_access": false,
+    "execution_authority": false,
+    "physical_authority": false,
+    "physical_completion": false
+  }
+}

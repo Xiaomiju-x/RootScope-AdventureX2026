@@ -1,0 +1,91 @@
+{
+  "schema": "rootscope.stm32-sidecar-manifest.v2",
+  "version": "stm32-f103-pb6-v13-e73afe40a8ef",
+  "content_root_sha256": "e73afe40a8efadb304d80238055f7b90cf21ee4831e2bb7a58089ed4c329dcf0",
+  "firmware_expectation": {
+    "protocol_version": 1,
+    "build_id": 2026072513,
+    "hw_variant": 2,
+    "build_tag": "rs-f103-pb6-v13",
+    "required_capabilities_hex": "0x00000079",
+    "pump_gpio": "PB6",
+    "relay_profile": "ACTIVE_LOW_OPEN_DRAIN",
+    "motion_profile": "EXTENSION_LOCKED"
+  },
+  "device_identity_sha256": "4fd1776962e4dfbf50cac6c41406fb4d0101a08d1f70e09e376ef37c76be19de",
+  "files": [
+    {
+      "path": "app/hardware/__init__.py",
+      "sha256": "660b46bf335d729043a885cd42e5e33c1d44d6dea18dd9f936f97d7feecec1ac",
+      "bytes": 1391
+    },
+    {
+      "path": "app/hardware/device_identity.py",
+      "sha256": "45c2059d588992ce91740bba08ad750442a1f5eebea9177023d6f61be78ffdee",
+      "bytes": 2548
+    },
+    {
+      "path": "app/hardware/physical_serial.py",
+      "sha256": "99b0ad96f78c3ab67fac6993ca597cde51943b775a62d6bcb7bdc422edf43b78",
+      "bytes": 9684
+    },
+    {
+      "path": "app/hardware/serial_writer.py",
+      "sha256": "5313c7bbae22dc0fb79d80da1d3c9d9be9b11bc0f089fd17529c70b4e2adcc81",
+      "bytes": 20997
+    },
+    {
+      "path": "app/serial/__init__.py",
+      "sha256": "37649ccdd8341ea850483018dbd5d60bf331f0a2d537596b5080226a2e96af68",
+      "bytes": 2205
+    },
+    {
+      "path": "app/serial/fake_f407.py",
+      "sha256": "962742f914b4f08306ffa2566d94516c434a333812c962ef3fa76403e376fabd",
+      "bytes": 29327
+    },
+    {
+      "path": "app/serial/frame.py",
+      "sha256": "fd060bb61905e0bff95f212986c86d16d427de74b4dfe52ab77b473f55c3fc01",
+      "bytes": 24008
+    },
+    {
+      "path": "app/serial/link.py",
+      "sha256": "4834e19d0275e4e65a72279f245ca9a9aec6bc0f88283707d4eae9d9814e8775",
+      "bytes": 33705
+    },
+    {
+      "path": "tools/stm32_no_pump_dry_run.py",
+      "sha256": "5f8945cd12b9c4e885de859998420e3e093e679589e96d1d97f9d3ded8c9d785",
+      "bytes": 18328
+    },
+    {
+      "path": "tools/stm32_pb6_first_pulse.py",
+      "sha256": "ee90e600ffe459ee4e44ed697992475eefd3b5a92053514fa0a874201580d051",
+      "bytes": 22335
+    },
+    {
+      "path": "deploy/x5/99-rootscope-stm32.rules",
+      "sha256": "8dd2ae88f4a77afa42772a954d0cde3f867dc049e5f7daba46bea6ed62546a63",
+      "bytes": 449
+    },
+    {
+      "path": "deploy/x5/rootscope-stm32-no-pump-dry-run",
+      "sha256": "34f47bfd980ff94a9332ba8914cbd7bfad557b20f6046684f2662cdf4bfe2f0a",
+      "bytes": 576
+    },
+    {
+      "path": "deploy/x5/rootscope-stm32-pb6-first-pulse",
+      "sha256": "9602bda60bf4643a73af15f6d3fe2cfe0f7082424007612ef5f0cc40a30e9b03",
+      "bytes": 642
+    }
+  ],
+  "authority": {
+    "auto_start": false,
+    "automatic_unlock": false,
+    "unbounded_pump_on": false,
+    "arm_timed_task_available_in_dry_run": false,
+    "physical_action_requires_explicit_cli_confirmation": true,
+    "physical_completion": false
+  }
+}

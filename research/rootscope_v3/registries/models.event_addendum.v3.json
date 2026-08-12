@@ -1,0 +1,53 @@
+{
+  "schema": "rootscope.v3.model-registry-addendum.v1",
+  "created_at": "2026-07-24",
+  "models": [
+    {
+      "model_id": "qwen3-1.7b-rootscope-v3-final-q4-k-m",
+      "family": "Qwen3",
+      "role": "ROOTMIND_DEEP_ON_DEMAND",
+      "artifact_format": "GGUF_Q4_K_M",
+      "relative_locator": "rootscope_v3/models/llm/rootscope-qwen3-1.7b-rootscope-v3-final.Q4_K_M.gguf",
+      "sha256": "0bd32a4d943db70ca2e7859906aa23cd7773ef80982680c454178a26b513aeec",
+      "size_bytes": 1107408608,
+      "tensor_count": 310,
+      "gguf_file_type": 15,
+      "adapter_sha256": "5720045c92e88096e1b3e6dc819e59e14b4ae2aac2c47e0ac8e0d5d7a1bd67c1",
+      "pc_training": "PASS_REAL_RTX4050_STAGED_192_PLUS_96_NF4_QLORA",
+      "pc_structured_evaluation": "PASS_FROZEN_UNSEEN_32_OF_32",
+      "pc_safety_compiler": "PASS_RAW_ACCEPT_32_FALLBACK_0_UNSAFE_ESCAPE_0",
+      "teacher_logits_used": false,
+      "cloud_teacher_calls": 0,
+      "x5_status": "FINAL_CANDIDATE_CPU_LOOPBACK_ACCEPTANCE_PENDING",
+      "physical_authority": false
+    },
+    {
+      "model_id": "rootscope-r7-native-libdnn-persistent-shadow",
+      "family": "RESNET18_HORIZON_BIN_PLUS_NATIVE_LIBDNN",
+      "role": "ROOTSIGHT_BPU_ZERO_AUTHORITY_QUALIFICATION",
+      "artifact_format": "HORIZON_BIN_AND_AARCH64_ELF",
+      "model_package_locator": "models/rootscope_seed17_resnet18_224x224_rgb_ddr_r7.bin",
+      "model_sha256": "4dc4bc24741332bb6bc6da184dd1d6f954ae539ba740330490339d76eb200285",
+      "worker_package_locator": "bin/rootscope-native-libdnn-worker",
+      "worker_sha256": "e3582f3dfb55741dbaabc9b3091329e5d76f1ba831b4766d8adc6462ac363dec",
+      "compile_contract_locator": "rootscope/app/runtime_v3/native/compile_contract_x5.v1.json",
+      "compile_contract_sha256": "994df08960f4cc4287fdbf29893d2bcae686da65c8ca393a1b8b27f5d6e834f6",
+      "canonical_oracle": "drobotics.hrt_model_exec",
+      "persistent_model_load": true,
+      "selected_for_runtime": false,
+      "x5_status": "FINAL_CANDIDATE_ACCEPTANCE_PENDING",
+      "physical_authority": false
+    },
+    {
+      "model_id": "rootscope-rag2-bm25-v2",
+      "family": "SQLITE_FTS5_BM25",
+      "role": "DEFAULT_RAG",
+      "artifact_format": "SQLITE3_PLUS_STDLIB_RUNTIME",
+      "relative_locator": "rootscope_v3/rag2/pack/rag2_index.sqlite3",
+      "runtime_locator": "rootscope_v3/rag2/bm25_runtime.py",
+      "status": "PASS_PC_DEFAULT",
+      "dense_challenger_selected": false,
+      "physical_authority": false
+    }
+  ]
+}

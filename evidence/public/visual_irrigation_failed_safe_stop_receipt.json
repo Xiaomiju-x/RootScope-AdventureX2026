@@ -1,0 +1,42 @@
+{
+  "automatic_retry": false,
+  "automatic_return": false,
+  "checks": {
+    "--confirm-emergency-stop-ready": true,
+    "--confirm-independent-motor-power": true,
+    "--confirm-water-path-safe": true,
+    "--manual-home-observed-at-top": true
+  },
+  "error": "RuntimeError: DEPTH,1 ACK not received",
+  "finished_at_utc": "2026-07-25T08:09:25.381Z",
+  "one_cycle_only": true,
+  "passed": false,
+  "physical_action_authority": true,
+  "pump_duration_ms": 5000,
+  "run_id": "20260725T080907Z",
+  "schema": "rootscope.visual_irrigation.cycle.v1",
+  "started_at_utc": "2026-07-25T08:09:07.696Z",
+  "status": "FAILED_HOLD_STOP_ATTEMPTED_NO_RETRY",
+  "usb_identity": {
+    "ID_MODEL_ID": "7523",
+    "ID_PATH": "<redacted-usb-topology>",
+    "ID_USB_INTERFACE_NUM": "00",
+    "ID_VENDOR_ID": "1a86"
+  },
+  "vision": {
+    "confidences": [
+      0.8498737812042236,
+      0.793901264667511,
+      0.8178589344024658
+    ],
+    "consecutive_confirmations": 3,
+    "decision": "grass_clump",
+    "level": 1,
+    "states": [
+      "CONFIRMED_DUAL_EVIDENCE",
+      "CONFIRMED_DUAL_EVIDENCE",
+      "CONFIRMED_DUAL_EVIDENCE"
+    ],
+    "steps": 1024
+  }
+}

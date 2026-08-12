@@ -1,0 +1,58 @@
+{
+  "schema_version": "rootscope.known-card-template-registry.v1",
+  "status": "FROZEN_EXPERIMENTAL_DEMO_REFERENCES",
+  "template_root": "known_card_templates",
+  "templates": [
+    {
+      "class_name": "grass_clump",
+      "dataset_record": {
+        "attribution": {
+          "creator": "Krzysztof Ziarnek, Kenraiz",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        },
+        "record_id": "commons-163498042",
+        "source_manifest": "datasets/rootscope_machine_curated_provisional_v3/manifest.jsonl",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Stipagrostis_plumosa_kz06.jpg"
+      },
+      "raw_sha256": "b1f6262895c31e8e507be31cebba09140e2a2582aa4f266ab05261fe50751d23",
+      "relative_path": "grass_clump_163498042.jpg",
+      "role": "DEMO_REFERENCE_NOT_HOLDOUT_ONCE_REGISTERED",
+      "template_id": "grass-clump-163498042"
+    },
+    {
+      "class_name": "low_shrub",
+      "dataset_record": {
+        "attribution": {
+          "creator": "USDA NRCS Montana",
+          "license": "Public domain",
+          "license_url": "https://commons.wikimedia.org/wiki/Commons:Public_domain"
+        },
+        "record_id": "commons-68787114",
+        "source_manifest": "datasets/rootscope_machine_curated_provisional_v3/manifest.jsonl",
+        "source_url": "https://commons.wikimedia.org/wiki/File:Plants22_(27104657009).jpg"
+      },
+      "raw_sha256": "810c7649ac729105367b3213bfafc467a036f4054244c424613da6c027c73610",
+      "relative_path": "low_shrub_68787114.jpg",
+      "role": "DEMO_REFERENCE_NOT_HOLDOUT_ONCE_REGISTERED",
+      "template_id": "low-shrub-68787114"
+    },
+    {
+      "class_name": "young_tree",
+      "dataset_record": {
+        "attribution": {
+          "creator": "Wogatha Kanyi",
+          "license": "CC BY-SA 4.0",
+          "license_url": "https://creativecommons.org/licenses/by-sa/4.0/"
+        },
+        "record_id": "commons-92774234",
+        "source_manifest": "datasets/rootscope_machine_curated_provisional_v3/manifest.jsonl",
+        "source_url": "https://commons.wikimedia.org/wiki/File:A_newly_planted_tree.jpg"
+      },
+      "raw_sha256": "0d994e838a2d7787ab3edfd8646e317390c790d92588c7ef9109778b843b40eb",
+      "relative_path": "young_tree_92774234.jpg",
+      "role": "DEMO_REFERENCE_NOT_HOLDOUT_ONCE_REGISTERED",
+      "template_id": "young-tree-92774234"
+    }
+  ]
+}

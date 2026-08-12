@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "receipt_id": "rootscope.dataset_manifest.v1_to_v2.20260715.receipt",
+  "generated_at": "2026-07-16T00:00:00+00:00",
+  "migration_id": "rootscope.dataset_manifest.v1_to_v2.20260715",
+  "mode": "allowlisted_manifest_sha256_projection",
+  "source": {
+    "manifest": "adventurex/datasets/desert_plants_v1/manifest.jsonl",
+    "manifest_sha256": "009645a3ab7571a11e00660e2b1cfa884c72549930bc89d4d171d5cbd34b06ae",
+    "record_schema_version": "1.0.0",
+    "row_count": 33,
+    "split_counts": {
+      "excluded": 13,
+      "print_demo": 6,
+      "unassigned": 14
+    }
+  },
+  "target": {
+    "class_contract": "adventurex/rootscope/configs/class_contract.json",
+    "class_contract_sha256": "865fb1178a79959faa8400ed06e42fcc7bf5c7daeb7d5df906b8c5a4722783e5",
+    "class_contract_lock": "adventurex/rootscope/configs/class_contract.lock.json",
+    "class_contract_lock_sha256": "64de9307870e5a573c42daf91a8eb8183d4e54de232d58e82027c38e6a004d58",
+    "class_contract_lock_profile": "rootscope.dataset_contract.production.v2",
+    "record_schema_version": "2.0.0",
+    "projected_row_count": 33,
+    "split_counts": {
+      "excluded": 13,
+      "print_demo": 6,
+      "unassigned": 14
+    }
+  },
+  "transformations": {
+    "split_aliases_applied": {},
+    "domain_aliases_applied": {},
+    "field_defaults_applied_to_rows": {
+      "record_schema_version": 33,
+      "ptq_calibration": 33,
+      "permanent_holdout": 33,
+      "sealed": 33,
+      "unknown_scenario": 33,
+      "reviewed_by": 33,
+      "optical_domain_root": 33,
+      "capture_id": 33,
+      "capture_quality_pass": 33,
+      "capture_operator": 33,
+      "capture_condition_id": 33,
+      "source_provider_id": 33
+    },
+    "derived_fields_applied_to_rows": {
+      "asset_id": 33,
+      "asset_sha256": 33,
+      "origin_pageid": 33,
+      "origin_sha256": 33,
+      "asset_role": 33,
+      "sealed": 33
+    },
+    "permanent_holdout_derived_from_print_demo_rows": 6,
+    "sealed_derived_from_evaluation_rows": 6
+  },
+  "verification": {
+    "integrity_status": "PASS",
+    "migration_applied": true,
+    "migration_persisted": false,
+    "data_locked_status": "NOT_TRAIN_READY",
+    "blocking_facts": [
+      "Native v2 rows have not yet been persisted.",
+      "14 rows remain unassigned.",
+      "6 print_demo rows remain UVC/reviewer pending.",
+      "The required train, validation, decision_calibration, conversion_golden, natural_test, printed_test and site_acceptance data is absent.",
+      "The train-only PTQ subset is absent.",
+      "No native-v2 final-optics capture lineage or dHash evidence exists.",
+      "No B/C/D-signed optical-domain receipt was supplied.",
+      "Final-device local_negative scenario coverage is absent."
+    ]
+  },
+  "mutation_statement": {
+    "source_manifest_modified": false,
+    "image_files_modified": false,
+    "readiness_promoted": false,
+    "note": "The exact legacy seed manifest is projected to canonical v2 only while auditing. Any changed manifest must persist native v2 fields and pass the full READY contract."
+  }
+}

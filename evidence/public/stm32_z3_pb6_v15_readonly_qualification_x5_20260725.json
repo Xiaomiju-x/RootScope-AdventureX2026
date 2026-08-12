@@ -1,0 +1,96 @@
+{
+  "schema": "rootscope.stm32_z3_pb6_v15_readonly_qualification.v1",
+  "observed_at_utc": "2026-07-25T05:11:37.8646592Z",
+  "operator_reported_flash_complete": true,
+  "scope": "read_only_identity_and_safe_output_qualification",
+  "x5": {
+    "ssh_target": "rootscope-x5",
+    "ipv4": "192.0.2.42",
+    "hostname": "rootscope-x5"
+  },
+  "serial": {
+    "selected_device": "<redacted-persistent-serial-path>",
+    "resolved_device": "/dev/ttyUSB0",
+    "usb_vid_pid": "1a86:7523",
+    "other_owner_detected_before_open": false,
+    "baud": 115200
+  },
+  "firmware_ascii": {
+    "version": "2026-07-25-RS-F103-Z3-PB6-V15",
+    "hardware": "F103C8",
+    "pump": "PB6",
+    "relay": "ACTIVE_LOW_OD",
+    "motion": "Z3_DOWN_ONLY",
+    "return": "MANUAL",
+    "capabilities_hex": "0x00000079"
+  },
+  "firmware_binary": {
+    "protocol_version": 1,
+    "capabilities_hex": "0x00000079",
+    "build_id": 2026072515,
+    "hardware_variant": 2,
+    "build_tag_wire_16_bytes": "rs-f103-z3-pb6-v",
+    "build_tag_note": "The binary build-tag field is fixed at 16 bytes; the ASCII VERSION line carries the complete V15 label.",
+    "boot_id_hex": "<redacted-device-boot-id>",
+    "query_sequence": 1,
+    "ack_status": 0,
+    "ack_reason": 0
+  },
+  "safe_state": {
+    "z_busy": 0,
+    "pump_logical_on": 0,
+    "lock_latched": 1,
+    "lock_reason": 1,
+    "heartbeat_seen": 0,
+    "timed_task_active": 0,
+    "manual_home_confirmed": 0,
+    "descent_committed": 0,
+    "selected_depth_level": 0,
+    "selected_depth_steps": 0,
+    "gpioa_low_byte_hex": "0x00",
+    "z_coil_mask_hex": "0x0",
+    "pb6_output_level": 1,
+    "pump_output_logical": 0
+  },
+  "commands_emitted": [
+    "VERSION",
+    "STATUS",
+    "IOSTATUS",
+    "QUERY_FIRMWARE"
+  ],
+  "commands_not_emitted": [
+    "HEARTBEAT",
+    "CLEAR_ESTOP",
+    "ZHOME,CONFIRM",
+    "DEPTH",
+    "ARM_TASK",
+    "ARM_TIMED_TASK",
+    "PUMP",
+    "MOVE",
+    "COIL",
+    "MODE"
+  ],
+  "physical_motion_executed": false,
+  "pump_energized": false,
+  "safe_state_pass": true,
+  "final_mapping": {
+    "non_target": {
+      "level": 0,
+      "steps": 0
+    },
+    "grass_clump": {
+      "level": 1,
+      "steps": 1024
+    },
+    "low_shrub": {
+      "level": 2,
+      "steps": 1536
+    },
+    "young_tree": {
+      "level": 3,
+      "steps": 2048
+    }
+  },
+  "qualification_status": "PASS_V15_IDENTITY_BOOT_LOCK_OUTPUTS_OFF_PHYSICAL_DEPTH2_DEPTH3_PENDING",
+  "source_hex_sha256": "5016B96D138D4FFAD2088DD5DA288B4D68C5DEBA781555AD82EB6F7FB4BFD887"
+}

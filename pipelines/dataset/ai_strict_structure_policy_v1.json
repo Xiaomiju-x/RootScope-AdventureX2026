@@ -1,0 +1,170 @@
+{
+  "schema_version": "rootscope.ai_strict_structure_policy.v1",
+  "result_schema_version": "rootscope.ai_strict_structure_final_label.v1",
+  "stats_schema_version": "rootscope.ai_strict_structure_stats.v1",
+  "receipt_schema_version": "rootscope.ai_strict_structure_receipt.v1",
+  "expected_candidate_count": 1333,
+  "target_classes": [
+    "grass_clump",
+    "low_shrub",
+    "young_tree"
+  ],
+  "allowed_source_decisions": [
+    "AUTO_TARGET",
+    "AUTO_UNKNOWN",
+    "HOLD"
+  ],
+  "production_input_roots": {
+    "ensemble_results_sha256": "6a14b79b51062e7d1582573ba3c8406333f0dffa30593898d04265386ffd138b",
+    "ensemble_receipt_sha256": "4f653fed36ee8e9dd219de0ddc7d85e91df05e717d0f9534387c55334e95935d",
+    "metadata_records_sha256": "bd0835148fd1021102df5a31fe6d3850a1003ac81a61df7623bed1e5529c3533",
+    "metadata_receipt_sha256": "7ef52f723df002961b90d231d516d6f2fd1f410b7be8c432fb071246c0c595bc",
+    "ensemble_policy_sha256": "78e0f5497dc188affe32d15259930489b1935e1bbcc4279076121b666706a3bf",
+    "model_provenance_sha256": "67e3f0dc67dd507f88ff2e2fa9020a001bdb7256d50a979279a4d31ba57cc911",
+    "runtime_provenance_sha256": "cc63752320cb0d9506b3584fd2955518a5a4d68a9093618eefdf331f88d41070",
+    "tokenizer_artifact_sha256": "8cc97c5eb3bd5b2569f34a093c3c0aff57838a9216e618b4f973129335c6b67f",
+    "model_weights_raw_sha256": "74abfd2488a01f78c1cce5a38861dc929ea42aeabe8f622eaaa60ddfffeaad4e"
+  },
+  "prompt_contract": {
+    "complete_plant_prompt": "quality.complete_plant",
+    "quality_prompts": [
+      "quality.complete_plant",
+      "quality.dominant_subject",
+      "quality.clear_single_subject"
+    ],
+    "class_structure_anchors": {
+      "grass_clump": [
+        "class.grass_clump.complete_bunchgrass",
+        "class.grass_clump.visible_base"
+      ],
+      "low_shrub": [
+        "class.low_shrub.rounded_crown",
+        "class.low_shrub.compact"
+      ],
+      "young_tree": [
+        "class.young_tree.complete_sapling",
+        "class.young_tree.inside_frame"
+      ]
+    },
+    "hard_reject_prompts": [
+      "reject.detail_crop.macro_parts",
+      "reject.detail_crop.missing_base_or_crown",
+      "reject.non_photo_document.herbarium",
+      "reject.non_photo_document.document",
+      "reject.no_target_object.empty_ground",
+      "reject.no_target_object.animal_or_human",
+      "reject.no_target_object.manmade",
+      "reject.landscape_mixed.background_plants",
+      "reject.landscape_mixed.dense_field",
+      "reject.landscape_mixed.multiple_types",
+      "reject.out_of_contract.cactus",
+      "reject.out_of_contract.mature_tree",
+      "reject.out_of_contract.dead_tree",
+      "reject.poor_quality.bad_image"
+    ],
+    "named_hard_blocks": {
+      "HAND_OR_PERSON": [
+        "reject.no_target_object.animal_or_human"
+      ],
+      "DETAIL_OR_CLOSEUP": [
+        "reject.detail_crop.macro_parts",
+        "reject.detail_crop.missing_base_or_crown"
+      ],
+      "MATURE_OR_DEAD_TREE": [
+        "reject.out_of_contract.mature_tree",
+        "reject.out_of_contract.dead_tree"
+      ],
+      "DOCUMENT_OR_SPECIMEN": [
+        "reject.non_photo_document.herbarium",
+        "reject.non_photo_document.document"
+      ],
+      "MIXED_OR_WIDE_SCENE": [
+        "reject.landscape_mixed.background_plants",
+        "reject.landscape_mixed.dense_field",
+        "reject.landscape_mixed.multiple_types"
+      ]
+    }
+  },
+  "thresholds": {
+    "probability_sum_tolerance": 0.000001,
+    "positive": {
+      "required_source_decision": "AUTO_TARGET",
+      "minimum_admissibility_probability": 0.95,
+      "maximum_reject_probability": 0.20,
+      "minimum_top1_probability": 0.97,
+      "minimum_top1_top2_margin": 0.90,
+      "require_acquisition_hint_agreement": true,
+      "minimum_complete_vs_max_individual_reject_margin": 1.50,
+      "minimum_complete_vs_missing_base_or_crown_margin": 1.50,
+      "minimum_complete_vs_macro_parts_margin": 1.00,
+      "minimum_min_quality_vs_max_individual_reject_margin": 0.50,
+      "minimum_class_anchor_vs_max_individual_reject_margin": 0.50,
+      "blocked_metadata_risk_priorities": [
+        "HIGH_METADATA_RISK"
+      ],
+      "blocked_metadata_flag_ids": [
+        "detail_crop_signal",
+        "herbarium_specimen_signal",
+        "map_text_illustration_signal",
+        "mature_dead_tree_signal",
+        "landscape_many_subjects_signal"
+      ]
+    },
+    "unknown": {
+      "required_acquisition_hint": "unknown",
+      "required_source_decision": "AUTO_UNKNOWN",
+      "maximum_admissibility_probability": 0.05,
+      "minimum_reject_probability": 0.98,
+      "maximum_top1_probability": 0.50,
+      "minimum_max_individual_reject_vs_complete_margin": 2.00,
+      "blocked_metadata_risk_priorities": [
+        "HIGH_METADATA_RISK"
+      ]
+    },
+    "exclusion": {
+      "maximum_complete_vs_max_individual_reject_margin": 0.00,
+      "exclude_failed_source_auto_target": true,
+      "exclude_target_hint_source_auto_unknown": true,
+      "metadata_flag_ids": [
+        "detail_crop_signal",
+        "herbarium_specimen_signal",
+        "map_text_illustration_signal",
+        "mature_dead_tree_signal"
+      ]
+    }
+  },
+  "runtime_contract": {
+    "require_current_environment_match": true,
+    "scope": "POST_HOC_LOCAL_REPLAY_ENVIRONMENT_BINDING_NOT_RETROACTIVE_INFERENCE_PROOF"
+  },
+  "output_contract": {
+    "directory_name": "ai_final_labels_v1",
+    "labels_filename": "strict_structure_labels.jsonl",
+    "holds_filename": "hold_for_reacquisition.jsonl",
+    "stats_filename": "strict_structure_stats.json",
+    "receipt_filename": "strict_structure_receipt.json",
+    "status": "MACHINE_CURATED_CANDIDATES_NOT_HUMAN_REVIEWED_NOT_TRAIN_READY_NOT_DATA_LOCKED"
+  },
+  "authority": {
+    "visual_truth": false,
+    "human_review": false,
+    "rights_approval": false,
+    "dataset_manifest_write": false,
+    "training_eligibility": false,
+    "split_assignment": false,
+    "print_eligibility": false,
+    "model_qualification": false,
+    "data_locked": false
+  },
+  "explicit_non_claims": [
+    "HUMAN_REVIEWED",
+    "VISUAL_LABEL_APPROVED",
+    "RIGHTS_APPROVED",
+    "DATA_LOCKED",
+    "TRAIN_READY",
+    "SPLIT_READY",
+    "PRINT_ELIGIBLE",
+    "MODEL_QUALIFIED",
+    "ORIGINAL_ENSEMBLE_RUNTIME_PROVEN"
+  ]
+}

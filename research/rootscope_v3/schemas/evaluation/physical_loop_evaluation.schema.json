@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rootscope.local/schemas/v3/physical-loop-evaluation.v1.json",
+  "title": "RootScope v3 physical loop evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "trial_id",
+    "created_at_utc",
+    "execution_mode",
+    "hardware",
+    "action_contract",
+    "safety",
+    "actuation",
+    "feedback",
+    "outcome",
+    "claim_boundary"
+  ],
+  "properties": {
+    "schema": {"const": "rootscope.v3.physical-loop-evaluation.v1"},
+    "trial_id": {"type": "string", "minLength": 1},
+    "created_at_utc": {"type": "string", "format": "date-time"},
+    "execution_mode": {
+      "enum": ["SIMULATION", "SERIAL_READ_ONLY", "DRY_RUN_ACTUATOR_DISCONNECTED", "DUMMY_LOAD", "PHYSICAL_IRRIGATION"]
+    },
+    "hardware": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["x5_identity", "stm32_boot_id", "firmware_build_id", "pump_channel", "hx711_id"],
+      "properties": {
+        "x5_identity": {"type": ["string", "null"]},
+        "stm32_boot_id": {"type": ["string", "null"]},
+        "firmware_build_id": {"type": ["string", "null"]},
+        "pump_channel": {"type": ["integer", "null"], "minimum": 0},
+        "hx711_id": {"type": ["string", "null"]}
+      }
+    },
+    "action_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_id", "contract_sha256", "sequence", "requested_mass_g", "max_mass_g"],
+      "properties": {
+        "contract_id": {"type": "string", "minLength": 1},
+        "contract_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "sequence": {"type": "integer", "minimum": 0},
+        "requested_mass_g": {"type": "number", "minimum": 0},
+        "max_mass_g": {"type": "number", "minimum": 0}
+      }
+    },
+    "safety": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["operator_present", "estop_tested", "watchdog_tested", "link_loss_tested", "actuator_power_connected"],
+      "properties": {
+        "operator_present": {"type": "boolean"},
+        "estop_tested": {"type": "boolean"},
+        "watchdog_tested": {"type": "boolean"},
+        "link_loss_tested": {"type": "boolean"},
+        "actuator_power_connected": {"type": "boolean"}
+      }
+    },
+    "actuation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["serial_opened", "serial_write_count", "ack_received", "ack_sequence", "pump_energized"],
+      "properties": {
+        "serial_opened": {"type": "boolean"},
+        "serial_write_count": {"type": "integer", "minimum": 0},
+        "ack_received": {"type": "boolean"},
+        "ack_sequence": {"type": ["integer", "null"], "minimum": 0},
+        "pump_energized": {"type": "boolean"}
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mass_before_g",
+        "mass_after_g",
+        "mass_delta_g",
+        "target_coverage",
+        "neighbor_spill",
+        "center_offset_ratio",
+        "moisture_delta"
+      ],
+      "properties": {
+        "mass_before_g": {"type": ["number", "null"]},
+        "mass_after_g": {"type": ["number", "null"]},
+        "mass_delta_g": {"type": ["number", "null"]},
+        "target_coverage": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "neighbor_spill": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "center_offset_ratio": {"type": ["number", "null"], "minimum": 0},
+        "moisture_delta": {"type": ["number", "null"]}
+      }
+    },
+    "outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "mass_gate_passed", "wetting_gate_passed", "spill_gate_passed", "manual_repair_required"],
+      "properties": {
+        "status": {
+          "enum": ["SIMULATED_ONLY", "READ_ONLY_OBSERVED", "DRY_RUN_PASS", "DUMMY_LOAD_PASS", "PHYSICAL_CLOSED_LOOP_PASS", "FAIL_ABORTED_LOCKED"]
+        },
+        "mass_gate_passed": {"type": ["boolean", "null"]},
+        "wetting_gate_passed": {"type": ["boolean", "null"]},
+        "spill_gate_passed": {"type": ["boolean", "null"]},
+        "manual_repair_required": {"type": "boolean"}
+      }
+    },
+    "claim_boundary": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"execution_mode": {"const": "PHYSICAL_IRRIGATION"}}
+      },
+      "then": {
+        "properties": {
+          "hardware": {
+            "properties": {
+              "x5_identity": {"type": "string", "minLength": 1},
+              "stm32_boot_id": {"type": "string", "minLength": 1},
+              "firmware_build_id": {"type": "string", "minLength": 1},
+              "pump_channel": {"type": "integer", "minimum": 0},
+              "hx711_id": {"type": "string", "minLength": 1}
+            }
+          },
+          "safety": {
+            "properties": {
+              "operator_present": {"const": true},
+              "estop_tested": {"const": true},
+              "watchdog_tested": {"const": true},
+              "link_loss_tested": {"const": true},
+              "actuator_power_connected": {"const": true}
+            }
+          },
+          "actuation": {
+            "properties": {
+              "serial_opened": {"const": true},
+              "ack_received": {"const": true},
+              "pump_energized": {"const": true}
+            }
+          }
+        }
+      }
+    }
+  ]
+}

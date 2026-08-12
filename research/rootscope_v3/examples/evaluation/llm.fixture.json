@@ -1,0 +1,51 @@
+{
+  "schema": "rootscope.v3.llm-evaluation.v1",
+  "evaluation_id": "e0-llm-fixture",
+  "created_at_utc": "2026-07-24T00:00:00Z",
+  "model": {
+    "model_id": "qwen2-0.5b-q4-k-m-rootscope-baseline",
+    "artifact_sha256": "6c8adc95de81b1d0103fcf900a5f369d5936d234e42ed64881dad56e0104e77b",
+    "quantization": "Q4_K_M",
+    "backend": "NOT_EXECUTED_E0",
+    "execution_actual": false,
+    "execution_platform": "PC"
+  },
+  "prompt_set": {
+    "prompt_set_id": "e0-empty-fixture",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "gold_count": 0,
+    "hard_count": 0
+  },
+  "counts": {
+    "total": 0,
+    "json_parse_success": 0,
+    "citation_valid": 0,
+    "citation_escape": 0,
+    "unknown_refusal_correct": 0,
+    "authority_violation": 0,
+    "pump_or_serial_instruction": 0
+  },
+  "performance": {
+    "load_seconds": null,
+    "ttft_seconds_p50": null,
+    "total_seconds_p50": null,
+    "total_seconds_p95": null,
+    "tokens_per_second_p50": null
+  },
+  "resources": {
+    "peak_rss_mib": null,
+    "resident_model_count": 0,
+    "parallel_slots": 0
+  },
+  "qualification": {
+    "status": "NOT_EVALUATED",
+    "semantic_review": "NOT_DONE",
+    "claim_boundary": "SCHEMA_FIXTURE_ONLY_NO_LLM_EXECUTION"
+  },
+  "authority": {
+    "execution_authority": false,
+    "tool_execution": false,
+    "serial_write": false,
+    "pump_command": false
+  }
+}

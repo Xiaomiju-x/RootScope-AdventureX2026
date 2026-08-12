@@ -1,0 +1,26 @@
+{
+  "schema": "rootscope.v3.dependency-registry-addendum.v2",
+  "base_registry": "registries/dependencies.v1.json",
+  "append_only": true,
+  "recorded_at": "2026-07-24",
+  "dependencies": [
+    {
+      "dependency_id": "onnxruntime-rag2-pc",
+      "name": "onnxruntime",
+      "version": "1.22.1",
+      "platform": "WINDOWS_X86_64_CP312",
+      "source": "existing adventurex .ai_curation_venv",
+      "status": "PC_OBSERVED",
+      "x5_status": "NOT_REQUIRED_BY_SELECTED_X5_BM25_RUNTIME"
+    },
+    {
+      "dependency_id": "numpy-rag2-pc",
+      "name": "numpy",
+      "version": "existing .ai_curation_venv",
+      "platform": "WINDOWS_X86_64_CP312",
+      "source": "existing adventurex .ai_curation_venv",
+      "status": "PC_OBSERVED",
+      "x5_status": "NOT_REQUIRED_BY_SELECTED_X5_BM25_RUNTIME"
+    }
+  ]
+}

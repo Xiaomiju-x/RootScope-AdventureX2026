@@ -1,0 +1,74 @@
+{
+  "schema": "rootscope.v3.vision-evaluation.v1",
+  "evaluation_id": "rootsight-v3-pc-static-contract-20260724",
+  "created_at_utc": "2026-07-23T19:21:32.631570Z",
+  "evaluation_scope": "PC_STATIC",
+  "dataset": {
+    "dataset_id": "frozen-x5-four-static-projection-plus-wetting-fixtures",
+    "partition": "DEVELOPMENT",
+    "manifest_sha256": "e82b196ab627a935fd571bba2b37aa637f040af5ba81fbab5183c1f15aa2e564",
+    "split_unit": "SOURCE_GROUP",
+    "sample_count": 6,
+    "formal_holdout": false
+  },
+  "optical_domain": {
+    "camera_id": null,
+    "lighting": "STATIC_REGISTERED_IMAGES_AND_SYNTHETIC_WETTING_FIXTURES",
+    "mount_fixed": false,
+    "exposure_fixed": false,
+    "white_balance_fixed": false,
+    "reference_patch_used": false
+  },
+  "backends": [
+    {
+      "backend_id": "CPU_ONNX_STATIC_PARITY",
+      "model_id": "rootscope-seed17-resnet18-cpu-onnx",
+      "model_sha256": "50ae8d2ec1cec0f3748efa127c6b9c00624684f8c112c8a7913c2a0e304a3bad",
+      "execution_actual": true,
+      "role": "PRIMARY"
+    },
+    {
+      "backend_id": "ROOTSIGHT_WETTING_NUMPY_FIXTURE",
+      "model_id": "relative-before-after-selectivity-v1",
+      "model_sha256": null,
+      "execution_actual": true,
+      "role": "AUDIT"
+    }
+  ],
+  "counts": {
+    "raw_scored": 4,
+    "raw_top1_correct": 4,
+    "full_gate_scored": 6,
+    "full_gate_expected_outcome": 6,
+    "known_positive_count": 3,
+    "unknown_or_occluded_count": 1,
+    "false_irrigation_intent_count": 0,
+    "cpu_bpu_compared": 0,
+    "cpu_bpu_top1_agree": 0,
+    "non_finite_output_count": 0
+  },
+  "latency_ms": {
+    "measurement_scope": "MODEL_ONLY",
+    "sample_count": 4,
+    "p50": 125.460841,
+    "p95": 129.125328,
+    "max": 129.125328,
+    "cold_start": null
+  },
+  "qualification": {
+    "status": "PASS",
+    "gates_passed": [
+      "FROZEN_X5_STATIC_PC_REFERENCE_PARITY_4_OF_4",
+      "UNKNOWN_STATIC_INPUT_ABSTAINED",
+      "ZERO_FALSE_IRRIGATION_INTENT_ON_STATIC_SET",
+      "WETTING_TARGET_ONLY_FIXTURE_ACCEPTED",
+      "WETTING_NEIGHBOR_SPILL_FIXTURE_REJECTED"
+    ],
+    "claim_boundary": "Pass is limited to frozen static CPU parity and deterministic before/after wetting fixtures. It is not a formal plant-accuracy, live-camera, BPU persistent, moisture, root-depth or physical irrigation qualification; those remain X5/hardware gates."
+  },
+  "authority": {
+    "execution_authority": false,
+    "physical_authority": false,
+    "pump_command": false
+  }
+}

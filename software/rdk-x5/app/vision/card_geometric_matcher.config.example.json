@@ -1,0 +1,22 @@
+{
+  "akaze_threshold": 0.001,
+  "allow_orb_fallback": true,
+  "detector_preference": "AKAZE",
+  "knn_ratio_threshold": 0.78,
+  "max_image_pixels": 20000000,
+  "max_median_reprojection_error_px": 3.5,
+  "max_projected_area_ratio": 0.9,
+  "min_inlier_ratio": 0.55,
+  "min_inliers": 14,
+  "min_mutual_good_matches": 18,
+  "min_projected_area_ratio": 0.08,
+  "min_query_keypoints": 35,
+  "min_template_keypoints": 35,
+  "orb_fast_threshold": 12,
+  "orb_max_features": 2500,
+  "projected_boundary_margin_px": 4.0,
+  "ransac_confidence": 0.995,
+  "ransac_max_iters": 4000,
+  "ransac_reprojection_threshold_px": 3.0,
+  "rng_seed": 20260717
+}

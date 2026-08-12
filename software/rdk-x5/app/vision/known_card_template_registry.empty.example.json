@@ -1,0 +1,6 @@
+{
+  "schema_version": "rootscope.known-card-template-registry.v1",
+  "status": "EMPTY_NO_REAL_TEMPLATES_REGISTERED",
+  "template_root": "known_card_templates",
+  "templates": []
+}

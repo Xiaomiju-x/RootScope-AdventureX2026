@@ -1,0 +1,44 @@
+{
+  "schema": "rootscope.v3.resource-evaluation.v1",
+  "evaluation_id": "e0-resource-fixture",
+  "created_at_utc": "2026-07-24T00:00:00Z",
+  "platform": "PC",
+  "scenario": {
+    "scenario_id": "E0_SCHEMA_ONLY",
+    "components_active": [],
+    "camera_live": false,
+    "physical_execution": false
+  },
+  "sampling": {
+    "duration_seconds": 0,
+    "interval_seconds": 1,
+    "sample_count": 1
+  },
+  "memory": {
+    "mem_available_min_kib": 0,
+    "cma_free_min_kib": null,
+    "swap_used_max_kib": 0,
+    "oom_kill_delta": 0
+  },
+  "temperature": {
+    "max_millicelsius": null,
+    "thermal_throttle_observed": false
+  },
+  "bpu": {
+    "actual_inference_executed": false,
+    "utilization_percent_max": null,
+    "cma_leak_observed": false
+  },
+  "processes": [],
+  "qualification": {
+    "status": "NOT_EVALUATED",
+    "mem_gate_kib": 524288,
+    "cma_gate_kib": 131072,
+    "claim_boundary": "SCHEMA_FIXTURE_ONLY_NO_RESOURCE_SOAK"
+  },
+  "authority": {
+    "serial_opened": false,
+    "gpio_touched": false,
+    "pump_touched": false
+  }
+}

@@ -1,16 +1,82 @@
+# Python caches and local environments
 __pycache__/
 *.py[cod]
+*$py.class
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .coverage
+.coverage.*
 htmlcov/
+.tox/
+.nox/
 .venv/
 venv/
+env/
+
+# Secrets and machine-local configuration. Only inert examples are public.
 .env
 .env.*
-!.env.example
-dist/
+!*.env.example
+!**/*.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.mobileprovision
+credentials*.json
+secrets*.json
+
+# Build, package, test and release output
 build/
+dist/
+out/
+site/
 *.egg-info/
+*.whl
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Native and embedded build products. The one reviewed firmware image is
+# deliberately re-included from its content-addressed public release path.
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.elf
+*.axf
+*.map
+*.lst
+*.d
+*.dep
+*.hex
+!firmware/stm32f103-v15/release/FLASH_THIS_Z3_PB6_V15.hex
+*.uvguix.*
+*.uvoptx
+*.mxproject
+firmware/**/MDK-ARM/**/Objects/
+firmware/**/MDK-ARM/**/Listings/
+firmware/**/MDK-ARM/**/*.build_log.htm
+
+# Model weights and generated inference artifacts are distributed separately
+# only when their upstream licence permits it. Manifests and conversion source
+# remain version-controlled.
 *.onnx
 *.bin
 *.hbm
@@ -21,20 +87,27 @@ build/
 *.ckpt
 *.tflite
 *.engine
-*.sqlite*
-*.db
-*.log
-*.pem
-*.key
-*.p12
-*.hex
-*.axf
-*.uvguix.*
-datasets/
 models/
 weights/
+
+# Reviewed, content-bound RootScope release artifacts. Git LFS rules and
+# model-assets/MANIFEST.json provide the second gate; no other weights pass.
+!model-assets/vision/rootscope_answer_cards_resnet18_opset11.onnx
+!model-assets/bpu/rootscope_seed17_resnet18_static_b1x3x224x224_opset11.onnx
+!model-assets/bpu/rootscope_seed17_resnet18_224x224_rgb_ddr_r7_default_int16_all_nodes.bin
+!model-assets/rootmind-adapter/adapter_model.safetensors
+
+# Private/raw collections. Curated public fixtures live under research/ and
+# evidence/public/ and are checked by the publication audit.
+datasets/
 captures/
 evidence-private/
-firmware/
 deployment-private/
+private/
 
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+Desktop.ini

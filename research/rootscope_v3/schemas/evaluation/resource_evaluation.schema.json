@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rootscope.local/schemas/v3/resource-evaluation.v1.json",
+  "title": "RootScope v3 combined resource evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "evaluation_id",
+    "created_at_utc",
+    "platform",
+    "scenario",
+    "sampling",
+    "memory",
+    "temperature",
+    "bpu",
+    "processes",
+    "qualification",
+    "authority"
+  ],
+  "properties": {
+    "schema": {"const": "rootscope.v3.resource-evaluation.v1"},
+    "evaluation_id": {"type": "string", "minLength": 1},
+    "created_at_utc": {"type": "string", "format": "date-time"},
+    "platform": {"enum": ["PC", "RDK_X5_4GB"]},
+    "scenario": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scenario_id", "components_active", "camera_live", "physical_execution"],
+      "properties": {
+        "scenario_id": {"type": "string", "minLength": 1},
+        "components_active": {"type": "array", "items": {"type": "string"}},
+        "camera_live": {"type": "boolean"},
+        "physical_execution": {"type": "boolean"}
+      }
+    },
+    "sampling": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["duration_seconds", "interval_seconds", "sample_count"],
+      "properties": {
+        "duration_seconds": {"type": "number", "minimum": 0},
+        "interval_seconds": {"type": "number", "exclusiveMinimum": 0},
+        "sample_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "memory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mem_available_min_kib", "cma_free_min_kib", "swap_used_max_kib", "oom_kill_delta"],
+      "properties": {
+        "mem_available_min_kib": {"type": "integer", "minimum": 0},
+        "cma_free_min_kib": {"type": ["integer", "null"], "minimum": 0},
+        "swap_used_max_kib": {"type": "integer", "minimum": 0},
+        "oom_kill_delta": {"type": "integer", "minimum": 0}
+      }
+    },
+    "temperature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["max_millicelsius", "thermal_throttle_observed"],
+      "properties": {
+        "max_millicelsius": {"type": ["integer", "null"], "minimum": 0},
+        "thermal_throttle_observed": {"type": "boolean"}
+      }
+    },
+    "bpu": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actual_inference_executed", "utilization_percent_max", "cma_leak_observed"],
+      "properties": {
+        "actual_inference_executed": {"type": "boolean"},
+        "utilization_percent_max": {"type": ["number", "null"], "minimum": 0, "maximum": 100},
+        "cma_leak_observed": {"type": "boolean"}
+      }
+    },
+    "processes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["process_id", "observed_running", "rss_mib_max"],
+        "properties": {
+          "process_id": {"type": "string", "minLength": 1},
+          "observed_running": {"type": "boolean"},
+          "rss_mib_max": {"type": ["number", "null"], "minimum": 0}
+        }
+      }
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "mem_gate_kib", "cma_gate_kib", "claim_boundary"],
+      "properties": {
+        "status": {"enum": ["NOT_EVALUATED", "FAIL", "IDLE_ONLY", "PASS"]},
+        "mem_gate_kib": {"type": "integer", "minimum": 0},
+        "cma_gate_kib": {"type": ["integer", "null"], "minimum": 0},
+        "claim_boundary": {"type": "string", "minLength": 1}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["serial_opened", "gpio_touched", "pump_touched"],
+      "properties": {
+        "serial_opened": {"type": "boolean"},
+        "gpio_touched": {"type": "boolean"},
+        "pump_touched": {"type": "boolean"}
+      }
+    }
+  }
+}

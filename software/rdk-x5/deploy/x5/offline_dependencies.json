@@ -1,0 +1,69 @@
+{
+  "schema_version": "rootscope.x5-offline-dependencies.v1",
+  "status": "CP310_AARCH64_WHEELS_HASH_LOCKED_NOT_EXACT_TWIN_X5_QUALIFIED",
+  "network_install_allowed": false,
+  "target_image_qualified": false,
+  "wheelhouse_qualified": false,
+  "candidate_wheelhouse_present": true,
+  "required_python": "==3.10.*",
+  "packages": [
+    {
+      "name": "numpy",
+      "requirement": "==2.2.6",
+      "pc_reference_version": "2.4.4",
+      "target_candidate_version": "2.2.6",
+      "purpose": "preprocessing and tensor checks",
+      "required_when": "always",
+      "target_wheel_sha256": "efd28d4e9cd7d7a8d39074a4d44c63eda73401580c5c76acda2ce969e0a38e83"
+    },
+    {
+      "name": "Pillow",
+      "requirement": "==11.3.0",
+      "pc_reference_version": "12.2.0",
+      "target_candidate_version": "11.3.0",
+      "purpose": "deterministic RGB resize",
+      "required_when": "always",
+      "target_wheel_sha256": "7107195ddc914f656c7fc8e4a5e1c25f32e9236ea3ea860f257b0436011fddd0"
+    },
+    {
+      "name": "onnxruntime",
+      "requirement": "==1.22.1",
+      "pc_reference_version": "1.22.1",
+      "target_candidate_version": "1.22.1",
+      "purpose": "CPUExecutionProvider inference",
+      "required_when": "model.enabled=true",
+      "target_wheel_sha256": "b89ddfdbbdaf7e3a59515dee657f6515601d55cb21a0f0f48c81aefc54ff1b73"
+    },
+    {
+      "name": "opencv-python-headless",
+      "requirement": "==4.13.0.92",
+      "pc_reference_version": null,
+      "target_candidate_version": "4.13.0.92",
+      "purpose": "future explicitly authorized UVC/V4L2 acquisition",
+      "required_when": "rgb.enabled=true or depth backend is depth_v4l2",
+      "target_wheel_sha256": "5c8cfc8e87ed452b5cecb9419473ee5560a989859fe1d10d1ce11ae87b09a2cb"
+    }
+  ],
+  "non_python_optional": [
+    {
+      "name": "llama-server",
+      "version": "b9637-aedb2a5e9ca3d4064148bbb919e0ddc0c1b70ab3",
+      "sha256": "dcb636215243b8911488b8ca96f0c39bedee14e92f44f7d0ef6c599419acf9b9",
+      "release_relative_to_adventurex": "output/rootscope_llama_server_arm64_b9637_v1",
+      "target": "ubuntu22.04-aarch64-armv8-a",
+      "status": "HASH_FROZEN_CROSS_BUILD_QEMU_SMOKE_PASS_NOT_X5_QUALIFIED"
+    },
+    {
+      "name": "depth-camera-vendor-sdk",
+      "version": null,
+      "sha256": null,
+      "status": "MODEL_DEPENDENT_NOT_SELECTED"
+    },
+    {
+      "name": "hbm_runtime",
+      "version": null,
+      "sha256": null,
+      "status": "NOT_USED_BY_CPU_CAPSULE_BPU_PATH_NOT_QUALIFIED"
+    }
+  ]
+}

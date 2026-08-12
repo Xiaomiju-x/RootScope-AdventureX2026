@@ -1,0 +1,85 @@
+name: Reproduction report / 复现报告
+description: Share a successful, partial, or failed evidence-bound reproduction.
+title: "[Reproduction]: "
+labels: [reproduction, evidence]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Failed and partial reproductions are valuable. Keep original results; do not edit thresholds or expectations to match archived receipts. Sanitize all identity and location data.
+  - type: input
+    id: claim
+    attributes:
+      label: Claim or artifact reproduced
+      placeholder: Four synthetic gate fixtures / fixed-input BPU replay / STM32 outputs-off preflight
+    validations:
+      required: true
+  - type: input
+    id: commit
+    attributes:
+      label: Commit or release
+      placeholder: v1.0.0 or 40-character commit
+    validations:
+      required: true
+  - type: dropdown
+    id: status
+    attributes:
+      label: Outcome
+      options:
+        - PASS — matched the stated contract
+        - PARTIAL — some gates completed
+        - FAIL — contract did not match
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Highest completed evidence level
+      options:
+        - R0 static audit
+        - R1 PC software
+        - R2 X5 CPU
+        - R3 actual X5 BPU
+        - R4 read-only / no-action hardware
+        - R5 supervised physical action
+    validations:
+      required: true
+  - type: textarea
+    id: hashes
+    attributes:
+      label: Asset hashes
+      description: Relative paths and SHA-256 only; no absolute paths.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment and toolchain
+      description: Non-sensitive versions only.
+    validations:
+      required: true
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: results
+    attributes:
+      label: Results, differences, and limitations
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Publication checks
+      options:
+        - label: Inputs, outputs, and logs are public or sanitized and redistributable.
+          required: true
+        - label: Machine receipts and human physical observations are clearly separated.
+          required: true
+        - label: I did not turn a fixed-input or simulated result into an open-world/physical claim.
+          required: true

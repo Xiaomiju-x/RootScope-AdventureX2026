@@ -1,18 +1,29 @@
 cff-version: 1.2.0
-title: "RootScope: An Evidence-Grounded Edge AI Irrigation Chamber"
-message: "If you use this public reference implementation, please cite the project."
+message: "If RootScope helps your research, course, or robot project, please cite this software release."
+title: "RootScope: AdventureX 2026 Silver Award and 2nd Place Stationary Root-Zone Irrigation Robot"
 type: software
 authors:
   - name: "RootScope Team"
+    alias: "Xiaomiju-x"
 repository-code: "https://github.com/Xiaomiju-x/RootScope-AdventureX2026"
-url: "https://xiaomiju.xyz/"
+url: "https://github.com/Xiaomiju-x/RootScope-AdventureX2026"
 license: Apache-2.0
-version: 0.1.0
-date-released: 2026-07-25
+version: 1.0.0
+date-released: 2026-08-12
+abstract: >-
+  RootScope is a stationary RDK X5 and STM32F103C8T6 root-zone irrigation
+  robot prototype. It won the Silver Award and finished second in the
+  AdventureX 2026 D-Robotics “Give AI a Body” track. The release includes
+  evidence-gated vision, local read-only LLM/RAG, fail-closed control,
+  firmware, hardware documentation, pipelines, tests, and sanitized evidence.
 keywords:
   - AdventureX 2026
+  - D-Robotics
+  - RDK X5
+  - STM32F103
   - embodied AI
   - edge AI
-  - RDK X5
-  - irrigation
-
+  - computer vision
+  - local LLM
+  - RAG
+  - irrigation robot

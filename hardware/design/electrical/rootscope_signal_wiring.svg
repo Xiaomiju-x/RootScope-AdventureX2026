@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">RootScope 固定式根区灌溉舱信号与数据连接图</title>
+  <desc id="desc">RDK X5 通过 USB 连接固定 UVC 相机和 USB 转 TTL，USB 转 TTL 连接 STM32F407 USART2。F407 读取称重和互锁，经三路驱动分别控制 30、60、90 毫米深度的微型蠕动泵。底盘、激光雷达、IMU、深度相机和导航均不安装。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8fbff"/><stop offset="1" stop-color="#eef5f8"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#16324a" flood-opacity="0.12"/></filter>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L9,3 L0,6 Z" fill="#176b87"/></marker>
+    <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L9,3 L0,6 Z" fill="#d97706"/></marker>
+    <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L9,3 L0,6 Z" fill="#16856b"/></marker>
+    <style>
+      .title{font:700 34px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#102a43}
+      .sub{font:500 17px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#526d82}
+      .h{font:700 21px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#102a43}
+      .t{font:500 16px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#29475c}
+      .s{font:500 14px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#526d82}
+      .mono{font:600 14px Consolas,'Microsoft YaHei',monospace;fill:#274760}
+      .box{fill:#fff;stroke:#bed3df;stroke-width:2;rx:18;filter:url(#shadow)}
+      .blue{fill:#eaf7fb;stroke:#4b9fba;stroke-width:2;rx:16}
+      .green{fill:#e9f8f3;stroke:#43a58b;stroke-width:2;rx:16}
+      .orange{fill:#fff5e6;stroke:#e59a36;stroke-width:2;rx:16}
+      .gray{fill:#f3f6f8;stroke:#a9bac5;stroke-width:2;rx:16}
+      .wireB{fill:none;stroke:#176b87;stroke-width:4;marker-end:url(#arrowBlue)}
+      .wireO{fill:none;stroke:#d97706;stroke-width:4;marker-end:url(#arrowOrange)}
+      .wireG{fill:none;stroke:#16856b;stroke-width:4;marker-end:url(#arrowGreen)}
+      .dash{fill:none;stroke:#8799a5;stroke-width:3;stroke-dasharray:10 8}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1600" height="9" fill="#19a7a0"/>
+  <text x="70" y="62" class="title">RootScope 固定式根区灌溉舱｜信号与数据连接（P0）</text>
+  <text x="70" y="94" class="sub">无底盘 · 无 LiDAR / IMU / 深度相机 / SLAM / Nav2 · 仅保留可验证的定量给水闭环</text>
+
+  <rect x="70" y="145" width="355" height="220" class="box"/>
+  <rect x="88" y="163" width="319" height="52" class="blue"/>
+  <text x="108" y="196" class="h">RDK X5｜上位机</text>
+  <text x="100" y="246" class="t">本地视觉 · 剂量决策 · Dashboard</text>
+  <text x="100" y="278" class="t">证据记录 · fail-closed 状态机</text>
+  <rect x="100" y="306" width="140" height="38" class="gray"/>
+  <text x="122" y="331" class="mono">USB · UVC</text>
+  <rect x="257" y="306" width="140" height="38" class="gray"/>
+  <text x="278" y="331" class="mono">USB · TTL</text>
+
+  <rect x="70" y="430" width="355" height="140" class="green"/>
+  <text x="100" y="468" class="h">固定 UVC 相机</text>
+  <text x="100" y="502" class="t">任务卡 ROI + 透明沙芯侧视 ROI</text>
+  <text x="100" y="534" class="s">单相机、固定灯光、白背板；USB 直连 X5</text>
+  <path d="M245 430 L245 380 L170 380 L170 365" class="wireB"/>
+  <text x="258" y="405" class="mono">USB UVC</text>
+
+  <rect x="500" y="190" width="235" height="132" class="blue"/>
+  <text x="530" y="229" class="h">USB → 3.3 V TTL</text>
+  <text x="530" y="263" class="t">CH340 / 同类模块</text>
+  <text x="530" y="294" class="s">VCC 不接 F407，只接 TX/RX/GND</text>
+  <path d="M425 257 L500 257" class="wireB"/>
+  <text x="441" y="242" class="mono">USB</text>
+
+  <rect x="825" y="145" width="365" height="312" class="box"/>
+  <rect x="843" y="163" width="329" height="52" class="blue"/>
+  <text x="865" y="196" class="h">STM32F407｜确定性下位机</text>
+  <text x="855" y="247" class="t">XRD 已验证主机串口</text>
+  <text x="855" y="278" class="mono">PD5=USART2_TX → USB-TTL RXD</text>
+  <text x="855" y="307" class="mono">PD6=USART2_RX ← USB-TTL TXD</text>
+  <text x="855" y="338" class="mono">115200 8N1 · 0xAA55 · sum8</text>
+  <line x1="855" y1="360" x2="1160" y2="360" stroke="#cfdee6" stroke-width="2"/>
+  <text x="855" y="391" class="t">复用：5 Hz 心跳 · 1 s 失联闭锁</text>
+  <text x="855" y="421" class="t">新增：三泵互斥 · 称重门 · 现场互锁</text>
+  <path d="M735 256 L825 256" class="wireB"/>
+  <text x="747" y="231" class="mono">TX↔RX</text>
+  <text x="748" y="280" class="mono">共 GND</text>
+
+  <rect x="1255" y="145" width="275" height="312" class="green"/>
+  <text x="1282" y="184" class="h">物理输入</text>
+  <text x="1282" y="220" class="t">HX711 + 水箱称重片</text>
+  <text x="1282" y="252" class="t">沙芯到位 NC</text>
+  <text x="1282" y="284" class="t">护罩 NC</text>
+  <text x="1282" y="316" class="t">漏水 OK_NC</text>
+  <text x="1282" y="348" class="t">急停辅助 NC</text>
+  <text x="1282" y="380" class="t">Start / Reset</text>
+  <text x="1282" y="423" class="s">候选引脚：PB10…PB15、PC4/PC5</text>
+  <path d="M1255 306 L1190 306" class="wireG"/>
+  <text x="1200" y="287" class="s">GPIO</text>
+
+  <rect x="825" y="520" width="365" height="235" class="orange"/>
+  <text x="855" y="558" class="h">3 路泵驱动级｜禁止 GPIO 直驱</text>
+  <text x="855" y="600" class="mono">PE0  → PUMP_30_GATE  （候选）</text>
+  <text x="855" y="638" class="mono">PC13 → PUMP_60_GATE  （候选）</text>
+  <text x="855" y="676" class="mono">PC0  → PUMP_90_GATE  （候选）</text>
+  <text x="855" y="724" class="s">每路独立驱动/标定；输入 3.3 V 兼容</text>
+  <path d="M1008 457 L1008 520" class="wireO"/>
+  <text x="1020" y="493" class="s">gate</text>
+
+  <rect x="1255" y="520" width="275" height="235" class="orange"/>
+  <text x="1282" y="558" class="h">湿区执行器</text>
+  <text x="1282" y="606" class="t">P30 微型蠕动泵</text>
+  <text x="1282" y="650" class="t">P60 微型蠕动泵</text>
+  <text x="1282" y="694" class="t">P90 微型蠕动泵</text>
+  <text x="1282" y="735" class="s">三管独立；同时最多运行一路</text>
+  <path d="M1190 638 L1255 638" class="wireO"/>
+
+  <rect x="70" y="650" width="665" height="105" class="gray"/>
+  <text x="100" y="686" class="h">XRD 已验证、但 RootScope P0 不接的资源</text>
+  <text x="100" y="719" class="mono">PC9=PUL · PD7=DIR · PD10=EN（可选机械轴预留；不装移动探针）</text>
+  <path d="M735 702 L805 702" class="dash"/>
+
+  <rect x="70" y="808" width="1460" height="54" rx="16" fill="#102a43"/>
+  <circle cx="105" cy="835" r="8" fill="#4b9fba"/><text x="124" y="841" class="s" fill="#fff">蓝：XRD 已验证/复用链</text>
+  <circle cx="420" cy="835" r="8" fill="#e59a36"/><text x="439" y="841" class="s" fill="#fff">橙：RootScope 三泵执行器/候选引脚</text>
+  <circle cx="840" cy="835" r="8" fill="#43a58b"/><text x="859" y="841" class="s" fill="#fff">绿：独立物理观测与互锁</text>
+  <text x="1190" y="841" class="s" fill="#fff">端子编号优先于线色 · VCC 不经 USB-TTL 反供</text>
+</svg>

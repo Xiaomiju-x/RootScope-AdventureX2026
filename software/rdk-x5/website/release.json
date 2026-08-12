@@ -1,0 +1,15 @@
+{
+  "release_id": "rootscope-public-v1-20260725",
+  "project": "RootScope",
+  "title": "固定式根区灌溉舱",
+  "canonical_url": "https://xiaomiju.xyz/",
+  "access": "public-read-only",
+  "device_dependency": "none",
+  "allowed_methods": ["GET", "HEAD", "OPTIONS"],
+  "xrd_preservation": "untouched-and-rollbackable",
+  "claims": {
+    "live_telemetry": false,
+    "remote_control": false,
+    "historical_verified_evidence": true
+  }
+}

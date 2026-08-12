@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rootscope-adventurex"
+version = "1.0.0"
+description = "RootScope fixed root-zone irrigation chamber edge software"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy>=1.23",
+  "Pillow>=9.0",
+]
+
+[project.optional-dependencies]
+hardware = ["pyserial>=3.5", "opencv-python-headless>=4.8"]
+test = ["pytest>=8,<10"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+exclude = ["tests*"]
+
+[tool.setuptools.package-data]
+"app.omega_runtime" = ["static/*.html"]

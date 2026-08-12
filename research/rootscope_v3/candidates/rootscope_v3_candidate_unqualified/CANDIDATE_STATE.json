@@ -1,0 +1,33 @@
+{
+  "schema": "rootscope.v3.candidate-state.v1",
+  "candidate_id": "rootscope_v3_candidate_unqualified",
+  "status": "SKELETON_NOT_A_RELEASE_DO_NOT_DEPLOY",
+  "created_at": "2026-07-24",
+  "baseline_v2_archive_sha256": "03ca7b8d9ff8b691f1fd61dc696601ba30f494377a0b2a3cfadb66c19478ed94",
+  "gates": {
+    "e0_contracts_frozen": true,
+    "source_manifest_built": false,
+    "model_artifacts_bound": false,
+    "data_artifacts_bound": false,
+    "dependency_artifacts_bound": false,
+    "pc_static_qualified": false,
+    "x5_cpu_qualified": false,
+    "x5_bpu_qualified": false,
+    "x5_live_optics_qualified": false,
+    "x5_llm_qualified": false,
+    "x5_combined_soak_qualified": false,
+    "physical_loop_qualified": false,
+    "immutable_archive_built": false,
+    "rollback_verified": false
+  },
+  "authority": {
+    "execution_authority": false,
+    "physical_authority": false,
+    "serial_open": false,
+    "serial_write": false,
+    "gpio_write": false,
+    "pump_command": false,
+    "irrigation_execution": false,
+    "physical_completion": false
+  }
+}

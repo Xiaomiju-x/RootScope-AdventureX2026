@@ -1,0 +1,711 @@
+{
+  "schema": "rootscope.hbm-persistent-oracle-manifest.v1",
+  "count": 43,
+  "model_sha256": "4dc4bc24741332bb6bc6da184dd1d6f954ae539ba740330490339d76eb200285",
+  "source_input_manifest_sha256": "5f90eb28a6273ba788fb3cb88ccc41853b8a94118d0f24bc5c15d540a30f9ada",
+  "source_oracle_results_sha256": "73a40202b02aba0256ecfc01806725d89dae12ec8bd70d5fa54ee8ed7a81e444",
+  "qualification_gate": {
+    "top1_agreement_min": 43,
+    "mean_cosine_min": 0.995,
+    "nonfinite_allowed": 0,
+    "runtime_errors_allowed": 0
+  },
+  "selection_effect": "REPORT_ONLY_NO_RUNTIME_CONFIG_MUTATION",
+  "authority": {
+    "execution_authority": false,
+    "serial_write": false,
+    "gpio_write": false,
+    "pump_command": false,
+    "physical_completion": false
+  },
+  "rows": [
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/00_grass_clump_28135991_276cc9c0ee77.jpg",
+      "file_sha256": "276cc9c0ee77ed63e81e0f944e787c1f9181acbc9180f4bf986dab704e414c8e",
+      "tensor_sha256": "199659bf51882f1b57420b51a8c61fb18c0e4cecf7c0becc07f0b0c916b59657",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        1.7567888498306274,
+        1.228999137878418,
+        1.3923789262771606,
+        -3.446035146713257
+      ],
+      "oracle_top1_index": 0,
+      "oracle_top1_class": "grass_clump",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/01_grass_clump_38233728_128ed1eeb8d3.jpg",
+      "file_sha256": "128ed1eeb8d3997d3df066b95e8f1c5b3d22e2190688258f0da58d67d1067fa2",
+      "tensor_sha256": "9a4ce64353ca12692edfe5543915c353d2185585ce172eacce6a65300e0ce0ac",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        3.1204166412353516,
+        -0.797731339931488,
+        0.9878086447715759,
+        -4.101836204528809
+      ],
+      "oracle_top1_index": 0,
+      "oracle_top1_class": "grass_clump",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/02_grass_clump_66707539_2e690b336562.jpg",
+      "file_sha256": "2e690b33656206407d0247290f8a2aed1ba15db7bf5afb328e65ac1c50c59a3c",
+      "tensor_sha256": "e357df9ee4d25e73491870c96fbb1c4b615d76465f9cf7cb11fd35881be6dd8d",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        0.1245884820818901,
+        1.245200276374817,
+        1.5660269260406494,
+        -3.1922945976257324
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/03_grass_clump_74079989_3fe9997fab23.jpg",
+      "file_sha256": "3fe9997fab239df0675dfbd44f2975249adde6a44d2447353ce5f2af47470728",
+      "tensor_sha256": "f53b99ae5be6fbc9acf1c69ff3b6a14d8c9445578f359a13e5900b48f2efabc2",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        3.4704508781433105,
+        -0.6799883842468262,
+        0.22384853661060333,
+        -2.4317572116851807
+      ],
+      "oracle_top1_index": 0,
+      "oracle_top1_class": "grass_clump",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/04_grass_clump_74079996_befadcc6e815.jpg",
+      "file_sha256": "befadcc6e81574c836e4ca10974cd3001dcf97f2d40cbc4522378ad421e994b4",
+      "tensor_sha256": "54170a3100fa01abd6e62e58f6dda99b96b1f98f8c5f13ce7802dca96a1e9953",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        0.3796982169151306,
+        0.771261990070343,
+        1.258891224861145,
+        -1.7752717733383179
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/05_grass_clump_85374315_816157b3f606.jpg",
+      "file_sha256": "816157b3f606893c3a2e8d714b4851c60159b2d2d53098d9615f6eea572d8fb3",
+      "tensor_sha256": "fc8c8425affb7f5a0a4a310b7b5aaa5e99e4e8ba5643c36f0331e45d6a8779e3",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        2.7715232372283936,
+        -0.24849240481853485,
+        0.5629299879074097,
+        -3.395378351211548
+      ],
+      "oracle_top1_index": 0,
+      "oracle_top1_class": "grass_clump",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/06_grass_clump_85376485_ffb04dce9f10.jpg",
+      "file_sha256": "ffb04dce9f10b908bbc65219b4b560f00f3025c4a55748beb40569ac19e525c9",
+      "tensor_sha256": "f23cf95efb2d1c07d04fb0db61073ad15f3a5ffda5b4429a84f32d706bea2641",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.0521565675735474,
+        2.049320697784424,
+        -0.3555107116699219,
+        -1.3889561891555786
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/07_low_shrub_66745979_42ed0282df85.jpg",
+      "file_sha256": "42ed0282df85360e2fc49559c6148dd284fae43d041753e3ddb929417a034dc2",
+      "tensor_sha256": "2ceb03c8cd7d0ea436aa50e43b123bd3e1820e53efa3685ae754ad99c3b9a02d",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        0.05316687747836113,
+        1.3688759803771973,
+        -0.48443469405174255,
+        -0.4725691080093384
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/08_low_shrub_85376459_e0519e214b07.jpg",
+      "file_sha256": "e0519e214b077b89390a98f3557075fba5006dff73e75822c4a620e3d71890dc",
+      "tensor_sha256": "58860db189c511ade4fd57af638421306de43e9073027d4e75173b70df20031a",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        0.3993220627307892,
+        1.2625422477722168,
+        0.5576817393302917,
+        -1.445773959159851
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/09_low_shrub_94220593_5e282bdfd994.jpg",
+      "file_sha256": "5e282bdfd9947d4a77c12e9514b703f508eccdf7ddc13d929ff45f835517398a",
+      "tensor_sha256": "5d16cfc603cf4aa42abd7e6205f593a8c83e052141776d3f11e39efd352ba900",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.12207845598459244,
+        1.8886791467666626,
+        0.8356099128723145,
+        -2.344590902328491
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/10_low_shrub_94700516_70431d5941c6.jpg",
+      "file_sha256": "70431d5941c685dcfa2014a9acf9da41859b03f0006dc3f774a49502ce69ec99",
+      "tensor_sha256": "d55e60804e42326787d7f34b9c8e88cbb784e297ae3eebd02dc84ff3f6b6176c",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.4378851354122162,
+        2.0048248767852783,
+        0.4435897469520569,
+        -1.1137661933898926
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/11_low_shrub_94748691_7ec050b96c72.jpg",
+      "file_sha256": "7ec050b96c72c485a6ad1fe87d0b095db802610fb0e1b3cd9cedd38461c0b80a",
+      "tensor_sha256": "d5b4abc9253b690ce46000b72a2d6cb34594b4dae94d1fa5ee0e6765751c385a",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.16976891458034515,
+        2.2357470989227295,
+        0.17547351121902466,
+        -1.580174446105957
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/12_low_shrub_180194248_22aebac46991.jpg",
+      "file_sha256": "22aebac469915d738b12e9b1d25c6c275c6f77946c2b694e9d3bc59d13840292",
+      "tensor_sha256": "445097421cbf0c1abbc54e964cb87717d28179685b8d36abed241fd84c3c734b",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.3974965810775757,
+        2.755094051361084,
+        -0.22727128863334656,
+        -1.5895299911499023
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/13_unknown_9429566_af505e5e9a50.jpg",
+      "file_sha256": "af505e5e9a500abb4c36fb222b2c7f3e79253b76de34ee645484ec7be50a6241",
+      "tensor_sha256": "b1734feb9f0d041160679a10c52dc279b195d6b1e05b70397b0e9f21afcb5214",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -2.4271934032440186,
+        -0.7582555413246155,
+        -0.8579719662666321,
+        2.929426431655884
+      ],
+      "oracle_top1_index": 3,
+      "oracle_top1_class": "unknown",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/14_unknown_171109124_2e82b9afa2e2.jpg",
+      "file_sha256": "2e82b9afa2e2fecacd4a2ec305ac901d7a8fc42cd1ca6f3cc03cca8f20d3398d",
+      "tensor_sha256": "7113d26ace2a6c908ab7a63e5de34a248530d2733e6272745eba8007b796a96c",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -3.7312653064727783,
+        -1.7440105676651,
+        0.5551717281341553,
+        2.6282236576080322
+      ],
+      "oracle_top1_index": 3,
+      "oracle_top1_class": "unknown",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/15_young_tree_75760716_00e92f0e5748.jpg",
+      "file_sha256": "00e92f0e5748a1c7bfbcaa132aca4809de70d50f220f7411722383d2f62ce670",
+      "tensor_sha256": "cef1c679b6d322c68439822a2e7626936874d13eefa9dbfa27bdce1c3d5d0d2c",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        0.8846694827079773,
+        1.078169584274292,
+        1.007432460784912,
+        -2.5586276054382324
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/16_young_tree_98911085_373a3cd7211e.jpg",
+      "file_sha256": "373a3cd7211ea3e4e97921c57d049289727ac8c1d5a1987970989aee45c53915",
+      "tensor_sha256": "c864dc1185aad97cce1dfc77c63823043828316957bd5074be22adddeb14f5ed",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -2.333181619644165,
+        1.8425860404968262,
+        0.71330326795578,
+        -1.7143466472625732
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/17_young_tree_105533532_d115f4a4c408.jpg",
+      "file_sha256": "d115f4a4c4086755f1bbba53d1afce9fa46d618795cb83fe41ea1da60d77e71b",
+      "tensor_sha256": "3d57427f114df7e31dfc422e9f84e682d30c0f52a383c2602c3fd1063062d13f",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.3936174511909485,
+        -0.25031787157058716,
+        2.02490496635437,
+        -2.699873447418213
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/18_young_tree_105533534_eb91c266dbfc.jpg",
+      "file_sha256": "eb91c266dbfc80f43702ce1505fbdb9f9ed00851bf1259033b5fc4c46af9186a",
+      "tensor_sha256": "38a5e02a348d2e076cd2c0680e1f4d725eba1446efe802496026289174635c2a",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -2.048179864883423,
+        0.3075920641422272,
+        2.3402554988861084,
+        -1.528376579284668
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/19_young_tree_105533535_928efde1e77d.jpg",
+      "file_sha256": "928efde1e77d3db020d6d16cf118ed8a38258726bd58f56eba60ef22381b1c91",
+      "tensor_sha256": "60049aaab26d76a68b8587fae273496647f378d1cd41a87f0f44900d6df697bb",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.252045750617981,
+        -0.03240213170647621,
+        2.3425371646881104,
+        -2.380415678024292
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/20_young_tree_105533543_add683808053.jpg",
+      "file_sha256": "add6838080532f5d1394044c09cfacc7d4fd0d44b253a76754016f87d860fc5a",
+      "tensor_sha256": "99774a83ba8bf2bee9599153458b4999bba0afe59e9ca9185938fb7ce3ab4059",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.3444602489471436,
+        -0.8896895051002502,
+        2.088796615600586,
+        -2.247612714767456
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/21_young_tree_180772202_29d64cbd328e.jpg",
+      "file_sha256": "29d64cbd328e47e391d37895ea68b6b11cc189b8385608da54481cff9f3bcf9c",
+      "tensor_sha256": "c321ddb3cba44efc12ada74610a0e6ea52e24cd591856b2e0312d2047657e917",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -3.472276449203491,
+        -0.6243115067481995,
+        1.419304609298706,
+        1.3058972358703613
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/r7_scope/22_young_tree_184915021_103d72ae8237.jpg",
+      "file_sha256": "103d72ae82371d39697448dea340ab15ae884270f55d982b2270f3d52333d0f5",
+      "tensor_sha256": "ba2930f477dd9479aa581a7eabddfa26a6d8c60b947eabffb5bbb3d27b135769",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.34045055508613586,
+        0.7180951237678528,
+        2.336376190185547,
+        -1.9575908184051514
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "FROZEN_R7_CONVERSION_REPLAY_NOT_NEW_HOLDOUT_NOT_OPEN_WORLD_ACCURACY"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/00_G_grass_clump_20260723_205958_332_01.jpg",
+      "file_sha256": "61e2212b6eb4cbc32d05eecf095fd1b8395d077c98536d64832bdf47bbaf35cf",
+      "tensor_sha256": "18bd633eb562e517258e888d693c568f1147ae844d35b10adf1aca3a366195d8",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        2.942889451980591,
+        0.5209441184997559,
+        -1.5226720571517944,
+        -1.6472605466842651
+      ],
+      "oracle_top1_index": 0,
+      "oracle_top1_class": "grass_clump",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/01_G_grass_clump_20260723_205959_129_02.jpg",
+      "file_sha256": "5c14ae3cb78bc051bb8144c9ea9a4b7ea30480933ef6cea252cef368c033a019",
+      "tensor_sha256": "2e0d27124112538bc43ac82ba0ef431e9e9a19092ba6d55a1dc973b997deb4fd",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        3.189784526824951,
+        0.188023641705513,
+        -1.7983182668685913,
+        -1.7958083152770996
+      ],
+      "oracle_top1_index": 0,
+      "oracle_top1_class": "grass_clump",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/02_G_grass_clump_20260723_205959_929_03.jpg",
+      "file_sha256": "0cca5501d81ef1f6fdbf7017c0d8e1eaaabf512c0baa3b2e0c211b811732c242",
+      "tensor_sha256": "cf3b16403f0348b2c662976896165704f4014d1734c79788f094e9ef10e2733f",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        3.2680516242980957,
+        0.27906906604766846,
+        -1.6312875747680664,
+        -2.4089388847351074
+      ],
+      "oracle_top1_index": 0,
+      "oracle_top1_class": "grass_clump",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/03_G_grass_clump_20260723_210000_730_04.jpg",
+      "file_sha256": "b86e4bdb768fc2216fdad8da95982ca0d1256bc2832c9c457f4fcedfba1f6bd2",
+      "tensor_sha256": "c3b34e1c8e78c7a269d84650183be8792566069177d79340971f248993381b85",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        4.012159824371338,
+        0.0050200484693050385,
+        -1.7250711917877197,
+        -2.0018584728240967
+      ],
+      "oracle_top1_index": 0,
+      "oracle_top1_class": "grass_clump",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/04_G_grass_clump_20260723_210001_342_05.jpg",
+      "file_sha256": "f35c8c1ba9224e37bb3266b2ad3d180147d59daec03fab693bdef0235b0f013e",
+      "tensor_sha256": "d637ebe2e5f11a1709995a6718fd765b739af0a0f3d250dd53cdadaf4acb0214",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        3.1619460582733154,
+        0.36395353078842163,
+        -1.8711090087890625,
+        -1.9963821172714233
+      ],
+      "oracle_top1_index": 0,
+      "oracle_top1_class": "grass_clump",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/05_T_young_tree_20260723_210010_794_01.jpg",
+      "file_sha256": "88c50400ba413d62b740fea1293cae0dd316959d7179e2b56d622b256a107a54",
+      "tensor_sha256": "389c12fc6e4fc232fd4d5677ce2c7f3a0164da17a16d60916cf0c1e36e6c7f03",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.843955159187317,
+        0.21266750991344452,
+        2.5079705715179443,
+        -2.092447519302368
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/06_T_young_tree_20260723_210011_610_02.jpg",
+      "file_sha256": "21f4f592947f3bc6ca80619dbc99eca42ea6968de372e50d9160909f125f7473",
+      "tensor_sha256": "35180ab4bb7b413310de24c24af522445aa435341558d60421ad93ad5c4631fd",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.2226099967956543,
+        0.40023478865623474,
+        2.1175477504730225,
+        -2.0826356410980225
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/07_T_young_tree_20260723_210012_410_03.jpg",
+      "file_sha256": "33cc4172aa13e4a6a9b2fd2c8213530494c9ce29eee12c58dac43b22433589a5",
+      "tensor_sha256": "408d257d8a2637db3ff7a7cc918d745ff58c88fd119a1bef43751b7712f99716",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.2481666803359985,
+        -0.026241162791848183,
+        2.440200090408325,
+        -2.1490371227264404
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/08_T_young_tree_20260723_210013_211_04.jpg",
+      "file_sha256": "ef8de0775b6e2c2f21f241081f984aa89db99dd7b37c57a2f03b3d29b80cd156",
+      "tensor_sha256": "d579a02f109af0b8de6b9d238b25c86b200ac5f6e70dd0ecf2bb6fd6e3194acf",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.8390326499938965,
+        0.1419304609298706,
+        2.280471086502075,
+        -2.214982271194458
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/09_T_young_tree_20260723_210015_037_05.jpg",
+      "file_sha256": "d009aeb1721e4472d4625a5313ec5267c817171e8fbd89aec683f09c25752748",
+      "tensor_sha256": "8a1280357a8f54cac9375dbf79a448975f0769006ca5581dd09e0bd22af6eb82",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.2569352090358734,
+        0.4486097991466522,
+        1.9890801906585693,
+        -2.368093729019165
+      ],
+      "oracle_top1_index": 2,
+      "oracle_top1_class": "young_tree",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/10_S_low_shrub_20260723_210028_717_01.jpg",
+      "file_sha256": "3f597dd4f1d116cb5319a95a17954143659009ffc284d456df502e8e4a9986f3",
+      "tensor_sha256": "f1233893f7001be9260da3bab338ba33451c44adea9bbe38d61f8231b8fe18a5",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.7404571771621704,
+        3.3508825302124023,
+        -1.4649415016174316,
+        0.15881608426570892
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/11_S_low_shrub_20260723_210029_518_02.jpg",
+      "file_sha256": "101e23cd108127105ab66617fbadd795da71e2c6ca81af3627ca0c58e233dd08",
+      "tensor_sha256": "2b4ede85e0b1010a182be06b503344f1b885e6d796fe66f11ab0d1655540c151",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.8321871757507324,
+        3.9094769954681396,
+        -1.719138503074646,
+        0.30645114183425903
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/12_S_low_shrub_20260723_210030_522_03.jpg",
+      "file_sha256": "67c2631bc7026396a1d4b9d67245b0f3918ba4f7f846b464bdca25546e02bfd2",
+      "tensor_sha256": "1f4728372a4340ab5c2af9aef05e5bb0562780d958d0890271f2e89bd1572ff5",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.03892183303833,
+        3.086189031600952,
+        -1.521759271621704,
+        0.7007531523704529
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/13_S_low_shrub_20260723_210031_321_04.jpg",
+      "file_sha256": "efdefe222005b3b8a0c21e854f998b485a332f735b697939d5f8e14dbdf3105a",
+      "tensor_sha256": "91486fa0f86fd7daab7568a4257986021926452dfa184e0dd29415aa78d12886",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -0.6190632581710815,
+        3.7575063705444336,
+        -1.0464519262313843,
+        -0.39247652888298035
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/14_S_low_shrub_20260723_210032_538_05.jpg",
+      "file_sha256": "dd575beb8b43725ff90848d4009986b24555d855508b7a1e848e1edbbf6a4e8d",
+      "tensor_sha256": "c02087ee91732cc772e87693dbe139d42fbc9f597c8fc8541f691d474d6eabfb",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.2531867027282715,
+        3.5681135654449463,
+        -1.0729212760925293,
+        0.06503244489431381
+      ],
+      "oracle_top1_index": 1,
+      "oracle_top1_class": "low_shrub",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/15_U_non_target_20260723_210040_185_01.jpg",
+      "file_sha256": "c6b841ad2717f2eb8657b679c03a2d8bf45714394a4a4c0141d22d9699f03220",
+      "tensor_sha256": "e1c14c59cd83e6f4768fcd82e72a8fd212efc93d258e86b07a865f0fdb43e8b6",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.7271249294281006,
+        -1.395117163658142,
+        -2.3099069595336914,
+        4.13811731338501
+      ],
+      "oracle_top1_index": 3,
+      "oracle_top1_class": "unknown",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/16_U_non_target_20260723_210040_797_02.jpg",
+      "file_sha256": "d7d84bab04f3ef93214ed67ba15eb6613ede7b551d0f7c4fd44b0b4f13664256",
+      "tensor_sha256": "497669e03711db754f718326dc5ec87ee37cc9f5f59576394610dcacbfa15218",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.7024810314178467,
+        -1.0982496738433838,
+        -1.8891355991363525,
+        3.7120978832244873
+      ],
+      "oracle_top1_index": 3,
+      "oracle_top1_class": "unknown",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/17_U_non_target_20260723_210041_386_03.jpg",
+      "file_sha256": "448c7561b6975b3694e9a2335cd7f28998f5ab1c69006e1fc8e13912e428065f",
+      "tensor_sha256": "aee575feada867a62e6f9f6aaec818946e992e7596a9b3ec7eea41eee1fe489b",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.8685990571975708,
+        -1.2664213180541992,
+        -2.643512010574341,
+        4.353294849395752
+      ],
+      "oracle_top1_index": 3,
+      "oracle_top1_class": "unknown",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/18_U_non_target_20260723_210042_203_04.jpg",
+      "file_sha256": "3c0f637de6ebf1c106d636bd3c7cb2089dd99b5dead5332c2b92a148c879874d",
+      "tensor_sha256": "7062d3100e7d36cc237355e9041d18cffcf5ccee5107699136eb17f9c1e741c4",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.9128667116165161,
+        -1.5897581577301025,
+        -1.9911338090896606,
+        4.0692057609558105
+      ],
+      "oracle_top1_index": 3,
+      "oracle_top1_class": "unknown",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    },
+    {
+      "schema": "rootscope.hbm-persistent-oracle-row.v1",
+      "relative_path": "images/physical20/19_U_non_target_20260723_210043_001_05.jpg",
+      "file_sha256": "2340583ee9ef016fee34ac34c538cc1e45d8fb17bbf2f4dd571704a5207d7e48",
+      "tensor_sha256": "294a467d43f7b4e7050a5d6d4e0deb15e3d785892cb5cbc1d04613ad5d022db5",
+      "oracle_backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "oracle_logits": [
+        -1.8489751815795898,
+        -1.3711577653884888,
+        -2.6770551204681396,
+        4.3425703048706055
+      ],
+      "oracle_top1_index": 3,
+      "oracle_top1_class": "unknown",
+      "truth_boundary": "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    }
+  ]
+}

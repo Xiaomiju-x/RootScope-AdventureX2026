@@ -1,0 +1,54 @@
+{
+  "schema": "rootscope.v3.resource-evaluation.v1",
+  "evaluation_id": "resource-pc-contract-20260724",
+  "created_at_utc": "2026-07-23T21:11:27.897420Z",
+  "platform": "PC",
+  "scenario": {
+    "scenario_id": "PC_CONTRACT_AND_FAULT_MATRIX_ONLY",
+    "components_active": [
+      "resource_broker",
+      "action_contract_compiler",
+      "fault_matrix"
+    ],
+    "camera_live": false,
+    "physical_execution": false
+  },
+  "sampling": {
+    "duration_seconds": 0.1,
+    "interval_seconds": 0.1,
+    "sample_count": 1
+  },
+  "memory": {
+    "mem_available_min_kib": 9758136,
+    "cma_free_min_kib": null,
+    "swap_used_max_kib": 129592,
+    "oom_kill_delta": 0
+  },
+  "temperature": {
+    "max_millicelsius": null,
+    "thermal_throttle_observed": false
+  },
+  "bpu": {
+    "actual_inference_executed": false,
+    "utilization_percent_max": null,
+    "cma_leak_observed": false
+  },
+  "processes": [
+    {
+      "process_id": "generate_v3_pc_evaluations",
+      "observed_running": true,
+      "rss_mib_max": 28.5546875
+    }
+  ],
+  "qualification": {
+    "status": "NOT_EVALUATED",
+    "mem_gate_kib": 524288,
+    "cma_gate_kib": 131072,
+    "claim_boundary": "PC contract test only; no RDK X5 memory, CMA, temperature, BPU utilization, soak, or live qualification."
+  },
+  "authority": {
+    "serial_opened": false,
+    "gpio_touched": false,
+    "pump_touched": false
+  }
+}

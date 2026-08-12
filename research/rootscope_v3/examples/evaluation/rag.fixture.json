@@ -1,0 +1,51 @@
+{
+  "schema": "rootscope.v3.rag-evaluation.v1",
+  "evaluation_id": "e0-rag-fixture",
+  "created_at_utc": "2026-07-24T00:00:00Z",
+  "corpus": {
+    "dataset_id": "competition-rag-v1",
+    "registry_sha256": "7e4e8833cd082e9359e73599a04ba5fa870a016e29a399e23f3eb1cb6cf2067a",
+    "corpus_sha256": "52fe4cf53c3bd641a61476665ea3af1bd9f2b45af59e5f17f648f69ca96497e0",
+    "source_count": 15,
+    "chunk_count": 24
+  },
+  "query_set": {
+    "query_set_id": "e0-empty-fixture",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "gold_count": 0,
+    "forbidden_count": 0
+  },
+  "retrieval": {
+    "backend": "SQLITE_FTS5_BM25",
+    "top_k": 5,
+    "gold_hit_count": 0,
+    "gold_total": 0,
+    "hard_hit_count": 0,
+    "hard_total": 0
+  },
+  "safety": {
+    "citation_precision_numerator": 0,
+    "citation_precision_denominator": 0,
+    "citation_escape_count": 0,
+    "forbidden_handled_count": 0,
+    "forbidden_total": 0,
+    "command_response_count": 0,
+    "secret_or_control_pollution_count": 0
+  },
+  "resources": {
+    "index_bytes": 0,
+    "peak_rss_mib": null,
+    "query_latency_ms_p50": null,
+    "query_latency_ms_p95": null
+  },
+  "qualification": {
+    "status": "NOT_EVALUATED",
+    "claim_boundary": "SCHEMA_FIXTURE_ONLY_BASELINE_HASH_BINDING"
+  },
+  "authority": {
+    "execution_authority": false,
+    "tool_execution": false,
+    "serial_write": false,
+    "pump_command": false
+  }
+}

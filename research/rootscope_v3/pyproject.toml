@@ -1,0 +1,8 @@
+[project]
+name = "rootscope-v3-contracts"
+version = "1.0.0"
+description = "RootScope v3 E0 registries and evaluation contracts"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

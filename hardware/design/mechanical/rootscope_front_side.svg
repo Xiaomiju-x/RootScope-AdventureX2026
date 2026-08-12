@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <title>RootScope 固定式根区灌溉舱正视与侧视连接图</title>
+  <desc>P0 固定三层出水歧管方案；核心外框 600×360×480 mm；无底盘、无导航、无移动探针。</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 z" fill="#26364a"/>
+    </marker>
+    <marker id="dimArrow" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto-start-reverse" markerUnits="strokeWidth">
+      <path d="M9,4.5 L0,0 L0,9 z" fill="#26364a"/>
+    </marker>
+    <pattern id="sand" width="14" height="14" patternUnits="userSpaceOnUse">
+      <rect width="14" height="14" fill="#e9cf9d"/>
+      <circle cx="3" cy="4" r="1.2" fill="#b78b52"/>
+      <circle cx="10" cy="9" r="1" fill="#c59a5c"/>
+      <circle cx="6" cy="13" r="0.8" fill="#9f7442"/>
+    </pattern>
+    <style><![CDATA[
+      text { font-family: "Microsoft YaHei", "Noto Sans CJK SC", sans-serif; fill:#172334; }
+      .title { font-size:28px; font-weight:700; }
+      .subtitle { font-size:15px; fill:#506176; }
+      .panel-title { font-size:20px; font-weight:700; }
+      .label { font-size:14px; font-weight:600; }
+      .small { font-size:12px; }
+      .tiny { font-size:10px; }
+      .frame { stroke:#26364a; stroke-width:5; fill:none; }
+      .rail { stroke:#42566d; stroke-width:18; fill:none; }
+      .thin { stroke:#26364a; stroke-width:2; fill:none; }
+      .dash { stroke:#52657a; stroke-width:2; fill:none; stroke-dasharray:8 6; }
+      .dim { stroke:#26364a; stroke-width:1.5; fill:none; marker-start:url(#dimArrow); marker-end:url(#dimArrow); }
+      .ext { stroke:#8795a5; stroke-width:1; }
+      .wet { fill:#d9f1f4; stroke:#16869b; stroke-width:2; }
+      .dry { fill:#fff0d7; stroke:#c27918; stroke-width:2; }
+      .optical { fill:#e8e0fa; stroke:#6947a8; stroke-width:2; }
+      .safety { fill:#ffd9d9; stroke:#bd3030; stroke-width:2; }
+      .callout { fill:#ffffff; stroke:#91a0b0; stroke-width:1.2; rx:7; }
+      .port1 { fill:#2f80ed; stroke:#143f78; stroke-width:2; }
+      .port2 { fill:#f2c94c; stroke:#80691d; stroke-width:2; }
+      .port3 { fill:#eb5757; stroke:#7d2222; stroke-width:2; }
+    ]]></style>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="1000" fill="#f7f9fc"/>
+  <text x="40" y="46" class="title">RootScope 固定式根区灌溉舱｜P0 机械连接与关键尺寸</text>
+  <text x="40" y="76" class="subtitle">固定三层出水歧管；三个独立微型蠕动泵与三层一一对应；无底盘、无导航、无移动探针。单位：mm。</text>
+
+  <!-- FRONT VIEW -->
+  <rect x="35" y="98" width="770" height="820" fill="#ffffff" stroke="#d6dde7" stroke-width="2" rx="10"/>
+  <text x="65" y="130" class="panel-title">A｜正视图（观众侧）</text>
+
+  <!-- frame, scaled 1.2 px/mm -->
+  <rect x="80" y="140" width="720" height="576" class="frame"/>
+  <line x1="80" y1="152" x2="800" y2="152" class="rail"/>
+  <line x1="80" y1="704" x2="800" y2="704" class="rail"/>
+  <line x1="92" y1="140" x2="92" y2="716" class="rail"/>
+  <line x1="788" y1="140" x2="788" y2="716" class="rail"/>
+  <rect x="560" y="152" width="24" height="552" fill="#42566d"/>
+  <rect x="584" y="164" width="192" height="528" class="dry" opacity="0.58"/>
+  <rect x="104" y="164" width="456" height="528" class="wet" opacity="0.35"/>
+  <text x="290" y="183" class="label" text-anchor="middle">湿区净宽 380</text>
+  <text x="680" y="183" class="label" text-anchor="middle">干区净宽 160</text>
+
+  <!-- wet tray -->
+  <path d="M104,656 L560,656 L560,692 L104,692 Z" fill="#b9e4ea" stroke="#16869b" stroke-width="2"/>
+  <path d="M112,662 L552,662 L552,684 L112,684" fill="none" stroke="#16869b" stroke-width="2"/>
+  <text x="332" y="680" class="small" text-anchor="middle">PP 接水盘 380×320×30；覆盖全部湿件投影</text>
+
+  <!-- cartridge -->
+  <rect x="140" y="296" width="360" height="336" fill="#eaf8fb" stroke="#16869b" stroke-width="4" rx="4"/>
+  <rect x="164" y="320" width="312" height="288" fill="url(#sand)" stroke="#8b6a3e" stroke-width="2"/>
+  <rect x="164" y="320" width="312" height="24" fill="#f5f8fb" stroke="none"/>
+  <line x1="164" y1="344" x2="476" y2="344" stroke="#675038" stroke-width="3"/>
+  <text x="170" y="338" class="small">沙面 D3</text>
+  <text x="320" y="284" class="label" text-anchor="middle">快换透明沙芯 300×280×42</text>
+
+  <!-- ports -->
+  <line x1="164" y1="404" x2="476" y2="404" stroke="#2f80ed" stroke-width="2" stroke-dasharray="5 5" opacity="0.65"/>
+  <line x1="164" y1="482" x2="476" y2="482" stroke="#c6a21d" stroke-width="2" stroke-dasharray="5 5" opacity="0.65"/>
+  <line x1="164" y1="560" x2="476" y2="560" stroke="#eb5757" stroke-width="2" stroke-dasharray="5 5" opacity="0.65"/>
+  <circle cx="320" cy="404" r="10" class="port1"/>
+  <circle cx="320" cy="482" r="10" class="port2"/>
+  <circle cx="320" cy="560" r="10" class="port3"/>
+  <text x="334" y="399" class="label">L1 50 深</text>
+  <text x="334" y="477" class="label">L2 115 深</text>
+  <text x="334" y="555" class="label">L3 180 深</text>
+  <text x="334" y="416" class="tiny">背部快接 + 40 长侧孔管</text>
+  <text x="334" y="494" class="tiny">一次仅允许一台泵得电</text>
+  <text x="334" y="572" class="tiny">三支路各带止回阀</text>
+
+  <!-- optical fiducials and LED -->
+  <rect x="146" y="302" width="16" height="16" fill="#172334"/>
+  <rect x="478" y="302" width="16" height="16" fill="#172334"/>
+  <rect x="146" y="610" width="16" height="16" fill="#172334"/>
+  <rect x="478" y="610" width="16" height="16" fill="#172334"/>
+  <rect x="116" y="332" width="14" height="270" class="optical"/>
+  <rect x="510" y="332" width="14" height="270" class="optical"/>
+  <text x="116" y="625" class="tiny" text-anchor="middle">LED</text>
+  <text x="517" y="625" class="tiny" text-anchor="middle">LED</text>
+
+  <!-- dry electronics -->
+  <rect x="610" y="250" width="140" height="300" fill="#fff9ef" stroke="#c27918" stroke-width="3"/>
+  <rect x="625" y="275" width="110" height="74" fill="#ffffff" stroke="#c27918" stroke-width="2" rx="5"/>
+  <text x="680" y="307" class="label" text-anchor="middle">RDK X5</text>
+  <text x="680" y="328" class="small" text-anchor="middle">10 mm 隔离柱</text>
+  <rect x="625" y="370" width="110" height="58" fill="#ffffff" stroke="#c27918" stroke-width="2" rx="5"/>
+  <text x="680" y="404" class="label" text-anchor="middle">STM32F407</text>
+  <rect x="625" y="447" width="110" height="72" fill="#ffffff" stroke="#c27918" stroke-width="2" rx="5"/>
+  <text x="680" y="478" class="small" text-anchor="middle">USB Hub / DC-DC</text>
+  <text x="680" y="499" class="small" text-anchor="middle">高位穿线</text>
+
+  <!-- controls -->
+  <circle cx="680" cy="208" r="18" class="safety"/>
+  <text x="710" y="204" class="small">急停</text>
+  <circle cx="680" cy="572" r="12" fill="#57b86a" stroke="#256a33" stroke-width="2"/>
+  <circle cx="680" cy="610" r="12" fill="#f4f4f4" stroke="#5a6775" stroke-width="2"/>
+  <text x="705" y="576" class="small">Start</text>
+  <text x="705" y="614" class="small">Reset</text>
+
+  <!-- dimensioning front -->
+  <line x1="80" y1="716" x2="80" y2="756" class="ext"/>
+  <line x1="800" y1="716" x2="800" y2="756" class="ext"/>
+  <line x1="80" y1="750" x2="800" y2="750" class="dim"/>
+  <text x="440" y="744" class="label" text-anchor="middle">600</text>
+  <line x1="80" y1="140" x2="45" y2="140" class="ext"/>
+  <line x1="80" y1="716" x2="45" y2="716" class="ext"/>
+  <line x1="52" y1="140" x2="52" y2="716" class="dim"/>
+  <text x="43" y="430" class="label" transform="rotate(-90 43 430)" text-anchor="middle">480</text>
+
+  <rect x="100" y="785" width="675" height="105" class="callout"/>
+  <text x="120" y="810" class="label">正视关键关系</text>
+  <text x="120" y="835" class="small">① 左湿右干，隔板连续到底并与接水盘重叠 ≥20；水管不得越过隔板。</text>
+  <text x="120" y="858" class="small">② 四角标记、固定灯和相机锁定参数共同定义湿润区视觉基线。</text>
+  <text x="120" y="881" class="small">③ L1/L2/L3 是比例演示深度，不宣称真实作物根系处方。</text>
+
+  <!-- SIDE VIEW -->
+  <rect x="825" y="98" width="740" height="820" fill="#ffffff" stroke="#d6dde7" stroke-width="2" rx="10"/>
+  <text x="855" y="130" class="panel-title">B｜右侧视图（前方在左）</text>
+
+  <!-- core frame side, scale 0.9 px/mm -->
+  <rect x="1100" y="284" width="324" height="432" class="frame"/>
+  <line x1="1100" y1="294" x2="1424" y2="294" class="rail"/>
+  <line x1="1100" y1="706" x2="1424" y2="706" class="rail"/>
+  <line x1="1110" y1="284" x2="1110" y2="716" class="rail"/>
+  <line x1="1414" y1="284" x2="1414" y2="716" class="rail"/>
+
+  <!-- optical bridge -->
+  <line x1="830" y1="356" x2="1100" y2="356" class="rail"/>
+  <line x1="842" y1="350" x2="842" y2="430" class="rail"/>
+  <rect x="832" y="440" width="50" height="32" class="optical" rx="5"/>
+  <circle cx="857" cy="456" r="8" fill="#33285a"/>
+  <line x1="857" y1="456" x2="1172" y2="527" stroke="#6947a8" stroke-width="2" stroke-dasharray="9 6" marker-end="url(#arrow)"/>
+  <text x="900" y="438" class="small">UVC 镜头</text>
+  <text x="899" y="458" class="tiny">约 11° 向下；拆装后重标定</text>
+
+  <!-- cartridge and sand -->
+  <rect x="1172" y="401" width="38" height="252" fill="#eaf8fb" stroke="#16869b" stroke-width="3"/>
+  <rect x="1178" y="419" width="27" height="216" fill="url(#sand)" stroke="#8b6a3e" stroke-width="1.5"/>
+  <line x1="1178" y1="437" x2="1205" y2="437" stroke="#675038" stroke-width="2"/>
+  <text x="1159" y="390" class="small" text-anchor="middle">沙芯</text>
+  <rect x="1228" y="401" width="5" height="252" fill="#f1f1ed" stroke="#7e8791" stroke-width="1"/>
+  <text x="1240" y="396" class="tiny">白背板</text>
+
+  <!-- ports in side -->
+  <line x1="1205" y1="482" x2="1280" y2="482" stroke="#2f80ed" stroke-width="5"/>
+  <line x1="1205" y1="540" x2="1280" y2="540" stroke="#f2c94c" stroke-width="5"/>
+  <line x1="1205" y1="599" x2="1280" y2="599" stroke="#eb5757" stroke-width="5"/>
+  <text x="1290" y="487" class="small">三色快接支路</text>
+  <text x="1290" y="508" class="tiny">三台独立泵 + 止回阀</text>
+
+  <!-- tray and wet module -->
+  <path d="M1118,680 L1406,680 L1406,706 L1118,706 Z" fill="#b9e4ea" stroke="#16869b" stroke-width="2"/>
+  <rect x="1290" y="590" width="65" height="84" class="wet" rx="5"/>
+  <path d="M1302,590 L1343,590 L1348,607 L1297,607 Z" fill="#8dcbd4" stroke="#16869b"/>
+  <text x="1322" y="632" class="small" text-anchor="middle">0.5 L</text>
+  <text x="1322" y="650" class="tiny" text-anchor="middle">水箱/称重</text>
+  <rect x="1362" y="575" width="40" height="24" class="wet" rx="4"/>
+  <rect x="1362" y="607" width="40" height="24" class="wet" rx="4"/>
+  <rect x="1362" y="639" width="40" height="24" class="wet" rx="4"/>
+  <text x="1382" y="591" class="tiny" text-anchor="middle">泵 L1</text>
+  <text x="1382" y="623" class="tiny" text-anchor="middle">泵 L2</text>
+  <text x="1382" y="655" class="tiny" text-anchor="middle">泵 L3</text>
+  <text x="1255" y="696" class="small" text-anchor="middle">接水盘贯穿湿区；漏水片位于最低角</text>
+
+  <!-- dry bay projection callout -->
+  <rect x="1290" y="330" width="112" height="180" class="dry" opacity="0.8"/>
+  <text x="1346" y="365" class="small" text-anchor="middle">右侧干舱</text>
+  <text x="1346" y="386" class="tiny" text-anchor="middle">本侧投影可见</text>
+  <text x="1346" y="407" class="tiny" text-anchor="middle">电子板高置</text>
+  <text x="1346" y="428" class="tiny" text-anchor="middle">后上方排风</text>
+  <path d="M1380,450 C1400,440 1400,420 1380,410" fill="none" stroke="#c27918" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- side dimensions -->
+  <line x1="1100" y1="716" x2="1100" y2="760" class="ext"/>
+  <line x1="1424" y1="716" x2="1424" y2="760" class="ext"/>
+  <line x1="1100" y1="752" x2="1424" y2="752" class="dim"/>
+  <text x="1262" y="746" class="label" text-anchor="middle">核心深 360</text>
+  <line x1="830" y1="716" x2="830" y2="810" class="ext"/>
+  <line x1="1424" y1="716" x2="1424" y2="810" class="ext"/>
+  <line x1="830" y1="802" x2="1424" y2="802" class="dim"/>
+  <text x="1127" y="796" class="label" text-anchor="middle">部署总深 660</text>
+  <line x1="857" y1="456" x2="857" y2="840" class="ext"/>
+  <line x1="1172" y1="527" x2="1172" y2="840" class="ext"/>
+  <line x1="857" y1="832" x2="1172" y2="832" class="dim"/>
+  <text x="1014" y="826" class="label" text-anchor="middle">水平工作距 350</text>
+  <line x1="1424" y1="284" x2="1460" y2="284" class="ext"/>
+  <line x1="1424" y1="716" x2="1460" y2="716" class="ext"/>
+  <line x1="1452" y1="284" x2="1452" y2="716" class="dim"/>
+  <text x="1443" y="500" class="label" transform="rotate(-90 1443 500)" text-anchor="middle">480</text>
+
+  <rect x="855" y="855" width="680" height="48" class="callout"/>
+  <text x="875" y="878" class="small">前伸光学桥可拆；运输时核心深度仅 360。镜头与沙芯之间不放运动机构，P0 断电后无机械恢复动作。</text>
+  <text x="875" y="896" class="tiny">图示为名义布局；真实相机视场、插头空间和快接孔径必须用实物确认后开料。</text>
+
+  <!-- legend -->
+  <rect x="40" y="940" width="1520" height="42" fill="#ffffff" stroke="#d6dde7" rx="8"/>
+  <rect x="60" y="952" width="22" height="16" class="wet"/><text x="90" y="965" class="small">湿区/水路</text>
+  <rect x="190" y="952" width="22" height="16" class="dry"/><text x="220" y="965" class="small">干区/电子</text>
+  <rect x="330" y="952" width="22" height="16" class="optical"/><text x="360" y="965" class="small">光学件</text>
+  <rect x="470" y="952" width="22" height="16" class="safety"/><text x="500" y="965" class="small">安全/急停</text>
+  <circle cx="650" cy="960" r="7" class="port1"/><text x="666" y="965" class="small">L1</text>
+  <circle cx="716" cy="960" r="7" class="port2"/><text x="732" y="965" class="small">L2</text>
+  <circle cx="782" cy="960" r="7" class="port3"/><text x="798" y="965" class="small">L3</text>
+  <text x="910" y="965" class="small">P0 禁止项：底盘 / Nav2 / LiDAR / 深度相机 / IMU / 移动探针</text>
+</svg>

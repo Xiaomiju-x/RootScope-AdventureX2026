@@ -1,0 +1,67 @@
+{
+  "schema": "rootscope.stm32-sidecar-manifest.legacy.v1",
+  "version": "stm32-f103-pb7-v1-3173c3176173",
+  "content_root_sha256": "3173c31761732e60659efa03461c3ee2e238ea9b35db5cac5a78958157d8539d",
+  "firmware_expectation": {
+    "protocol_version": 1,
+    "build_id": 2026072501,
+    "hw_variant": 2,
+    "build_tag": "rs-f103-pb7-v1",
+    "required_capabilities_hex": "0x00000079"
+  },
+  "device_identity_sha256": "4fd1776962e4dfbf50cac6c41406fb4d0101a08d1f70e09e376ef37c76be19de",
+  "files": [
+    {
+      "path": "app/hardware/__init__.py",
+      "sha256": "660b46bf335d729043a885cd42e5e33c1d44d6dea18dd9f936f97d7feecec1ac",
+      "bytes": 1391
+    },
+    {
+      "path": "app/hardware/device_identity.py",
+      "sha256": "45c2059d588992ce91740bba08ad750442a1f5eebea9177023d6f61be78ffdee",
+      "bytes": 2548
+    },
+    {
+      "path": "app/hardware/physical_serial.py",
+      "sha256": "99b0ad96f78c3ab67fac6993ca597cde51943b775a62d6bcb7bdc422edf43b78",
+      "bytes": 9684
+    },
+    {
+      "path": "app/hardware/serial_writer.py",
+      "sha256": "5313c7bbae22dc0fb79d80da1d3c9d9be9b11bc0f089fd17529c70b4e2adcc81",
+      "bytes": 20997
+    },
+    {
+      "path": "app/serial/__init__.py",
+      "sha256": "eddb453969bab1b5ff25f6d6b9c4f05e5cf278f86e619f85216fde071aee2564",
+      "bytes": 1959
+    },
+    {
+      "path": "app/serial/fake_f407.py",
+      "sha256": "962742f914b4f08306ffa2566d94516c434a333812c962ef3fa76403e376fabd",
+      "bytes": 29327
+    },
+    {
+      "path": "app/serial/frame.py",
+      "sha256": "8ad021efbad4d53c3b4e95b1140ade89bc09e8498380f8f8a0815377ddcdc7da",
+      "bytes": 23729
+    },
+    {
+      "path": "app/serial/link.py",
+      "sha256": "6aaa03fc2f008553c8ce7bddfb54b67ac0af2b77860726d151d5d6fcd2095f98",
+      "bytes": 33358
+    },
+    {
+      "path": "tools/stm32_no_pump_dry_run.py",
+      "sha256": "86ca76c86352f76d1ccc020fc6754f85b67ca2f31a38b99c2fb22043c99c2f06",
+      "bytes": 18328
+    }
+  ],
+  "authority": {
+    "auto_start": false,
+    "automatic_unlock": false,
+    "arm_task_available_in_dry_run": false,
+    "arm_timed_task_available_in_dry_run": false,
+    "physical_completion": false
+  }
+}

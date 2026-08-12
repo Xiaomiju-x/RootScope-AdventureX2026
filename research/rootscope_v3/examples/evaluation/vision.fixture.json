@@ -1,0 +1,61 @@
+{
+  "schema": "rootscope.v3.vision-evaluation.v1",
+  "evaluation_id": "e0-vision-fixture",
+  "created_at_utc": "2026-07-24T00:00:00Z",
+  "evaluation_scope": "FIXTURE_ONLY",
+  "dataset": {
+    "dataset_id": "e0-empty-fixture",
+    "partition": "DEVELOPMENT",
+    "manifest_sha256": null,
+    "split_unit": "SOURCE_GROUP",
+    "sample_count": 0,
+    "formal_holdout": false
+  },
+  "optical_domain": {
+    "camera_id": null,
+    "lighting": "NO_CAMERA_E0",
+    "mount_fixed": false,
+    "exposure_fixed": false,
+    "white_balance_fixed": false,
+    "reference_patch_used": false
+  },
+  "backends": [
+    {
+      "backend_id": "not-executed",
+      "model_id": "rootscope-seed17-resnet18-cpu-onnx",
+      "model_sha256": "50ae8d2ec1cec0f3748efa127c6b9c00624684f8c112c8a7913c2a0e304a3bad",
+      "execution_actual": false,
+      "role": "PRIMARY"
+    }
+  ],
+  "counts": {
+    "raw_scored": 0,
+    "raw_top1_correct": 0,
+    "full_gate_scored": 0,
+    "full_gate_expected_outcome": 0,
+    "known_positive_count": 0,
+    "unknown_or_occluded_count": 0,
+    "false_irrigation_intent_count": 0,
+    "cpu_bpu_compared": 0,
+    "cpu_bpu_top1_agree": 0,
+    "non_finite_output_count": 0
+  },
+  "latency_ms": {
+    "measurement_scope": "END_TO_END",
+    "sample_count": 0,
+    "p50": null,
+    "p95": null,
+    "max": null,
+    "cold_start": null
+  },
+  "qualification": {
+    "status": "NOT_EVALUATED",
+    "gates_passed": [],
+    "claim_boundary": "SCHEMA_FIXTURE_ONLY_NO_VISION_EXECUTION"
+  },
+  "authority": {
+    "execution_authority": false,
+    "physical_authority": false,
+    "pump_command": false
+  }
+}

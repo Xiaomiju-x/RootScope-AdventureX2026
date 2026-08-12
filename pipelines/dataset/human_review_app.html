@@ -1,0 +1,1340 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>RootScope 候选图人工审阅</title>
+  <style>
+    :root {
+      --ink: #18221c;
+      --muted: #647068;
+      --line: #d8dfd9;
+      --paper: #f5f7f4;
+      --panel: #ffffff;
+      --green: #185c39;
+      --green-2: #26734c;
+      --green-soft: #e7f2eb;
+      --sand: #e5bc72;
+      --sand-soft: #fff4dc;
+      --red: #a52e2e;
+      --red-soft: #fff0ef;
+      --amber: #84570c;
+      --amber-soft: #fff5dc;
+      --blue: #315f90;
+      --blue-soft: #edf5ff;
+      --shadow: 0 12px 34px rgba(27, 45, 33, .08);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { min-height: 100%; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(229, 188, 114, .18), transparent 28rem),
+        var(--paper);
+      font-family: "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+      font-size: 14px;
+    }
+    button, input, select, textarea { font: inherit; }
+    button, select, input[type="checkbox"] { cursor: pointer; }
+    button:disabled, select:disabled, input:disabled, textarea:disabled { cursor: not-allowed; opacity: .58; }
+    a { color: var(--blue); }
+    :focus-visible { outline: 3px solid rgba(49, 95, 144, .28); outline-offset: 2px; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 20px;
+      color: #fff;
+      background: linear-gradient(110deg, #173d2b, #245e40 62%, #173d2b);
+      box-shadow: 0 4px 18px rgba(22, 48, 33, .18);
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      flex: none;
+      border: 1px solid rgba(255,255,255,.28);
+      border-radius: 11px;
+      background: rgba(255,255,255,.10);
+      font-weight: 800;
+      letter-spacing: -.04em;
+    }
+    .brand-title { font-size: 17px; font-weight: 750; white-space: nowrap; }
+    .brand-subtitle { margin-top: 2px; color: rgba(255,255,255,.72); font-size: 11px; }
+    .top-status { display: flex; align-items: center; justify-content: flex-end; gap: 8px; flex-wrap: wrap; }
+    .authority-badge {
+      padding: 7px 11px;
+      border: 1px solid rgba(255, 225, 159, .62);
+      border-radius: 999px;
+      color: #231b0e;
+      background: #ffd986;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .04em;
+    }
+    .mode-badge {
+      padding: 7px 11px;
+      border: 1px solid rgba(255,255,255,.38);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(255,255,255,.12);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .04em;
+    }
+    .mode-badge.fixture { border-color: #ffb2aa; background: #9d2f27; }
+    .top-metric { color: rgba(255,255,255,.86); font-size: 12px; white-space: nowrap; }
+
+    .authority-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 6px 18px;
+      color: #5c400e;
+      background: #fff0c7;
+      border-bottom: 1px solid #edd79e;
+      font-size: 12px;
+      text-align: center;
+    }
+    .authority-strip strong { color: #5b2a13; }
+    .fixture-strip {
+      display: none;
+      padding: 9px 16px;
+      color: #fff;
+      background: #8d2c2c;
+      font-size: 13px;
+      font-weight: 750;
+      text-align: center;
+    }
+    .fixture-strip.visible { display: block; }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(270px, 318px) minmax(420px, 1fr) minmax(350px, 430px);
+      gap: 12px;
+      height: calc(100vh - 105px);
+      min-height: 640px;
+      padding: 12px;
+    }
+    .pane {
+      min-height: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .pane-title {
+      margin: 0;
+      color: #26352b;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .03em;
+    }
+
+    /* Queue */
+    .queue-pane { display: flex; flex-direction: column; }
+    .filter-box { padding: 12px; border-bottom: 1px solid var(--line); background: #fbfcfb; }
+    .filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .filter-grid .wide { grid-column: 1 / -1; }
+    .compact-field { display: grid; gap: 4px; }
+    .compact-field label { color: var(--muted); font-size: 11px; font-weight: 700; }
+    input[type="text"], select, textarea {
+      width: 100%;
+      border: 1px solid #cfd8d1;
+      border-radius: 8px;
+      color: var(--ink);
+      background: #fff;
+    }
+    input[type="text"], select { height: 34px; padding: 0 9px; }
+    textarea { min-height: 70px; padding: 9px; resize: vertical; line-height: 1.48; }
+    .filter-actions { display: flex; gap: 7px; margin-top: 9px; }
+    .btn {
+      min-height: 34px;
+      padding: 7px 11px;
+      border: 1px solid #cdd6cf;
+      border-radius: 8px;
+      color: #26342b;
+      background: #fff;
+      font-weight: 700;
+    }
+    .btn:hover:not(:disabled) { border-color: #9dae9f; background: #f6f8f6; }
+    .btn-primary { border-color: var(--green); color: #fff; background: var(--green); }
+    .btn-primary:hover:not(:disabled) { border-color: var(--green-2); background: var(--green-2); }
+    .btn-subtle { color: var(--muted); background: transparent; }
+    .filter-actions .btn:first-child { flex: 1; }
+    .queue-summary { display: flex; justify-content: space-between; gap: 8px; margin-top: 10px; color: var(--muted); font-size: 11px; }
+    .thumb-list { flex: 1; min-height: 0; overflow-x: hidden; overflow-y: auto; padding: 8px; }
+    .thumb-card {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 9px;
+      min-width: 0;
+      max-width: 100%;
+      width: 100%;
+      margin-bottom: 7px;
+      padding: 7px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      color: inherit;
+      background: transparent;
+      overflow: hidden;
+      text-align: left;
+    }
+    .thumb-card:hover { background: #f4f7f4; }
+    .thumb-card.active { border-color: #80a88e; background: var(--green-soft); box-shadow: inset 3px 0 var(--green); }
+    .thumb-image {
+      width: 78px;
+      height: 62px;
+      object-fit: cover;
+      border-radius: 7px;
+      background: #e7ebe7;
+    }
+    .thumb-copy { min-width: 0; }
+    .thumb-title { overflow: hidden; margin: 1px 0 5px; font-size: 12px; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+    .thumb-meta { display: flex; align-items: center; gap: 5px; margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .mini-status { display: inline-block; max-width: 100%; overflow: hidden; padding: 2px 5px; border-radius: 999px; font-size: 9px; font-weight: 750; text-overflow: ellipsis; white-space: nowrap; }
+    .mini-status.unreviewed { color: #526057; background: #edf0ed; }
+    .mini-status.ready { color: var(--green); background: var(--green-soft); }
+    .mini-status.reject { color: var(--red); background: var(--red-soft); }
+    .mini-status.needs { color: var(--amber); background: var(--amber-soft); }
+    .pager { display: grid; grid-template-columns: 38px 1fr 38px; align-items: center; gap: 7px; padding: 9px 10px; border-top: 1px solid var(--line); }
+    .pager .btn { min-height: 32px; padding: 4px; }
+    .page-label { color: var(--muted); font-size: 11px; text-align: center; }
+
+    /* Image / evidence */
+    .image-pane { display: flex; flex-direction: column; }
+    .image-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--line); }
+    .image-nav { display: flex; gap: 6px; }
+    .image-stage {
+      position: relative;
+      display: grid;
+      place-items: center;
+      flex: 1;
+      min-height: 260px;
+      overflow: hidden;
+      padding: 12px;
+      background:
+        linear-gradient(45deg, #ecefeb 25%, transparent 25%),
+        linear-gradient(-45deg, #ecefeb 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ecefeb 75%),
+        linear-gradient(-45deg, transparent 75%, #ecefeb 75%), #f8faf8;
+      background-position: 0 0, 0 8px, 8px -8px, -8px 0;
+      background-size: 16px 16px;
+    }
+    .main-image { display: block; max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 6px 16px rgba(20,35,25,.12)); }
+    .image-placeholder { color: var(--muted); text-align: center; }
+    .position-badge { position: absolute; right: 12px; bottom: 12px; padding: 5px 8px; border-radius: 999px; color: #fff; background: rgba(24,34,28,.72); font-size: 11px; }
+    .evidence { max-height: 250px; overflow: auto; padding: 12px 14px 14px; border-top: 1px solid var(--line); background: #fff; }
+    .evidence-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .source-link { font-size: 12px; font-weight: 750; }
+    .evidence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 18px; margin-top: 10px; }
+    .datum { min-width: 0; }
+    .datum.wide { grid-column: 1 / -1; }
+    .datum-label { color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .02em; }
+    .datum-value { overflow-wrap: anywhere; margin-top: 2px; color: #28352c; font-size: 12px; }
+    .mono { font-family: Consolas, "Cascadia Mono", monospace; font-size: 10px; }
+
+    /* Form */
+    .review-pane { display: flex; flex-direction: column; }
+    .review-header { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 11px 13px; border-bottom: 1px solid var(--line); background: #fbfcfb; }
+    .dirty-mark { color: var(--amber); font-size: 11px; font-weight: 800; }
+    .review-scroll { flex: 1; min-height: 0; overflow: auto; padding: 12px; }
+    .review-section { margin-bottom: 12px; padding: 11px; border: 1px solid var(--line); border-radius: 11px; }
+    .review-section.visual { border-top: 3px solid var(--green); }
+    .review-section.rights { border-top: 3px solid var(--blue); }
+    .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin-bottom: 9px; }
+    .section-title { margin: 0; font-size: 13px; }
+    .section-hint { color: var(--muted); font-size: 10px; }
+    .field { display: grid; gap: 5px; margin-top: 9px; }
+    .field > label, .field-label { color: #48554c; font-size: 11px; font-weight: 750; }
+    .required::after { content: " *"; color: var(--red); }
+    .decision-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+    .choice-btn { min-height: 34px; padding: 5px 3px; border: 1px solid #d2d9d3; border-radius: 7px; color: #4d5a52; background: #fff; font-size: 10px; font-weight: 800; }
+    .choice-btn[data-active="true"] { border-color: var(--green); color: var(--green); background: var(--green-soft); box-shadow: inset 0 0 0 1px var(--green); }
+    .rights .choice-btn[data-active="true"] { border-color: var(--blue); color: var(--blue); background: var(--blue-soft); box-shadow: inset 0 0 0 1px var(--blue); }
+    .choice-btn[data-value="REJECT"][data-active="true"] { border-color: var(--red); color: var(--red); background: var(--red-soft); box-shadow: inset 0 0 0 1px var(--red); }
+    .choice-btn[data-value="NEEDS_REVIEW"][data-active="true"] { border-color: var(--amber); color: var(--amber); background: var(--amber-soft); box-shadow: inset 0 0 0 1px var(--amber); }
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .check-line { display: flex; align-items: flex-start; gap: 7px; color: #3f4c43; line-height: 1.35; }
+    .check-line input { margin-top: 2px; }
+    .reason-list { display: flex; flex-wrap: wrap; gap: 5px; }
+    .reason-chip { display: inline-flex; align-items: center; gap: 5px; padding: 5px 7px; border: 1px solid #d5ddd6; border-radius: 7px; color: #4c5950; background: #fafbfa; font-size: 10px; }
+    .reason-chip:has(input:checked) { border-color: #bd7773; color: #7f2727; background: var(--red-soft); }
+    .help { color: var(--muted); font-size: 10px; line-height: 1.45; }
+    .important-help { padding: 7px 8px; border-left: 3px solid var(--sand); color: #66470e; background: var(--sand-soft); }
+    .char-count { justify-self: end; color: var(--muted); font-size: 10px; }
+    .validation-box { display: none; margin: 0 12px 10px; padding: 9px 10px; border: 1px solid #e7b2ae; border-radius: 8px; color: #762525; background: var(--red-soft); font-size: 11px; line-height: 1.45; }
+    .validation-box.show { display: block; }
+    .review-footer { padding: 10px 12px 12px; border-top: 1px solid var(--line); background: #fff; }
+    .save-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+    .save-row .btn-primary { min-height: 40px; }
+    .revision { align-self: center; color: var(--muted); font-size: 10px; }
+    .shortcut { margin-top: 6px; color: var(--muted); font-size: 10px; text-align: center; }
+
+    .empty { display: grid; place-items: center; min-height: 180px; padding: 24px; color: var(--muted); text-align: center; }
+    .toast {
+      position: fixed;
+      z-index: 100;
+      left: 50%;
+      bottom: 24px;
+      max-width: min(92vw, 520px);
+      transform: translate(-50%, 20px);
+      padding: 10px 14px;
+      border-radius: 9px;
+      color: #fff;
+      background: #26372c;
+      box-shadow: 0 10px 28px rgba(18,31,22,.22);
+      opacity: 0;
+      pointer-events: none;
+      transition: .18s ease;
+    }
+    .toast.show { transform: translate(-50%, 0); opacity: 1; }
+    .toast.error { background: #8d2c2c; }
+    .fatal { max-width: 760px; margin: 70px auto; padding: 24px; border: 1px solid #e4aaa6; border-radius: 14px; color: #722424; background: var(--red-soft); }
+    .fatal h2 { margin-top: 0; }
+
+    @media (max-width: 1180px) {
+      .workspace { grid-template-columns: 260px minmax(390px, 1fr) 360px; }
+    }
+    @media (max-width: 940px) {
+      .workspace { grid-template-columns: 260px 1fr; height: auto; min-height: 0; }
+      .image-pane { min-height: 720px; }
+      .review-pane { grid-column: 1 / -1; min-height: 760px; }
+    }
+    @media (max-width: 650px) {
+      .topbar { align-items: flex-start; padding: 10px 12px; }
+      .brand-subtitle, .top-metric { display: none; }
+      .workspace { display: block; padding: 7px; }
+      .pane { margin-bottom: 8px; }
+      .queue-pane { height: 560px; }
+      .image-pane { min-height: 650px; }
+      .review-pane { min-height: 800px; }
+      .evidence-grid, .two-col { grid-template-columns: 1fr; }
+      .datum.wide { grid-column: auto; }
+      .authority-strip { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">R</div>
+      <div>
+        <div class="brand-title">RootScope 候选图人工审阅</div>
+        <div class="brand-subtitle">视觉判断与来源权利判断分别留证 · 不直接改写训练集</div>
+      </div>
+    </div>
+    <div class="top-status">
+      <span id="modeBadge" class="mode-badge">MODE UNVERIFIED</span>
+      <span class="authority-badge">NOT DATA LOCKED</span>
+      <span id="topMetric" class="top-metric">正在读取审阅会话…</span>
+    </div>
+  </header>
+
+  <div id="fixtureStrip" class="fixture-strip" role="alert">
+    FIXTURE 测试会话：仅用于界面与恢复测试，不得用于正式人工审阅或 A1 数据锁定。
+  </div>
+
+  <div class="authority-strip" role="status">
+    <strong>当前仅记录人工决定：</strong>
+    <span>无训练资格、无打印资格、无数据集清单写入权限；A1 独立审计通过后才能锁定数据。</span>
+  </div>
+
+  <main id="workspace" class="workspace" aria-busy="true">
+    <section class="pane queue-pane" aria-label="候选队列">
+      <div class="filter-box">
+        <h2 class="pane-title">审阅队列</h2>
+        <div class="filter-grid">
+          <div class="compact-field">
+            <label for="classFilter">采集类别提示</label>
+            <select id="classFilter"><option value="">全部类别</option></select>
+          </div>
+          <div class="compact-field">
+            <label for="statusFilter">审阅状态</label>
+            <select id="statusFilter">
+              <option value="">全部状态</option>
+              <option value="UNREVIEWED">未审阅</option>
+              <option value="NEEDS_REVIEW">需要复核</option>
+              <option value="CANONICAL_READY_FOR_FAMILY_AUDIT_NOT_DATA_LOCKED">代表图通过（待家族审计）</option>
+              <option value="SERIES_SIBLING_EXCLUDED_NOT_DATA_LOCKED">系列近重复图（排除）</option>
+              <option value="REJECTED_VISUAL_PENDING_EXPORT_NOT_DATA_LOCKED">视觉拒绝</option>
+              <option value="REJECTED_RIGHTS_PENDING_EXPORT_NOT_DATA_LOCKED">权利拒绝</option>
+            </select>
+          </div>
+          <div class="compact-field wide">
+            <label for="speciesFilter">采集物种 hint（精确）</label>
+            <input id="speciesFilter" type="text" autocomplete="off" placeholder="例如 desert_grass；留空不过滤">
+          </div>
+          <div class="compact-field wide">
+            <label for="queryFilter">搜索来源信息</label>
+            <input id="queryFilter" type="text" autocomplete="off" placeholder="pageid / 标题 / 作者 / query / source_group">
+          </div>
+        </div>
+        <div class="filter-actions">
+          <button id="applyFilter" class="btn btn-primary" type="button">应用筛选</button>
+          <button id="resetFilter" class="btn btn-subtle" type="button">重置</button>
+        </div>
+        <div class="queue-summary">
+          <span id="matchedCount">—</span>
+          <span id="eventCount">—</span>
+        </div>
+      </div>
+      <div id="thumbList" class="thumb-list" aria-live="polite"></div>
+      <div class="pager">
+        <button id="pagePrev" class="btn" type="button" title="上一页">←</button>
+        <span id="pageLabel" class="page-label">—</span>
+        <button id="pageNext" class="btn" type="button" title="下一页">→</button>
+      </div>
+    </section>
+
+    <section class="pane image-pane" aria-label="候选大图与来源证据">
+      <div class="image-toolbar">
+        <h2 id="itemTitle" class="pane-title">请选择候选图</h2>
+        <div class="image-nav">
+          <button id="itemPrev" class="btn" type="button">← 上一张</button>
+          <button id="itemNext" class="btn" type="button">下一张 →</button>
+        </div>
+      </div>
+      <div id="imageStage" class="image-stage">
+        <div class="image-placeholder">候选图将在这里显示</div>
+        <span id="positionBadge" class="position-badge" hidden></span>
+      </div>
+      <div class="evidence">
+        <div class="evidence-head">
+          <h3 class="pane-title">候选来源证据</h3>
+          <a id="sourceLink" class="source-link" href="#" target="_blank" rel="noopener noreferrer" hidden>打开 Wikimedia 来源页 ↗</a>
+        </div>
+        <div id="evidenceGrid" class="evidence-grid"></div>
+      </div>
+    </section>
+
+    <section class="pane review-pane" aria-label="人工决定表单">
+      <div class="review-header">
+        <h2 class="pane-title">人工决定</h2>
+        <span id="dirtyMark" class="dirty-mark" hidden>● 有未保存修改</span>
+      </div>
+      <div id="reviewScroll" class="review-scroll">
+        <section class="review-section visual">
+          <div class="section-head">
+            <h3 class="section-title">A. 视觉判断</h3>
+            <span class="section-hint">只判断图像与形态</span>
+          </div>
+          <div id="visualDecisionButtons" class="decision-row" role="group" aria-label="视觉判断"></div>
+          <div class="two-col">
+            <div class="field">
+              <label class="required" for="targetClass">目标类别</label>
+              <select id="targetClass"><option value="">请选择</option></select>
+            </div>
+            <div class="field">
+              <label for="unknownScenario">unknown 场景</label>
+              <select id="unknownScenario"><option value="">不适用 / 未选择</option></select>
+            </div>
+          </div>
+          <p class="help important-help">采集时的 class_hint / species_hint 只用于排队，绝不自动映射为 target_class 或 unknown_scenario；必须看图后人工选择。</p>
+          <div class="field">
+            <label class="required" for="visualReviewer">视觉审阅人</label>
+            <input id="visualReviewer" type="text" autocomplete="username" placeholder="例如 member_a">
+          </div>
+          <div class="field">
+            <span class="field-label">视觉原因码</span>
+            <div id="visualReasons" class="reason-list"></div>
+          </div>
+        </section>
+
+        <section class="review-section rights">
+          <div class="section-head">
+            <h3 class="section-title">B. 来源与权利判断</h3>
+            <span class="section-hint">必须回到来源页核对</span>
+          </div>
+          <div id="rightsDecisionButtons" class="decision-row" role="group" aria-label="来源与权利判断"></div>
+          <div class="field">
+            <label class="required" for="rightsReviewer">权利审阅人</label>
+            <input id="rightsReviewer" type="text" autocomplete="username" placeholder="例如 member_d">
+          </div>
+          <div class="field">
+            <label class="check-line" for="confirmSourcePage">
+              <input id="confirmSourcePage" type="checkbox">
+              <span>我已打开上方 Wikimedia 来源页并核对本候选的对应关系</span>
+            </label>
+            <label class="check-line" for="confirmCreatorLicense">
+              <input id="confirmCreatorLicense" type="checkbox">
+              <span>我已核对作者/归属、许可名称和许可链接</span>
+            </label>
+            <label class="check-line" for="confirmNonCopyright">
+              <input id="confirmNonCopyright" type="checkbox">
+              <span>我已检查隐私、人格权、商标等非版权风险</span>
+            </label>
+          </div>
+          <div class="field">
+            <button id="generateRightsEvidence" class="btn" type="button">生成永久版本绑定的人工权利核对回执</button>
+            <span id="rightsEvidenceStatus" class="help">尚未生成回执；回执只记录人工核对并绑定 oldid，不包含网页快照。</span>
+          </div>
+          <div class="field">
+            <label for="rightsEvidenceSha">权利核对回执 SHA-256</label>
+            <input id="rightsEvidenceSha" class="mono" type="text" autocomplete="off" spellcheck="false" maxlength="64" placeholder="由上方按钮生成，不接受手工填写" readonly>
+          </div>
+          <div class="field">
+            <label for="sourcePageRevision">来源页 revision ID / oldid *</label>
+            <input id="sourcePageRevision" type="text" autocomplete="off" spellcheck="false" placeholder="必须填写 Commons 永久版本号">
+          </div>
+          <div class="field">
+            <span class="field-label">权利原因码</span>
+            <div id="rightsReasons" class="reason-list"></div>
+          </div>
+        </section>
+
+        <section class="review-section">
+          <div class="section-head">
+            <h3 class="section-title">C. 独立性与系列关系</h3>
+            <span class="section-hint">供后续泄漏审计使用</span>
+          </div>
+          <div class="field">
+            <label class="required" for="reviewedSourceGroup">人工确认的 source family</label>
+            <input id="reviewedSourceGroup" type="text" autocomplete="off" spellcheck="false" placeholder="例如 human:photographer-jane-trip-2024">
+            <span class="help important-help"><strong>reviewed_source_group 是人工认定的独立性家族，不能替换、覆盖或伪装采集清单中的原始 source_group。</strong></span>
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label for="familyRole">系列角色</label>
+              <select id="familyRole"><option value="">请选择 / 不适用</option></select>
+            </div>
+            <div class="field">
+              <label for="nearDuplicateFamily">近重复家族</label>
+              <input id="nearDuplicateFamily" type="text" autocomplete="off" spellcheck="false" placeholder="例如 family:acacia-001">
+              <span class="help">存在系列兄弟时，代表图和所有兄弟必须填写同一个 family:*；否则家族审计不会通过。</span>
+            </div>
+          </div>
+          <div class="field">
+            <label for="notes">备注</label>
+            <textarea id="notes" maxlength="500" placeholder="记录边界判断、需复核点或系列关系。不要写入密码、token 或个人敏感信息。"></textarea>
+            <span id="noteCount" class="char-count">0 / 500</span>
+          </div>
+        </section>
+      </div>
+      <div id="validationBox" class="validation-box" role="alert"></div>
+      <div class="review-footer">
+        <div class="save-row">
+          <button id="saveDecision" class="btn btn-primary" type="button">保存为追加式审阅事件</button>
+          <span id="revisionLabel" class="revision">revision —</span>
+        </div>
+        <div class="shortcut">Ctrl+S 保存 · Alt+← / Alt+→ 切换图片 · 不会自动保存决定</div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+  "use strict";
+  (() => {
+    const PAGE_SIZE = 24;
+    const STORAGE_KEY = "rootscope-human-review-ui-v1";
+    const HEX64 = /^[0-9a-f]{64}$/;
+    const state = {
+      mode: "UNVERIFIED",
+      csrfToken: "",
+      policy: {},
+      stats: {},
+      items: [],
+      matchedCount: 0,
+      offset: 0,
+      selectedIndex: -1,
+      selectedAsset: "",
+      draft: null,
+      dirty: false,
+      busy: false,
+      filters: { class_hint: "", species_hint: "", review_status: "", q: "" }
+    };
+
+    const el = (id) => document.getElementById(id);
+    const workspace = el("workspace");
+
+    function showToast(message, isError = false) {
+      const toast = el("toast");
+      toast.textContent = message;
+      toast.classList.toggle("error", isError);
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 2600);
+    }
+
+    function fatal(message) {
+      workspace.className = "fatal";
+      workspace.replaceChildren();
+      const title = document.createElement("h2");
+      title.textContent = "审阅工具启动失败";
+      const body = document.createElement("p");
+      body.textContent = message;
+      const hint = document.createElement("p");
+      hint.textContent = "请确认通过本机 RootScope 审阅服务打开本页，并检查服务端终端日志。未建立绑定会话前不要记录任何决定。";
+      workspace.append(title, body, hint);
+      workspace.setAttribute("aria-busy", "false");
+    }
+
+    async function fetchJson(url, options = {}) {
+      const response = await fetch(url, { cache: "no-store", ...options });
+      let payload;
+      try { payload = await response.json(); }
+      catch (_) { throw new Error(`服务返回了无法解析的内容（HTTP ${response.status}）`); }
+      if (!response.ok) throw new Error(payload.error || `请求失败（HTTP ${response.status}）`);
+      return payload;
+    }
+
+    function readPreferences() {
+      try {
+        const value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        if (!value || typeof value !== "object") return;
+        const filters = value.filters;
+        if (filters && typeof filters === "object") {
+          for (const key of Object.keys(state.filters)) {
+            if (typeof filters[key] === "string") state.filters[key] = filters[key];
+          }
+        }
+        if (typeof value.visualReviewer === "string") el("visualReviewer").value = value.visualReviewer;
+        if (typeof value.rightsReviewer === "string") el("rightsReviewer").value = value.rightsReviewer;
+      } catch (_) {
+        localStorage.removeItem(STORAGE_KEY);
+      }
+    }
+
+    function writePreferences() {
+      /* Deliberately excludes all authoritative decision fields. */
+      const value = {
+        filters: { ...state.filters },
+        visualReviewer: el("visualReviewer").value.trim(),
+        rightsReviewer: el("rightsReviewer").value.trim()
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
+    }
+
+    function option(select, value, label) {
+      const node = document.createElement("option");
+      node.value = value;
+      node.textContent = label;
+      select.appendChild(node);
+    }
+
+    const labels = {
+      UNREVIEWED: "未审阅",
+      PASS: "通过",
+      REJECT: "拒绝",
+      NEEDS_REVIEW: "需复核",
+      grass_clump: "草丛 grass_clump",
+      low_shrub: "低矮灌木 low_shrub",
+      young_tree: "小树苗 young_tree",
+      unknown: "未知/干扰 unknown",
+      UNASSIGNED: "未分配系列角色",
+      CANONICAL_REPRESENTATIVE: "家族代表图",
+      SERIES_SIBLING_EXCLUDED: "系列近重复图（排除）",
+      HOLD: "保留待复核",
+      CANONICAL_READY_FOR_FAMILY_AUDIT_NOT_DATA_LOCKED: "代表图通过 · 待家族审计",
+      SERIES_SIBLING_EXCLUDED_NOT_DATA_LOCKED: "系列近重复图 · 排除",
+      REJECTED_VISUAL_PENDING_EXPORT_NOT_DATA_LOCKED: "视觉拒绝 · 待导出",
+      REJECTED_RIGHTS_PENDING_EXPORT_NOT_DATA_LOCKED: "权利拒绝 · 待导出"
+    };
+    function labelOf(value) { return labels[value] || String(value).replaceAll("_", " "); }
+
+    function arrayPolicy(...keys) {
+      for (const key of keys) {
+        if (Array.isArray(state.policy[key])) return state.policy[key];
+      }
+      return [];
+    }
+
+    function configurePolicy() {
+      const classFilter = el("classFilter");
+      const targetClass = el("targetClass");
+      for (const value of arrayPolicy("target_classes")) {
+        option(classFilter, value, labelOf(value));
+        option(targetClass, value, labelOf(value));
+      }
+      for (const value of arrayPolicy("unknown_scenarios")) option(el("unknownScenario"), value, labelOf(value));
+      el("familyRole").replaceChildren();
+      for (const value of arrayPolicy("family_roles")) option(el("familyRole"), value, labelOf(value));
+      makeDecisionButtons("visualDecisionButtons", arrayPolicy("visual_decisions"), "visual_decision");
+      makeDecisionButtons("rightsDecisionButtons", arrayPolicy("rights_decisions"), "rights_decision");
+      makeReasonChecks("visualReasons", arrayPolicy("visual_reason_codes", "rejection_reasons"), "visual_reason_codes");
+      makeReasonChecks("rightsReasons", arrayPolicy("rights_reason_codes", "rejection_reasons"), "rights_reason_codes");
+    }
+
+    function makeDecisionButtons(containerId, values, draftKey) {
+      const container = el(containerId);
+      container.replaceChildren();
+      for (const value of values) {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "choice-btn";
+        button.dataset.value = value;
+        button.dataset.active = "false";
+        button.textContent = labelOf(value);
+        button.addEventListener("click", () => {
+          if (!state.draft) return;
+          state.draft[draftKey] = value;
+          if (draftKey === "visual_decision") {
+            state.draft.visual_reviewer = value === "UNREVIEWED" ? "" : el("visualReviewer").value.trim();
+          }
+          if (draftKey === "rights_decision") {
+            state.draft.rights_reviewer = value === "UNREVIEWED" ? "" : el("rightsReviewer").value.trim();
+            if (value === "UNREVIEWED") {
+              clearRightsEvidenceBinding();
+              state.draft.rights_source_page_checked = false;
+              state.draft.rights_evidence_sha256 = "";
+              state.draft.source_page_revision_id = "";
+              el("rightsEvidenceSha").value = "";
+              el("sourcePageRevision").value = "";
+              el("rightsEvidenceStatus").textContent = "权利轴已恢复为未审阅；永久版本核对回执已清除。";
+              for (const id of ["confirmSourcePage", "confirmCreatorLicense", "confirmNonCopyright"]) el(id).checked = false;
+            }
+          }
+          renderDecisionButtons();
+          markDirty();
+        });
+        container.appendChild(button);
+      }
+    }
+
+    function makeReasonChecks(containerId, values, draftKey) {
+      const container = el(containerId);
+      container.replaceChildren();
+      for (const value of values) {
+        const label = document.createElement("label");
+        label.className = "reason-chip";
+        const input = document.createElement("input");
+        input.type = "checkbox";
+        input.value = value;
+        input.addEventListener("change", () => {
+          if (!state.draft) return;
+          const selected = Array.from(container.querySelectorAll("input:checked"), node => node.value);
+          state.draft[draftKey] = selected;
+          markDirty();
+        });
+        const text = document.createElement("span");
+        text.textContent = labelOf(value);
+        label.append(input, text);
+        container.appendChild(label);
+      }
+    }
+
+    function applyStoredFiltersToControls() {
+      el("classFilter").value = state.filters.class_hint;
+      el("speciesFilter").value = state.filters.species_hint;
+      el("statusFilter").value = state.filters.review_status;
+      el("queryFilter").value = state.filters.q;
+    }
+
+    function collectFilters() {
+      state.filters = {
+        class_hint: el("classFilter").value,
+        species_hint: el("speciesFilter").value.trim(),
+        review_status: el("statusFilter").value,
+        q: el("queryFilter").value.trim()
+      };
+      writePreferences();
+    }
+
+    function queryString() {
+      const params = new URLSearchParams({ offset: String(state.offset), limit: String(PAGE_SIZE) });
+      for (const [key, value] of Object.entries(state.filters)) if (value) params.set(key, value);
+      return params.toString();
+    }
+
+    async function loadItems({ keepAsset = "", resetOffset = false } = {}) {
+      if (resetOffset) state.offset = 0;
+      setBusy(true);
+      try {
+        const data = await fetchJson(`/api/items?${queryString()}`);
+        if (data.status && !String(data.status).includes("NOT_DATA_LOCKED")) {
+          throw new Error("服务未返回 NOT_DATA_LOCKED 状态，已拒绝加载");
+        }
+        state.items = Array.isArray(data.items) ? data.items : [];
+        state.matchedCount = Number(data.matched_count || 0);
+        if (data.policy && typeof data.policy === "object") state.policy = { ...state.policy, ...data.policy };
+        let index = keepAsset ? state.items.findIndex(item => item.asset === keepAsset) : -1;
+        if (index < 0 && state.items.length) index = 0;
+        state.selectedIndex = index;
+        state.selectedAsset = index >= 0 ? state.items[index].asset : "";
+        renderQueue();
+        renderSelected();
+      } finally {
+        setBusy(false);
+      }
+    }
+
+    function setBusy(value) {
+      state.busy = value;
+      workspace.setAttribute("aria-busy", value ? "true" : "false");
+      el("applyFilter").disabled = value;
+      el("resetFilter").disabled = value;
+      el("pagePrev").disabled = value || state.offset === 0;
+      el("pageNext").disabled = value || state.offset + PAGE_SIZE >= state.matchedCount;
+      el("itemPrev").disabled = value || state.selectedIndex <= 0;
+      el("itemNext").disabled = value || state.selectedIndex < 0 || state.selectedIndex >= state.items.length - 1;
+      const disableReview = value || !selectedItem();
+      for (const node of document.querySelectorAll(".review-pane input, .review-pane select, .review-pane textarea, .review-pane button")) node.disabled = disableReview;
+    }
+
+    function statusClass(status) {
+      if (status === "UNREVIEWED") return "unreviewed";
+      if (String(status).includes("READY")) return "ready";
+      if (String(status).includes("REJECT")) return "reject";
+      return "needs";
+    }
+
+    function renderQueue() {
+      const list = el("thumbList");
+      list.replaceChildren();
+      if (!state.items.length) {
+        const empty = document.createElement("div");
+        empty.className = "empty";
+        empty.textContent = "当前筛选条件下没有候选图。";
+        list.appendChild(empty);
+      }
+      state.items.forEach((item, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `thumb-card${index === state.selectedIndex ? " active" : ""}`;
+        button.addEventListener("click", () => selectIndex(index));
+        const image = document.createElement("img");
+        image.className = "thumb-image";
+        image.src = item.image_url;
+        image.alt = "";
+        image.loading = "lazy";
+        const copy = document.createElement("span");
+        copy.className = "thumb-copy";
+        const title = document.createElement("span");
+        title.className = "thumb-title";
+        title.textContent = item.title || item.asset || `pageid ${item.pageid}`;
+        const hint = document.createElement("span");
+        hint.className = "thumb-meta";
+        hint.textContent = `${labelOf(item.class_hint)} · ${item.species_hint || "无 species hint"}`;
+        const meta = document.createElement("span");
+        meta.className = "thumb-meta";
+        const status = document.createElement("span");
+        status.className = `mini-status ${statusClass(item.review_status)}`;
+        status.textContent = labelOf(item.review_status);
+        meta.appendChild(status);
+        copy.append(title, hint, meta);
+        button.append(image, copy);
+        list.appendChild(button);
+      });
+      const start = state.matchedCount ? state.offset + 1 : 0;
+      const end = Math.min(state.offset + state.items.length, state.matchedCount);
+      el("matchedCount").textContent = `匹配 ${state.matchedCount} · 当前 ${start}–${end}`;
+      const totalPages = Math.max(1, Math.ceil(state.matchedCount / PAGE_SIZE));
+      const currentPage = Math.min(totalPages, Math.floor(state.offset / PAGE_SIZE) + 1);
+      el("pageLabel").textContent = `第 ${currentPage} / ${totalPages} 页`;
+      el("pagePrev").disabled = state.busy || state.offset === 0;
+      el("pageNext").disabled = state.busy || state.offset + PAGE_SIZE >= state.matchedCount;
+    }
+
+    function canAbandonDraft() {
+      return !state.dirty || window.confirm("当前图片有未保存修改。确认放弃修改并切换吗？");
+    }
+
+    function selectIndex(index) {
+      if (index < 0 || index >= state.items.length || index === state.selectedIndex) return;
+      if (!canAbandonDraft()) return;
+      state.selectedIndex = index;
+      state.selectedAsset = state.items[index].asset;
+      state.dirty = false;
+      renderQueue();
+      renderSelected();
+      const active = el("thumbList").querySelector(".thumb-card.active");
+      if (active) active.scrollIntoView({ block: "nearest" });
+    }
+
+    function selectedItem() { return state.selectedIndex >= 0 ? state.items[state.selectedIndex] : null; }
+
+    function addDatum(grid, label, value, wide = false, mono = false) {
+      const wrapper = document.createElement("div");
+      wrapper.className = `datum${wide ? " wide" : ""}`;
+      const key = document.createElement("div");
+      key.className = "datum-label";
+      key.textContent = label;
+      const content = document.createElement("div");
+      content.className = `datum-value${mono ? " mono" : ""}`;
+      content.textContent = value === undefined || value === null || value === "" ? "—" : String(value);
+      wrapper.append(key, content);
+      grid.appendChild(wrapper);
+    }
+
+    function emptyDecision() {
+      return {
+        visual_decision: "UNREVIEWED",
+        rights_decision: "UNREVIEWED",
+        target_class: "",
+        unknown_scenario: "",
+        reviewed_source_group: "",
+        family_role: "UNASSIGNED",
+        near_duplicate_family: "",
+        visual_reviewer: "",
+        rights_reviewer: "",
+        rights_source_page_checked: false,
+        rights_evidence_sha256: "",
+        source_page_revision_id: "",
+        visual_reason_codes: [],
+        rights_reason_codes: [],
+        notes: ""
+      };
+    }
+
+    function normalizedDraft(item) {
+      const incoming = item && item.decision && typeof item.decision === "object" ? item.decision : {};
+      const defaults = emptyDecision();
+      const result = {};
+      /* Explicit allow-list: persisted UTC/provenance/legacy fields must never be POSTed. */
+      for (const key of Object.keys(defaults)) {
+        result[key] = Object.prototype.hasOwnProperty.call(incoming, key) ? incoming[key] : defaults[key];
+      }
+      /* Compatibility with an early pre-A1 reviewer snapshot; never stored automatically. */
+      if (!result.visual_reviewer && typeof incoming.reviewer === "string") result.visual_reviewer = incoming.reviewer;
+      if (!result.rights_reviewer && typeof incoming.reviewer === "string") result.rights_reviewer = incoming.reviewer;
+      if ((!Array.isArray(result.visual_reason_codes) || !result.visual_reason_codes.length) && Array.isArray(incoming.rejection_reasons)) result.visual_reason_codes = [...incoming.rejection_reasons];
+      if (!Array.isArray(result.visual_reason_codes)) result.visual_reason_codes = [];
+      if (!Array.isArray(result.rights_reason_codes)) result.rights_reason_codes = [];
+      for (const key of ["visual_decision", "rights_decision", "target_class", "unknown_scenario", "reviewed_source_group", "family_role", "near_duplicate_family", "visual_reviewer", "rights_reviewer", "rights_evidence_sha256", "source_page_revision_id", "notes"]) {
+        if (typeof result[key] !== "string") result[key] = "";
+      }
+      result.rights_source_page_checked = result.rights_source_page_checked === true;
+      return result;
+    }
+
+    function renderSelected() {
+      const item = selectedItem();
+      const stage = el("imageStage");
+      stage.replaceChildren();
+      const grid = el("evidenceGrid");
+      grid.replaceChildren();
+      const link = el("sourceLink");
+      if (!item) {
+        const placeholder = document.createElement("div");
+        placeholder.className = "image-placeholder";
+        placeholder.textContent = "没有可显示的候选图";
+        stage.appendChild(placeholder);
+        el("itemTitle").textContent = "无候选图";
+        link.hidden = true;
+        state.draft = null;
+        setFormDisabled(true);
+        el("positionBadge").hidden = true;
+        return;
+      }
+      const image = document.createElement("img");
+      image.className = "main-image";
+      image.src = item.image_url;
+      image.alt = "待审阅候选植物图";
+      image.addEventListener("error", () => showToast("图片载入失败；请检查服务端完整性日志", true), { once: true });
+      const badge = document.createElement("span");
+      badge.className = "position-badge";
+      badge.textContent = `${state.offset + state.selectedIndex + 1} / ${state.matchedCount}`;
+      stage.append(image, badge);
+      el("itemTitle").textContent = item.title || item.asset || `pageid ${item.pageid}`;
+      if (typeof item.source_url === "string" && /^https:\/\//i.test(item.source_url)) {
+        link.href = item.source_url;
+        link.hidden = false;
+      } else {
+        link.removeAttribute("href");
+        link.hidden = true;
+      }
+      addDatum(grid, "资产", item.asset, true);
+      addDatum(grid, "采集类别提示", labelOf(item.class_hint));
+      addDatum(grid, "采集物种 hint", item.species_hint || "—");
+      addDatum(grid, "原始 source_group（只读）", item.source_group, true, true);
+      addDatum(grid, "作者 / 归属", item.creator || item.artist || "—", true);
+      addDatum(grid, "许可", item.license || "—");
+      addDatum(grid, "来源 pageid", item.pageid);
+      addDatum(grid, "许可链接", item.license_url || "—", true);
+      addDatum(grid, "候选 SHA-256", item.sha256 || item.candidate_sha256, true, true);
+      addDatum(grid, "采集 query", item.acquisition_query || "—", true);
+
+      state.draft = normalizedDraft(item);
+      state.dirty = false;
+      setFormDisabled(false);
+      populateForm();
+      renderDecisionButtons();
+      renderDirty();
+      el("revisionLabel").textContent = `revision ${Number(item.review_revision || 0)}`;
+      el("itemPrev").disabled = state.busy || state.selectedIndex <= 0;
+      el("itemNext").disabled = state.busy || state.selectedIndex >= state.items.length - 1;
+    }
+
+    function setFormDisabled(value) {
+      for (const node of document.querySelectorAll(".review-pane input, .review-pane select, .review-pane textarea, .review-pane button")) node.disabled = value;
+    }
+
+    function setSelectValue(id, value) {
+      const select = el(id);
+      if (value && !Array.from(select.options).some(node => node.value === value)) option(select, value, `${value}（历史值）`);
+      select.value = value || "";
+    }
+
+    function populateForm() {
+      const d = state.draft;
+      if (!d) return;
+      setSelectValue("targetClass", d.target_class);
+      setSelectValue("unknownScenario", d.unknown_scenario);
+      setSelectValue("familyRole", d.family_role);
+      el("reviewedSourceGroup").value = d.reviewed_source_group;
+      el("nearDuplicateFamily").value = d.near_duplicate_family;
+      el("visualReviewer").value = d.visual_reviewer || el("visualReviewer").value;
+      el("rightsReviewer").value = d.rights_reviewer || el("rightsReviewer").value;
+      el("rightsEvidenceSha").value = d.rights_evidence_sha256;
+      el("sourcePageRevision").value = d.source_page_revision_id;
+      for (const id of ["confirmSourcePage", "confirmCreatorLicense", "confirmNonCopyright"]) el(id).checked = false;
+      el("rightsEvidenceStatus").textContent = d.rights_evidence_sha256
+        ? "当前决定已绑定永久版本人工核对回执；如修改审阅人或 oldid，必须重新生成。"
+        : "尚未生成回执；回执只记录人工核对并绑定 oldid，不包含网页快照。";
+      el("notes").value = d.notes;
+      el("noteCount").textContent = `${d.notes.length} / 500`;
+      setReasonChecks("visualReasons", d.visual_reason_codes);
+      setReasonChecks("rightsReasons", d.rights_reason_codes);
+      el("validationBox").classList.remove("show");
+      el("validationBox").replaceChildren();
+    }
+
+    function setReasonChecks(containerId, values) {
+      const selected = new Set(values || []);
+      for (const input of el(containerId).querySelectorAll("input")) input.checked = selected.has(input.value);
+    }
+
+    function renderDecisionButtons() {
+      if (!state.draft) return;
+      for (const [containerId, key] of [["visualDecisionButtons", "visual_decision"], ["rightsDecisionButtons", "rights_decision"]]) {
+        for (const button of el(containerId).querySelectorAll("button")) button.dataset.active = String(button.dataset.value === state.draft[key]);
+      }
+    }
+
+    function markDirty() {
+      if (!state.draft) return;
+      state.dirty = true;
+      renderDirty();
+      el("validationBox").classList.remove("show");
+    }
+
+    function clearRightsEvidenceBinding() {
+      if (!state.draft || !state.draft.rights_evidence_sha256) return;
+      state.draft.rights_evidence_sha256 = "";
+      state.draft.rights_source_page_checked = false;
+      el("rightsEvidenceSha").value = "";
+      el("rightsEvidenceStatus").textContent = "审阅人或 oldid 已改变，旧核对回执已清除；请重新核对并生成。";
+      for (const id of ["confirmSourcePage", "confirmCreatorLicense", "confirmNonCopyright"]) el(id).checked = false;
+    }
+
+    function renderDirty() { el("dirtyMark").hidden = !state.dirty; }
+
+    function bindDraftInput(id, key, transform = value => value) {
+      const node = el(id);
+      const eventName = node.tagName === "SELECT" || node.type === "checkbox" ? "change" : "input";
+      node.addEventListener(eventName, () => {
+        if (!state.draft) return;
+        if (id === "rightsReviewer" || id === "sourcePageRevision") clearRightsEvidenceBinding();
+        const raw = node.type === "checkbox" ? node.checked : node.value;
+        state.draft[key] = transform(raw);
+        if (id === "notes") el("noteCount").textContent = `${node.value.length} / 500`;
+        if (id === "visualReviewer" || id === "rightsReviewer") writePreferences();
+        markDirty();
+      });
+    }
+
+    function validationErrors(d) {
+      const errors = [];
+      const visualTouched = d.visual_decision !== "UNREVIEWED";
+      const rightsTouched = d.rights_decision !== "UNREVIEWED";
+      if (visualTouched && !d.visual_reviewer) errors.push("视觉判断不是“未审阅”时，必须填写视觉审阅人。");
+      if (rightsTouched && !d.rights_reviewer) errors.push("权利判断不是“未审阅”时，必须填写权利审阅人。");
+      if (!visualTouched && d.visual_reviewer) errors.push("视觉轴仍为“未审阅”，不能写入视觉审阅人。");
+      if (!rightsTouched && d.rights_reviewer) errors.push("权利轴仍为“未审阅”，不能写入权利审阅人。");
+      const reviewerPattern = state.policy.reviewer_pattern;
+      if (reviewerPattern) {
+        try {
+          const reviewerRegex = new RegExp(reviewerPattern);
+          if (d.visual_reviewer && !reviewerRegex.test(d.visual_reviewer)) errors.push("视觉审阅人不符合冻结策略格式。");
+          if (d.rights_reviewer && !reviewerRegex.test(d.rights_reviewer)) errors.push("权利审阅人不符合冻结策略格式。");
+        } catch (_) { errors.push("服务端审阅人策略正则无效，请停止审阅。"); }
+      }
+      if (d.visual_decision === "PASS" && !d.target_class) errors.push("视觉通过时必须人工选择 target_class。");
+      if (d.visual_decision !== "PASS" && (d.target_class || d.unknown_scenario)) errors.push("只有视觉通过时才能携带 target_class / unknown_scenario。");
+      if (d.target_class !== "unknown" && d.unknown_scenario) errors.push("只有 target_class=unknown 才能填写 unknown_scenario。");
+      if (d.visual_decision === "REJECT" && !d.visual_reason_codes.length) errors.push("视觉拒绝时至少选择一个视觉原因码。");
+      if (d.rights_decision === "REJECT" && !d.rights_reason_codes.length) errors.push("权利拒绝时至少选择一个权利原因码。");
+      if (d.visual_decision !== "REJECT" && d.visual_reason_codes.length) errors.push("只有视觉拒绝时才能保留视觉拒绝原因码。");
+      if (d.rights_decision !== "REJECT" && d.rights_reason_codes.length) errors.push("只有权利拒绝时才能保留权利拒绝原因码。");
+      if (d.rights_decision === "PASS" || d.rights_decision === "REJECT") {
+        if (!d.rights_source_page_checked) errors.push("权利通过或拒绝前必须勾选“已核对来源页”。");
+        if (!d.source_page_revision_id) errors.push("权利通过或拒绝前必须填写 Commons revision ID / oldid。");
+        if (!HEX64.test(d.rights_evidence_sha256)) errors.push("权利通过或拒绝时必须绑定 64 位小写十六进制核对回执 SHA-256。");
+      }
+      if (d.rights_decision === "UNREVIEWED" && (d.rights_source_page_checked || d.rights_evidence_sha256 || d.source_page_revision_id)) errors.push("权利轴未审阅时不能写入来源页核对证据。");
+      if (d.rights_evidence_sha256 && !HEX64.test(d.rights_evidence_sha256)) errors.push("权利核对回执 SHA-256 格式不正确。");
+      const revisionPattern = state.policy.source_page_revision_id_pattern || "^(|[1-9][0-9]{0,19})$";
+      try { if (!(new RegExp(revisionPattern)).test(d.source_page_revision_id)) errors.push("来源页 revision ID 不符合冻结策略格式。"); }
+      catch (_) { errors.push("服务端来源页 revision ID 策略正则无效，请停止审阅。"); }
+      const passPair = d.visual_decision === "PASS" && d.rights_decision === "PASS";
+      if (!arrayPolicy("family_roles").includes(d.family_role)) errors.push("family_role 不在冻结策略枚举中。");
+      if (passPair && !d.reviewed_source_group) errors.push("双项通过时必须填写人工确认的 reviewed_source_group。");
+      if (passPair && !["CANONICAL_REPRESENTATIVE", "SERIES_SIBLING_EXCLUDED", "HOLD"].includes(d.family_role)) errors.push("双项通过时必须选择“代表图 / 系列近重复排除 / 保留待复核”之一。");
+      if (!passPair && ["CANONICAL_REPRESENTATIVE", "SERIES_SIBLING_EXCLUDED"].includes(d.family_role)) errors.push("只有视觉和权利均通过时才能设为代表图或系列近重复图。");
+      if (d.family_role !== "UNASSIGNED" && !d.reviewed_source_group) errors.push("已分配系列角色时必须填写 reviewed_source_group。");
+      const groupPattern = state.policy.reviewed_source_group_pattern;
+      if (d.reviewed_source_group && groupPattern) {
+        try { if (!(new RegExp(groupPattern)).test(d.reviewed_source_group)) errors.push("reviewed_source_group 不符合冻结策略格式。"); }
+        catch (_) { errors.push("服务端 reviewed_source_group 策略正则无效，请停止审阅。"); }
+      }
+      const familyPattern = state.policy.near_duplicate_family_pattern;
+      if (d.near_duplicate_family && familyPattern) {
+        try { if (!(new RegExp(familyPattern)).test(d.near_duplicate_family)) errors.push("near_duplicate_family 不符合冻结策略格式。"); }
+        catch (_) { errors.push("服务端 near_duplicate_family 策略正则无效，请停止审阅。"); }
+      }
+      if (d.family_role === "SERIES_SIBLING_EXCLUDED" && !d.near_duplicate_family) errors.push("系列近重复图必须填写 near_duplicate_family。");
+      if (d.visual_decision === "UNREVIEWED" && d.rights_decision === "UNREVIEWED") {
+        if (d.target_class || d.unknown_scenario || d.reviewed_source_group || d.family_role !== "UNASSIGNED" || d.near_duplicate_family || d.notes) errors.push("两个轴都未审阅时，不能写入类别、家族或备注决定。");
+      }
+      if (d.notes.length > Number(state.policy.notes_max_length || 500)) errors.push("备注超过冻结策略长度。");
+      return [...new Set(errors)];
+    }
+
+    async function generateRightsEvidence() {
+      const item = selectedItem();
+      if (!item || !state.draft || state.busy) return;
+      const reviewer = el("rightsReviewer").value.trim();
+      const revisionId = el("sourcePageRevision").value.trim();
+      const errors = [];
+      try {
+        const pattern = new RegExp(state.policy.reviewer_pattern || "^[A-Za-z0-9][A-Za-z0-9._@-]{1,63}$");
+        if (!pattern.test(reviewer)) errors.push("请先填写符合冻结策略格式的权利审阅人。");
+      } catch (_) { errors.push("服务端审阅人策略正则无效，请停止审阅。"); }
+      try {
+        const pattern = new RegExp(state.policy.source_page_revision_id_pattern || "^(|[1-9][0-9]{0,19})$");
+        if (!revisionId || !pattern.test(revisionId)) errors.push("必须填写符合冻结策略格式的 Commons revision ID / oldid。");
+      } catch (_) { errors.push("服务端来源页 revision ID 策略正则无效，请停止审阅。"); }
+      const confirmations = ["confirmSourcePage", "confirmCreatorLicense", "confirmNonCopyright"];
+      if (confirmations.some(id => !el(id).checked)) errors.push("生成证据前必须逐项完成三项来源与权利核对。");
+      if (errors.length) { showValidation(errors); return; }
+      setBusy(true);
+      try {
+        const result = await fetchJson("/api/rights-evidence", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-RootScope-Review-Token": state.csrfToken
+          },
+          body: JSON.stringify({
+            asset: item.asset,
+            candidate_sha256: item.sha256 || item.candidate_sha256,
+            reviewer,
+            source_page_revision_id: revisionId,
+            confirmed_source_page_checked: true,
+            confirmed_creator_license_attribution: true,
+            confirmed_non_copyright_rights_reviewed: true
+          })
+        });
+        const evidence = result.evidence;
+        if (result.data_locked !== false || !evidence || !HEX64.test(evidence.rights_evidence_sha256 || "")) throw new Error("服务未返回有效的 NOT DATA LOCKED 人工核对回执");
+        state.draft.rights_reviewer = reviewer;
+        state.draft.source_page_revision_id = revisionId;
+        state.draft.rights_source_page_checked = true;
+        state.draft.rights_evidence_sha256 = evidence.rights_evidence_sha256;
+        el("rightsEvidenceSha").value = evidence.rights_evidence_sha256;
+        el("rightsEvidenceStatus").textContent = `人工核对回执已生成并绑定 oldid（${evidence.reviewed_at_utc || "服务端 UTC"}）；不包含网页快照，保存决定后才进入事件链。`;
+        markDirty();
+        showToast("永久版本人工核对回执已生成；请继续选择权利判断并保存决定");
+      } catch (error) {
+        showValidation([error.message || String(error)]);
+      } finally {
+        setBusy(false);
+      }
+    }
+
+    function showValidation(errors) {
+      const box = el("validationBox");
+      box.replaceChildren();
+      const lead = document.createElement("strong");
+      lead.textContent = "尚不能保存：";
+      const list = document.createElement("ul");
+      for (const error of errors) {
+        const item = document.createElement("li");
+        item.textContent = error;
+        list.appendChild(item);
+      }
+      box.append(lead, list);
+      box.classList.add("show");
+      box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    async function saveDecision() {
+      const item = selectedItem();
+      if (!item || !state.draft || state.busy) return;
+      const errors = validationErrors(state.draft);
+      if (errors.length) { showValidation(errors); return; }
+      setBusy(true);
+      try {
+        const result = await fetchJson("/api/decision", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-RootScope-Review-Token": state.csrfToken
+          },
+          body: JSON.stringify({
+            asset: item.asset,
+            candidate_sha256: item.sha256 || item.candidate_sha256,
+            expected_revision: Number(item.review_revision || 0),
+            decision: state.draft
+          })
+        });
+        if (result.data_locked !== false) throw new Error("服务返回了异常的数据锁权限状态");
+        const saved = result.item;
+        if (!saved || saved.asset !== item.asset) throw new Error("服务返回的资产绑定不一致");
+        state.items[state.selectedIndex] = saved;
+        state.selectedAsset = saved.asset;
+        state.dirty = false;
+        renderQueue();
+        renderSelected();
+        await refreshStats();
+        showToast(`已保存 revision ${saved.review_revision}；仍为 NOT DATA LOCKED`);
+      } catch (error) {
+        showValidation([error.message || String(error)]);
+      } finally {
+        setBusy(false);
+        renderQueue();
+      }
+    }
+
+    async function refreshStats() {
+      try {
+        const stats = await fetchJson("/api/stats");
+        if (stats.data_locked !== false) throw new Error("权限状态异常");
+        state.stats = stats;
+        renderStats();
+      } catch (error) {
+        showToast(`统计刷新失败：${error.message}`, true);
+      }
+    }
+
+    function renderStats() {
+      const total = Number(state.stats.candidate_count || 0);
+      const decided = Number(state.stats.reviewed_asset_count || 0);
+      el("topMetric").textContent = `已审阅 ${decided} / ${total} · 事件 ${Number(state.stats.event_count || 0)}`;
+      el("eventCount").textContent = `追加事件 ${Number(state.stats.event_count || 0)}`;
+    }
+
+    async function changePage(delta) {
+      if (!canAbandonDraft()) return;
+      const next = state.offset + delta * PAGE_SIZE;
+      if (next < 0 || next >= state.matchedCount) return;
+      state.dirty = false;
+      state.offset = next;
+      try { await loadItems(); }
+      catch (error) { showToast(error.message, true); }
+    }
+
+    function resetFilters() {
+      state.filters = { class_hint: "", species_hint: "", review_status: "", q: "" };
+      applyStoredFiltersToControls();
+      writePreferences();
+    }
+
+    function bindEvents() {
+      bindDraftInput("targetClass", "target_class");
+      bindDraftInput("unknownScenario", "unknown_scenario");
+      bindDraftInput("reviewedSourceGroup", "reviewed_source_group", value => value.trim());
+      bindDraftInput("familyRole", "family_role");
+      bindDraftInput("nearDuplicateFamily", "near_duplicate_family", value => value.trim());
+      bindDraftInput("visualReviewer", "visual_reviewer", value => value.trim());
+      bindDraftInput("rightsReviewer", "rights_reviewer", value => value.trim());
+      bindDraftInput("sourcePageRevision", "source_page_revision_id", value => value.trim());
+      bindDraftInput("notes", "notes");
+      el("saveDecision").addEventListener("click", saveDecision);
+      el("generateRightsEvidence").addEventListener("click", generateRightsEvidence);
+      el("itemPrev").addEventListener("click", () => selectIndex(state.selectedIndex - 1));
+      el("itemNext").addEventListener("click", () => selectIndex(state.selectedIndex + 1));
+      el("pagePrev").addEventListener("click", () => changePage(-1));
+      el("pageNext").addEventListener("click", () => changePage(1));
+      el("applyFilter").addEventListener("click", async () => {
+        if (!canAbandonDraft()) return;
+        state.dirty = false;
+        collectFilters();
+        try { await loadItems({ resetOffset: true }); }
+        catch (error) { showToast(error.message, true); }
+      });
+      el("resetFilter").addEventListener("click", async () => {
+        if (!canAbandonDraft()) return;
+        state.dirty = false;
+        resetFilters();
+        try { await loadItems({ resetOffset: true }); }
+        catch (error) { showToast(error.message, true); }
+      });
+      for (const id of ["queryFilter", "speciesFilter"]) {
+        el(id).addEventListener("keydown", event => {
+          if (event.key === "Enter") { event.preventDefault(); el("applyFilter").click(); }
+        });
+      }
+      document.addEventListener("keydown", event => {
+        if (event.ctrlKey && !event.altKey && event.key.toLowerCase() === "s") {
+          event.preventDefault();
+          saveDecision();
+        } else if (event.altKey && event.key === "ArrowLeft") {
+          event.preventDefault();
+          selectIndex(state.selectedIndex - 1);
+        } else if (event.altKey && event.key === "ArrowRight") {
+          event.preventDefault();
+          selectIndex(state.selectedIndex + 1);
+        }
+      });
+      window.addEventListener("beforeunload", event => {
+        if (!state.dirty) return;
+        event.preventDefault();
+        event.returnValue = "";
+      });
+    }
+
+    async function init() {
+      readPreferences();
+      try {
+        const bootstrap = await fetchJson("/api/bootstrap");
+        if (!bootstrap || typeof bootstrap.csrf_token !== "string" || !bootstrap.csrf_token) throw new Error("缺少审阅会话 CSRF token");
+        if (!new Set(["PRODUCTION", "FIXTURE"]).has(bootstrap.mode)) throw new Error("服务没有返回可识别的 PRODUCTION / FIXTURE 模式");
+        if (!bootstrap.stats || bootstrap.stats.data_locked !== false) throw new Error("服务没有明确声明 data_locked=false");
+        if (!bootstrap.policy || typeof bootstrap.policy !== "object") throw new Error("缺少冻结审阅策略");
+        const authorityKeys = ["dataset_manifest_write", "training_eligibility", "split_assignment", "print_eligibility", "data_locked"];
+        if (!bootstrap.authority || authorityKeys.some(key => bootstrap.authority[key] !== false)) throw new Error("服务权限边界不是全 false，已拒绝进入审阅界面");
+        const requiredNonClaims = ["DATA_LOCKED", "TRAIN_READY", "SPLIT_READY", "FINAL_OPTICS_READY", "MODEL_TRAINED"];
+        if (!Array.isArray(bootstrap.explicit_non_claims) || requiredNonClaims.some(value => !bootstrap.explicit_non_claims.includes(value))) throw new Error("服务缺少冻结的非声明边界");
+        const productionStatuses = ["HUMAN_REVIEW_IN_PROGRESS_NOT_DATA_LOCKED", "HUMAN_REVIEW_COMPLETE_NOT_DATA_LOCKED"];
+        const allowedStatuses = bootstrap.mode === "FIXTURE" ? productionStatuses.map(value => `FIXTURE_${value}`) : productionStatuses;
+        if (!allowedStatuses.includes(bootstrap.status) || bootstrap.stats.status !== bootstrap.status) throw new Error("服务模式、状态或统计快照互相冲突");
+        state.mode = bootstrap.mode;
+        state.csrfToken = bootstrap.csrf_token;
+        state.stats = bootstrap.stats;
+        state.policy = bootstrap.policy;
+        el("modeBadge").textContent = state.mode === "PRODUCTION" ? "PRODUCTION / 正式会话" : "FIXTURE / 测试会话";
+        el("modeBadge").classList.toggle("fixture", state.mode === "FIXTURE");
+        el("fixtureStrip").classList.toggle("visible", state.mode === "FIXTURE");
+        configurePolicy();
+        applyStoredFiltersToControls();
+        bindEvents();
+        renderStats();
+        await loadItems();
+        workspace.setAttribute("aria-busy", "false");
+      } catch (error) {
+        fatal(error.message || String(error));
+      }
+    }
+
+    init();
+  })();
+  </script>
+</body>
+</html>

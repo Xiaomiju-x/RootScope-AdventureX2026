@@ -1,0 +1,518 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rootscope.local/schema/dataset-manifest-row-v2.json",
+  "title": "RootScope dataset manifest row v2",
+  "type": "object",
+  "required": [
+    "record_schema_version",
+    "class_id",
+    "domain",
+    "split",
+    "review_status",
+    "source_group",
+    "asset_id",
+    "asset_sha256",
+    "origin_pageid",
+    "origin_sha256",
+    "asset_role",
+    "filename",
+    "source_provider_id",
+    "source_provider",
+    "source_page",
+    "download_url",
+    "artist",
+    "license",
+    "license_url",
+    "print_eligible",
+    "ptq_calibration",
+    "permanent_holdout",
+    "sealed",
+    "unknown_scenario",
+    "reviewed_by",
+    "optical_domain_root",
+    "capture_id",
+    "capture_quality_pass",
+    "capture_operator",
+    "capture_condition_id"
+  ],
+  "properties": {
+    "record_schema_version": {
+      "const": "2.0.0"
+    },
+    "class_id": {
+      "enum": [
+        "grass_clump",
+        "low_shrub",
+        "young_tree",
+        "unknown"
+      ]
+    },
+    "domain": {
+      "enum": [
+        "natural_web",
+        "local_negative",
+        "printed_train",
+        "printed_test",
+        "print_demo_source",
+        "printed_demo_capture",
+        "site_acceptance"
+      ]
+    },
+    "split": {
+      "enum": [
+        "unassigned",
+        "train",
+        "validation",
+        "decision_calibration",
+        "conversion_golden",
+        "natural_test",
+        "printed_test",
+        "print_demo",
+        "site_acceptance",
+        "excluded"
+      ]
+    },
+    "review_status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_group": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "origin_pageid": {
+      "anyOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        }
+      ]
+    },
+    "origin_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "asset_role": {
+      "enum": [
+        "source",
+        "crop",
+        "augmentation",
+        "print_capture",
+        "local_capture"
+      ]
+    },
+    "filename": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_provider_id": {
+      "enum": [
+        "wikimedia_commons",
+        "rootscope_local_capture"
+      ]
+    },
+    "source_provider": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_page": {
+      "type": "string",
+      "minLength": 1
+    },
+    "download_url": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artist": {
+      "type": "string",
+      "minLength": 1
+    },
+    "license": {
+      "enum": [
+        "Public domain",
+        "CC0 1.0",
+        "CC BY 2.0",
+        "CC BY 2.5",
+        "CC BY 3.0",
+        "CC BY 4.0",
+        "CC BY-SA 2.0",
+        "CC BY-SA 2.5",
+        "CC BY-SA 3.0",
+        "CC BY-SA 4.0"
+      ]
+    },
+    "license_url": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "print_eligible": {
+      "type": "boolean"
+    },
+    "ptq_calibration": {
+      "type": "boolean"
+    },
+    "permanent_holdout": {
+      "type": "boolean"
+    },
+    "sealed": {
+      "type": "boolean"
+    },
+    "unknown_scenario": {
+      "enum": [
+        null,
+        "empty_card",
+        "bare_sand",
+        "hand",
+        "occlusion",
+        "blur",
+        "glare",
+        "mixed_targets"
+      ]
+    },
+    "reviewed_by": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "optical_domain_root": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      ]
+    },
+    "capture_id": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        }
+      ]
+    },
+    "capture_quality_pass": {
+      "type": "boolean"
+    },
+    "capture_operator": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "capture_condition_id": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_.:-]{2,63}$"
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "source_provider_id": {
+            "const": "wikimedia_commons"
+          }
+        },
+        "required": [
+          "source_provider_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "source_provider": {
+            "const": "Wikimedia Commons"
+          },
+          "source_page": {
+            "type": "string",
+            "pattern": "^https://commons\\.wikimedia\\.org/"
+          },
+          "download_url": {
+            "type": "string",
+            "pattern": "^https://upload\\.wikimedia\\.org/"
+          },
+          "origin_pageid": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1
+              },
+              {
+                "type": "string",
+                "pattern": "^[1-9][0-9]*$"
+              }
+            ]
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "source_provider": {
+            "const": "RootScope Local Capture"
+          },
+          "source_page": {
+            "type": "string",
+            "pattern": "^urn:rootscope:local:[a-z0-9][a-z0-9_.:-]{2,127}$"
+          },
+          "download_url": {
+            "type": "string",
+            "pattern": "^urn:rootscope:local:[a-z0-9][a-z0-9_.:-]{2,127}$"
+          },
+          "origin_pageid": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_.:-]{2,127}$"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "ptq_calibration": {
+            "const": true
+          }
+        },
+        "required": [
+          "ptq_calibration"
+        ]
+      },
+      "then": {
+        "properties": {
+          "split": {
+            "const": "train"
+          },
+          "permanent_holdout": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "split": {
+            "const": "print_demo"
+          }
+        },
+        "required": [
+          "split"
+        ]
+      },
+      "then": {
+        "properties": {
+          "domain": {
+            "enum": [
+              "print_demo_source",
+              "printed_demo_capture"
+            ]
+          },
+          "permanent_holdout": {
+            "const": true
+          },
+          "sealed": {
+            "const": true
+          },
+          "ptq_calibration": {
+            "const": false
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "permanent_holdout": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "split": {
+            "enum": [
+              "natural_test",
+              "printed_test",
+              "print_demo",
+              "site_acceptance"
+            ]
+          }
+        },
+        "required": [
+          "split"
+        ]
+      },
+      "then": {
+        "properties": {
+          "sealed": {
+            "const": true
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "sealed": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "asset_role": {
+            "enum": [
+              "print_capture",
+              "local_capture"
+            ]
+          }
+        },
+        "required": [
+          "asset_role"
+        ]
+      },
+      "then": {
+        "properties": {
+          "optical_domain_root": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "capture_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "capture_operator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "capture_condition_id": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9_.:-]{2,63}$"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "optical_domain_root": {
+            "const": null
+          },
+          "capture_id": {
+            "const": null
+          },
+          "capture_quality_pass": {
+            "const": false
+          },
+          "capture_operator": {
+            "const": null
+          },
+          "capture_condition_id": {
+            "const": null
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "class_id": {
+            "const": "unknown"
+          }
+        },
+        "required": [
+          "class_id"
+        ]
+      },
+      "else": {
+        "properties": {
+          "unknown_scenario": {
+            "const": null
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "split": {
+            "const": "site_acceptance"
+          },
+          "class_id": {
+            "enum": [
+              "grass_clump",
+              "low_shrub",
+              "young_tree"
+            ]
+          }
+        },
+        "required": [
+          "split",
+          "class_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "print_eligible": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "split": {
+            "const": "site_acceptance"
+          },
+          "class_id": {
+            "const": "unknown"
+          }
+        },
+        "required": [
+          "split",
+          "class_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "unknown_scenario": {
+            "enum": [
+              "empty_card",
+              "bare_sand",
+              "hand",
+              "occlusion",
+              "blur",
+              "glare",
+              "mixed_targets"
+            ]
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

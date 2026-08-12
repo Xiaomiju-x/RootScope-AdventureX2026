@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rootscope.local/schemas/known-card-template-registry.v1.json",
+  "title": "RootScope known-card template registry v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "template_root", "templates"],
+  "properties": {
+    "schema_version": {
+      "const": "rootscope.known-card-template-registry.v1"
+    },
+    "status": {
+      "enum": [
+        "EMPTY_NO_REAL_TEMPLATES_REGISTERED",
+        "FROZEN_EXPERIMENTAL_DEMO_REFERENCES"
+      ]
+    },
+    "template_root": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+    },
+    "templates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/template"
+      }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\).+$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "template": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_id",
+        "class_name",
+        "relative_path",
+        "raw_sha256",
+        "role",
+        "dataset_record"
+      ],
+      "properties": {
+        "template_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "class_name": {
+          "enum": ["grass_clump", "low_shrub", "young_tree"]
+        },
+        "relative_path": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "raw_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "role": {
+          "const": "DEMO_REFERENCE_NOT_HOLDOUT_ONCE_REGISTERED"
+        },
+        "dataset_record": {
+          "$ref": "#/$defs/datasetRecord"
+        }
+      }
+    },
+    "datasetRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_id", "source_manifest", "source_url", "attribution"],
+      "properties": {
+        "record_id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "source_manifest": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "source_url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attribution": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["creator", "license", "license_url"],
+          "properties": {
+            "creator": {"type": "string", "minLength": 1},
+            "license": {"type": "string", "minLength": 1},
+            "license_url": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    }
+  }
+}

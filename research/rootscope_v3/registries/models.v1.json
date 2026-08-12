@@ -1,0 +1,116 @@
+{
+  "schema": "rootscope.v3.model-registry.v1",
+  "frozen_at": "2026-07-24",
+  "status_values": [
+    "BASELINE_X5_OBSERVED",
+    "SHADOW_X5_OBSERVED",
+    "PREEXISTING_PC_ONLY",
+    "PLANNED_NOT_ACQUIRED"
+  ],
+  "models": [
+    {
+      "model_id": "rootscope-seed17-resnet18-cpu-onnx",
+      "family": "ResNet18",
+      "modality": "VISION_CLOSED_SET",
+      "artifact_format": "ONNX",
+      "status": "BASELINE_X5_OBSERVED",
+      "relative_locator": "../model-assets/bpu/rootscope_seed17_resnet18_static_b1x3x224x224_opset11.onnx",
+      "sha256": "50ae8d2ec1cec0f3748efa127c6b9c00624684f8c112c8a7913c2a0e304a3bad",
+      "size_bytes": 44704833,
+      "runtime": "onnxruntime CPUExecutionProvider",
+      "role": "PRIMARY_AUDIT_FALLBACK",
+      "physical_authority": false
+    },
+    {
+      "model_id": "rootscope-seed17-resnet18-r7-bayes-e",
+      "family": "ResNet18",
+      "modality": "VISION_CLOSED_SET",
+      "artifact_format": "HORIZON_BIN",
+      "status": "SHADOW_X5_OBSERVED",
+      "relative_locator": "../model-assets/bpu/rootscope_seed17_resnet18_224x224_rgb_ddr_r7_default_int16_all_nodes.bin",
+      "sha256": "4dc4bc24741332bb6bc6da184dd1d6f954ae539ba740330490339d76eb200285",
+      "size_bytes": 12519415,
+      "runtime": "hrt_model_exec 1.24.5 canonical oracle; hbm_runtime persistent pending",
+      "role": "SHADOW_CANDIDATE_NOT_DEFAULT",
+      "physical_authority": false
+    },
+    {
+      "model_id": "qwen2-0.5b-q4-k-m-rootscope-baseline",
+      "family": "Qwen2",
+      "modality": "TEXT_LLM",
+      "artifact_format": "GGUF_Q4_K_M",
+      "status": "BASELINE_X5_OBSERVED",
+      "relative_locator": null,
+      "sha256": "6c8adc95de81b1d0103fcf900a5f369d5936d234e42ed64881dad56e0104e77b",
+      "size_bytes": 397805120,
+      "runtime": "llama-server b9637 CPU loopback parallel=1",
+      "role": "BASELINE_AND_FALLBACK",
+      "physical_authority": false
+    },
+    {
+      "model_id": "smolvlm-500m-preexisting-pc",
+      "family": "SmolVLM",
+      "modality": "VISION_LANGUAGE",
+      "artifact_format": "SAFETENSORS",
+      "status": "PREEXISTING_PC_ONLY",
+      "relative_locator": null,
+      "sha256": null,
+      "size_bytes": null,
+      "runtime": "PC teacher/audit candidate only",
+      "role": "VLM_CHALLENGER_NOT_X5_QUALIFIED",
+      "physical_authority": false
+    },
+    {
+      "model_id": "qwen3.5-0.8b-rootscope-fast-challenger",
+      "family": "Qwen3.5",
+      "modality": "TEXT_OR_NATIVE_MULTIMODAL_CANDIDATE",
+      "artifact_format": "UPSTREAM_AND_GGUF_TBD",
+      "status": "PLANNED_NOT_ACQUIRED",
+      "relative_locator": null,
+      "sha256": null,
+      "size_bytes": null,
+      "runtime": "X5 CPU candidate after PC benchmark and quantization",
+      "role": "ROOTMIND_FAST_CHALLENGER",
+      "physical_authority": false
+    },
+    {
+      "model_id": "qwen3-1.7b-rootscope-deep-challenger",
+      "family": "Qwen3",
+      "modality": "TEXT_LLM",
+      "artifact_format": "UPSTREAM_AND_GGUF_TBD",
+      "status": "PLANNED_NOT_ACQUIRED",
+      "relative_locator": null,
+      "sha256": null,
+      "size_bytes": null,
+      "runtime": "X5 CPU on-demand candidate",
+      "role": "ROOTMIND_DEEP_CHALLENGER",
+      "physical_authority": false
+    },
+    {
+      "model_id": "qwen3.5-2b-rootscope-deep-challenger",
+      "family": "Qwen3.5",
+      "modality": "TEXT_OR_NATIVE_MULTIMODAL_CANDIDATE",
+      "artifact_format": "UPSTREAM_AND_GGUF_TBD",
+      "status": "PLANNED_NOT_ACQUIRED",
+      "relative_locator": null,
+      "sha256": null,
+      "size_bytes": null,
+      "runtime": "PC first; X5 on-demand only if resource gates pass",
+      "role": "ROOTMIND_DEEP_CHALLENGER",
+      "physical_authority": false
+    },
+    {
+      "model_id": "rootscope-open-set-prototype-embedding",
+      "family": "PROTOTYPE_EMBEDDING",
+      "modality": "VISION_OPEN_SET",
+      "artifact_format": "TBD",
+      "status": "PLANNED_NOT_ACQUIRED",
+      "relative_locator": null,
+      "sha256": null,
+      "size_bytes": null,
+      "runtime": "BPU or CPU challenger; only one open-set branch may advance",
+      "role": "OPEN_SET_VISUAL_AUDIT",
+      "physical_authority": false
+    }
+  ]
+}

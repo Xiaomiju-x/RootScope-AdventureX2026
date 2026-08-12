@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RootScope 本地控制台</title>
+  <style>
+    :root{color-scheme:dark;--bg:#07110f;--panel:#10221d;--line:#24473d;--ink:#ecf8f2;--muted:#9ab7aa;--mint:#5de0a5;--amber:#ffc857;--red:#ff6b6b;--blue:#66b3ff}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0,#153a2d 0,transparent 35%),var(--bg);color:var(--ink);font:15px/1.45 system-ui,"Microsoft YaHei",sans-serif}
+    main{max-width:1180px;margin:auto;padding:24px}.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.kicker{color:var(--mint);letter-spacing:.14em;text-transform:uppercase;font-size:12px}h1{font-size:34px;margin:5px 0}.sub{color:var(--muted);max-width:720px}.badge{padding:10px 14px;border:1px solid var(--amber);color:var(--amber);border-radius:999px;font-weight:800;white-space:nowrap}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:14px;margin-top:20px}.grid>*{min-width:0}.card{min-width:0;background:color-mix(in srgb,var(--panel) 92%,transparent);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 12px 40px #0004}.span2{grid-column:1/-1}.title{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px}.title h2{font-size:16px;margin:0}.muted{color:var(--muted)}
+    .state{font-size:30px;font-weight:850;color:var(--blue)}.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.fact{background:#081613;border:1px solid var(--line);border-radius:12px;padding:12px}.fact b{display:block;font-size:18px;margin-top:3px}.gates{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.gate{display:flex;gap:8px;align-items:center;padding:8px;border-radius:9px;background:#081613}.dot{width:9px;height:9px;border-radius:50%;background:var(--red)}.gate.ok .dot{background:var(--mint)}
+    canvas{display:block;max-width:100%;width:100%;height:170px;background:#081613;border:1px solid var(--line);border-radius:12px}.actions{display:flex;gap:10px;flex-wrap:wrap}.actions button{border:1px solid var(--line);background:#183b31;color:var(--ink);padding:10px 15px;border-radius:10px;font-weight:700;cursor:pointer}.actions button.danger{background:#481f23;border-color:#783137}.actions button:disabled{opacity:.4;cursor:not-allowed}.alerts{margin:0;padding-left:20px;color:var(--amber);overflow-wrap:anywhere}.kicker,.sub,.state,.fact b,.muted{overflow-wrap:anywhere}code{color:var(--mint)}
+    @media(max-width:780px){main{padding:15px}.top{display:block}.badge{display:inline-block;margin-top:12px}.grid{grid-template-columns:1fr}.span2{grid-column:auto}.facts{grid-template-columns:1fr}.gates{grid-template-columns:1fr}h1{font-size:28px}}
+  </style>
+</head>
+<body>
+<main>
+  <header class="top"><div><div class="kicker">AdventureX · Fixed Root-Zone Chamber</div><h1>RootScope 本地控制台</h1><div class="sub">把看不见的根区给水，变成可见、可量、可追溯的端侧闭环。当前页面默认是本地夹具模式，不代表硬件已执行。</div></div><div id="mode" class="badge">SIMULATED_ONLY</div></header>
+  <section class="grid">
+    <article class="card"><div class="title"><h2>任务状态</h2><span id="backend" class="muted">backend: fixture</span></div><div id="state" class="state">BOOT_LOCKED</div><div class="facts"><div class="fact"><span class="muted">目标形态</span><b id="plant">unknown</b></div><div class="fact"><span class="muted">演示通道</span><b id="channel">—</b></div><div class="fact"><span class="muted">完成等级</span><b id="completion">SIMULATED_ONLY</b></div></div></article>
+    <article class="card"><div class="title"><h2>安全许可门</h2><span id="gateCount" class="muted">0/8</span></div><div id="gates" class="gates"></div></article>
+    <article class="card"><div class="title"><h2>储液质量证据</h2><span id="massText" class="muted">0.00 g / —</span></div><canvas id="massChart" width="700" height="170"></canvas></article>
+    <article class="card"><div class="title"><h2>目标区域视觉证据</h2><span id="wettingState" class="muted">未验证</span></div><div class="facts"><div class="fact"><span class="muted">目标变化比例</span><b id="wettingFraction">0.0%</b></div><div class="fact"><span class="muted">感知来源</span><b id="source">none</b></div><div class="fact"><span class="muted">置信度</span><b id="confidence">—</b></div></div></article>
+    <article class="card span2"><div class="title"><h2>控制与证据</h2><span id="hash" class="muted">head: —</span></div><div class="actions"><button data-action="/api/simulate/start">启动夹具演示</button><button data-action="/api/simulate/reset">复位夹具</button><button class="danger" data-action="/api/simulate/abort">模拟急停</button></div><ul id="alerts" class="alerts"><li>LOCAL_FIXTURE_ONLY_NO_HARDWARE_TOUCHED</li></ul></article>
+  </section>
+</main>
+<script>
+const labels={firmware_identity:'固件身份',heartbeat_fresh:'心跳新鲜',estop_ok:'急停释放',leak_ok:'无漏水',cartridge_ok:'卡匣到位',guard_ok:'护罩到位',mass_stable:'称重稳定',camera_fresh:'相机新鲜'};
+function text(id,value){document.getElementById(id).textContent=value??'—'}
+function chart(samples){const c=document.getElementById('massChart'),x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);x.strokeStyle='#24473d';for(let i=1;i<5;i++){x.beginPath();x.moveTo(0,i*c.height/5);x.lineTo(c.width,i*c.height/5);x.stroke()}if(!samples.length)return;const vals=samples.map(v=>Number(v.value_g??v));const lo=Math.min(...vals),hi=Math.max(...vals),span=Math.max(hi-lo,.1);x.strokeStyle='#5de0a5';x.lineWidth=3;x.beginPath();vals.forEach((v,i)=>{const px=i*c.width/Math.max(vals.length-1,1),py=c.height-8-(v-lo)/span*(c.height-16);i?x.lineTo(px,py):x.moveTo(px,py)});x.stroke()}
+function render(s){text('mode',s.mode);text('backend','backend: '+s.backend_actual);text('state',s.state);text('plant',s.perception?.class_id);text('channel',s.task?.channel);text('completion',s.task?.completion_class);text('source',s.perception?.source);text('confidence',s.perception?.confidence==null?'—':Number(s.perception.confidence).toFixed(3));const gates=document.getElementById('gates');gates.replaceChildren();let ok=0;Object.entries(s.safety||{}).forEach(([k,v])=>{ok+=v?1:0;const d=document.createElement('div');d.className='gate '+(v?'ok':'');const dot=document.createElement('span');dot.className='dot';const name=document.createElement('span');name.textContent=labels[k]||k;d.append(dot,name);gates.append(d)});text('gateCount',ok+'/'+Object.keys(s.safety||{}).length);const measured=Number(s.mass?.measured_loss_g||0),target=s.mass?.target_g;text('massText',measured.toFixed(2)+' g / '+(target==null?'—':Number(target).toFixed(2)+' g'));chart(s.mass?.samples||[]);text('wettingState',s.wetting?.passed?'目标变化已验证':'未验证');text('wettingFraction',(Number(s.wetting?.target_changed_fraction||0)*100).toFixed(1)+'%');text('hash','head: '+(s.evidence?.head_hash||'—'));const alerts=document.getElementById('alerts');alerts.replaceChildren();(s.alerts||[]).forEach(a=>{const li=document.createElement('li');li.textContent=a;alerts.append(li)})}
+async function poll(){try{const r=await fetch('/api/status',{cache:'no-store'});render(await r.json())}catch(e){text('state','DASHBOARD_OFFLINE')}finally{setTimeout(poll,500)}}
+document.querySelectorAll('button[data-action]').forEach(b=>b.onclick=async()=>{b.disabled=true;try{const r=await fetch(b.dataset.action,{method:'POST',headers:{'Content-Type':'application/json'},body:'{}'});if(!r.ok){const j=await r.json();alert(j.error||'当前模式不允许该操作')}}finally{b.disabled=false}});poll();
+</script>
+</body>
+</html>

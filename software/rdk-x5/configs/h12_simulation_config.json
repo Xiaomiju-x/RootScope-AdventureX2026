@@ -1,0 +1,62 @@
+{
+  "commissioned": true,
+  "commissioning_id": "SIMULATION_ONLY_FAKE_F407_H12_V1",
+  "execution_mode": "SIMULATION_ONLY",
+  "expected_firmware_build_id": "2026071501",
+  "formal_perception_sources": [
+    "tag"
+  ],
+  "profiles": [
+    {
+      "channel": "Z1",
+      "hard_timeout_ms": 3000,
+      "settle_ms": 200,
+      "minimum_mass_samples": 5,
+      "max_final_mass_span_mg": 50,
+      "morphology_label": "grass_clump_fixture",
+      "neighbor_spill_threshold": 0.02,
+      "profile_id": "Profile-A-SIM",
+      "target_mass_mg": 2000,
+      "target_wetting_threshold": 0.8,
+      "tolerance_mg": 50
+    },
+    {
+      "channel": "Z2",
+      "hard_timeout_ms": 3000,
+      "settle_ms": 200,
+      "minimum_mass_samples": 5,
+      "max_final_mass_span_mg": 50,
+      "morphology_label": "low_shrub_fixture",
+      "neighbor_spill_threshold": 0.02,
+      "profile_id": "Profile-B-SIM",
+      "target_mass_mg": 2000,
+      "target_wetting_threshold": 0.8,
+      "tolerance_mg": 50
+    },
+    {
+      "channel": "Z3",
+      "hard_timeout_ms": 3000,
+      "settle_ms": 200,
+      "minimum_mass_samples": 5,
+      "max_final_mass_span_mg": 50,
+      "morphology_label": "young_tree_fixture",
+      "neighbor_spill_threshold": 0.02,
+      "profile_id": "Profile-C-SIM",
+      "target_mass_mg": 2000,
+      "target_wetting_threshold": 0.8,
+      "tolerance_mg": 50
+    }
+  ],
+  "protocol_version": 1,
+  "required_backend": "FAKE_F407",
+  "required_firmware_capabilities": [
+    "triple_pump_interlock",
+    "hx711_mass",
+    "safety_inputs",
+    "heartbeat_watchdog",
+    "task_replay_guard",
+    "per_task_hard_timeout",
+    "task_result_receipt"
+  ],
+  "schema_version": "rootscope.config.v1"
+}

@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "profile_contract_id": "rootscope.p0.fixture_profiles.v1",
+  "status": "FROZEN_P0",
+  "scope": "transparent_fixture_demonstration_only",
+  "disclaimer_zh": "Profile-A/B/C 与 Z1/Z2/Z3 只是固定灌溉舱的演示映射，不表示真实植物根深、需水量或田间灌溉处方。",
+  "command_authority": "deterministic_state_machine_only",
+  "perception_role": "candidate_profile_selection_only",
+  "profiles": {
+    "Profile-A": {
+      "class_id": "grass_clump",
+      "display_name_zh": "草丛型演示层",
+      "channel": "Z1",
+      "physical_target": "fixture_layer_1",
+      "dose_or_duration": "not_frozen",
+      "enabled": true
+    },
+    "Profile-B": {
+      "class_id": "low_shrub",
+      "display_name_zh": "低矮灌木型演示层",
+      "channel": "Z2",
+      "physical_target": "fixture_layer_2",
+      "dose_or_duration": "not_frozen",
+      "enabled": true
+    },
+    "Profile-C": {
+      "class_id": "young_tree",
+      "display_name_zh": "幼树苗型演示层",
+      "channel": "Z3",
+      "physical_target": "fixture_layer_3",
+      "dose_or_duration": "not_frozen",
+      "enabled": true
+    }
+  },
+  "unknown_policy": {
+    "class_id": "unknown",
+    "action": "reject",
+    "profile": null,
+    "channel": null
+  },
+  "execution_preconditions": [
+    "image_quality_gate_passed",
+    "perception_source_and_backend_recorded",
+    "state_machine_admission_passed",
+    "f407_identity_fresh",
+    "f407_heartbeat_fresh",
+    "estop_clear",
+    "leak_alarm_clear",
+    "cartridge_present",
+    "single_channel_interlock_passed"
+  ]
+}

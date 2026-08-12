@@ -1,0 +1,112 @@
+{
+  "schema": "rootscope.v3.qlora-training-receipt.v1",
+  "status": "PASS_REAL_RTX4050_QLORA_ADAPTER",
+  "started_at_utc": "2026-07-23T20:33:12.478645Z",
+  "completed_at_utc": "2026-07-23T20:38:15.574798Z",
+  "base_model": {
+    "upstream_id": "Qwen/Qwen3-1.7B",
+    "upstream_revision": "main_snapshot_20260724",
+    "config_sha256": "1ddb5b89ebc90dcb417a45c213d818577e65976454d29385c8f6140771d95197",
+    "index_sha256": "0d660e94b165eb912669a5249dff44b83188c4777a07ddb9611fb78d91b0578d"
+  },
+  "gpu": {
+    "device_name": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "torch_version": "2.11.0+cu128",
+    "cuda_version": "12.8",
+    "before": {
+      "returncode": 0,
+      "line": "NVIDIA GeForce RTX 4050 Laptop GPU, 610.62, 6141, 0, 0, 37"
+    },
+    "after": {
+      "returncode": 0,
+      "line": "NVIDIA GeForce RTX 4050 Laptop GPU, 610.62, 6141, 3679, 58, 51"
+    },
+    "peak_allocated_mib": 3112.53515625,
+    "peak_reserved_mib": 3568.0
+  },
+  "method": {
+    "name": "NF4_QLORA_TRAIN_ONLY_ADVERSARIAL_REFINEMENT",
+    "lora_rank": 8,
+    "lora_alpha": 16,
+    "max_length": 448,
+    "optimizer_steps": 96,
+    "gradient_accumulation": 4,
+    "samples_seen": 384,
+    "learning_rate": 5e-05,
+    "teacher_logits_used": false,
+    "selected_record_sequence_sha256": "f6835bff793e7e28e9ad0c627c483221ce4198df30d8056bf91ae068ec1586aa",
+    "selected_adversarial_rows": 199,
+    "selected_regular_rows": 185,
+    "selected_unique_record_ids": 327,
+    "selected_duplicate_rows": 57
+  },
+  "training_inputs": {
+    "train_path": "research/rootscope-v3/llm/data/rootscope_sft_v1/train_adversarial_curriculum_v3.jsonl",
+    "train_sha256": "cb01f5aadd4aaf3e86dd18434358f961b99e7636a5987daa6d7deec8be93e9ca",
+    "train_rows": 1890,
+    "validation_path": "research/rootscope-v3/llm/data/rootscope_sft_v1/validation.jsonl",
+    "validation_sha256": "79156e26ceb76962338b4b1c8481833039da2fee81a66f630664023e9b8f6bee",
+    "validation_rows": 154,
+    "parent_adapter_sha256": "f7c5b9d234651cbd3cf8514bf220ad3f7251d36acb312729c02b4cfd45aa9c59",
+    "parent_binding": {
+      "adapter_model_sha256": "f7c5b9d234651cbd3cf8514bf220ad3f7251d36acb312729c02b4cfd45aa9c59",
+      "adapter_config_sha256": "06b7dba86fbd7062ea0ebc95b9cc09ebae9749d4fa27217a9924850860aab437",
+      "training_receipt_sha256": "f3d06126f30d897bdeadd7ee41701672f35052240a4fc677686d33c187f061f1",
+      "base_config_sha256": "1ddb5b89ebc90dcb417a45c213d818577e65976454d29385c8f6140771d95197",
+      "base_index_sha256": "0d660e94b165eb912669a5249dff44b83188c4777a07ddb9611fb78d91b0578d",
+      "lora_rank": 8,
+      "lora_alpha": 16
+    },
+    "refinement_contract": {
+      "curriculum_manifest_sha256": "c79375c2180efc9a862a7c508bd3b2145a45fbe78069393d121109d56ce3fb2a",
+      "dataset_receipt_sha256": "a57edc8c4bf9957a4e1c7ededc9e697ca51a13a10c88a0c67e10254f5264534c",
+      "held_out_record_count": 0,
+      "held_out_template_group_count": 0
+    }
+  },
+  "metrics": {
+    "validation_loss_before": 0.33084015092390473,
+    "validation_loss_after": 0.3687359820414713,
+    "training_loss_first": 0.02677083755406784,
+    "training_loss_last": 0.00020166431204415858,
+    "elapsed_seconds": 295.5243401000007
+  },
+  "artifacts": {
+    "training_steps.jsonl": {
+      "bytes": 16094,
+      "sha256": "926ebacddfb3df77d664a89544ea60ffe65abae8ec52d82272805761d2839162"
+    },
+    "adapter/adapter_config.json": {
+      "bytes": 1170,
+      "sha256": "d42b85aa1a025e011772d65a32dd60413ae4c0a701b7fc4c5c265bf39a6f4f1b"
+    },
+    "adapter/adapter_model.safetensors": {
+      "bytes": 34916720,
+      "sha256": "5720045c92e88096e1b3e6dc819e59e14b4ae2aac2c47e0ac8e0d5d7a1bd67c1"
+    },
+    "adapter/chat_template.jinja": {
+      "bytes": 4256,
+      "sha256": "51fa65c79bb57f058dc7ef8734884bd325fe9d45bb03a61bfef59785d3bc2da9"
+    },
+    "adapter/README.md": {
+      "bytes": 5326,
+      "sha256": "28dfa214c5638d2594906ec503b1f3b7ff7a03afefae06f9dd85e9910ad97063"
+    },
+    "adapter/tokenizer.json": {
+      "bytes": 11422650,
+      "sha256": "be75606093db2094d7cd20f3c2f385c212750648bd6ea4fb2bf507a6a4c55506"
+    },
+    "adapter/tokenizer_config.json": {
+      "bytes": 722,
+      "sha256": "b3d4aae9670f7c2de3e3b32675b0118e7e7b517544f5ab32efe04bd74f2238c1"
+    }
+  },
+  "authority": {
+    "execution_authority": false,
+    "serial_write": false,
+    "gpio_write": false,
+    "pump_command": false,
+    "physical_completion": false
+  },
+  "truth_boundary": "Adapter training on deterministic RootScope structured supervision; not X5-qualified, not cloud-logit distillation, not physical closure."
+}
