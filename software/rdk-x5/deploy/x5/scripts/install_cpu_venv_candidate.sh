@@ -22,7 +22,10 @@ if sys.version_info[:2] != (3, 10):
 PY
 
 cd "$PROJECT_ROOT"
-"$SYSTEM_PYTHON" "$WHEELHOUSE/audit_candidate_wheelhouse.py" --manifest "$MANIFEST" >/tmp/rootscope-wheelhouse-audit.json
+"$SYSTEM_PYTHON" "$WHEELHOUSE/audit_candidate_wheelhouse.py" \
+  --manifest "$MANIFEST" \
+  --require-wheel-files \
+  >/tmp/rootscope-wheelhouse-audit.json
 "$SYSTEM_PYTHON" -m venv "$VENV_DIR"
 "$VENV_DIR/bin/python3" -m pip install \
   --no-index \

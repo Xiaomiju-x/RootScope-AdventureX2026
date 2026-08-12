@@ -31,7 +31,7 @@ BPU_PY="$HOME/.venvs/rootscope-bpu/bin/python"
 若 RDK 系统 Python 已有 Pillow，不需要安装任何 wheel。若 import-only 回执明确显示 Pillow 缺失，只能使用发布清单中哈希锁定的本地 aarch64/CPython 3.10 Pillow wheel：
 
 ```bash
-PILLOW_WHEEL=/opt/rootscope/wheelhouse/pillow-11.3.0-cp310-cp310-manylinux2014_aarch64.whl
+PILLOW_WHEEL=/opt/rootscope/wheelhouse/pillow-12.2.0-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.whl
 
 /usr/bin/python3 deploy/x5/scripts/prepare_bpu_system_site_venv.py \
   --venv "$HOME/.venvs/rootscope-bpu" \

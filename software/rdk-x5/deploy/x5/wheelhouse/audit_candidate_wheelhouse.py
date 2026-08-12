@@ -22,7 +22,9 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def audit_manifest(manifest_path: str | Path) -> dict:
+def audit_manifest(
+    manifest_path: str | Path, *, require_wheel_files: bool = False
+) -> dict:
     manifest_path = Path(manifest_path).resolve()
     root = manifest_path.parent
     payload = json.loads(manifest_path.read_text(encoding="utf-8"))
@@ -37,6 +39,11 @@ def audit_manifest(manifest_path: str | Path) -> dict:
     check("target_aarch64", target.get("architecture") == "aarch64", target)
     check("target_cp310", target.get("python_version") == "3.10" and target.get("abi") == "cp310", target)
     claims = payload.get("claims", {})
+    check(
+        "wheel_files_not_redistributed_in_git",
+        claims.get("wheel_files_redistributed_in_git") is False,
+        claims.get("wheel_files_redistributed_in_git"),
+    )
     for name in (
         "exact_twin_install_tested",
         "rdk_x5_import_tested",
@@ -68,7 +75,11 @@ def audit_manifest(manifest_path: str | Path) -> dict:
         expected_names.add(filename)
         distributions.add(distribution)
         path = wheel_dir / filename
-        check(prefix + "_present", path.is_file(), str(path))
+        check(
+            prefix + "_present_or_manifest_only",
+            path.is_file() or not require_wheel_files,
+            {"path": str(path), "require_wheel_files": require_wheel_files},
+        )
         if not path.is_file():
             continue
         check(prefix + "_bytes", path.stat().st_size == record.get("bytes"), path.stat().st_size)
@@ -94,7 +105,20 @@ def audit_manifest(manifest_path: str | Path) -> dict:
             check(prefix + "_wheel_zip", False, str(exc))
 
     actual_names = {path.name for path in wheel_dir.glob("*.whl")} if wheel_dir.is_dir() else set()
-    check("exact_wheel_file_coverage", actual_names == expected_names, {"missing": sorted(expected_names - actual_names), "extra": sorted(actual_names - expected_names)})
+    coverage_ok = (
+        actual_names == expected_names
+        if require_wheel_files
+        else actual_names.issubset(expected_names)
+    )
+    check(
+        "wheel_file_coverage",
+        coverage_ok,
+        {
+            "mode": "required" if require_wheel_files else "manifest_only",
+            "missing": sorted(expected_names - actual_names),
+            "extra": sorted(actual_names - expected_names),
+        },
+    )
     check("unique_distributions", len(distributions) == len(records), sorted(distributions))
     required = {"numpy", "pillow", "onnxruntime", "opencv-python-headless", "coloredlogs", "flatbuffers", "packaging", "protobuf", "sympy", "humanfriendly", "mpmath"}
     check("required_distributions", distributions == required, {"actual": sorted(distributions), "required": sorted(required)})
@@ -130,8 +154,15 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--manifest", required=True)
     parser.add_argument("--output-json")
+    parser.add_argument(
+        "--require-wheel-files",
+        action="store_true",
+        help="fail unless every content-bound wheel is present and verified",
+    )
     args = parser.parse_args()
-    result = audit_manifest(args.manifest)
+    result = audit_manifest(
+        args.manifest, require_wheel_files=args.require_wheel_files
+    )
     text = json.dumps(result, ensure_ascii=False, indent=2, sort_keys=True)
     print(text)
     if args.output_json:

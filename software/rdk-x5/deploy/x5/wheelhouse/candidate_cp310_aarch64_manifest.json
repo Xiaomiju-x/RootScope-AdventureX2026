@@ -2,6 +2,7 @@
   "schema": "rootscope.x5-candidate-wheelhouse.v1",
   "status": "CROSS_DOWNLOADED_HASH_LOCKED_NOT_EXACT_TWIN_X5_QUALIFIED",
   "created_date": "2026-07-17",
+  "public_security_refresh_date": "2026-08-13",
   "target_contract": {
     "os_family": "linux",
     "architecture": "aarch64",
@@ -92,10 +93,10 @@
     },
     {
       "distribution": "Pillow",
-      "version": "11.3.0",
-      "filename": "pillow-11.3.0-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
-      "bytes": 5859742,
-      "sha256": "7107195ddc914f656c7fc8e4a5e1c25f32e9236ea3ea860f257b0436011fddd0",
+      "version": "12.2.0",
+      "filename": "pillow-12.2.0-cp310-cp310-manylinux2014_aarch64.manylinux_2_17_aarch64.whl",
+      "bytes": 6269734,
+      "sha256": "a52edc8bfff4429aaabdf4d9ee0daadbbf8562364f940937b941f87a4290f5ff",
       "platform_scope": "linux_aarch64_cp310"
     },
     {
@@ -118,6 +119,7 @@
   "claims": {
     "all_files_downloaded": true,
     "all_files_sha256_locked": true,
+    "wheel_files_redistributed_in_git": false,
     "dependency_resolution_completed_for_cp310_aarch64": true,
     "exact_twin_install_tested": false,
     "rdk_x5_import_tested": false,

@@ -27,10 +27,28 @@ class CandidateWheelhouseTests(unittest.TestCase):
         self.assertFalse(result["wheelhouse_qualified"])
         self.assertFalse(result["hardware_touched"])
 
+    def test_install_mode_fails_closed_without_redistributed_wheels(self) -> None:
+        import importlib.util
+
+        module_path = WHEELHOUSE / "audit_candidate_wheelhouse.py"
+        spec = importlib.util.spec_from_file_location(
+            "candidate_wheel_audit_required", module_path
+        )
+        module = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(module)
+        result = module.audit_manifest(
+            WHEELHOUSE / "candidate_cp310_aarch64_manifest.json",
+            require_wheel_files=True,
+        )
+        self.assertFalse(result["passed"])
+        self.assertEqual(result["status"], "FAIL")
+
     def test_manifest_has_no_foreign_binary_or_qualification_claim(self) -> None:
         payload = json.loads((WHEELHOUSE / "candidate_cp310_aarch64_manifest.json").read_text(encoding="utf-8"))
         filenames = [item["filename"].lower() for item in payload["wheels"]]
         self.assertEqual(len(filenames), 11)
+        self.assertFalse(payload["claims"]["wheel_files_redistributed_in_git"])
         self.assertFalse(any("x86_64" in name or "win_amd64" in name or "macosx" in name for name in filenames))
         self.assertTrue(all(payload["claims"][name] is False for name in (
             "exact_twin_install_tested",
