@@ -4,7 +4,7 @@
 # them directly from ``src`` and ``software/rdk-x5`` so every network-fetched
 # dependency can be installed from the hash-locked output file.
 numpy>=1.23
-Pillow>=9.0
+Pillow>=12.3.0
 pyserial>=3.5
 opencv-python-headless>=4.8,<5
 pytest>=8,<10
