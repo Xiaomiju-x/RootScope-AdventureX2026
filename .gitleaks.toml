@@ -17,3 +17,22 @@ regexes = [
   '''api[_]key\s*=\s*"abcdefghijklmnopqrstuvwxyz123456"''',
   '''http[:]//user[:]pass@127[.]0[.]0[.]1:9080''',
 ]
+
+# Extend only the built-in rule that misclassifies these immutable SHA-256
+# content digests as API keys.  The rule-specific allowlist requires both an
+# exact policy path and the explicit digest field, so unrelated high-entropy
+# values remain findings.  This syntax is compatible with the pinned 8.24.3.
+[[rules]]
+id = "generic-api-key"
+
+[[rules.allowlists]]
+description = "Tokenizer artifact content digests"
+condition = "AND"
+regexTarget = "line"
+paths = [
+  '''^pipelines/dataset/ai_strict_structure_policy_v1[.]json$''',
+  '''^pipelines/dataset/ai_whole_plant_gpu_gate_policy_v1[.]json$''',
+]
+regexes = [
+  '''"tokenizer_artifact_sha256"\s*:\s*"[0-9a-f]{64}"''',
+]
