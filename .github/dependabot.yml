@@ -5,6 +5,12 @@ updates:
     schedule:
       interval: monthly
     open-pull-requests-limit: 5
+    ignore:
+      # The release verifier is intentionally validated against OpenCV 4.x.
+      # A major upgrade must update the X5 runtime, exact wheel manifest, and
+      # vision contracts together in a dedicated compatibility change.
+      - dependency-name: opencv-python-headless
+        update-types: [version-update:semver-major]
     groups:
       python-development:
         dependency-type: development
