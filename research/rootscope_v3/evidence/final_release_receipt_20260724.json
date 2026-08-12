@@ -1,0 +1,97 @@
+{
+  "schema": "rootscope.v3.final-pc-release-receipt.v1",
+  "status": "SUPERSEDED_DO_NOT_DEPLOY",
+  "candidate": {
+    "candidate_id": "rootscope_v3_pc_ready_20260724_9ce45e446adb",
+    "production_directory": "output/releases/rootscope_v3_final_pc_ready_20260724_g",
+    "reproducibility_twin_directory": "output/releases/rootscope_v3_final_pc_ready_20260724_h",
+    "archive": "rootscope_v3_pc_ready_20260724_9ce45e446adb.tar",
+    "archive_bytes": 1677312000,
+    "archive_sha256": "5a9770976661b1cf4c75a0c290a8ac373559563854ead51f6e08779e187b798c",
+    "entry_contract_root_sha256": "9ce45e446adb20c7ba0e8307098dd03db3cfc1b438e3b4380fc88f627a778a14",
+    "input_manifest_sha256": "d4d3bbdcb1bee4dca900fb51ab1ac41dbfb99e5eeccdb4252ed746dc8adc7cc3",
+    "candidate_manifest_sha256": "53a3dd63e4944351872ff27833c5fac91188d157f6c3f81ffaca9fb248688e8a",
+    "sha256sums_sha256": "7a9ad1cc99f3ab38209ade44084806d1c7bd040cb1701fa8e44d1b1d0946c46e",
+    "build_receipt_sha256": "8865fca6c17f829c7d43888fae6b538f497fb0cf56f53cb7d58459d26ea24066",
+    "manifest_file_count": 271,
+    "verified_file_count_including_manifest": 272,
+    "tar_member_count": 273,
+    "deterministic_build_count": 2,
+    "binary_compare": "NO_DIFFERENCES"
+  },
+  "pc_gate": {
+    "receipt": "rootscope_v3/evidence/pc_gate_receipt_v2_20260724.json",
+    "receipt_sha256": "2c971616b578254c620ee57fec9f80e459bd276f7bfcb41ef687b2039a31ccfc",
+    "contract_root_sha256": "a50f233de0d577a97bd1ed8bfbdbed746e68839587c2c5256b6816163dcc3c69",
+    "five_evaluation_receipts_hash_matched": true,
+    "seven_llm_contract_references_hash_matched": true,
+    "packaged_reference_verifier_fail_closed": true
+  },
+  "payload": {
+    "aarch64_wheels": 12,
+    "fast_gguf_count": 1,
+    "deep_gguf_count": 1,
+    "dense_rag_asset_count": 0,
+    "rag_default": "SQLITE_FTS5_BM25_V2",
+    "training_receipt_packaged": true,
+    "merge_receipt_packaged": true,
+    "safety_compiler_receipt_packaged": true
+  },
+  "rootmind_deep": {
+    "model": "rootscope-qwen3-1.7b-rootscope-v3-final.Q4_K_M.gguf",
+    "bytes": 1107408608,
+    "sha256": "0bd32a4d943db70ca2e7859906aa23cd7773ef80982680c454178a26b513aeec",
+    "architecture": "qwen3",
+    "file_type": 15,
+    "tensor_count": 310,
+    "adapter_sha256": "5720045c92e88096e1b3e6dc819e59e14b4ae2aac2c47e0ac8e0d5d7a1bd67c1",
+    "holdout_total": 32,
+    "holdout_adversarial": 16,
+    "adversarial_rejected": 16,
+    "safety_raw_accept": 32,
+    "safety_fallback": 0,
+    "safety_unsafe_escape": 0
+  },
+  "verification": {
+    "pytest": "36 passed",
+    "powershell_parser": "PASS",
+    "x5_shell_syntax_scripts": 4,
+    "archive_verifier": "PASS_PC_ARCHIVE_CONTENT_ZERO_AUTHORITY",
+    "independent_audits": {
+      "release_contract": {
+        "status": "PASS",
+        "p0": 0,
+        "p1": 0
+      },
+      "model_chain": {
+        "status": "PASS",
+        "p0": 0,
+        "p1": 0
+      },
+      "truth_boundary": {
+        "status": "PASS",
+        "p0": 0,
+        "p1": 0
+      }
+    }
+  },
+  "authority": {
+    "execution_authority": false,
+    "external_network": false,
+    "serial_write": false,
+    "gpio_write": false,
+    "pump_command": false,
+    "state_machine_write": false,
+    "physical_completion": false
+  },
+  "pending_x5_gates": [
+    "identity",
+    "cpu_replay",
+    "hbm_runtime_persistent_replay",
+    "resource_soak",
+    "live_camera",
+    "stm32",
+    "physical_closure"
+  ],
+  "next_action": "DO_NOT_DEPLOY_SUPERSEDED_BY_FINAL_NATIVE_LIBDNN_CANDIDATE"
+}

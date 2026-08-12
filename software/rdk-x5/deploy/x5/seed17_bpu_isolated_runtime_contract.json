@@ -1,0 +1,82 @@
+{
+  "schema": "rootscope.seed17-bpu-isolated-runtime-contract.v1",
+  "status": "MANUAL_ISOLATED_SUPPORT_ONLY_NOT_X5_OR_MODEL_QUALIFIED",
+  "artifact_binding": {
+    "artifact_in_this_contract": false,
+    "artifact_copy_allowed_by_this_contract": false,
+    "model_extension": ".bin",
+    "expected_sha256_source": "REQUIRED_RELEASE_MANIFEST_OR_SIGNED_HANDOFF",
+    "runtime_accepts_unbound_hash": false,
+    "symlink_allowed": false
+  },
+  "platform": {
+    "system": "Linux",
+    "machine": ["aarch64", "arm64"],
+    "python": "CPython 3.10",
+    "backend": "hobot_dnn.pyeasy_dnn",
+    "backend_import": "LAZY_AFTER_MODEL_HASH_MATCH",
+    "model_count": 1
+  },
+  "python_environment": {
+    "independent_bpu_venv_required": true,
+    "include_system_site_packages": true,
+    "core_v1_venv_allowed": false,
+    "numpy_source": "RDK_SYSTEM_SITE_PACKAGES_OUTSIDE_VENV",
+    "hobot_dnn_source": "RDK_SYSTEM_SITE_PACKAGES_OUTSIDE_VENV",
+    "local_wheel_install_allowlist": ["Pillow"],
+    "offline_only": true,
+    "pip_no_index": true,
+    "pip_no_deps": true,
+    "venv_numpy_install_allowed": false,
+    "venv_hobot_dnn_install_allowed": false
+  },
+  "input": {
+    "source_color_order": "BGR",
+    "short_side": 256,
+    "resize_interpolation": "PIL_BILINEAR",
+    "center_crop": [224, 224],
+    "runtime_color_order": "RGB",
+    "runtime_layout": "NCHW",
+    "runtime_dtype": "uint8",
+    "runtime_shape": [1, 3, 224, 224],
+    "runtime_source": "DDR",
+    "c_contiguous": true,
+    "host_normalization": false,
+    "mean_scale_compiled_into_model": true
+  },
+  "output": {
+    "tensor_count": 1,
+    "shape": [1, 4],
+    "finite_required": true,
+    "class_order": ["grass_clump", "low_shrub", "young_tree", "unknown"],
+    "semantic_scope": "RAW_TOP1_HYPOTHESIS_NOT_OPEN_WORLD_ACCURACY_EVIDENCE"
+  },
+  "modes": {
+    "default": "HASH_AND_INTERFACE_PREFLIGHT_NO_FORWARD_NO_CAMERA",
+    "image": "ONE_EXPLICIT_HASH_BOUND_FILE_ONE_FORWARD",
+    "camera": "ONE_EXPLICIT_V4L2_DEVICE_ONE_FRAME_ONE_FORWARD",
+    "device_enumeration": false,
+    "continuous_camera_loop": false
+  },
+  "claims": {
+    "x5_ready": false,
+    "x5_validated": false,
+    "camera_qualified": false,
+    "model_candidate": false,
+    "model_qualified": false,
+    "production_integration_allowed": false,
+    "production_authority_enabled": false,
+    "irrigation_authority_enabled": false
+  },
+  "authority": {
+    "network_touched": false,
+    "device_enumerated": false,
+    "serial_write": false,
+    "state_machine_write": false,
+    "pump_command": false,
+    "irrigation_execution": false,
+    "execution_authority": false,
+    "physical_authority": false,
+    "physical_completion": false
+  }
+}

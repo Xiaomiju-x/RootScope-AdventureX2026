@@ -1,0 +1,50 @@
+{
+  "schema": "rootscope.public-model-assets.v1",
+  "license_note": "See THIRD_PARTY_NOTICES.md and per-directory model cards.",
+  "assets": [
+    {
+      "model_id": "rootsight-fixed-card-resnet18-onnx",
+      "path": "model-assets/vision/rootscope_answer_cards_resnet18_opset11.onnx",
+      "bytes": 44704833,
+      "sha256": "7ad94a092a86f1c3706a86137b017d501b1b9e62833d68c6a14fab0b110a3b95",
+      "storage": "git-lfs",
+      "license": "Apache-2.0",
+      "upstream": "team-trained; torchvision ResNet-18 initialization",
+      "scope": "FOUR_FIXED_PRINTED_ANSWER_CARDS_ONLY",
+      "physical_authority": false
+    },
+    {
+      "model_id": "rootsight-seed17-bpu-source-onnx",
+      "path": "model-assets/bpu/rootscope_seed17_resnet18_static_b1x3x224x224_opset11.onnx",
+      "bytes": 44704833,
+      "sha256": "50ae8d2ec1cec0f3748efa127c6b9c00624684f8c112c8a7913c2a0e304a3bad",
+      "storage": "git-lfs",
+      "license": "Apache-2.0",
+      "upstream": "team-trained seed-17 ResNet-18 source graph for the published Bayes-e binary",
+      "scope": "FOUR_FIXED_PRINTED_ANSWER_CARDS_BPU_SOURCE_ONLY",
+      "physical_authority": false
+    },
+    {
+      "model_id": "rootsight-fixed-card-bayes-e-r7",
+      "path": "model-assets/bpu/rootscope_seed17_resnet18_224x224_rgb_ddr_r7_default_int16_all_nodes.bin",
+      "bytes": 12519415,
+      "sha256": "4dc4bc24741332bb6bc6da184dd1d6f954ae539ba740330490339d76eb200285",
+      "storage": "git-lfs",
+      "license": "Apache-2.0",
+      "upstream": "compiled from the adjacent seed-17 ONNX with the D-Robotics toolchain",
+      "scope": "BPU_REPLAY_AUXILIARY_NO_ACTUATOR_AUTHORITY",
+      "physical_authority": false
+    },
+    {
+      "model_id": "rootmind-qwen3-1.7b-qlora-adapter-v6",
+      "path": "model-assets/rootmind-adapter/adapter_model.safetensors",
+      "bytes": 34916720,
+      "sha256": "5720045c92e88096e1b3e6dc819e59e14b4ae2aac2c47e0ac8e0d5d7a1bd67c1",
+      "storage": "git-lfs",
+      "license": "Apache-2.0",
+      "upstream": "Qwen/Qwen3-1.7B (not redistributed)",
+      "scope": "READ_ONLY_STRUCTURED_EXPLANATION_NO_CONTROL_AUTHORITY",
+      "physical_authority": false
+    }
+  ]
+}

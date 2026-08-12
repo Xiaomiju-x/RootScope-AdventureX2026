@@ -1,0 +1,17 @@
+{
+  "schema": "rootscope.v3.pc-gate-receipt.v1",
+  "status": "PASS_PC_COMPLETE_X5_FINAL_CANDIDATE_ACCEPTANCE_PENDING",
+  "test_fixture_only": true,
+  "models": {
+    "fast": {
+      "path": "rootscope/app/runtime_v3/__init__.py",
+      "bytes": 447,
+      "sha256": "6f10275bcbd18f1d80e89d475a977965cadd22a7b8d2bbcd7030738018924605"
+    },
+    "deep": {
+      "path": "rootscope/app/runtime_v3/__init__.py",
+      "bytes": 447,
+      "sha256": "6f10275bcbd18f1d80e89d475a977965cadd22a7b8d2bbcd7030738018924605"
+    }
+  }
+}

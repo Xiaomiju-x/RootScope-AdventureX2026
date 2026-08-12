@@ -1,0 +1,85 @@
+name: Bug report / 缺陷报告
+description: Report a reproducible software, test, or documentation behavior.
+title: "[Bug]: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Do not include credentials, private IP/MAC/device IDs, absolute user paths, unsanitized logs, or actuator-ready secrets. Use private vulnerability reporting for security issues.
+  - type: input
+    id: commit
+    attributes:
+      label: Commit or release
+      description: Full commit SHA or release tag.
+      placeholder: v1.0.0 or 40-character commit
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Device-free reference package
+        - RDK X5 software
+        - Vision / BPU
+        - RootMind / RAG
+        - STM32 firmware
+        - Hardware / mechanical documentation
+        - Data / model pipeline
+        - CI / release
+        - Documentation
+    validations:
+      required: true
+  - type: dropdown
+    id: evidence
+    attributes:
+      label: Evidence level
+      options:
+        - R0 static audit
+        - R1 PC software
+        - R2 X5 CPU
+        - R3 actual X5 BPU
+        - R4 read-only / no-action hardware
+        - R5 supervised physical action
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Sanitized environment
+      description: OS, Python/toolchain/runtime versions and hardware family; remove unique identity.
+      placeholder: Ubuntu 24.04; Python 3.12; no physical hardware connected
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Minimal reproduction
+      description: Exact commands and smallest synthetic/public input.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and sanitized output
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Safety and privacy checks
+      options:
+        - label: I reproduced on the stated commit/release.
+          required: true
+        - label: I removed credentials, private topology, device identity, personal paths, and unlicensed attachments.
+          required: true
+        - label: If physical hardware was involved, actuator power is now off and the system is in a safe state.
+          required: false

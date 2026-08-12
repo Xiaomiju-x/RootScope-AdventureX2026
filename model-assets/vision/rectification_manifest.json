@@ -1,0 +1,526 @@
+[
+  {
+    "class_id": "grass_clump",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/grass_clump/01.jpg",
+    "roi_sha256": "e917301376d491eb91e5d58e854d34d07dfb70d216dbe677f1424405a8707ea1",
+    "sequence": 1,
+    "source": "images/grass_clump/G_grass_clump_20260725_140005_209_01.jpg",
+    "source_sha256": "c13b46d2965b3383e90ed0b5e51c50961c9c05ce66672234e025fe45dd1f1205"
+  },
+  {
+    "class_id": "grass_clump",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/grass_clump/02.jpg",
+    "roi_sha256": "892fa03dd2bb45511ba5f8c0bc41c930095bf170c02c96f8ffd5777e4c935930",
+    "sequence": 2,
+    "source": "images/grass_clump/G_grass_clump_20260725_140008_554_02.jpg",
+    "source_sha256": "efe4291011fdd7befcb5879fc63d82b5b4331c3189d487382a7c713435d0efc7"
+  },
+  {
+    "class_id": "grass_clump",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/grass_clump/03.jpg",
+    "roi_sha256": "4c1c5c5d0716bd172b0a77dc9a304b76ea6618244ddfc5d388759b00bc37fab7",
+    "sequence": 3,
+    "source": "images/grass_clump/G_grass_clump_20260725_140009_198_03.jpg",
+    "source_sha256": "8de0238c34b06949c253527072d98a11f6b0828afcea01a6f22b9fcc7b1c9545"
+  },
+  {
+    "class_id": "grass_clump",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/grass_clump/04.jpg",
+    "roi_sha256": "9f7b8f3d574dd0e2795c2d6e401166b2a54f1344a3a4e8e63f380879edef471b",
+    "sequence": 4,
+    "source": "images/grass_clump/G_grass_clump_20260725_140030_599_04.jpg",
+    "source_sha256": "4960339c789b6bef13c3ae1989210883e1af8f2801d323bc3667363c48d4a6fb"
+  },
+  {
+    "class_id": "grass_clump",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/grass_clump/05.jpg",
+    "roi_sha256": "d200a590caae98e63f8c2375e6bd4783cbe87ad3c32e82359c49e180554c0dea",
+    "sequence": 5,
+    "source": "images/grass_clump/G_grass_clump_20260725_140031_124_05.jpg",
+    "source_sha256": "a1108c460744157e67966b9e0cc94fbc8e52950d717d1e600b5c657b279f729b"
+  },
+  {
+    "class_id": "low_shrub",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/low_shrub/01.jpg",
+    "roi_sha256": "b67838a4f84aad2ab0fe461b3eecb8e081528201fa72916f8b36c05c5aefc874",
+    "sequence": 1,
+    "source": "images/low_shrub/S_low_shrub_20260725_140049_999_01.jpg",
+    "source_sha256": "ef5d41f4b0b074964511f2e3348f66e33d61216b53bc6141e6abc94ae627ca2b"
+  },
+  {
+    "class_id": "low_shrub",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/low_shrub/02.jpg",
+    "roi_sha256": "cf002e6013f0d431230333d0640ed5bb703479c940fb414a6e7789669d62a144",
+    "sequence": 2,
+    "source": "images/low_shrub/S_low_shrub_20260725_140050_665_02.jpg",
+    "source_sha256": "e499fd51b3a448aecc83c0d33c2f838375b841b9b452dffc2049152485649363"
+  },
+  {
+    "class_id": "low_shrub",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/low_shrub/03.jpg",
+    "roi_sha256": "344cc39a3d9bfdd3a4450238981f5a68f9675f3e1ab67bb8be96bf175b4ad377",
+    "sequence": 3,
+    "source": "images/low_shrub/S_low_shrub_20260725_140055_441_03.jpg",
+    "source_sha256": "0cd4572b0dd2019a07ccde7c7fe0f3fc36bd8106838b41f31359f701b05b7e3e"
+  },
+  {
+    "class_id": "low_shrub",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/low_shrub/04.jpg",
+    "roi_sha256": "87a9d6e20997f0b0f53875fa1cc68c3eb5ebd594722bfbcc3b95815b8bff91e4",
+    "sequence": 4,
+    "source": "images/low_shrub/S_low_shrub_20260725_140055_861_04.jpg",
+    "source_sha256": "270f99f9d5426345e3732f637fc1268bc2ba2e52db7542d1380385bae92de24c"
+  },
+  {
+    "class_id": "low_shrub",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/low_shrub/05.jpg",
+    "roi_sha256": "19d54cc690880b14245aa4b4cf67602b72fb952f65b3f197e09a298508beeef4",
+    "sequence": 5,
+    "source": "images/low_shrub/S_low_shrub_20260725_140056_574_05.jpg",
+    "source_sha256": "708a7a580fcf992c30647042afa64e5b51aee584859a55e6f772dd2c9045737d"
+  },
+  {
+    "class_id": "non_target",
+    "geometry": {
+      "method": "quadrilateral",
+      "output_wh": [
+        1600,
+        1200
+      ],
+      "quad_xy": [
+        [
+          543.0,
+          252.0
+        ],
+        [
+          3108.0,
+          249.0
+        ],
+        [
+          3117.0,
+          2028.0
+        ],
+        [
+          570.0,
+          2085.0
+        ]
+      ],
+      "stored_wh": [
+        960,
+        720
+      ]
+    },
+    "roi": "rectified/non_target/01.jpg",
+    "roi_sha256": "1c687a12cf45fe1dbe758c03eac6c35b224c2be0f603d993899e8704e7b63e71",
+    "sequence": 1,
+    "source": "images/non_target/U_non_target_20260725_140112_261_01.jpg",
+    "source_sha256": "114b54a35a6d603241143d78f033b535168561e36f57cdcb9d75a8f7316c1a14"
+  },
+  {
+    "class_id": "non_target",
+    "geometry": {
+      "method": "quadrilateral",
+      "output_wh": [
+        1600,
+        1200
+      ],
+      "quad_xy": [
+        [
+          543.0,
+          252.0
+        ],
+        [
+          3108.0,
+          249.0
+        ],
+        [
+          3117.0,
+          2028.0
+        ],
+        [
+          570.0,
+          2085.0
+        ]
+      ],
+      "stored_wh": [
+        960,
+        720
+      ]
+    },
+    "roi": "rectified/non_target/02.jpg",
+    "roi_sha256": "77d67c27244b7c3bae23cd0d3a89df06accb7555ec07d99c280ca98e11144b4a",
+    "sequence": 2,
+    "source": "images/non_target/U_non_target_20260725_140112_798_02.jpg",
+    "source_sha256": "e06f3aa7d5d0b6d9dad5ea1f2013f2f38a1488c2dc10a262e8540905438dfbd6"
+  },
+  {
+    "class_id": "non_target",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/non_target/03.jpg",
+    "roi_sha256": "7ee81c65229dfbe9112a04e454b054ba0651c123647ed3841352c5a2a4bf8bb7",
+    "sequence": 3,
+    "source": "images/non_target/U_non_target_20260725_140116_251_03.jpg",
+    "source_sha256": "06e6579ee0c1b0ccc7425b757cd96c259307d3388cc2ec684693d608d671af41"
+  },
+  {
+    "class_id": "non_target",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/non_target/04.jpg",
+    "roi_sha256": "a925a854ce827c2f38a5d73d22b91c168fde65327ec08d1f1e66859339ab371d",
+    "sequence": 4,
+    "source": "images/non_target/U_non_target_20260725_140116_741_04.jpg",
+    "source_sha256": "b6c16a190518a3c2906ce452738249328a23630cfdb3a83b2ba22db70050e8e9"
+  },
+  {
+    "class_id": "non_target",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/non_target/05.jpg",
+    "roi_sha256": "c6bc5c803d8d0c08f0a58720dc3c9132a80346c6df6f7fbdde5f01de05db0ae2",
+    "sequence": 5,
+    "source": "images/non_target/U_non_target_20260725_140117_397_05.jpg",
+    "source_sha256": "9b36d67b73ea77552cc0c79900f4548e167f638747e01178095041cd1d176b0a"
+  },
+  {
+    "class_id": "young_tree",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/young_tree/01.jpg",
+    "roi_sha256": "2914028f5fe3323db25ba5772cfd9a42613cb25f7a3708adab0914aca1aac929",
+    "sequence": 1,
+    "source": "images/young_tree/T_young_tree_20260725_140132_687_01.jpg",
+    "source_sha256": "b8286495038488885f55aee25f0b17e3a2ff2faafbf574eae2acda17639b2753"
+  },
+  {
+    "class_id": "young_tree",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/young_tree/02.jpg",
+    "roi_sha256": "af66c7c258a27f489361ac8a5e0a63d78f8572aa30283b7eb3cdd92d33e04158",
+    "sequence": 2,
+    "source": "images/young_tree/T_young_tree_20260725_140133_764_02.jpg",
+    "source_sha256": "035ee43633d526756c592c6fef2dcf6891062778975bb3c79ea75330cbd0ed06"
+  },
+  {
+    "class_id": "young_tree",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/young_tree/03.jpg",
+    "roi_sha256": "2ce3ff0644adfa01eca610bc253b009a3d964608adc2df631be53f8ffcfb8229",
+    "sequence": 3,
+    "source": "images/young_tree/T_young_tree_20260725_140137_583_03.jpg",
+    "source_sha256": "1cb9100bc5c0dd3a357e4a559e3847a0b0d483cb30b719fee0fa06bed6ac97af"
+  },
+  {
+    "class_id": "young_tree",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/young_tree/04.jpg",
+    "roi_sha256": "975ae7c20b32ca76e60f3d4a87d6c6503e0b4bcdae352fb05af74b8786d7ce3c",
+    "sequence": 4,
+    "source": "images/young_tree/T_young_tree_20260725_140138_023_04.jpg",
+    "source_sha256": "ee142fc199f4deab90afd2908bfbf27d43db1dae1f2f6eadd456002c28bb5150"
+  },
+  {
+    "class_id": "young_tree",
+    "geometry": {
+      "crop_xyxy": [
+        652,
+        237,
+        3187,
+        2008
+      ],
+      "method": "center_fallback",
+      "output_wh": [
+        2535,
+        1771
+      ],
+      "stored_wh": [
+        960,
+        671
+      ]
+    },
+    "roi": "rectified/young_tree/05.jpg",
+    "roi_sha256": "89160d1fc8b4ed8edcdd2736d3ee34d087304b4d40589dc8b40f5884f966a0ac",
+    "sequence": 5,
+    "source": "images/young_tree/T_young_tree_20260725_140138_597_05.jpg",
+    "source_sha256": "825751330c36df2c480e3880d9764efc0f420b6615bb9482c002f9d90fcca27c"
+  }
+]

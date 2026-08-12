@@ -1,0 +1,23 @@
+{
+  "schema_version": "rootscope.omega.bpu-aux-input-manifest.v1",
+  "run_id": "replace-with-unique-run-id",
+  "model": {
+    "path": "/opt/hobot/model/x5/basic/mobilenetv2_224x224_nv12.bin",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "output_semantics": "LOGITS"
+  },
+  "labels": {
+    "path": "/app/pydev_demo/01_basic_sample/imagenet1000_clsidx_to_labels.txt",
+    "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "format": "PYTHON_LITERAL_DICT_INT_TO_STRING"
+  },
+  "top_k": 5,
+  "warmup_runs": 1,
+  "images": [
+    {
+      "image_id": "explicit-card-001",
+      "path": "/opt/rootscope/rootscope_inputs/explicit-card-001.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ]
+}

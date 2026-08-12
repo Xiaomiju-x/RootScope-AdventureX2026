@@ -1,0 +1,277 @@
+{
+  "action_levels": {
+    "grass_clump": 1,
+    "low_shrub": 2,
+    "non_target": 0,
+    "young_tree": 3
+  },
+  "artifacts": {
+    "checkpoint": {
+      "path": "rootscope_answer_cards_resnet18.pt",
+      "sha256": "a50f7cd9cb1cbc110b21d4c7db228965b7f32abf156c7de5bef6b24442d33ecc"
+    },
+    "onnx": {
+      "path": "rootscope_answer_cards_resnet18_opset11.onnx",
+      "sha256": "7ad94a092a86f1c3706a86137b017d501b1b9e62833d68c6a14fab0b110a3b95"
+    },
+    "templates_manifest": {
+      "path": "templates_manifest.json",
+      "sha256": "b2b2daa659291798d5ebf44b0a3530d23a0fb5d0faca2e19a71b90d460ae1e5d"
+    }
+  },
+  "class_order": [
+    "grass_clump",
+    "low_shrub",
+    "young_tree",
+    "non_target"
+  ],
+  "created_at_utc": "2026-07-25T06:20:12.624Z",
+  "display_names": {
+    "grass_clump": "草丛 / GRASS",
+    "low_shrub": "灌木 / SHRUB",
+    "non_target": "纯沙 / HOLD",
+    "young_tree": "幼树 / TREE"
+  },
+  "input": {
+    "color": "RGB",
+    "layout": "NCHW",
+    "mean": [
+      0.485,
+      0.456,
+      0.406
+    ],
+    "preprocess": "rectify_card_resize256_center_crop224",
+    "shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "std": [
+      0.229,
+      0.224,
+      0.225
+    ]
+  },
+  "metrics": {
+    "confidence_threshold": 0.7733237099647522,
+    "margin_threshold": 0.6900091588497161,
+    "same_session_temporal_holdout": {
+      "accuracy": 1.0,
+      "count": 8,
+      "rows": [
+        {
+          "confidence": 0.998027503490448,
+          "margin": 0.9971953630447388,
+          "prediction": "grass_clump",
+          "truth": "grass_clump"
+        },
+        {
+          "confidence": 0.9986751675605774,
+          "margin": 0.9981678128242493,
+          "prediction": "grass_clump",
+          "truth": "grass_clump"
+        },
+        {
+          "confidence": 0.9980666041374207,
+          "margin": 0.9971717000007629,
+          "prediction": "low_shrub",
+          "truth": "low_shrub"
+        },
+        {
+          "confidence": 0.9989853501319885,
+          "margin": 0.9984301924705505,
+          "prediction": "low_shrub",
+          "truth": "low_shrub"
+        },
+        {
+          "confidence": 0.9916825294494629,
+          "margin": 0.9857273697853088,
+          "prediction": "non_target",
+          "truth": "non_target"
+        },
+        {
+          "confidence": 0.9914406538009644,
+          "margin": 0.9860944747924805,
+          "prediction": "non_target",
+          "truth": "non_target"
+        },
+        {
+          "confidence": 0.9999889135360718,
+          "margin": 0.9999784827232361,
+          "prediction": "young_tree",
+          "truth": "young_tree"
+        },
+        {
+          "confidence": 0.9999778270721436,
+          "margin": 0.9999570250511169,
+          "prediction": "young_tree",
+          "truth": "young_tree"
+        }
+      ]
+    },
+    "train_reference": {
+      "accuracy": 1.0,
+      "count": 12,
+      "rows": [
+        {
+          "confidence": 0.998584508895874,
+          "margin": 0.9979647397994995,
+          "prediction": "grass_clump",
+          "truth": "grass_clump"
+        },
+        {
+          "confidence": 0.9981117248535156,
+          "margin": 0.9972825646400452,
+          "prediction": "grass_clump",
+          "truth": "grass_clump"
+        },
+        {
+          "confidence": 0.9985560774803162,
+          "margin": 0.9980035424232483,
+          "prediction": "grass_clump",
+          "truth": "grass_clump"
+        },
+        {
+          "confidence": 0.9981258511543274,
+          "margin": 0.9972025156021118,
+          "prediction": "low_shrub",
+          "truth": "low_shrub"
+        },
+        {
+          "confidence": 0.9990144968032837,
+          "margin": 0.998495876789093,
+          "prediction": "low_shrub",
+          "truth": "low_shrub"
+        },
+        {
+          "confidence": 0.9989404082298279,
+          "margin": 0.9983680248260498,
+          "prediction": "low_shrub",
+          "truth": "low_shrub"
+        },
+        {
+          "confidence": 0.99179607629776,
+          "margin": 0.9860659837722778,
+          "prediction": "non_target",
+          "truth": "non_target"
+        },
+        {
+          "confidence": 0.9918215870857239,
+          "margin": 0.9862449169158936,
+          "prediction": "non_target",
+          "truth": "non_target"
+        },
+        {
+          "confidence": 0.9910956621170044,
+          "margin": 0.9855065941810608,
+          "prediction": "non_target",
+          "truth": "non_target"
+        },
+        {
+          "confidence": 0.9999903440475464,
+          "margin": 0.9999815821647644,
+          "prediction": "young_tree",
+          "truth": "young_tree"
+        },
+        {
+          "confidence": 0.9999833106994629,
+          "margin": 0.999967634677887,
+          "prediction": "young_tree",
+          "truth": "young_tree"
+        },
+        {
+          "confidence": 0.9999827146530151,
+          "margin": 0.9999664425849915,
+          "prediction": "young_tree",
+          "truth": "young_tree"
+        }
+      ]
+    }
+  },
+  "onnx_consistency": {
+    "max_abs_logit_error_zero_probe": 4.503875970840454e-06,
+    "opset": 11,
+    "passed": true,
+    "static_shape": [
+      1,
+      3,
+      224,
+      224
+    ]
+  },
+  "plant2action_authority": false,
+  "schema": "rootscope.answer_cards.model_manifest.v1",
+  "scope": "FOUR_FIXED_PRINTED_ANSWER_CARDS_ONLY",
+  "selected_for_answer_demo": true,
+  "source_completion_sha256": "ddca7a446d788ea9c1f7537b0e0433a64d3ae43c2bb1f8c562678321caf45ca9",
+  "source_session": "private://captures/laptop-card-session-20260725",
+  "training": {
+    "epochs": 8,
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU",
+    "history": [
+      {
+        "epoch": 1,
+        "lr": 0.00024048494156391086,
+        "train_loss": 0.36972972253958386,
+        "val_accuracy": 1.0,
+        "val_min_margin": 0.9857273697853088
+      },
+      {
+        "epoch": 2,
+        "lr": 0.00021338834764831846,
+        "train_loss": 0.2063732917110125,
+        "val_accuracy": 1.0,
+        "val_min_margin": 0.9083783030509949
+      },
+      {
+        "epoch": 3,
+        "lr": 0.00017283542904563627,
+        "train_loss": 0.18908650428056717,
+        "val_accuracy": 1.0,
+        "val_min_margin": 0.9306856393814087
+      },
+      {
+        "epoch": 4,
+        "lr": 0.00012500000000000003,
+        "train_loss": 0.17740905533234277,
+        "val_accuracy": 1.0,
+        "val_min_margin": 0.9163216948509216
+      },
+      {
+        "epoch": 5,
+        "lr": 7.71645709543638e-05,
+        "train_loss": 0.17577195167541504,
+        "val_accuracy": 1.0,
+        "val_min_margin": 0.8808568716049194
+      },
+      {
+        "epoch": 6,
+        "lr": 3.661165235168158e-05,
+        "train_loss": 0.17491268987456957,
+        "val_accuracy": 1.0,
+        "val_min_margin": 0.8844144940376282
+      },
+      {
+        "epoch": 7,
+        "lr": 9.515058436089161e-06,
+        "train_loss": 0.1746560956041018,
+        "val_accuracy": 1.0,
+        "val_min_margin": 0.905550479888916
+      },
+      {
+        "epoch": 8,
+        "lr": 0.0,
+        "train_loss": 0.17540627842148146,
+        "val_accuracy": 1.0,
+        "val_min_margin": 0.9064146876335144
+      }
+    ],
+    "seed": 20260725,
+    "torch": "2.11.0+cu128",
+    "train_augmented_samples_per_epoch": 288,
+    "train_images": 12,
+    "validation_images": 8
+  },
+  "truth_boundary": "Same-session temporal holdout and exact printed-card demo; not a natural-scene or field-generalization claim."
+}

@@ -1,0 +1,50 @@
+name: Feature or research proposal / 功能或研究提案
+description: Propose an improvement with explicit safety, evidence, and non-goals.
+title: "[Proposal]: "
+labels: [enhancement, needs-design]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What reproducibility, safety, or user problem should be solved?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed design
+    validations:
+      required: true
+  - type: textarea
+    id: non_goals
+    attributes:
+      label: Non-goals and truth boundary
+      description: State what this will not claim or control.
+    validations:
+      required: true
+  - type: textarea
+    id: failures
+    attributes:
+      label: Failure direction and tests
+      description: How does it fail closed, and how will missing/OOD/timeout paths be tested?
+    validations:
+      required: true
+  - type: textarea
+    id: assets
+    attributes:
+      label: Data, model, hardware, and license impact
+      description: List new assets, upstream dependencies, physical authority, and redistribution rights.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Project constraints
+      options:
+        - label: The proposal does not give free-form LLM/RAG output direct actuator authority.
+          required: true
+        - label: The proposal does not require credentials, private device identity, or unlicensed assets in Git.
+          required: true
+        - label: Physical actions, if any, have explicit no-action and supervised qualification gates.
+          required: true

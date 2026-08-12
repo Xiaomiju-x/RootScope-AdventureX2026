@@ -1,0 +1,298 @@
+{
+  "schema": "rootscope.rag2.audit-receipt.v2",
+  "status": "RAG2_BM25_PC_QUALIFIED_DENSE_NOT_ELIGIBLE",
+  "passed": true,
+  "counts": {
+    "sources": 17,
+    "chunks": 42,
+    "gold": 64,
+    "hard_gold": 44,
+    "forbidden": 36
+  },
+  "retrieval": {
+    "bm25": {
+      "count": 64,
+      "recall": {
+        "top1": 0.734375,
+        "top3": 0.890625,
+        "top5": 0.921875
+      },
+      "hard_top3": 0.8409090909090909,
+      "latency_ms": {
+        "p50": 0.457549999737239,
+        "p95": 0.8492199999182044,
+        "max": 1.9311000005473034,
+        "runs": 64
+      },
+      "citation_allowlist_violations": []
+    },
+    "dense": {
+      "count": 64,
+      "recall": {
+        "top1": 0.5625,
+        "top3": 0.765625,
+        "top5": 0.875
+      },
+      "hard_top3": 0.75,
+      "latency_ms": {
+        "p50": 6.791249999878346,
+        "p95": 8.789049999768395,
+        "max": 10.264599999572965,
+        "runs": 64
+      },
+      "citation_allowlist_violations": []
+    },
+    "rrf": {
+      "count": 64,
+      "recall": {
+        "top1": 0.734375,
+        "top3": 0.875,
+        "top5": 0.890625
+      },
+      "hard_top3": 0.8409090909090909,
+      "latency_ms": {
+        "p50": 7.052250000015192,
+        "p95": 8.932860000504661,
+        "max": 9.58610000088811,
+        "runs": 64
+      },
+      "citation_allowlist_violations": []
+    },
+    "forbidden_boundary_recall": {
+      "bm25": {
+        "count": 36,
+        "recall": {
+          "top1": 0.7222222222222222,
+          "top3": 0.9166666666666666,
+          "top5": 0.9444444444444444
+        },
+        "hard_top3": null,
+        "latency_ms": {
+          "p50": 0.48000000015235855,
+          "p95": 0.820475000409715,
+          "max": 1.044799999363022,
+          "runs": 36
+        },
+        "citation_allowlist_violations": []
+      },
+      "dense": {
+        "count": 36,
+        "recall": {
+          "top1": 0.4722222222222222,
+          "top3": 0.8055555555555556,
+          "top5": 0.8611111111111112
+        },
+        "hard_top3": null,
+        "latency_ms": {
+          "p50": 6.191799999669456,
+          "p95": 7.377175000101488,
+          "max": 7.486000000426429,
+          "runs": 36
+        },
+        "citation_allowlist_violations": []
+      },
+      "rrf": {
+        "count": 36,
+        "recall": {
+          "top1": 0.7777777777777778,
+          "top3": 0.8611111111111112,
+          "top5": 0.8888888888888888
+        },
+        "hard_top3": null,
+        "latency_ms": {
+          "p50": 6.6505499999038875,
+          "p95": 8.561299999882976,
+          "max": 10.801899999933084,
+          "runs": 36
+        },
+        "citation_allowlist_violations": []
+      }
+    }
+  },
+  "dense_challenger_gate": {
+    "required_hard_top3_absolute_gain": 0.05,
+    "required_paired_exact_p": 0.05,
+    "required_all_top3_no_regression": true,
+    "max_model_mib": 32.0,
+    "max_pc_p95_ms": 100.0,
+    "max_pc_rss_delta_mib": 256.0,
+    "observed": {
+      "hard_top3_gain": 0.0,
+      "paired_exact_p": 1.0,
+      "bm25_only_success": 1,
+      "rrf_only_success": 1,
+      "all_top3_delta": -0.015625,
+      "model_mib": 22.906943321228027,
+      "pc_rrf_p95_ms": 8.932860000504661,
+      "pc_rss_delta_mib": 66.23828125
+    },
+    "eligible": false,
+    "decision": "NOT_ELIGIBLE_KEEP_BM25_DEFAULT"
+  },
+  "resource": {
+    "pc_load_ms": 252.47269999999844,
+    "pc_rss_before_mib": 35.36328125,
+    "pc_rss_loaded_mib": 101.6015625,
+    "pc_rss_delta_mib": 66.23828125,
+    "x5_measurement": "PENDING_BOARD_POWER"
+  },
+  "checks": [
+    {
+      "name": "corpus_at_least_40",
+      "passed": true,
+      "detail": 42
+    },
+    {
+      "name": "gold_at_least_60",
+      "passed": true,
+      "detail": 64
+    },
+    {
+      "name": "forbidden_at_least_30",
+      "passed": true,
+      "detail": 36
+    },
+    {
+      "name": "hard_gold_at_least_40",
+      "passed": true,
+      "detail": {
+        "gold_literal": 20,
+        "hard_semantic": 44
+      }
+    },
+    {
+      "name": "chunk_hashes",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "allowlist_exactly_matches_corpus",
+      "passed": true,
+      "detail": {
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "name": "qa_citations_bound",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "no_cross_pack_duplicate_ids",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "sqlite_integrity",
+      "passed": true,
+      "detail": "ok"
+    },
+    {
+      "name": "sqlite_rows_match_corpus",
+      "passed": true,
+      "detail": {
+        "chunks": 42,
+        "fts": 42,
+        "corpus": 42
+      }
+    },
+    {
+      "name": "dense_model_hash",
+      "passed": true,
+      "detail": "3f813fea8dbd30a883032affb2b0020add20a1dd31639bd2f6dae0b9e6665f6c"
+    },
+    {
+      "name": "dense_model_mit",
+      "passed": true,
+      "detail": "MIT"
+    },
+    {
+      "name": "quantized_cosine",
+      "passed": true,
+      "detail": 0.9951431155204773
+    },
+    {
+      "name": "invalid_queries_rejected",
+      "passed": true,
+      "detail": 2
+    },
+    {
+      "name": "retrieval_is_allowlisted_and_data_only",
+      "passed": true,
+      "detail": [
+        "rootscope-v3-plan-20260724#section-l3@rootmind-template-fallback",
+        "rootscope-v3-plan-20260724#section-h0@one-pump-commissioning",
+        "rootscope-omega-x5-handoff-20260723#section-3.5@rootscope-llm-resource-boundary",
+        "fao56-ch08#eq85@fao56-water-balance",
+        "fao56-ch09#calculation-approach@fao56-natural-vegetation"
+      ]
+    },
+    {
+      "name": "bm25_pc_pack_gate",
+      "passed": true,
+      "detail": {
+        "count": 64,
+        "recall": {
+          "top1": 0.734375,
+          "top3": 0.890625,
+          "top5": 0.921875
+        },
+        "hard_top3": 0.8409090909090909,
+        "latency_ms": {
+          "p50": 0.457549999737239,
+          "p95": 0.8492199999182044,
+          "max": 1.9311000005473034,
+          "runs": 64
+        },
+        "citation_allowlist_violations": []
+      }
+    },
+    {
+      "name": "dense_decision_is_explicit",
+      "passed": true,
+      "detail": {
+        "required_hard_top3_absolute_gain": 0.05,
+        "required_paired_exact_p": 0.05,
+        "required_all_top3_no_regression": true,
+        "max_model_mib": 32.0,
+        "max_pc_p95_ms": 100.0,
+        "max_pc_rss_delta_mib": 256.0,
+        "observed": {
+          "hard_top3_gain": 0.0,
+          "paired_exact_p": 1.0,
+          "bm25_only_success": 1,
+          "rrf_only_success": 1,
+          "all_top3_delta": -0.015625,
+          "model_mib": 22.906943321228027,
+          "pc_rrf_p95_ms": 8.932860000504661,
+          "pc_rss_delta_mib": 66.23828125
+        },
+        "eligible": false,
+        "decision": "NOT_ELIGIBLE_KEEP_BM25_DEFAULT"
+      }
+    },
+    {
+      "name": "zero_authority",
+      "passed": true,
+      "detail": {
+        "execution_authority": false,
+        "physical_authority": false,
+        "serial_write": false,
+        "pump_command": false
+      }
+    }
+  ],
+  "authority": {
+    "execution_authority": false,
+    "physical_authority": false,
+    "serial_write": false,
+    "pump_command": false
+  },
+  "truth_boundary": [
+    "Metrics are PC-only retrieval measurements on the frozen 64/36 pack.",
+    "The 42 chunks are concise attributed summaries, not field calibration.",
+    "Dense ONNX execution on PC does not prove RDK X5 compatibility or resource use.",
+    "No X5, camera, serial, GPIO, pump, API key or physical device was touched."
+  ]
+}

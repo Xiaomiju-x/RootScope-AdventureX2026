@@ -1,0 +1,2 @@
+# Windows-only identity binding for rootscope/tools/laptop_card_capture.py.
+cv2-enumerate-cameras==1.3.3

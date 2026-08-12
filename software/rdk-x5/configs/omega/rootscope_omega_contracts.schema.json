@@ -1,0 +1,826 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rootscope.local/schemas/omega/contracts-v1.json",
+  "title": "RootScope-Ω evidence intelligence contracts v1",
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "safeToken": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "execution_authority",
+        "physical_authority",
+        "serial_write",
+        "pump_command",
+        "state_machine_write",
+        "tool_execution",
+        "actuator_access"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.zero-authority.v1"
+        },
+        "execution_authority": {
+          "const": false
+        },
+        "physical_authority": {
+          "const": false
+        },
+        "serial_write": {
+          "const": false
+        },
+        "pump_command": {
+          "const": false
+        },
+        "state_machine_write": {
+          "const": false
+        },
+        "tool_execution": {
+          "const": false
+        },
+        "actuator_access": {
+          "const": false
+        }
+      }
+    },
+    "evidenceNode": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "node_id",
+        "kind",
+        "verdict",
+        "mode",
+        "source_id",
+        "observed_at_ms",
+        "payload",
+        "parents",
+        "authority",
+        "content_sha256"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.evidence-node.v1"
+        },
+        "node_id": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "kind": {
+          "enum": [
+            "QUALITY",
+            "SEMANTIC",
+            "GEOMETRY",
+            "OOD",
+            "SAFETY",
+            "ACK",
+            "MASS",
+            "WETTING",
+            "SOURCE",
+            "CLAIM"
+          ]
+        },
+        "verdict": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN",
+            "CONFLICT"
+          ]
+        },
+        "mode": {
+          "enum": [
+            "SIMULATION",
+            "SEALED_REPLAY",
+            "READ_ONLY"
+          ]
+        },
+        "source_id": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "observed_at_ms": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "payload": {
+          "type": "object"
+        },
+        "parents": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/safeToken"
+          }
+        },
+        "authority": {
+          "$ref": "#/$defs/authority"
+        },
+        "content_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "continuousEstimate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "name",
+        "mean",
+        "variance",
+        "lower",
+        "upper",
+        "hard_lower",
+        "hard_upper"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.continuous-estimate.v1"
+        },
+        "name": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "mean": {
+          "type": "number"
+        },
+        "variance": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "lower": {
+          "type": "number"
+        },
+        "upper": {
+          "type": "number"
+        },
+        "hard_lower": {
+          "type": "number"
+        },
+        "hard_upper": {
+          "type": "number"
+        }
+      }
+    },
+    "beliefState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "belief_id",
+        "revision",
+        "probabilities",
+        "continuous",
+        "evidence_node_ids",
+        "calibration_level",
+        "authority",
+        "state_sha256"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.hybrid-belief-state.v1"
+        },
+        "belief_id": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "revision": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "probabilities": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "NORMAL",
+            "PERCEPTION_ERROR",
+            "CAMERA_QUALITY",
+            "SENSOR_STALE",
+            "ACTUATOR_NO_ACK",
+            "MASS_ANOMALY",
+            "WETTING_MISS",
+            "NEIGHBOR_SPILL",
+            "SAFETY_INTERLOCK",
+            "OOD_CONFLICT"
+          ],
+          "properties": {
+            "NORMAL": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "PERCEPTION_ERROR": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "CAMERA_QUALITY": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "SENSOR_STALE": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "ACTUATOR_NO_ACK": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "MASS_ANOMALY": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "WETTING_MISS": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "NEIGHBOR_SPILL": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "SAFETY_INTERLOCK": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "OOD_CONFLICT": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            }
+          }
+        },
+        "continuous": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/continuousEstimate"
+          }
+        },
+        "evidence_node_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/safeToken"
+          }
+        },
+        "calibration_level": {
+          "enum": [
+            "INTERVAL_ONLY",
+            "EXPERIMENTAL_CALIBRATED"
+          ]
+        },
+        "authority": {
+          "$ref": "#/$defs/authority"
+        },
+        "state_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "failureSignal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "signal_id",
+        "failure_mode",
+        "predicate",
+        "observed",
+        "severity",
+        "blocking",
+        "witness_node_ids",
+        "counterfactual_action",
+        "rationale_code",
+        "risk_probability"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.failure-signal.v1"
+        },
+        "signal_id": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "failure_mode": {
+          "enum": [
+            "NORMAL",
+            "PERCEPTION_ERROR",
+            "CAMERA_QUALITY",
+            "SENSOR_STALE",
+            "ACTUATOR_NO_ACK",
+            "MASS_ANOMALY",
+            "WETTING_MISS",
+            "NEIGHBOR_SPILL",
+            "SAFETY_INTERLOCK",
+            "OOD_CONFLICT"
+          ]
+        },
+        "predicate": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "observed": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN",
+            "CONFLICT"
+          ]
+        },
+        "severity": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5
+        },
+        "blocking": {
+          "type": "boolean"
+        },
+        "witness_node_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/safeToken"
+          }
+        },
+        "counterfactual_action": {
+          "enum": [
+            "RECAPTURE_IMAGE",
+            "REWEIGH",
+            "WAIT_FOR_FRESH_TELEMETRY",
+            "VERIFY_SAFETY_INTERLOCK",
+            "REQUEST_OPERATOR_REVIEW"
+          ]
+        },
+        "rationale_code": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "risk_probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "failureCore": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "status",
+        "dag_root_sha256",
+        "belief_sha256",
+        "signals",
+        "minimal_witness_node_ids",
+        "authority",
+        "core_sha256"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.counterfactual-failure-core.v1"
+        },
+        "status": {
+          "enum": [
+            "CLEAR",
+            "NEEDS_EVIDENCE",
+            "BLOCKING"
+          ]
+        },
+        "dag_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "belief_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "signals": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/failureSignal"
+          }
+        },
+        "minimal_witness_node_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/safeToken"
+          }
+        },
+        "authority": {
+          "$ref": "#/$defs/authority"
+        },
+        "core_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "failureProbabilities": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "NORMAL",
+        "PERCEPTION_ERROR",
+        "CAMERA_QUALITY",
+        "SENSOR_STALE",
+        "ACTUATOR_NO_ACK",
+        "MASS_ANOMALY",
+        "WETTING_MISS",
+        "NEIGHBOR_SPILL",
+        "SAFETY_INTERLOCK",
+        "OOD_CONFLICT"
+      ],
+      "properties": {
+        "NORMAL": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "PERCEPTION_ERROR": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "CAMERA_QUALITY": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "SENSOR_STALE": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "ACTUATOR_NO_ACK": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "MASS_ANOMALY": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "WETTING_MISS": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "NEIGHBOR_SPILL": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "SAFETY_INTERLOCK": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "OOD_CONFLICT": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "evidenceAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "action_id",
+        "action_type",
+        "evidence_kind",
+        "cost",
+        "expected_duration_ms",
+        "observation_model",
+        "authority"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.evidence-action.v1"
+        },
+        "action_id": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "action_type": {
+          "enum": [
+            "RECAPTURE_IMAGE",
+            "REWEIGH",
+            "WAIT_FOR_FRESH_TELEMETRY",
+            "VERIFY_SAFETY_INTERLOCK",
+            "REQUEST_OPERATOR_REVIEW"
+          ]
+        },
+        "evidence_kind": {
+          "enum": [
+            "QUALITY",
+            "SEMANTIC",
+            "GEOMETRY",
+            "OOD",
+            "SAFETY",
+            "ACK",
+            "MASS",
+            "WETTING",
+            "SOURCE",
+            "CLAIM"
+          ]
+        },
+        "cost": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "expected_duration_ms": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "observation_model": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN"
+          ],
+          "properties": {
+            "PASS": {
+              "$ref": "#/$defs/failureProbabilities"
+            },
+            "FAIL": {
+              "$ref": "#/$defs/failureProbabilities"
+            },
+            "UNKNOWN": {
+              "$ref": "#/$defs/failureProbabilities"
+            }
+          }
+        },
+        "authority": {
+          "$ref": "#/$defs/authority"
+        }
+      }
+    },
+    "planBranch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "outcome",
+        "probability",
+        "posterior_belief_sha256",
+        "posterior_risk",
+        "second_action",
+        "terminal_expected_risk",
+        "terminal_expected_loss"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.rb-voe-branch.v1"
+        },
+        "outcome": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN"
+          ]
+        },
+        "probability": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "posterior_belief_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "posterior_risk": {
+          "type": "number",
+          "minimum": 0
+        },
+        "second_action": {
+          "enum": [
+            "HOLD",
+            "RECAPTURE_IMAGE",
+            "REWEIGH",
+            "WAIT_FOR_FRESH_TELEMETRY",
+            "VERIFY_SAFETY_INTERLOCK",
+            "REQUEST_OPERATOR_REVIEW"
+          ]
+        },
+        "terminal_expected_risk": {
+          "type": "number",
+          "minimum": 0
+        },
+        "terminal_expected_loss": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "actionEvaluation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "action_id",
+        "action_type",
+        "horizon",
+        "branches",
+        "expected_terminal_risk",
+        "worst_case_terminal_risk",
+        "expected_total_cost",
+        "objective",
+        "value_of_evidence"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.rb-voe-action-evaluation.v1"
+        },
+        "action_id": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "action_type": {
+          "enum": [
+            "RECAPTURE_IMAGE",
+            "REWEIGH",
+            "WAIT_FOR_FRESH_TELEMETRY",
+            "VERIFY_SAFETY_INTERLOCK",
+            "REQUEST_OPERATOR_REVIEW"
+          ]
+        },
+        "horizon": {
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "branches": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "$ref": "#/$defs/planBranch"
+          }
+        },
+        "expected_terminal_risk": {
+          "type": "number",
+          "minimum": 0
+        },
+        "worst_case_terminal_risk": {
+          "type": "number",
+          "minimum": 0
+        },
+        "expected_total_cost": {
+          "type": "number",
+          "minimum": 0
+        },
+        "objective": {
+          "type": "number",
+          "minimum": 0
+        },
+        "value_of_evidence": {
+          "type": "number"
+        }
+      }
+    },
+    "rbVoePlan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "status",
+        "horizon",
+        "selected_action",
+        "selected_action_id",
+        "dag_root_sha256",
+        "belief_sha256",
+        "failure_core_sha256",
+        "initial_risk",
+        "expected_terminal_risk",
+        "worst_case_terminal_risk",
+        "value_of_evidence",
+        "reason_code",
+        "evaluation",
+        "authority",
+        "plan_sha256"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "rootscope.omega.rb-voe-plan.v1"
+        },
+        "status": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "horizon": {
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "selected_action": {
+          "enum": [
+            "HOLD",
+            "RECAPTURE_IMAGE",
+            "REWEIGH",
+            "WAIT_FOR_FRESH_TELEMETRY",
+            "VERIFY_SAFETY_INTERLOCK",
+            "REQUEST_OPERATOR_REVIEW"
+          ]
+        },
+        "selected_action_id": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/safeToken"
+            }
+          ]
+        },
+        "dag_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "belief_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "failure_core_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "initial_risk": {
+          "type": "number",
+          "minimum": 0
+        },
+        "expected_terminal_risk": {
+          "type": "number",
+          "minimum": 0
+        },
+        "worst_case_terminal_risk": {
+          "type": "number",
+          "minimum": 0
+        },
+        "value_of_evidence": {
+          "type": "number"
+        },
+        "reason_code": {
+          "$ref": "#/$defs/safeToken"
+        },
+        "evaluation": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/actionEvaluation"
+            }
+          ]
+        },
+        "authority": {
+          "$ref": "#/$defs/authority"
+        },
+        "plan_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "selected_action": {
+                "const": "HOLD"
+              }
+            },
+            "required": [
+              "selected_action"
+            ]
+          },
+          "then": {
+            "properties": {
+              "selected_action_id": {
+                "type": "null"
+              },
+              "evaluation": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "selected_action_id": {
+                "$ref": "#/$defs/safeToken"
+              },
+              "evaluation": {
+                "$ref": "#/$defs/actionEvaluation"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

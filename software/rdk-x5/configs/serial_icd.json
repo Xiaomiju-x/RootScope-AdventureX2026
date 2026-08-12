@@ -1,0 +1,356 @@
+{
+  "document": "RootScope X5-F407 Serial ICD",
+  "version": "1.4.0",
+  "status": "Z3+PB6 V15 is flashed and passed X5 read-only identity plus boot-safe output qualification; 1024 steps were previously observed suitable through the equivalent V14 preset, while V15 levels 2 and 3 remain physically unqualified",
+  "transport": {
+    "baud": 115200,
+    "data_bits": 8,
+    "parity": "none",
+    "stop_bits": 1,
+    "ttl_voltage_v": 3.3,
+    "device_alias": "/dev/rootscope_stm32",
+    "device_alias_future_f407": "/dev/rootscope_f407"
+  },
+  "frame": {
+    "header_hex": "AA55",
+    "layout": ["header:u16_bytes", "type:u8", "payload_len:u8", "payload", "sum8:u8"],
+    "max_frame_bytes": 256,
+    "max_payload_bytes": 251,
+    "sum8_scope": "header[0] through final payload byte; checksum byte excluded",
+    "payload_byte_order": "little-endian",
+    "note": "sum8 is not CRC and provides no authenticity"
+  },
+  "timing": {
+    "heartbeat_hz": 5.0,
+    "heartbeat_period_ms": 200,
+    "f407_watchdog_timeout_ms": 1000,
+    "identity_stale_timeout_ms": 3000,
+    "telemetry_hz": 5.0,
+    "safety_state_hz": 5.0
+  },
+  "identity": {
+    "protocol_version": 1,
+    "required_capabilities_mask": 127,
+    "required_capabilities_hex": "0x0000007F",
+    "expected_build_id": 2026071501,
+    "expected_hw_variant": 1,
+    "build_tag_bytes": 16,
+    "capabilities": {
+      "0x00000001": "single_active_pump_interlock (three channels on F407 profile; one PB7 channel on F103 profile)",
+      "0x00000002": "hx711_mass",
+      "0x00000004": "safety_inputs",
+      "0x00000008": "heartbeat_watchdog",
+      "0x00000010": "task_replay_guard",
+      "0x00000020": "per_task_hard_timeout",
+      "0x00000040": "firmware_task_result_receipt"
+    }
+  },
+  "commands": {
+    "EMERGENCY_STOP": {
+      "type": 16,
+      "type_hex": "0x10",
+      "payload": "seq:u16",
+      "safety_semantics": "always acts, including duplicate or stale sequence"
+    },
+    "CLEAR_ESTOP": {
+      "type": 17,
+      "type_hex": "0x11",
+      "payload": "seq:u16",
+      "admission": "fresh heartbeat, safe physical inputs, all pumps off, explicit command"
+    },
+    "QUERY_FIRMWARE": {
+      "type": 18,
+      "type_hex": "0x12",
+      "payload": "seq:u16"
+    },
+    "ARM_TASK": {
+      "type": 32,
+      "type_hex": "0x20",
+      "payload": "task_id:u32, seq:u16, channel:u8, target_mass_mg:u32, hard_timeout_ms:u32, config_hash_prefix:bytes[8]",
+      "payload_bytes": 23,
+      "channel_values": [1, 2, 3],
+      "target_mass_mg_range": [100, 200000],
+      "hard_timeout_ms_range": [500, 120000],
+      "semantics": "one channel only; task_id must strictly increase in one boot session"
+    },
+    "ABORT_TASK": {
+      "type": 33,
+      "type_hex": "0x21",
+      "payload": "task_id:u32, seq:u16, reason:u8",
+      "payload_bytes": 7,
+      "semantics": "must match active task; stops all pumps and latches"
+    },
+    "ARM_TIMED_TASK": {
+      "type": 34,
+      "type_hex": "0x22",
+      "payload": "task_id:u32, seq:u16, channel:u8, duration_ms:u32, hard_timeout_ms:u32, config_hash_prefix:bytes[8]",
+      "payload_bytes": 23,
+      "channel_values": [1],
+      "duration_ms_range": [100, 30000],
+      "hard_timeout_ms_range": [500, 120000],
+      "semantics": "explicit no-HX711 bounded task for hw_variant=2; completion proves timed PB7 actuation only, never measured mass"
+    },
+    "HEARTBEAT": {
+      "type": 255,
+      "type_hex": "0xFF",
+      "payload": "seq:u16, host_state:u8",
+      "payload_bytes": 3
+    }
+  },
+  "ascii_extensions": {
+    "scope": "F103 Z3+PB6 V15 only; ASCII extensions do not replace the binary pump safety session",
+    "ZHOME": {
+      "syntax": "ZHOME,CONFIRM",
+      "semantics": "records an operator-observed manual return to the top; causes no motion",
+      "admission": "Z idle, pump off, no timed pump task"
+    },
+    "DEPTH": {
+      "syntax": "DEPTH,<0|1|2|3>",
+      "mapping": {
+        "0": "non_target/pure sand HOLD, no motion",
+        "1": "grass_clump, 1024 downward steps",
+        "2": "low_shrub, 1536 downward steps",
+        "3": "young_tree, 2048 downward steps"
+      },
+      "admission": "nonzero levels require fresh heartbeat, cleared safety lock, explicit manual-home confirmation and unused single-descent latch",
+      "claim_boundary": "step presets are uncalibrated and must not be represented as measured millimetres, centimetres or biological root depth"
+    },
+    "raw_motion": {
+      "commands": ["MOVE", "COIL", "MODE"],
+      "status": "locked in the V15 competition build"
+    }
+  },
+  "responses": {
+    "FIRMWARE_INFO": {
+      "type": 129,
+      "type_hex": "0x81",
+      "payload": "protocol_version:u16, capabilities:u32, build_id:u32, hw_variant:u8, build_tag:ascii[16], boot_id:u64",
+      "payload_bytes": 35
+    },
+    "SAFETY_STATE": {
+      "type": 130,
+      "type_hex": "0x82",
+      "payload": "boot_id:u64, safety_bits:u16, blocked_count:u16, lock_reason:u8, heartbeat_age_ms:u32",
+      "payload_bytes": 17
+    },
+    "IRRIGATION_TELEMETRY": {
+      "type": 131,
+      "type_hex": "0x83",
+      "payload": "task_id:u32, sample_seq:u32, pump_mask:u8, hx711_raw:i32, filtered_mass_mg:i32, safety_bits:u16, uptime_ms:u32",
+      "payload_bytes": 23,
+      "pump_mask_allowed": [0, 1, 2, 4]
+    },
+    "TASK_RESULT": {
+      "type": 132,
+      "type_hex": "0x84",
+      "payload": "boot_id:u64, task_id:u32, result_seq:u16, terminal_reason:u8, baseline_mass_mg:i32, final_mass_mg:i32, first_sample_seq:u32, last_sample_seq:u32, sample_count:u16, final_window_min_mg:i32, final_window_max_mg:i32, scale_stable:u8, firmware_completed_uptime_ms:u32, pump_mask:u8, safety_bits:u16",
+      "payload_bytes": 49,
+      "terminal_reasons": {
+        "1": "TARGET_REACHED",
+        "2": "HARD_TIMEOUT",
+        "3": "USER_ABORT",
+        "4": "SAFETY_INPUT",
+        "5": "EMERGENCY_STOP",
+        "6": "WATCHDOG_TIMEOUT",
+        "7": "TIMED_DOSE_COMPLETE"
+      },
+      "target_reached_gate": "pump_mask=0, scale_stable=1, at least 5 consecutive post-stop samples; result window excludes in-pump samples",
+      "replay": "the exact same result frame is retransmitted by periodic fixture ticks until a newer task is armed",
+      "host_conflict_policy": "a different exact frame hash for the same (boot_id, task_id) permanently revokes trust in every result for that key; exact or novel replays cannot clear the conflict"
+    },
+    "ACK": {
+      "type": 144,
+      "type_hex": "0x90",
+      "payload": "ack_for_type:u8, seq:u16, status:u8, reason:u8, task_id:u32",
+      "payload_bytes": 9
+    },
+    "ERROR": {
+      "type": 159,
+      "type_hex": "0x9F",
+      "payload": "reason:u8 followed by optional diagnostic bytes"
+    }
+  },
+  "safety_bits": {
+    "0x0001": "estop_active",
+    "0x0002": "leak_detected",
+    "0x0004": "cartridge_present",
+    "0x0008": "guard_closed",
+    "0x0010": "hx711_valid",
+    "0x0020": "watchdog_fresh",
+    "0x0040": "lock_latched",
+    "0x0080": "act_enable"
+  },
+  "ack_status": {
+    "0": "ok",
+    "1": "rejected",
+    "2": "locked",
+    "3": "bad_payload"
+  },
+  "ack_reason_extensions": {
+    "21": "UNSUPPORTED_CAPABILITY",
+    "22": "TIMED_DOSE_COMPLETE",
+    "23": "INVALID_DURATION"
+  },
+  "hardware_profiles": {
+    "f407_full": {
+      "hw_variant": 1,
+      "expected_build_id": 2026071501,
+      "required_capabilities_hex": "0x0000007F",
+      "physical_channels": [1, 2, 3],
+      "mass_feedback": true,
+      "status": "simulator/frozen full contract; real board not supplied"
+    },
+    "f103_pb6_pump_only_v13": {
+      "hw_variant": 2,
+      "expected_build_id": 2026072513,
+      "required_capabilities_hex": "0x00000079",
+      "build_tag": "rs-f103-pb6-v13",
+      "mcu": "STM32F103C8T6",
+      "physical_channels": [1],
+      "channel_1_gpio": "PB6",
+      "relay_electrical_profile": "active-low open-drain; GPIO SET releases relay input and is pump-off",
+      "mass_feedback": false,
+      "external_safety_inputs": false,
+      "motion_profile": "mechanical extension retained; all motion commands locked in the competition build",
+      "admitted_task": "ARM_TIMED_TASK only",
+      "unbounded_ascii_pump_on": false,
+      "heartbeat_watchdog_ms": 1000,
+      "uart_fault_failsafe": true,
+      "claim_boundary": "Source and X5 adapter readiness do not prove flashed identity, PB6 actuation, measured water mass or full physical closure.",
+      "qualification": {
+        "source_compile_warning_gate": "PASS_ARMCLANG_6_13_SYNTAX_WERROR",
+        "keil_image_generated": true,
+        "board_flashed": true,
+        "x5_readonly_identity_passed": true,
+        "x5_no_pump_dry_run_passed": true,
+        "pump_relay_outflow_observed": true,
+        "physical_completion": false
+      }
+    },
+    "f103_z3_pb6_v15": {
+      "hw_variant": 2,
+      "expected_build_id": 2026072515,
+      "required_capabilities_hex": "0x00000079",
+      "build_tag": "rs-f103-z3-pb6-v15",
+      "mcu": "STM32F103C8T6",
+      "pump_gpio": "PB6",
+      "probe_gpio": ["PA0", "PA1", "PA2", "PA3"],
+      "probe_driver": "ULN2003 + 28BYJ-48",
+      "motion_profile": "three bounded downward presets; no automatic return; arbitrary raw motion locked",
+      "manual_home_command": "ZHOME,CONFIRM",
+      "depth_mapping": {
+        "non_target": {"level": 0, "steps": 0, "motion": false},
+        "grass_clump": {"level": 1, "steps": 1024, "label": "shallow"},
+        "low_shrub": {"level": 2, "steps": 1536, "label": "medium"},
+        "young_tree": {"level": 3, "steps": 2048, "label": "deep"}
+      },
+      "single_descent_latch": true,
+      "automatic_return": false,
+      "raw_move_commands": false,
+      "keil_hex": "Irrigation(2)/Irrigation(2)/Irrigation/Irrigation/MDK-ARM/STM32F103_Irrigation/FLASH_THIS_Z3_PB6_V15.hex",
+      "keil_hex_sha256": "5016b96d138d4ffad2088dd5da288b4d68c5deba781555ad82eb6f7fb4bfd887",
+      "qualification": {
+        "source_compile_warning_gate": "PASS_ARMCLANG_6_13_1_KEIL_ZERO_WARNINGS",
+        "keil_image_generated": true,
+        "board_flashed": true,
+        "x5_readonly_identity_passed": true,
+        "v14_1024_step_candidate_observed_suitable": true,
+        "depth_1_physical_passed": false,
+        "depth_2_physical_passed": true,
+        "depth_3_physical_passed": true,
+        "depth_2_latest_attempt": "FAILED: ACK received but DONE was absent at the 35 s timeout and the operator observed no movement. STOP was sent once with no retry; final PA0-PA3 and PB6 were safe. The MCU boot ID changed during the failed attempt, while two consecutive read-only serial opens retained the later ID, indicating a reset during the attempt rather than a normal serial-open reset. The original per-device boot identifiers are redacted. Root cause is not yet proven; motor-driver power/common-ground/NRST diagnosis is required before any retry.",
+        "depth_2_manual_retry1": "FAILED: no DEPTH acknowledgement and no DONE; a post-failure read-only probe observed a changed boot ID and safe locked outputs. The reset symptom was reproduced.",
+        "depth_2_independent_power_retry2": "PASS: ACK and DONE received for 1536 steps with no controller reset after the operator moved the stepper to an independent power supply. STOP and final safe outputs passed; the operator confirmed normal descent and suitable medium depth.",
+        "depth_3_independent_power_attempt": "PASS: ACK and DONE received for 2048 steps with no controller reset. STOP and final safe outputs passed; the operator confirmed completion of the deep preset.",
+        "probe_depth_calibration_complete": true,
+        "depth_2_retry_allowed": false,
+        "depth_3_test_allowed": false,
+        "physical_completion": false
+      },
+      "claim_boundary": "V15 build, flash and read-only identity qualification passed, and the equivalent V14 1024-step candidate was observed suitable. The V15 1536-step attempt failed with no movement and reset evidence, so neither V15 level 2 nor level 3 is physically qualified. Step counts are not measured biological root depths."
+    },
+    "f103_pb7_retired_evidence_profile": {
+      "hw_variant": 2,
+      "expected_build_id": 2026072501,
+      "required_capabilities_hex": "0x00000079",
+      "build_tag": "rs-f103-pb7-v1",
+      "mcu": "STM32F103C8T6",
+      "physical_channels": [1],
+      "channel_1_gpio": "PB7",
+      "pb6": "unused and not initialized as an output",
+      "mass_feedback": false,
+      "external_safety_inputs": false,
+      "admitted_task": "ARM_TIMED_TASK only",
+      "status": "retired after the real relay signal moved to PB6; retained only so prior evidence remains interpretable",
+      "claim_boundary": "Prior PB7 qualification is historical protocol evidence and does not qualify the current PB6/V13 board.",
+      "x5_readonly_qualification": {
+        "status": "PASS",
+        "observed_at_utc": "2026-07-24T17:10:57.353Z",
+        "ascii_queries": ["PING", "VERSION", "STATUS"],
+        "binary_query_type_hex": "0x12",
+        "identity_valid": true,
+        "boot_id_token_observed": "boot-<redacted-device-boot-id>",
+        "pump_state_observed": 0,
+        "lock_state_observed": 1,
+        "actuation_command_sent": false
+      },
+      "x5_no_pump_dry_run": {
+        "status": "PASS",
+        "observed_at_utc": "2026-07-24T17:19:07.629Z",
+        "initial_estop_confirmed": true,
+        "identity_valid": true,
+        "clear_ack_ok": true,
+        "unlocked_observed": true,
+        "heartbeat_acks": 6,
+        "watchdog_relocked": true,
+        "final_lock_reason": "WATCHDOG_TIMEOUT",
+        "observed_pump_masks_unique": [0],
+        "sequence_checkpoint": 12,
+        "arm_task_sent": false,
+        "arm_timed_task_sent": false,
+        "physical_completion": false,
+        "evidence": "rootscope/evidence/stm32_no_pump_dry_run_x5_20260725.json"
+      },
+      "commissioned_usb_ttl": {
+        "alias": "/dev/rootscope_stm32",
+        "vid": "1a86",
+        "pid": "7523",
+        "serial_number": null,
+        "id_path": "<redacted-usb-topology>",
+        "interface_number": "00",
+        "identity_sha256": "4fd1776962e4dfbf50cac6c41406fb4d0101a08d1f70e09e376ef37c76be19de",
+        "udev_rule_sha256": "8dd2ae88f4a77afa42772a954d0cde3f867dc049e5f7daba46bea6ed62546a63",
+        "port_binding_note": "CH340 exposes no unique serial number; reconnect it to the same RDK X5 USB port."
+      }
+    }
+  },
+  "sequence_and_replay": {
+    "sequence_type": "u16 global downlink sequence",
+    "ordering": "new when ((new-old) mod 65536) is in [1,32767]",
+    "zero": "reserved by X5 link; never emitted",
+    "duplicate_or_stale": "reject without executing; emergency stop remains effective",
+    "task_id_type": "u32",
+    "task_ordering": "strictly increasing per firmware boot; old task never resumes after clear"
+  },
+  "units": {
+    "mass": "milligram integer",
+    "time": "millisecond integer",
+    "hx711_raw": "signed ADC counts; calibration is external and versioned",
+    "boot_id": "non-zero uint64 generated once per firmware boot; canonical X5 token is boot- followed by 16 lowercase hex digits",
+    "sample_seq": "monotonic uint32 within one boot",
+    "firmware_completed_uptime_ms": "STM32 firmware uptime clock domain; never interpreted as host monotonic time"
+  },
+  "safety_invariants": [
+    "power-up pump_mask=0 and lock_latched=true",
+    "F103 PB6/V13 profile pump_mask is always 0 or 1; F407 full profile permits 0,1,2,4",
+    "heartbeat age greater than 1000 ms stops all pumps and latches",
+    "per-task hard timeout stops all pumps and latches independently of X5",
+    "command estop always stops and latches; leak/cartridge/guard/HX711 inputs belong only to the unbuilt F407 full profile",
+    "clear never resumes a previous task"
+  ],
+  "task_result_stability": {
+    "minimum_post_stop_samples": 5,
+    "maximum_final_window_span_mg_fixture": 20,
+    "authority": "terminal_reason and stability fields are firmware-authored; X5 stores the exact raw result frame SHA-256"
+  }
+}

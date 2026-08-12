@@ -1,0 +1,90 @@
+{
+  "schema_version": "rootscope.wikimedia_human_review_policy.v1",
+  "queue_schema_version": "rootscope.wikimedia_human_review_queue.v1",
+  "decision_schema_version": "rootscope.wikimedia_human_review_decision.v1",
+  "session_schema_version": "rootscope.wikimedia_human_review_session.v1",
+  "snapshot_schema_version": "rootscope.wikimedia_human_review_snapshot.v1",
+  "production_input_roots": {
+    "candidate_review_queue_sha256": "675f481c28c9add53cd918b7d5cc2f76c72dd496aafae06fda888fe13eda4e5e",
+    "review_queue_summary_sha256": "3753c5df8eebacd520cfc20128e48c7d941292d35abf6adcb6fe926273cf65e4",
+    "integrity_audit_sha256": "74144898a325c22bf7008728f7318ab1123f3043a6f71302b4990ac8eb437760",
+    "dataset_manifest_schema_v2_sha256": "245e533014a6c75c9a9f0fc35e9496a5fe892709c65dfc0f98f8f09e8e5c139b",
+    "class_contract_sha256": "865fb1178a79959faa8400ed06e42fcc7bf5c7daeb7d5df906b8c5a4722783e5",
+    "class_contract_lock_sha256": "64de9307870e5a573c42daf91a8eb8183d4e54de232d58e82027c38e6a004d58"
+  },
+  "visual_decisions": [
+    "UNREVIEWED",
+    "PASS",
+    "REJECT",
+    "NEEDS_REVIEW"
+  ],
+  "rights_decisions": [
+    "UNREVIEWED",
+    "PASS",
+    "REJECT",
+    "NEEDS_REVIEW"
+  ],
+  "target_classes": [
+    "grass_clump",
+    "low_shrub",
+    "young_tree",
+    "unknown"
+  ],
+  "unknown_scenarios": [
+    "empty_card",
+    "bare_sand",
+    "hand",
+    "occlusion",
+    "blur",
+    "glare",
+    "mixed_targets"
+  ],
+  "family_roles": [
+    "UNASSIGNED",
+    "CANONICAL_REPRESENTATIVE",
+    "SERIES_SIBLING_EXCLUDED",
+    "HOLD"
+  ],
+  "visual_reason_codes": [
+    "wrong_morphology",
+    "not_whole_plant",
+    "mature_not_young_tree",
+    "closeup_or_specimen",
+    "illustration_map_or_text",
+    "mixed_target",
+    "background_dominant",
+    "poor_printability",
+    "series_duplicate",
+    "other"
+  ],
+  "rights_reason_codes": [
+    "license_or_attribution_unclear",
+    "privacy_or_personality_rights",
+    "source_page_unavailable",
+    "non_copyright_rights_unclear",
+    "other"
+  ],
+  "reviewer_pattern": "^[A-Za-z0-9][A-Za-z0-9._@-]{1,63}$",
+  "reviewed_source_group_pattern": "^human:[a-z0-9][a-z0-9._:-]{2,95}$",
+  "near_duplicate_family_pattern": "^(|family:[a-z0-9][a-z0-9._:-]{2,95})$",
+  "source_page_revision_id_pattern": "^(|[1-9][0-9]{0,19})$",
+  "notes_max_length": 500,
+  "rules": {
+    "pass_requires_visual_and_rights_pass": true,
+    "visual_pass_requires_target_class": true,
+    "rights_pass_or_reject_requires_source_page_check": true,
+    "rights_pass_or_reject_requires_source_page_revision_id": true,
+    "rights_pass_or_reject_requires_evidence_sha256": true,
+    "rights_attestation_archives_page_snapshot": false,
+    "pass_pair_requires_reviewed_source_group": true,
+    "pass_pair_requires_family_role": true,
+    "series_sibling_requires_near_duplicate_family": true,
+    "reject_requires_axis_reason": true,
+    "every_non_unreviewed_axis_requires_its_reviewer": true,
+    "reviewed_source_group_is_independence_family_not_v2_source_group": true,
+    "one_canonical_representative_per_reviewed_source_group": true,
+    "acquisition_hint_must_not_auto_map_unknown_scenario": true,
+    "decisions_do_not_grant_training_or_print_eligibility": true,
+    "export_status_before_dataset_audit": "HUMAN_REVIEW_IN_PROGRESS_NOT_DATA_LOCKED"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": "rootscope.x5-offline-capsule.v1",
+  "status": "SIMULATED_ONLY_CLEAN_X5_CAPSULE_NOT_X5_QUALIFIED",
+  "project_root": "/opt/rootscope/current",
+  "python_executable": "/opt/rootscope/venv/bin/python3",
+  "dashboard_host": "127.0.0.1",
+  "dashboard_port": 8765,
+  "authority": {
+    "hardware_touched": false,
+    "network_touched": false,
+    "ports_enumerated": false,
+    "x5_validated": false,
+    "bpu_ready": false,
+    "bpu_used": false,
+    "model_candidate": false,
+    "model_qualified": false,
+    "physical_authority": false,
+    "execution_authority": false,
+    "physical_completion": false
+  },
+  "model": {
+    "enabled": true,
+    "path": "/opt/rootscope/current/deploy/x5/models/rootscope_seed17_cpu_experimental_opset11.onnx",
+    "sha256": "50ae8d2ec1cec0f3748efa127c6b9c00624684f8c112c8a7913c2a0e304a3bad",
+    "provider": "CPUExecutionProvider",
+    "input_name": "image",
+    "output_name": "logits",
+    "output_shape": [1, 4],
+    "class_order": ["grass_clump", "low_shrub", "young_tree", "unknown"],
+    "model_candidate": false,
+    "model_qualified": false,
+    "bpu_ready": false,
+    "preprocess": {
+      "mode": "torchvision_resize_short_side_center_crop_rgb_imagenet_v1",
+      "short_side": 256,
+      "center_crop": [224, 224],
+      "input_shape": [1, 3, 224, 224],
+      "color_order": "RGB",
+      "scale": 0.00392156862745098,
+      "mean": [0.485, 0.456, 0.406],
+      "std": [0.229, 0.224, 0.225],
+      "interpolation": "bilinear",
+      "golden_generator": "rootscope_simulated_rgb_v1",
+      "golden_source_shape": [173, 311, 3],
+      "golden_tensor_sha256": "3cf32b73011e6f72a242041767e8a5a263fd354e9f2469accec3d82ce6015dc1"
+    }
+  },
+  "inputs": {
+    "rgb": {
+      "enabled": false,
+      "required": false,
+      "backend": "disabled",
+      "device": "",
+      "use": "optional_fixed_uvc_rgb_not_opened_by_locked_service"
+    },
+    "depth": {
+      "enabled": false,
+      "required": false,
+      "backend": "disabled",
+      "device": "",
+      "use": "optional_depth_telemetry_not_classifier_input_not_opened"
+    }
+  },
+  "llm": {
+    "enabled": false,
+    "executable": "",
+    "model_path": "",
+    "model_sha256": null,
+    "host": "127.0.0.1",
+    "port": 9080,
+    "read_only": true,
+    "tool_execution": false,
+    "actuator_access": false
+  }
+}

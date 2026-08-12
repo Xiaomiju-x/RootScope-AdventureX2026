@@ -1,0 +1,102 @@
+{
+  "schema": "rootscope.v3.baseline-snapshot.v1",
+  "snapshot_date": "2026-07-24",
+  "observation_source_date": "2026-07-23",
+  "observation_mode": "READ_ONLY_FROM_EXISTING_EVIDENCE_NOT_LIVE",
+  "release": {
+    "candidate_id": "rootscope_competition_runtime_v2_candidate_20260723",
+    "relative_path": "output/releases/rootscope_competition_runtime_v2_candidate_20260723",
+    "archive_name": "rootscope_competition_runtime_v2_candidate_20260723.tar",
+    "archive_size_bytes": 13486080,
+    "archive_sha256": "03ca7b8d9ff8b691f1fd61dc696601ba30f494377a0b2a3cfadb66c19478ed94",
+    "manifest_sha256": "bec8df9eed59e81d8a495832a9fbc65c76a861626c2eff674733e509e31d3fec",
+    "composition_root_sha256": "0b6cb593ed55495b71fa50ac6154b40332c89b390cd8630c2487a10e8636cabd",
+    "file_count": 77,
+    "packaged_tests": {
+      "passed": 41,
+      "warnings": 8
+    },
+    "x5_verifier_status": "PASS_HASHES_IDENTITY_EXTERNALS_ZERO_AUTHORITY_NOT_PHYSICAL_QUALIFICATION"
+  },
+  "models": {
+    "vision_cpu": {
+      "id": "rootscope-seed17-resnet18-cpu-onnx",
+      "sha256": "50ae8d2ec1cec0f3748efa127c6b9c00624684f8c112c8a7913c2a0e304a3bad",
+      "size_bytes": 44704833,
+      "backend": "onnxruntime CPUExecutionProvider",
+      "role": "PRIMARY_AUDIT_FALLBACK"
+    },
+    "vision_bpu": {
+      "id": "rootscope-seed17-resnet18-r7-bayes-e",
+      "sha256": "4dc4bc24741332bb6bc6da184dd1d6f954ae539ba740330490339d76eb200285",
+      "size_bytes": 12519415,
+      "backend": "drobotics.hrt_model_exec@1.24.5/cold-load",
+      "role": "SHADOW_CANDIDATE_NOT_DEFAULT"
+    },
+    "llm": {
+      "id": "qwen2-0.5b-q4-k-m-rootscope-baseline",
+      "sha256": "6c8adc95de81b1d0103fcf900a5f369d5936d234e42ed64881dad56e0104e77b",
+      "size_bytes": 397805120,
+      "backend": "llama-server b9637 CPU loopback",
+      "resident_model_count": 1,
+      "logical_role_count": 3
+    }
+  },
+  "observations": {
+    "static43_cpu_bpu_top1_agreement": {
+      "agree": 43,
+      "total": 43,
+      "claim_boundary": "CROSS_RUNTIME_AGREEMENT_NOT_ACCURACY"
+    },
+    "laptop_capture_raw_top1": {
+      "correct": 20,
+      "total": 20,
+      "claim_boundary": "OPERATOR_LABELLED_DEVELOPMENT_OBSERVATION_NOT_HOLDOUT"
+    },
+    "laptop_capture_full_gate": {
+      "accepted_expected_outcome": 7,
+      "total": 20,
+      "positive_accepted": 2,
+      "positive_total": 15,
+      "negative_safe_reject": 5,
+      "negative_total": 5
+    },
+    "rag": {
+      "backend": "SQLITE_FTS5_BM25",
+      "source_count": 15,
+      "chunk_count": 24,
+      "gold_top5": "20/20",
+      "forbidden_handled": "20/20",
+      "zero_authority": "40/40"
+    },
+    "llm": {
+      "total_latency_seconds": 67.7,
+      "model_output_structurally_accepted": true,
+      "semantic_quality_boundary": "WEAK_UNDEFINED_UNKNOWN_OUTPUTS_OBSERVED"
+    },
+    "resources_idle_or_post_run": {
+      "linux_visible_memory_mib": 3062,
+      "used_memory_mib_approx": 559,
+      "cma_total_kib": 391168,
+      "cma_free_kib_approx": 243572,
+      "root_free_gib_approx": 16,
+      "swap_present": false,
+      "combined_live_soak_completed": false
+    }
+  },
+  "authority": {
+    "execution_authority": false,
+    "physical_authority": false,
+    "serial_open": false,
+    "serial_write": false,
+    "gpio_touched": false,
+    "pump_touched": false,
+    "irrigation_execution": false,
+    "physical_completion": false
+  },
+  "source_documents": [
+    "rootscope/ROOTSCOPE_COMPETITION_RUNTIME_V2_X5_HANDOFF_20260723.md",
+    "rootscope/ROOTSCOPE_COMPETITION_RUNTIME_V2_EVENT_INDEX_20260723.md",
+    "output/releases/rootscope_competition_runtime_v2_candidate_20260723/release_build_receipt.json"
+  ]
+}

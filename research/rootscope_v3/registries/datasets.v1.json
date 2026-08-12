@@ -1,0 +1,102 @@
+{
+  "schema": "rootscope.v3.dataset-registry.v1",
+  "frozen_at": "2026-07-24",
+  "datasets": [
+    {
+      "dataset_id": "desert-plants-v1-legacy-seed",
+      "kind": "VISION_IMAGE",
+      "relative_locator": "datasets/desert_plants_v1",
+      "manifest_relative_locator": "datasets/desert_plants_v1/manifest.jsonl",
+      "record_count": 33,
+      "status": "PREEXISTING_NOT_TRAIN_READY",
+      "split_unit": "SOURCE_GROUP",
+      "license_state": "MIXED_RECORDED",
+      "public_redistribution": false,
+      "permitted_uses": ["AUDIT", "PRINT_DEMO_SUBSET_WHERE_EXPLICITLY_ALLOWED"],
+      "forbidden_uses": ["CLAIM_FIELD_ACCURACY", "RANDOM_FRAME_SPLIT"]
+    },
+    {
+      "dataset_id": "whole-plant-reacquisition-e1",
+      "kind": "VISION_IMAGE",
+      "relative_locator": "datasets/desert_plants_whole_plant_reacquisition_e1",
+      "manifest_relative_locator": "datasets/desert_plants_whole_plant_reacquisition_e1/manifest.jsonl",
+      "record_count": 90,
+      "status": "PREEXISTING_MACHINE_ACQUIRED_NOT_TRAIN_READY",
+      "split_unit": "SOURCE_GROUP",
+      "license_state": "MACHINE_SCREENED_REQUIRES_REVIEW",
+      "public_redistribution": false,
+      "permitted_uses": ["CURATION_INPUT"],
+      "forbidden_uses": ["TRAIN_WITHOUT_REVIEW", "PRINT_WITHOUT_REVIEW", "CLAIM_GROUND_TRUTH"]
+    },
+    {
+      "dataset_id": "machine-curated-provisional-v3",
+      "kind": "VISION_IMAGE",
+      "relative_locator": "datasets/rootscope_machine_curated_provisional_v3",
+      "manifest_relative_locator": "datasets/rootscope_machine_curated_provisional_v3/manifest.jsonl",
+      "manifest_sha256": "bf14c7423aad965b8af736c7d77cef1ba134d78dd1f905c03cc14cff1192f3fe",
+      "record_count": 78,
+      "status": "PREEXISTING_EXPERIMENTAL_NOT_FORMAL_HOLDOUT",
+      "split_unit": "SOURCE_GROUP",
+      "license_state": "RECORDED_IN_MANIFEST",
+      "public_redistribution": false,
+      "permitted_uses": ["EXPERIMENTAL_TRAINING", "CALIBRATION_AS_FROZEN_BY_EXISTING_RECEIPTS"],
+      "forbidden_uses": ["CLAIM_FIELD_ACCURACY", "REUSE_REGISTERED_PRINT_CARD_AS_HOLDOUT"]
+    },
+    {
+      "dataset_id": "laptop-card-session-20260723-205230",
+      "kind": "VISION_CAPTURE",
+      "relative_locator": "captures/laptop_card_session_20260723_205230",
+      "manifest_relative_locator": "captures/laptop_card_session_20260723_205230/captures.jsonl",
+      "manifest_sha256": "5ccd5454f04542ce02ed83b2e0a220fad8a899ee231f843516fb3cd92d655e58",
+      "record_count": 20,
+      "status": "PREEXISTING_OPERATOR_LABELLED_DEVELOPMENT_OBSERVATION",
+      "split_unit": "CAPTURE_SESSION_AND_PHYSICAL_PLACEMENT",
+      "license_state": "INTERNAL_CAPTURE_OF_LICENSED_PRINT_ASSETS",
+      "public_redistribution": false,
+      "permitted_uses": ["STATIC_REPLAY", "OPTICAL_DEVELOPMENT"],
+      "forbidden_uses": ["CLAIM_FORMAL_HOLDOUT", "FRAME_RANDOM_SPLIT", "CLAIM_FIELD_GENERALIZATION"]
+    },
+    {
+      "dataset_id": "competition-rag-v1",
+      "kind": "RAG_CORPUS",
+      "relative_locator": "rootscope/configs/competition",
+      "manifest_relative_locator": "rootscope/configs/competition/rootscope_rag_sources.v1.json",
+      "manifest_sha256": "7e4e8833cd082e9359e73599a04ba5fa870a016e29a399e23f3eb1cb6cf2067a",
+      "record_count": 15,
+      "chunk_count": 24,
+      "corpus_sha256": "52fe4cf53c3bd641a61476665ea3af1bd9f2b45af59e5f17f648f69ca96497e0",
+      "status": "PREEXISTING_BASELINE_X5_OBSERVED",
+      "split_unit": "SOURCE_ID",
+      "license_state": "PER_SOURCE_RECORDED",
+      "public_redistribution": false,
+      "permitted_uses": ["LOCAL_RETRIEVAL", "CITATION_GROUNDED_EXPLANATION"],
+      "forbidden_uses": ["ACTUATOR_COMMAND", "UNATTRIBUTED_LONG_QUOTATION"]
+    },
+    {
+      "dataset_id": "rootscope-v3-final-optics-live",
+      "kind": "VISION_CAPTURE",
+      "relative_locator": null,
+      "manifest_relative_locator": null,
+      "record_count": 0,
+      "status": "PLANNED_X5_POWER_AND_FINAL_OPTICS_REQUIRED",
+      "split_unit": "CAPTURE_SESSION_AND_INDEPENDENT_PLACEMENT",
+      "license_state": "INTERNAL_CAPTURE_PLANNED",
+      "public_redistribution": false,
+      "permitted_uses": ["FUTURE_QUALIFICATION_AFTER_CAPTURE"],
+      "forbidden_uses": ["CLAIM_EXISTS", "CONTINUOUS_FRAME_RANDOM_SPLIT"]
+    },
+    {
+      "dataset_id": "rootscope-v3-wetting-before-after",
+      "kind": "VISION_SENSOR_PHYSICAL_PAIR",
+      "relative_locator": null,
+      "manifest_relative_locator": null,
+      "record_count": 0,
+      "status": "PLANNED_HARDWARE_REQUIRED",
+      "split_unit": "PHYSICAL_TRIAL",
+      "license_state": "INTERNAL_CAPTURE_PLANNED",
+      "public_redistribution": false,
+      "permitted_uses": ["FUTURE_WETTING_EVALUATION"],
+      "forbidden_uses": ["CLAIM_PHYSICAL_CLOSURE", "SYNTHETIC_AS_PHYSICAL"]
+    }
+  ]
+}

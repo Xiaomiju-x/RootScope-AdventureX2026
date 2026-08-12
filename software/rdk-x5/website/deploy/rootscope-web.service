@@ -1,0 +1,34 @@
+[Unit]
+Description=RootScope Public Read-Only Website
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=rootscope-web
+Group=rootscope-web
+WorkingDirectory=/opt/rootscope-web/current
+ExecStart=/usr/bin/python3 /opt/rootscope-web/current/app.py --host 127.0.0.1 --port 29200
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictRealtime=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+CapabilityBoundingSet=
+AmbientCapabilities=
+RestrictAddressFamilies=AF_INET AF_INET6
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

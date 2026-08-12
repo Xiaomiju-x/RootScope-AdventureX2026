@@ -1,0 +1,12 @@
+# Default ownership
+* @Xiaomiju-x
+
+# Safety- and release-sensitive paths
+/firmware/ @Xiaomiju-x
+/hardware/ @Xiaomiju-x
+/software/rdk-x5/ @Xiaomiju-x
+/model-assets/ @Xiaomiju-x
+/pipelines/release*/ @Xiaomiju-x
+/evidence/ @Xiaomiju-x
+/.github/ @Xiaomiju-x
+/SECURITY.md @Xiaomiju-x

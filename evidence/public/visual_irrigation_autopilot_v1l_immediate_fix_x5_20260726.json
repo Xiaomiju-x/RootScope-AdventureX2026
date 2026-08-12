@@ -1,0 +1,64 @@
+{
+  "schema": "rootscope.visual_irrigation.autopilot_fix_evidence.v1",
+  "observed_at": "2026-07-26T09:27:00+08:00",
+  "version": {
+    "name": "visual-irrigation-v1l-immediate-7d599b823075",
+    "active_path": "/opt/rootscope/.local/share/rootscope-auto-irrigation/versions/visual-irrigation-v1l-immediate-7d599b823075",
+    "autopilot_sha256": "7d599b8230753ed6b9684cee40674b07f1edf2509768601ad4cab5685a91c9b3",
+    "cycle_sha256": "7279b42fc650a7ba5e8af048e442c00c393fa0dbd3e46e0154e31faef47b57b0",
+    "launcher_sha256": "235a175b19c85b557a6a4e463c4cb5fe2061bed9f06093bf663f496c1a8ede3"
+  },
+  "behavior": {
+    "single_result_immediate_trigger": true,
+    "stable_target_gate_present": false,
+    "progress_bar_present": false,
+    "action_label_latched_during_action_or_fault": true,
+    "different_confirmed_target_immediate_trigger": true,
+    "same_card_automatic_retry": false,
+    "clear_scene_rearm_seconds": 0.6,
+    "physical_command_retry": false,
+    "readonly_ascii_retry_max_attempts": 2,
+    "non_actuating_ack_retry_max_attempts": 2
+  },
+  "validation": {
+    "x5_python": "3.10",
+    "unit_tests": {
+      "passed": 11,
+      "failed": 0
+    },
+    "py_compile_passed": true,
+    "bash_syntax_passed": true,
+    "preflight": {
+      "passed": true,
+      "preflight_opens_camera": false,
+      "preflight_opens_serial": false
+    },
+    "camera_only_smoke": {
+      "passed": true,
+      "elapsed_s": 6.017449587000101,
+      "camera_frames": 80,
+      "camera_fps_observed": 13.294668919674766,
+      "frames_while_inference_busy": 76,
+      "inference_samples": 4,
+      "inference_latencies_ms": [
+        1537.743533000139,
+        1501.5631899996151,
+        1285.4955789998712,
+        1413.646795999739
+      ],
+      "serial_opened": false,
+      "physical_authority": false
+    }
+  },
+  "deployment": {
+    "current_symlink_updated_atomically": true,
+    "desktop_entry_changed": false,
+    "old_versions_preserved": true,
+    "application_started_after_deploy": false
+  },
+  "physical_actions": {
+    "descent_executed": false,
+    "pump_executed": false,
+    "serial_opened_during_validation": false
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "schema": "rootscope.rootmind.microcluster.v1",
+  "deployment_target": "RDK_X5_4GB",
+  "resident_policy": "ONE_MODEL_AT_A_TIME",
+  "roles": {
+    "deterministic_template": {
+      "always_available": true,
+      "authority": false
+    },
+    "fast": {
+      "model": "qwen2-0.5b-q4-k-m-rootscope-baseline",
+      "runtime": "llama-server b9637 CPU loopback",
+      "port": 9080,
+      "parallel": 1,
+      "default_resident": true,
+      "authority": false
+    },
+    "deep": {
+      "model": "qwen3-1.7b-rootscope-v3-final-q4-k-m",
+      "runtime": "llama-server b9637 CPU loopback",
+      "port": 9080,
+      "parallel": 1,
+      "default_resident": false,
+      "load_mode": "ON_DEMAND_SWAP",
+      "authority": false
+    }
+  },
+  "gates": {
+    "minimum_free_memory_mib": 420,
+    "deep_minimum_free_memory_mib": 1050,
+    "foreground_vision_has_priority": true,
+    "thermal_hold_falls_back_to_template": true,
+    "missing_or_invalid_citation_falls_back_to_template": true,
+    "safety_compiler_mode": "REJECT_AND_DETERMINISTICALLY_REPLACE"
+  },
+  "interfaces": {
+    "listen": "127.0.0.1",
+    "external_network": false,
+    "tool_calling": false,
+    "serial": false,
+    "gpio": false,
+    "pump": false,
+    "state_machine_write": false
+  },
+  "qualification": {
+    "fast_x5_smoke_observed": true,
+    "fast_x5_smoke_provenance": "PREEXISTING_V2_MINIMAL_LOOPBACK_SMOKE_NOT_V3_CANDIDATE_QUALIFICATION",
+    "deep_pc_training_pending": false,
+    "deep_pc_training": "PASS_STAGED_192_PLUS_96_RTX4050_QLORA",
+    "deep_pc_final_holdout": "PASS_32_OF_32_FROZEN_STRUCTURED_CONTRACT",
+    "deep_pc_safety_compiler": "PASS_32_RAW_ACCEPTED_0_FALLBACK_0_UNSAFE_ESCAPE",
+    "deep_x5_latency_pending": true,
+    "deep_x5_memory_soak_pending": true
+  }
+}

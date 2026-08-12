@@ -1,0 +1,49 @@
+{
+  "schema_version": "rootscope.omega.edge-profiles.v1",
+  "profiles": {
+    "SAFE_CPU": {
+      "decision_backend": "deterministic_cpu",
+      "vision_backend": "onnxruntime_cpu",
+      "retrieval_backend": "sqlite_fts5_bm25",
+      "explanation_backend": "deterministic_template",
+      "bpu_probe_allowed": false,
+      "local_llm_allowed": false,
+      "remote_shadow_allowed": false,
+      "fallback_profile": null,
+      "minimum_available_memory_mib": 768,
+      "maximum_cpu_temperature_c": 78.0
+    },
+    "LOCAL_HYBRID": {
+      "decision_backend": "deterministic_cpu",
+      "vision_backend": "qualified_bpu_probe_with_cpu_projection",
+      "retrieval_backend": "sqlite_fts5_bm25",
+      "explanation_backend": "qwen2_0_5b_read_only_sequential",
+      "bpu_probe_allowed": true,
+      "local_llm_allowed": true,
+      "remote_shadow_allowed": false,
+      "fallback_profile": "SAFE_CPU",
+      "minimum_available_memory_mib": 1024,
+      "maximum_cpu_temperature_c": 75.0
+    },
+    "DEEP_SHADOW": {
+      "decision_backend": "deterministic_cpu",
+      "vision_backend": "qualified_bpu_probe_with_cpu_projection",
+      "retrieval_backend": "sqlite_fts5_bm25",
+      "explanation_backend": "remote_or_pc_deep_model_shadow_only",
+      "bpu_probe_allowed": true,
+      "local_llm_allowed": false,
+      "remote_shadow_allowed": true,
+      "fallback_profile": "SAFE_CPU",
+      "minimum_available_memory_mib": 1024,
+      "maximum_cpu_temperature_c": 75.0
+    }
+  },
+  "global_authority": {
+    "llm_tool_use": false,
+    "llm_serial_write": false,
+    "llm_gpio_write": false,
+    "bpu_action_authority": false,
+    "remote_action_authority": false,
+    "omega_physical_execution_authority": false
+  }
+}

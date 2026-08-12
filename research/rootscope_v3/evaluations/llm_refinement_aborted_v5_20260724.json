@@ -1,0 +1,30 @@
+{
+  "schema": "rootscope.v3.aborted-training-run.v1",
+  "status": "ABORTED_NOT_QUALIFIED_NOT_RELEASE_ELIGIBLE",
+  "reason": "Independent audit found that the first refinement launcher did not cryptographically prove its train-only curriculum or fully bind the parent adapter configuration and receipt.",
+  "observed_before_stop": {
+    "optimizer_step": 51,
+    "samples_seen": 204,
+    "output_directory": "rootscope_v3/models/llm/rootscope_qwen3_17b_qlora_final_v5_adv96"
+  },
+  "logs": {
+    "stdout": {
+      "path": "rootscope_v3/llm/logs/train_v5_adv96.stdout.log",
+      "bytes": 8613,
+      "sha256": "326333871e666dc9aac5086c6942b9b887786406a2a1fc6c49e4fe6edd6d7d2d"
+    },
+    "stderr": {
+      "path": "rootscope_v3/llm/logs/train_v5_adv96.stderr.log",
+      "bytes": 1516,
+      "sha256": "b1d40021f5b39317a995bfd765a003ecb6520eda87534df7a77d6d24902cca13"
+    }
+  },
+  "release_eligible": false,
+  "authority": {
+    "execution_authority": false,
+    "serial_write": false,
+    "gpio_write": false,
+    "pump_command": false,
+    "physical_completion": false
+  }
+}

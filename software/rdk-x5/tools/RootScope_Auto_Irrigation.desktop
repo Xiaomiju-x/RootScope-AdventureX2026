@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RootScope 视觉自动灌溉（单次）
+Comment=Three-frame vision gate, one descent, then one firmware-timed 5 s pump
+Exec=xterm -T "RootScope One-Cycle Auto Irrigation" -geometry 116x34+10+10 -e /opt/rootscope/.local/bin/rootscope-auto-irrigation
+Icon=applications-engineering
+Terminal=false
+Categories=Science;Utility;
+StartupNotify=true

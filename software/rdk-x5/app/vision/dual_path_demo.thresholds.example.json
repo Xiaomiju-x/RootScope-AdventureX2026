@@ -1,0 +1,4 @@
+{
+  "min_top1_probability": 0.7,
+  "min_top1_margin": 0.2
+}

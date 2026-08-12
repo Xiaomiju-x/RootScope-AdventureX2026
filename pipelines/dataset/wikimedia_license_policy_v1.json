@@ -1,0 +1,127 @@
+{
+  "schema_version": "rootscope.wikimedia_license_policy.v1",
+  "policy_id": "rootscope-wikimedia-exact-pair-policy",
+  "policy_version": "1.0.0",
+  "matching": {
+    "comparison": "ordinal_case_sensitive",
+    "trim_whitespace": false,
+    "normalize_trailing_slash": false,
+    "unknown_binding_action": "REJECT"
+  },
+  "image_constraints": {
+    "allowed_mime": [
+      "image/jpeg",
+      "image/png"
+    ],
+    "minimum_original_side": 720,
+    "minimum_downloaded_side": 448,
+    "dhash_algorithm": "rootscope_rgb_center_sample_9x8_v1"
+  },
+  "licenses": [
+    {
+      "canonical_id": "CC_BY_2_0",
+      "canonical_name": "CC BY 2.0",
+      "canonical_url": "https://creativecommons.org/licenses/by/2.0/",
+      "raw_bindings": [
+        { "raw_name": "CC BY 2.0", "raw_url": "https://creativecommons.org/licenses/by/2.0" },
+        { "raw_name": "CC BY 2.0", "raw_url": "https://creativecommons.org/licenses/by/2.0/" }
+      ]
+    },
+    {
+      "canonical_id": "CC_BY_2_5",
+      "canonical_name": "CC BY 2.5",
+      "canonical_url": "https://creativecommons.org/licenses/by/2.5/",
+      "raw_bindings": [
+        { "raw_name": "CC BY 2.5", "raw_url": "https://creativecommons.org/licenses/by/2.5" },
+        { "raw_name": "CC BY 2.5", "raw_url": "https://creativecommons.org/licenses/by/2.5/" }
+      ]
+    },
+    {
+      "canonical_id": "CC_BY_3_0",
+      "canonical_name": "CC BY 3.0",
+      "canonical_url": "https://creativecommons.org/licenses/by/3.0/",
+      "raw_bindings": [
+        { "raw_name": "CC BY 3.0", "raw_url": "https://creativecommons.org/licenses/by/3.0" },
+        { "raw_name": "CC BY 3.0", "raw_url": "https://creativecommons.org/licenses/by/3.0/" }
+      ]
+    },
+    {
+      "canonical_id": "CC_BY_4_0",
+      "canonical_name": "CC BY 4.0",
+      "canonical_url": "https://creativecommons.org/licenses/by/4.0/",
+      "raw_bindings": [
+        { "raw_name": "CC BY 4.0", "raw_url": "https://creativecommons.org/licenses/by/4.0" },
+        { "raw_name": "CC BY 4.0", "raw_url": "https://creativecommons.org/licenses/by/4.0/" }
+      ]
+    },
+    {
+      "canonical_id": "CC_BY_SA_2_0",
+      "canonical_name": "CC BY-SA 2.0",
+      "canonical_url": "https://creativecommons.org/licenses/by-sa/2.0/",
+      "raw_bindings": [
+        { "raw_name": "CC BY-SA 2.0", "raw_url": "https://creativecommons.org/licenses/by-sa/2.0" },
+        { "raw_name": "CC BY-SA 2.0", "raw_url": "https://creativecommons.org/licenses/by-sa/2.0/" }
+      ]
+    },
+    {
+      "canonical_id": "CC_BY_SA_2_5",
+      "canonical_name": "CC BY-SA 2.5",
+      "canonical_url": "https://creativecommons.org/licenses/by-sa/2.5/",
+      "raw_bindings": [
+        { "raw_name": "CC BY-SA 2.5", "raw_url": "https://creativecommons.org/licenses/by-sa/2.5" },
+        { "raw_name": "CC BY-SA 2.5", "raw_url": "https://creativecommons.org/licenses/by-sa/2.5/" }
+      ]
+    },
+    {
+      "canonical_id": "CC_BY_SA_3_0",
+      "canonical_name": "CC BY-SA 3.0",
+      "canonical_url": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "raw_bindings": [
+        { "raw_name": "CC BY-SA 3.0", "raw_url": "https://creativecommons.org/licenses/by-sa/3.0" },
+        { "raw_name": "CC BY-SA 3.0", "raw_url": "https://creativecommons.org/licenses/by-sa/3.0/" }
+      ]
+    },
+    {
+      "canonical_id": "CC_BY_SA_4_0",
+      "canonical_name": "CC BY-SA 4.0",
+      "canonical_url": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "raw_bindings": [
+        { "raw_name": "CC BY-SA 4.0", "raw_url": "https://creativecommons.org/licenses/by-sa/4.0" },
+        { "raw_name": "CC BY-SA 4.0", "raw_url": "https://creativecommons.org/licenses/by-sa/4.0/" }
+      ]
+    },
+    {
+      "canonical_id": "CC0_1_0",
+      "canonical_name": "CC0 1.0",
+      "canonical_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "raw_bindings": [
+        { "raw_name": "CC0", "raw_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en" },
+        { "raw_name": "CC0 1.0", "raw_url": "https://creativecommons.org/publicdomain/zero/1.0" },
+        { "raw_name": "CC0 1.0", "raw_url": "https://creativecommons.org/publicdomain/zero/1.0/" }
+      ]
+    },
+    {
+      "canonical_id": "COMMONS_PUBLIC_DOMAIN",
+      "canonical_name": "Public domain",
+      "canonical_url": "",
+      "copyrighted_exact_values": [
+        "False"
+      ],
+      "raw_bindings": [
+        { "raw_name": "Public domain", "raw_url": "" }
+      ]
+    }
+  ],
+  "legacy_exceptions": [
+    {
+      "exception_id": "legacy-holdout-75559442-http-by-sa-3.0",
+      "context": "legacy_holdout_manifest",
+      "source_provider": "Wikimedia Commons",
+      "pageid": 75559442,
+      "source_group": "commons:75559442",
+      "raw_name": "CC BY-SA 3.0",
+      "raw_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "canonical_id": "CC_BY_SA_3_0"
+    }
+  ]
+}

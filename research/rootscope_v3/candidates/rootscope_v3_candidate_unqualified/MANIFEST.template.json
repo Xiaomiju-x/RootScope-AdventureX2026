@@ -1,0 +1,21 @@
+{
+  "schema": "rootscope.v3.release-manifest.v1",
+  "candidate_id": null,
+  "created_at_utc": null,
+  "baseline_v2_archive_sha256": "03ca7b8d9ff8b691f1fd61dc696601ba30f494377a0b2a3cfadb66c19478ed94",
+  "files": [],
+  "model_registry_sha256": null,
+  "dataset_registry_sha256": null,
+  "teacher_registry_sha256": null,
+  "dependency_registry_sha256": null,
+  "evaluation_contract_root_sha256": null,
+  "composition_root_sha256": null,
+  "status": "TEMPLATE_UNQUALIFIED",
+  "authority": {
+    "execution_authority": false,
+    "physical_authority": false,
+    "serial_write": false,
+    "pump_command": false,
+    "physical_completion": false
+  }
+}

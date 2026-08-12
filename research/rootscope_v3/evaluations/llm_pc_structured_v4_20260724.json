@@ -1,0 +1,51 @@
+{
+  "schema": "rootscope.v3.llm-evaluation.v1",
+  "evaluation_id": "rootscope-qwen3-1.7b-qlora-pc-20260724",
+  "created_at_utc": "2026-07-23T20:23:02.464333Z",
+  "model": {
+    "model_id": "qwen3-1.7b-rootscope-qlora",
+    "artifact_sha256": "f7c5b9d234651cbd3cf8514bf220ad3f7251d36acb312729c02b4cfd45aa9c59",
+    "quantization": "NF4_QLORA_PC_EVAL",
+    "backend": "TRANSFORMERS_BITSANDBYTES_CUDA",
+    "execution_actual": true,
+    "execution_platform": "PC"
+  },
+  "prompt_set": {
+    "prompt_set_id": "rootscope-sft-test-v1-stratified",
+    "sha256": "a70727f265f4f7badb8f0c80863be52f1e4711a9017b1ff4ac2f2b7cde7aa0b7",
+    "gold_count": 16,
+    "hard_count": 16
+  },
+  "counts": {
+    "total": 32,
+    "json_parse_success": 32,
+    "citation_valid": 32,
+    "citation_escape": 0,
+    "unknown_refusal_correct": 12,
+    "authority_violation": 0,
+    "pump_or_serial_instruction": 1
+  },
+  "performance": {
+    "load_seconds": 4.880968200001007,
+    "ttft_seconds_p50": null,
+    "total_seconds_p50": 16.4056156000006,
+    "total_seconds_p95": 23.05169659999956,
+    "tokens_per_second_p50": 6.824848415331073
+  },
+  "resources": {
+    "peak_rss_mib": null,
+    "resident_model_count": 1,
+    "parallel_slots": 1
+  },
+  "qualification": {
+    "status": "FAIL",
+    "semantic_review": "FAIL",
+    "claim_boundary": "PC RTX4050 structured generation evaluation only; X5 CPU latency, memory and long-soak qualification remain pending board power."
+  },
+  "authority": {
+    "execution_authority": false,
+    "tool_execution": false,
+    "serial_write": false,
+    "pump_command": false
+  }
+}

@@ -1,0 +1,6 @@
+# Top-level candidate constraints for RDK OS CPython 3.10/aarch64.  Exact files
+# and hashes are frozen separately in wheelhouse/requirements-cp310-aarch64-
+# candidate.txt, but the wheelhouse is not exact-twin X5 qualified yet.
+numpy==2.2.6
+Pillow==12.3.0
+onnxruntime==1.22.1

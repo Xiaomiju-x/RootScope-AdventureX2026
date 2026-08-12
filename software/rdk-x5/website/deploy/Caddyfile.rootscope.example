@@ -1,0 +1,29 @@
+# RootScope temporary AdventureX route.
+# The original XRD reverse_proxy to 127.0.0.1:29100 is preserved in the
+# timestamped Caddyfile backup and rollback script; no XRD files are deleted.
+xiaomiju.xyz, www.xiaomiju.xyz {
+    encode zstd gzip
+
+    @unsafe method POST PUT PATCH DELETE CONNECT TRACE
+    respond @unsafe `{"error":"method_not_allowed","mode":"read-only"}` 405 {
+        close
+    }
+
+    header {
+        -Server
+        -X-Powered-By
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "DENY"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+    }
+
+    reverse_proxy 127.0.0.1:29200 {
+        header_up -X-Forwarded-User
+        header_up -X-Remote-User
+        header_up -Remote-User
+        header_up -Authorization
+        health_uri /healthz
+    }
+}

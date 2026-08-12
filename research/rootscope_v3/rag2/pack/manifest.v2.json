@@ -1,0 +1,40 @@
+{
+  "schema": "rootscope.rag2.pack-manifest.v2",
+  "status": "PC_ONLY_X5_PENDING",
+  "files": {
+    "rootscope_rag_sources.v2.json": {
+      "bytes": 14167,
+      "sha256": "c8057274252bc8fb4f56b68e6c17c69a165177539b6e06a93677cbb267d71af8"
+    },
+    "rootscope_rag_corpus.v2.jsonl": {
+      "bytes": 40839,
+      "sha256": "7f4f71b5708a28769ad15a187b41c87ba2c4b6e6d50eb02b7ee3e22da8ad6ffb"
+    },
+    "rootscope_rag_citation_allowlist.v2.json": {
+      "bytes": 3590,
+      "sha256": "89b8f7e3b842fabe4ecd38c4b6fdcf5b9c1d539e974d0c2ce1741e543a3a6fd4"
+    },
+    "rootscope_rag_gold_qa.v2.jsonl": {
+      "bytes": 28354,
+      "sha256": "a6e22f22a8924bf2f857448469eeca0f608e779bdd36abbe8e43fe0faa56532a"
+    },
+    "rootscope_rag_forbidden_qa.v2.jsonl": {
+      "bytes": 15847,
+      "sha256": "d14b461dbfbdd6167ad5c27fa7d5d29bb460a13e35466a483617ed9f88c963b5"
+    }
+  },
+  "counts": {
+    "sources": 17,
+    "chunks": 42,
+    "gold": 64,
+    "hard_gold": 44,
+    "forbidden": 36
+  },
+  "authority": {
+    "execution_authority": false,
+    "physical_authority": false,
+    "serial_write": false,
+    "pump_command": false
+  },
+  "pack_root_sha256": "34941cb8860b6042000f112fbb33294c2594332dd46a7357dd8b1e43233542ad"
+}

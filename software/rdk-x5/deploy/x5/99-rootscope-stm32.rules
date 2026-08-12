@@ -1,0 +1,6 @@
+# RootScope commissioned STM32F103 USB-TTL adapter.
+# This CH340 has no unique USB serial number, so identity is bound to the
+# observed RDK X5 physical USB path. Replug it into the same USB port.
+# Replace @ROOTSCOPE_SERIAL_ID_PATH@ with the value recorded during local
+# commissioning (`udevadm info --query=property --name=/dev/ttyUSB0`).
+SUBSYSTEM=="tty", KERNEL=="ttyUSB*", ENV{ID_VENDOR_ID}=="1a86", ENV{ID_MODEL_ID}=="7523", ENV{ID_PATH}=="@ROOTSCOPE_SERIAL_ID_PATH@", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="rootscope_stm32", GROUP="dialout", MODE="0660", TAG+="systemd"

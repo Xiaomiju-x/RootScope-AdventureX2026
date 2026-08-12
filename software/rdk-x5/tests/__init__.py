@@ -1,0 +1,1 @@
+"""RootScope core tests."""

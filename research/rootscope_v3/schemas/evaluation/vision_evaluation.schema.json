@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rootscope.local/schemas/v3/vision-evaluation.v1.json",
+  "title": "RootScope v3 vision evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "evaluation_id",
+    "created_at_utc",
+    "evaluation_scope",
+    "dataset",
+    "optical_domain",
+    "backends",
+    "counts",
+    "latency_ms",
+    "qualification",
+    "authority"
+  ],
+  "properties": {
+    "schema": {"const": "rootscope.v3.vision-evaluation.v1"},
+    "evaluation_id": {"type": "string", "minLength": 1},
+    "created_at_utc": {"type": "string", "format": "date-time"},
+    "evaluation_scope": {
+      "enum": ["FIXTURE_ONLY", "PC_STATIC", "X5_STATIC", "X5_LIVE_FINAL_OPTICS"]
+    },
+    "dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dataset_id", "partition", "manifest_sha256", "split_unit", "sample_count"],
+      "properties": {
+        "dataset_id": {"type": "string", "minLength": 1},
+        "partition": {
+          "enum": ["TRAIN", "VALIDATION", "TEST_ONCE", "DEMO_HOLDOUT", "HARD_SET", "DEVELOPMENT"]
+        },
+        "manifest_sha256": {
+          "anyOf": [
+            {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            {"type": "null"}
+          ]
+        },
+        "split_unit": {
+          "enum": ["SOURCE_GROUP", "CAPTURE_SESSION", "PHYSICAL_PLACEMENT", "PHYSICAL_TRIAL"]
+        },
+        "sample_count": {"type": "integer", "minimum": 0},
+        "formal_holdout": {"type": "boolean"}
+      }
+    },
+    "optical_domain": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["camera_id", "lighting", "mount_fixed", "exposure_fixed", "white_balance_fixed"],
+      "properties": {
+        "camera_id": {"type": ["string", "null"]},
+        "lighting": {"type": "string", "minLength": 1},
+        "mount_fixed": {"type": "boolean"},
+        "exposure_fixed": {"type": "boolean"},
+        "white_balance_fixed": {"type": "boolean"},
+        "reference_patch_used": {"type": "boolean"}
+      }
+    },
+    "backends": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["backend_id", "model_id", "model_sha256", "execution_actual"],
+        "properties": {
+          "backend_id": {"type": "string", "minLength": 1},
+          "model_id": {"type": "string", "minLength": 1},
+          "model_sha256": {
+            "anyOf": [
+              {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+              {"type": "null"}
+            ]
+          },
+          "execution_actual": {"type": "boolean"},
+          "role": {"enum": ["PRIMARY", "AUDIT", "SHADOW", "ORACLE", "CHALLENGER"]}
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_scored",
+        "raw_top1_correct",
+        "full_gate_scored",
+        "full_gate_expected_outcome",
+        "known_positive_count",
+        "unknown_or_occluded_count",
+        "false_irrigation_intent_count",
+        "cpu_bpu_compared",
+        "cpu_bpu_top1_agree",
+        "non_finite_output_count"
+      ],
+      "properties": {
+        "raw_scored": {"type": "integer", "minimum": 0},
+        "raw_top1_correct": {"type": "integer", "minimum": 0},
+        "full_gate_scored": {"type": "integer", "minimum": 0},
+        "full_gate_expected_outcome": {"type": "integer", "minimum": 0},
+        "known_positive_count": {"type": "integer", "minimum": 0},
+        "unknown_or_occluded_count": {"type": "integer", "minimum": 0},
+        "false_irrigation_intent_count": {"type": "integer", "minimum": 0},
+        "cpu_bpu_compared": {"type": "integer", "minimum": 0},
+        "cpu_bpu_top1_agree": {"type": "integer", "minimum": 0},
+        "non_finite_output_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "latency_ms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["measurement_scope", "sample_count", "p50", "p95", "max", "cold_start"],
+      "properties": {
+        "measurement_scope": {"enum": ["MODEL_ONLY", "PREPROCESS_INFERENCE_POSTPROCESS", "END_TO_END"]},
+        "sample_count": {"type": "integer", "minimum": 0},
+        "p50": {"type": ["number", "null"], "minimum": 0},
+        "p95": {"type": ["number", "null"], "minimum": 0},
+        "max": {"type": ["number", "null"], "minimum": 0},
+        "cold_start": {"type": ["number", "null"], "minimum": 0}
+      }
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "gates_passed", "claim_boundary"],
+      "properties": {
+        "status": {"enum": ["NOT_EVALUATED", "FAIL", "SHADOW_ONLY", "PASS"]},
+        "gates_passed": {"type": "array", "items": {"type": "string"}},
+        "claim_boundary": {"type": "string", "minLength": 1}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execution_authority", "physical_authority", "pump_command"],
+      "properties": {
+        "execution_authority": {"const": false},
+        "physical_authority": {"const": false},
+        "pump_command": {"const": false}
+      }
+    }
+  }
+}

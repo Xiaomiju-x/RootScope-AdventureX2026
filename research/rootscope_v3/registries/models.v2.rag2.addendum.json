@@ -1,0 +1,25 @@
+{
+  "schema": "rootscope.v3.model-registry-addendum.v2",
+  "base_registry": "registries/models.v1.json",
+  "append_only": true,
+  "recorded_at": "2026-07-24",
+  "models": [
+    {
+      "model_id": "baai-bge-small-zh-v1.5-rag2-dense-challenger",
+      "family": "BGE",
+      "modality": "TEXT_EMBEDDING",
+      "upstream_locator": "https://huggingface.co/BAAI/bge-small-zh-v1.5/tree/7999e1d3359715c523056ef9478215996d62a620",
+      "upstream_revision": "7999e1d3359715c523056ef9478215996d62a620",
+      "license": "MIT",
+      "artifact_format": "ONNX_DYNAMIC_UINT8",
+      "relative_locator": "rootscope_v3/models/rag/bge-small-zh-v1.5-onnx-uint8/bge-small-zh-v1.5.dynamic-uint8.onnx",
+      "sha256": "3f813fea8dbd30a883032affb2b0020add20a1dd31639bd2f6dae0b9e6665f6c",
+      "size_bytes": 24019671,
+      "runtime": "onnxruntime CPUExecutionProvider",
+      "status": "PC_OBSERVED_NOT_SELECTED_X5_PENDING",
+      "role": "RAG2_DENSE_RRF_CHALLENGER",
+      "selection": "NOT_ELIGIBLE_KEEP_BM25_DEFAULT",
+      "physical_authority": false
+    }
+  ]
+}

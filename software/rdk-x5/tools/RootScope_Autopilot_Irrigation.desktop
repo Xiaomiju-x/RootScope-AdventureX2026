@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RootScope 全自动连续答辩
+Comment=Continuous fullscreen vision; stable target automatically starts one bounded irrigation cycle
+Exec=xterm -T "RootScope Autopilot Irrigation" -geometry 100x26+0+0 -e /opt/rootscope/.local/bin/rootscope-autopilot-irrigation
+Icon=applications-engineering
+Terminal=false
+Categories=Utility;
+StartupNotify=true

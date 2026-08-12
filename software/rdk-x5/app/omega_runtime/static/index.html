@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>RootScope-Ω · Truth Ribbon</title>
+  <style>
+    :root{--bg:#07110f;--panel:#0d1b18;--line:#20433a;--ink:#e9fff8;--muted:#8eb7aa;--mint:#55e3b2;--cyan:#56c8e8;--amber:#ffbd68;--red:#ff7d87}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% -10%,#174436 0,transparent 33%),var(--bg);color:var(--ink);font:14px/1.5 Inter,"Noto Sans SC",system-ui,sans-serif}
+    main{max-width:1240px;margin:auto;padding:28px 20px 56px}header{display:flex;justify-content:space-between;gap:18px;align-items:end;margin-bottom:20px}
+    h1{font-size:clamp(28px,5vw,54px);line-height:1;margin:0;letter-spacing:-.04em}h1 span{color:var(--mint)}p{margin:6px 0}.sub{color:var(--muted);max-width:760px}
+    .pill,.tag{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);background:#10251f;padding:6px 10px;border-radius:999px;color:var(--muted);white-space:nowrap}.dot{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px var(--mint)}
+    .truth{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:22px 0}.truth div{background:#0c1916;padding:14px}.truth b{display:block;color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.09em}.truth span{display:block;margin-top:4px;font-weight:750;overflow-wrap:anywhere}
+    .runtime{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:-8px 0 24px}.runtime .fact{background:#0c1916}.runtime .wide{grid-column:span 4}.warn{color:var(--amber)}.bad{color:var(--red)}
+    .chain{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:18px 0 24px}.node{position:relative;border:1px solid var(--line);border-radius:12px;background:linear-gradient(145deg,#10231e,#0a1513);padding:14px;min-height:90px}.node:not(:last-child):after{content:"→";position:absolute;right:-17px;top:31px;color:var(--mint);z-index:2}.node b{color:var(--mint);display:block}.node small{color:var(--muted)}
+    .section-title{display:flex;justify-content:space-between;align-items:center;margin:26px 0 12px}.section-title h2{margin:0;font-size:20px}.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.case{min-width:0;border:1px solid var(--line);border-radius:14px;background:rgba(13,27,24,.94);padding:16px}.case.accept{border-left:4px solid var(--mint)}.case.hold{border-left:4px solid var(--amber)}.case.reject{border-left:4px solid var(--red)}.case-head{display:flex;justify-content:space-between;gap:10px}.case h3{margin:0;font-size:15px;overflow-wrap:anywhere}.decision{font-weight:800}.accept .decision{color:var(--mint)}.hold .decision{color:var(--amber)}.reject .decision{color:var(--red)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:12px}.fact{border:1px solid #18372f;border-radius:9px;padding:8px}.fact b{display:block;color:var(--muted);font-size:10px;letter-spacing:.07em}.fact span{display:block;overflow-wrap:anywhere}.hash{font:11px ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--cyan);word-break:break-all}
+    .boundary{margin-top:16px;border:1px solid #63462a;background:#231a10;border-radius:12px;padding:14px;color:#ffd8a5}.loading{color:var(--muted)}@media(max-width:900px){.truth{grid-template-columns:repeat(3,1fr)}.runtime{grid-template-columns:repeat(2,1fr)}.runtime .wide{grid-column:span 2}.chain{grid-template-columns:repeat(2,1fr)}.node:after{display:none}}@media(max-width:650px){header{display:block}.pill{margin-top:14px}.truth{grid-template-columns:1fr 1fr}.runtime{grid-template-columns:1fr}.runtime .wide{grid-column:span 1}.cases{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <div><h1>RootScope<span>-Ω</span></h1><p class="sub">Evidence-first desert plant protection · 完整链路只读回放与真实性投影</p></div>
+    <div class="pill"><i class="dot"></i><span id="health">READ-ONLY / LOOPBACK</span></div>
+  </header>
+  <section class="truth" aria-label="Truth Ribbon">
+    <div><b>Mode</b><span id="mode">—</span></div><div><b>Profile actual</b><span id="profile">—</span></div>
+    <div><b>Cases</b><span id="casesCount">—</span></div><div><b>Evidence</b><span id="evidence">—</span></div>
+    <div><b>Authority</b><span id="authority">—</span></div><div><b>Physical claim</b><span id="physical">—</span></div>
+  </section>
+  <section class="runtime" aria-label="Actual runtime backends">
+    <div class="fact"><b>Decision backend actual</b><span id="decisionBackend">—</span></div>
+    <div class="fact"><b>Vision backend actual</b><span id="visionBackend">—</span></div>
+    <div class="fact"><b>Retrieval backend actual</b><span id="retrievalBackend">—</span></div>
+    <div class="fact"><b>Explanation backend actual</b><span id="explanationBackend">—</span></div>
+    <div class="fact wide"><b>Fallback reasons</b><span id="fallbackReasons">—</span></div>
+  </section>
+  <section class="chain" aria-label="Decision chain">
+    <div class="node"><b>Evidence DAG</b><small>immutable nodes<br>provenance + SHA-256</small></div>
+    <div class="node"><b>Hybrid Belief</b><small>discrete faults<br>bounded measurements</small></div>
+    <div class="node"><b>Failure Core</b><small>counterfactual witness<br>missing/conflict</small></div>
+    <div class="node"><b>H=2 RB-VoE</b><small>risk-bounded next<br>evidence proposal</small></div>
+    <div class="node"><b>Safety Compiler</b><small>deterministic<br>fail-closed projection</small></div>
+    <div class="node"><b>Decision Receipt</b><small>backend capsule<br>Truth Ribbon</small></div>
+  </section>
+  <div class="section-title"><h2>五个锁定回放案例</h2><span class="tag" id="root">receipt root: —</span></div>
+  <section id="cases" class="cases"><p class="loading">正在读取本地只读证据……</p></section>
+  <div class="boundary"><b>真实性边界：</b>本页是 SIMULATION / REPLAY 证据展示。LLM、BPU Probe、RB-VoE 与远端模型均无串口、GPIO、泵、状态机或物理执行权限；任何 “ACCEPT” 只表示该锁定案例的模拟证据门通过，不代表真实硬件灌溉完成。</div>
+</main>
+<script>
+const shortHash=v=>v?`${v.slice(0,12)}…${v.slice(-8)}`:'—';
+function fact(label,value,hash=false){const d=document.createElement('div');d.className='fact';const b=document.createElement('b');b.textContent=label;const s=document.createElement('span');s.textContent=value??'—';if(hash)s.className='hash';d.append(b,s);return d}
+function objectOrThrow(value,label){if(!value||typeof value!=='object'||Array.isArray(value))throw Error(`${label} missing`);return value}
+function allFalse(value){const entries=Object.entries(objectOrThrow(value,'authority'));return entries.length>0&&entries.every(([,item])=>item===false)}
+function exactHash(value){return typeof value==='string'&&/^[0-9a-f]{64}$/.test(value)}
+function render(report){
+  objectOrThrow(report,'report');const b=objectOrThrow(report.selected_backend,'selected_backend');const boundary=objectOrThrow(report.runtime_boundary,'runtime_boundary');
+  if(!Array.isArray(report.cases)||report.cases.length!==report.case_count||!exactHash(report.case_receipts_root))throw Error('report evidence contract invalid');
+  const zeroAuthority=allFalse(report.authority);const noPhysical=boundary.physical_completion_claim===false;
+  if(typeof b.runtime_mode!=='string'||typeof b.profile!=='string'||!Array.isArray(b.fallback_reasons))throw Error('backend contract invalid');
+  document.getElementById('mode').textContent=b.runtime_mode;document.getElementById('profile').textContent=b.profile;
+  document.getElementById('casesCount').textContent=`${report.matched_case_count}/${report.case_count} PASS`;document.getElementById('evidence').textContent=`BOUND ${shortHash(report.case_receipts_root)}`;
+  document.getElementById('authority').textContent=zeroAuthority?'ZERO · ALL FALSE':'NONZERO / INVALID';document.getElementById('authority').className=zeroAuthority?'':'bad';
+  document.getElementById('physical').textContent=noPhysical?'FALSE':'TRUE / INVALID';document.getElementById('physical').className=noPhysical?'':'bad';
+  document.getElementById('decisionBackend').textContent=b.decision_backend_actual;document.getElementById('visionBackend').textContent=b.vision_backend_actual;
+  document.getElementById('retrievalBackend').textContent=b.retrieval_backend_actual;document.getElementById('explanationBackend').textContent=b.explanation_backend_actual;
+  document.getElementById('fallbackReasons').textContent=b.fallback_reasons.length?b.fallback_reasons.join(' · '):'NONE';document.getElementById('fallbackReasons').className=b.fallback_reasons.length?'warn':'';
+  document.getElementById('root').textContent=`receipt root: ${shortHash(report.case_receipts_root)}`;const box=document.getElementById('cases');box.replaceChildren();
+  report.cases.forEach(item=>{const receipt=objectOrThrow(item.decision_receipt,'decision_receipt');const ribbon=objectOrThrow(item.truth_ribbon,'truth_ribbon');const p=objectOrThrow(receipt.projection,'projection');
+    if(!exactHash(receipt.receipt_sha256)||ribbon.receipt_sha256!==receipt.receipt_sha256||!allFalse(ribbon.authority)||ribbon.physical_completion_claim!==false||!Array.isArray(ribbon.warnings))throw Error(`truth ribbon invalid: ${item.case_id}`);
+    const card=document.createElement('article');card.className=`case ${p.safety_decision.toLowerCase()}`;
+    const head=document.createElement('div');head.className='case-head';const h=document.createElement('h3');h.textContent=item.case_id;const d=document.createElement('span');d.className='decision';d.textContent=p.safety_decision;head.append(h,d);card.append(head);
+    const desc=document.createElement('p');desc.className='sub';desc.textContent=item.description;card.append(desc);const grid=document.createElement('div');grid.className='grid';
+    grid.append(fact('Safety action',p.evidence_action),fact('Terminal',p.terminal_state),fact('Backend actual',ribbon.backend_actual),fact('Evidence state',ribbon.evidence_state),fact('RB-VoE H2',item.rb_voe_h2.selected_action),fact('Failure core',item.failure_core.status),fact('Truth warnings',ribbon.warnings.join(' · ')),fact('DAG root',shortHash(receipt.evidence_dag_root),true),fact('Receipt',shortHash(receipt.receipt_sha256),true));card.append(grid);box.append(card)});
+  document.getElementById('health').textContent='READ-ONLY / LOOPBACK / EVIDENCE BOUND';
+}
+fetch('/api/status',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error(r.status);return r.json()}).then(render).catch(e=>{document.getElementById('health').textContent='LOCAL DATA ERROR';document.getElementById('authority').textContent='UNVERIFIED';document.getElementById('physical').textContent='UNVERIFIED';document.getElementById('cases').textContent=String(e)})
+</script>
+</body>
+</html>

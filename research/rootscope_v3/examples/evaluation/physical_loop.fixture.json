@@ -1,0 +1,51 @@
+{
+  "schema": "rootscope.v3.physical-loop-evaluation.v1",
+  "trial_id": "e0-physical-fixture",
+  "created_at_utc": "2026-07-24T00:00:00Z",
+  "execution_mode": "SIMULATION",
+  "hardware": {
+    "x5_identity": null,
+    "stm32_boot_id": null,
+    "firmware_build_id": null,
+    "pump_channel": null,
+    "hx711_id": null
+  },
+  "action_contract": {
+    "contract_id": "fixture-no-action",
+    "contract_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+    "sequence": 0,
+    "requested_mass_g": 0,
+    "max_mass_g": 0
+  },
+  "safety": {
+    "operator_present": false,
+    "estop_tested": false,
+    "watchdog_tested": false,
+    "link_loss_tested": false,
+    "actuator_power_connected": false
+  },
+  "actuation": {
+    "serial_opened": false,
+    "serial_write_count": 0,
+    "ack_received": false,
+    "ack_sequence": null,
+    "pump_energized": false
+  },
+  "feedback": {
+    "mass_before_g": null,
+    "mass_after_g": null,
+    "mass_delta_g": null,
+    "target_coverage": null,
+    "neighbor_spill": null,
+    "center_offset_ratio": null,
+    "moisture_delta": null
+  },
+  "outcome": {
+    "status": "SIMULATED_ONLY",
+    "mass_gate_passed": null,
+    "wetting_gate_passed": null,
+    "spill_gate_passed": null,
+    "manual_repair_required": false
+  },
+  "claim_boundary": "SCHEMA_FIXTURE_ONLY_NO_HARDWARE_NO_PHYSICAL_CLOSURE"
+}

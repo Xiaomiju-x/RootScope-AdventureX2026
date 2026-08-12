@@ -1,0 +1,258 @@
+{
+  "schema_version": "rootscope.ai_siglip2_ensemble_policy.v1",
+  "queue_schema_version": "rootscope.wikimedia_human_review_queue.v1",
+  "manifest_schema_version": "rootscope.wikimedia_candidate.v1",
+  "result_schema_version": "rootscope.ai_siglip2_ensemble_result.v1",
+  "hold_schema_version": "rootscope.ai_siglip2_ensemble_hold.v1",
+  "stats_schema_version": "rootscope.ai_siglip2_ensemble_stats.v1",
+  "receipt_schema_version": "rootscope.ai_siglip2_ensemble_receipt.v1",
+  "production_input_roots": {
+    "candidate_review_queue_sha256": "675f481c28c9add53cd918b7d5cc2f76c72dd496aafae06fda888fe13eda4e5e",
+    "staging_manifest_sha256": "e802f731588212d12c44c10a93156f019670fbf32e92ddc5a3dc15d1d80bffb1",
+    "review_queue_summary_sha256": "3753c5df8eebacd520cfc20128e48c7d941292d35abf6adcb6fe926273cf65e4",
+    "integrity_audit_sha256": "74144898a325c22bf7008728f7318ab1123f3043a6f71302b4990ac8eb437760",
+    "class_contract_sha256": "865fb1178a79959faa8400ed06e42fcc7bf5c7daeb7d5df906b8c5a4722783e5"
+  },
+  "expected_candidate_count": 1333,
+  "expected_acquisition_hint_counts": {
+    "grass_clump": 300,
+    "low_shrub": 300,
+    "young_tree": 300,
+    "unknown": 433
+  },
+  "target_classes": [
+    "grass_clump",
+    "low_shrub",
+    "young_tree"
+  ],
+  "all_class_hints": [
+    "grass_clump",
+    "low_shrub",
+    "young_tree",
+    "unknown"
+  ],
+  "image_contract": {
+    "allowed_mime": [
+      "image/jpeg",
+      "image/png"
+    ],
+    "minimum_width": 448,
+    "minimum_height": 448,
+    "verify_decode": true
+  },
+  "inference": {
+    "supported_backends": [
+      "local_siglip2",
+      "local_openclip_bigvision_npz"
+    ],
+    "model_type_allowlist": [
+      "siglip",
+      "siglip2"
+    ],
+    "openclip_model_name": "ViT-B-16-SigLIP2",
+    "openclip_context_length": 64,
+    "normalization": "two_stage_calibrated_prompt_logits",
+    "whole_quality_prompts": [
+      {
+        "id": "quality.complete_plant",
+        "text": "a clear natural-color photograph of one complete plant, with its base and entire crown visible"
+      },
+      {
+        "id": "quality.dominant_subject",
+        "text": "one dominant whole plant centered in the frame and occupying much of the image"
+      },
+      {
+        "id": "quality.clear_single_subject",
+        "text": "a sharp single-subject plant photograph on a simple natural background"
+      }
+    ],
+    "class_prompts": {
+      "grass_clump": [
+        {
+          "id": "class.grass_clump.complete_bunchgrass",
+          "text": "one complete tufted desert bunchgrass plant, visible from its basal clump to its seed heads"
+        },
+        {
+          "id": "class.grass_clump.narrow_blades",
+          "text": "a centered whole bunchgrass with many narrow blade-like leaves emerging from one base"
+        },
+        {
+          "id": "class.grass_clump.low_tussock",
+          "text": "a full view of a low tussock grass growing alone on dry ground"
+        },
+        {
+          "id": "class.grass_clump.visible_base",
+          "text": "an isolated clump of fine grass leaves with the basal tuft clearly visible"
+        },
+        {
+          "id": "class.grass_clump.non_woody",
+          "text": "a complete small grass clump with no woody branches"
+        }
+      ],
+      "low_shrub": [
+        {
+          "id": "class.low_shrub.rounded_crown",
+          "text": "one complete low woody desert shrub with its base and rounded crown visible"
+        },
+        {
+          "id": "class.low_shrub.no_dominant_trunk",
+          "text": "a centered whole bush with many branches arising near ground level and no dominant trunk"
+        },
+        {
+          "id": "class.low_shrub.compact",
+          "text": "a full view of a compact low shrub growing alone on dry ground"
+        },
+        {
+          "id": "class.low_shrub.broad_low_crown",
+          "text": "one isolated bushy plant with dense woody branches and a broad low crown"
+        },
+        {
+          "id": "class.low_shrub.multiple_stems",
+          "text": "a complete small scrub bush with multiple stems from the base"
+        }
+      ],
+      "young_tree": [
+        {
+          "id": "class.young_tree.complete_sapling",
+          "text": "one complete young desert tree or sapling with its base, trunk, and small crown visible"
+        },
+        {
+          "id": "class.young_tree.dominant_trunk",
+          "text": "a centered whole sapling with one dominant woody trunk and a compact canopy"
+        },
+        {
+          "id": "class.young_tree.juvenile",
+          "text": "a full view of a small juvenile tree growing alone on dry ground"
+        },
+        {
+          "id": "class.young_tree.acacia_like",
+          "text": "one complete young acacia-like tree with a clear main stem and modest crown"
+        },
+        {
+          "id": "class.young_tree.inside_frame",
+          "text": "a small upright tree with all of its trunk and canopy inside the frame"
+        }
+      ]
+    },
+    "reject_family_prompts": {
+      "detail_crop": [
+        {
+          "id": "reject.detail_crop.macro_parts",
+          "text": "a macro close-up of flowers, seed heads, fruit, pods, leaves, bark, branches, or stems"
+        },
+        {
+          "id": "reject.detail_crop.missing_base_or_crown",
+          "text": "a cropped plant detail with the plant base or crown outside the frame"
+        }
+      ],
+      "non_photo_document": [
+        {
+          "id": "reject.non_photo_document.herbarium",
+          "text": "a botanical herbarium sheet or pressed dried plant specimen"
+        },
+        {
+          "id": "reject.non_photo_document.document",
+          "text": "a botanical drawing, distribution map, diagram, screenshot, text page, index card, or collage"
+        }
+      ],
+      "no_target_object": [
+        {
+          "id": "reject.no_target_object.empty_ground",
+          "text": "bare sand, dunes, gravel, rocks, or an empty scene with no dominant plant"
+        },
+        {
+          "id": "reject.no_target_object.animal_or_human",
+          "text": "an animal, bird, reptile, insect, human hand, or person"
+        },
+        {
+          "id": "reject.no_target_object.manmade",
+          "text": "a plastic object, card, sign, vehicle, or other man-made item"
+        }
+      ],
+      "landscape_mixed": [
+        {
+          "id": "reject.landscape_mixed.background_plants",
+          "text": "a wide landscape where plants are tiny background details and no single plant dominates"
+        },
+        {
+          "id": "reject.landscape_mixed.dense_field",
+          "text": "a dense field or meadow containing many overlapping plants"
+        },
+        {
+          "id": "reject.landscape_mixed.multiple_types",
+          "text": "multiple mixed plant types with no single dominant target"
+        }
+      ],
+      "out_of_contract": [
+        {
+          "id": "reject.out_of_contract.cactus",
+          "text": "a cactus or succulent rather than a grass clump, low shrub, or sapling"
+        },
+        {
+          "id": "reject.out_of_contract.mature_tree",
+          "text": "a mature tall tree with a large canopy rather than a young sapling"
+        },
+        {
+          "id": "reject.out_of_contract.dead_tree",
+          "text": "a dead leafless tree or tree silhouette"
+        }
+      ],
+      "poor_quality": [
+        {
+          "id": "reject.poor_quality.bad_image",
+          "text": "a blurry, dark, strongly occluded, overexposed, or badly framed photograph"
+        }
+      ]
+    },
+    "calibration": {
+      "status": "INITIAL_CONSERVATIVE_UNCALIBRATED_AI_HEURISTIC",
+      "admissibility_bias": 0.0,
+      "admissibility_temperature": 1.0,
+      "morphology_temperature": 1.0,
+      "morphology_bias_by_class": {
+        "grass_clump": 0.0,
+        "low_shrub": 0.0,
+        "young_tree": 0.0
+      }
+    }
+  },
+  "thresholds": {
+    "auto_target_min_admissible": 0.9,
+    "auto_target_min_probability_by_class": {
+      "grass_clump": 0.8,
+      "low_shrub": 0.8,
+      "young_tree": 0.8
+    },
+    "auto_target_min_margin": 0.3,
+    "require_acquisition_hint_agreement": true,
+    "auto_unknown_max_admissible": 0.15,
+    "auto_unknown_min_reject_probability": 0.85,
+    "auto_unknown_max_target_probability": 0.55,
+    "probability_sum_tolerance": 0.000001
+  },
+  "output_contract": {
+    "results_filename": "ai_siglip2_ensemble_results.jsonl",
+    "hold_filename": "hold_queue.jsonl",
+    "stats_filename": "ai_siglip2_ensemble_stats.json",
+    "receipt_filename": "ai_siglip2_ensemble_receipt.json",
+    "status": "AI_ENSEMBLE_COMPLETE_NOT_HUMAN_REVIEWED_NOT_DATA_LOCKED"
+  },
+  "authority": {
+    "human_review": false,
+    "dataset_manifest_write": false,
+    "training_eligibility": false,
+    "split_assignment": false,
+    "print_eligibility": false,
+    "data_locked": false
+  },
+  "explicit_non_claims": [
+    "HUMAN_REVIEWED",
+    "VISUAL_LABEL_APPROVED",
+    "RIGHTS_APPROVED",
+    "DATA_LOCKED",
+    "TRAIN_READY",
+    "SPLIT_READY",
+    "PRINT_ELIGIBLE",
+    "MODEL_QUALIFIED"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "rootscope.ai_gpu_gate_input_contract.v1",
+  "dataset_name": "desert_plants_young_tree_reacquisition_e2",
+  "production_inputs": {
+    "manifest_sha256": "a065ab32efa18e6f1a45dfae659adcacbbc669d9f33838c90dbfbfc68f97296e",
+    "summary_sha256": "b3c7851968a03b34e293bcf481ae9167a946fca1aa800f58e56a5324a445034d",
+    "source_plan_sha256": "5220dd3d6795ff6a5dcc92ce358b5c0097c84b2b844eb3b64a3c60c34dbb2428",
+    "image_binding_sha256": "7103cd36da5391edeab2ab9fd9e483c731849b121ef891841dbf0c7a11184ea7",
+    "expected_candidate_count": 50,
+    "expected_class_counts": {
+      "grass_clump": 0,
+      "low_shrub": 0,
+      "young_tree": 50
+    },
+    "expected_summary_status": "MACHINE_ACQUIRED_YOUNG_TREE_METADATA_GATED_CANDIDATES_NOT_TRAIN_READY"
+  }
+}

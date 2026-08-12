@@ -1,0 +1,161 @@
+{
+  "schema": "rootscope.v3.pc-gate-receipt.v1",
+  "status": "PASS_PC_COMPLETE_X5_FINAL_CANDIDATE_ACCEPTANCE_PENDING",
+  "receipts": {
+    "vision": {
+      "path": "rootscope_v3/evaluations/vision_pc_static_20260724.json",
+      "sha256": "f1a37cadf153e7fb5dcb217b3bf359555d6d87e39f10366a9c0d15a1ee6355d5",
+      "schema": "rootscope.v3.vision-evaluation.v1",
+      "qualification": {
+        "status": "PASS",
+        "gates_passed": [
+          "FROZEN_X5_STATIC_PC_REFERENCE_PARITY_4_OF_4",
+          "UNKNOWN_STATIC_INPUT_ABSTAINED",
+          "ZERO_FALSE_IRRIGATION_INTENT_ON_STATIC_SET",
+          "WETTING_TARGET_ONLY_FIXTURE_ACCEPTED",
+          "WETTING_NEIGHBOR_SPILL_FIXTURE_REJECTED"
+        ],
+        "claim_boundary": "Pass is limited to frozen static CPU parity and deterministic before/after wetting fixtures. It is not a formal plant-accuracy, live-camera, BPU persistent, moisture, root-depth or physical irrigation qualification; those remain X5/hardware gates."
+      }
+    },
+    "llm": {
+      "path": "rootscope_v3/evaluations/llm_pc_final_holdout_v6_20260724.json",
+      "sha256": "1e105ce1de28defda63dcf8b26a92824ebc7cf68c6089cbb966d404070b92be4",
+      "schema": "rootscope.v3.llm-evaluation.v1",
+      "qualification": {
+        "status": "PASS",
+        "semantic_review": "PASS",
+        "claim_boundary": "PC RTX4050 structured generation evaluation only; X5 CPU latency, memory and long-soak qualification remain pending board power."
+      }
+    },
+    "rag": {
+      "path": "rootscope_v3/evidence/rag2_bm25_evaluation_20260724.json",
+      "sha256": "fa1a053a8d20c9d315b1e073cda07b16b4355ae3caa93469f892e7b80b5043ee",
+      "schema": "rootscope.v3.rag-evaluation.v1",
+      "qualification": {
+        "status": "PASS",
+        "claim_boundary": "PC-only SQLite FTS5/BM25 retrieval pass on the frozen v2 pack; forbidden_handled_count means expected boundary evidence was retrieved in Top-3, not that a language model or actuator executed. X5 resource and soak gates remain pending."
+      }
+    },
+    "resource": {
+      "path": "rootscope_v3/evaluations/resource_pc_contract_20260724.json",
+      "sha256": "4033bdb56ec027b4a1c9cbbff2ffe5f9e48b4c4abc14ae6cbd04df8edfbad7c2",
+      "schema": "rootscope.v3.resource-evaluation.v1",
+      "qualification": {
+        "status": "NOT_EVALUATED",
+        "mem_gate_kib": 524288,
+        "cma_gate_kib": 131072,
+        "claim_boundary": "PC contract test only; no RDK X5 memory, CMA, temperature, BPU utilization, soak, or live qualification."
+      }
+    },
+    "physical": {
+      "path": "rootscope_v3/evaluations/physical_loop_pc_simulation_20260724.json",
+      "sha256": "d4b1c5c0a8192e15ee14969adb9d6966ab0b94025f8b1d7f72f6df8e6640d198",
+      "schema": "rootscope.v3.physical-loop-evaluation.v1",
+      "qualification": {
+        "status": "SIMULATED_ONLY",
+        "mass_gate_passed": null,
+        "wetting_gate_passed": null,
+        "spill_gate_passed": null,
+        "manual_repair_required": false
+      }
+    }
+  },
+  "models": {
+    "fast": {
+      "path": "output/rootscope_llm_readonly_release_v1/qwen2_05b_distill.Q4_K_M.gguf",
+      "bytes": 397805120,
+      "sha256": "6c8adc95de81b1d0103fcf900a5f369d5936d234e42ed64881dad56e0104e77b"
+    },
+    "deep": {
+      "path": "rootscope_v3/models/llm/rootscope-qwen3-1.7b-rootscope-v3-final.Q4_K_M.gguf",
+      "bytes": 1107408608,
+      "sha256": "0bd32a4d943db70ca2e7859906aa23cd7773ef80982680c454178a26b513aeec"
+    }
+  },
+  "e0": {
+    "sha256": "fab53102e1e99d2d673847cc9d668be0786afaec575959704b84f9113007dbea"
+  },
+  "bpu_oracle": {
+    "sha256": "48f85e39618ba03329c786b47b083d94c0d4cd2dee94d72f1be6f8395bbebbb9",
+    "sample_count": 43
+  },
+  "llm_training_contract": {
+    "seal": {
+      "path": "rootscope_v3/evidence/llm_training_holdout_seal_v6_20260724.json",
+      "sha256": "12f1b313b9832f1c9bee77715eab465a5e9f8a363ecaab5e3f53f34806998a2b"
+    },
+    "strict_binding": {
+      "path": "rootscope_v3/evaluations/llm_training_binding_v6_strict_20260724.json",
+      "sha256": "a560a01e0a1c3ed5929e58665042fa622e983ef9769bb09ae362d75ac9fe3344"
+    },
+    "evaluation_seal": {
+      "path": "rootscope_v3/evidence/llm_evaluation_seal_v6_20260724.json",
+      "sha256": "e53fd6bd845000177c2d2203e61aa3ebaad4802479186d31bcacafe915696f90"
+    },
+    "safety_compiler": {
+      "path": "rootscope_v3/evaluations/llm_safety_compiler_final_holdout_v6_20260724.json",
+      "sha256": "8ed4e3338876fd45610d97b625d80dee596a6cc7bc4d6713909c2669bdbd3238",
+      "results_root_sha256": "9b336be77533119bebb209a3d7e9ba98f883466c2e5c1568fc801bc82b749940",
+      "case_count": 32,
+      "unsafe_escape_count": 0
+    },
+    "training_receipt": {
+      "path": "rootscope_v3/models/llm/rootscope_qwen3_17b_qlora_final_v6_adv96_bound/training_receipt.json",
+      "sha256": "feebcc7219b7f231cb1c11aa2b6b0fcbb47d5eed60d920401c5ba693b0459e4a"
+    },
+    "merge_receipt": {
+      "path": "rootscope_v3/models/llm/rootscope_qwen3_17b_merged_fp16_final_v6/merge_receipt.json",
+      "sha256": "a0167de3fff17ea9786d2a11178717c017c2b288dad9ac6352650d7862159675"
+    },
+    "holdout_sha256": "34d1d2259ff8f5ea2d5ace48ed072f76c53cfcbd9815fda1d1eb1754d29640a5",
+    "adapter_sha256": "5720045c92e88096e1b3e6dc819e59e14b4ae2aac2c47e0ac8e0d5d7a1bd67c1",
+    "model_export_seal": {
+      "path": "rootscope_v3/evidence/llm_final_gguf_seal_v6_20260724.json",
+      "sha256": "9d6032e283513a210d2634910cac4db6f70c098dd40fa17d69b20319dec1355d"
+    }
+  },
+  "tests": {
+    "returncode": 0,
+    "selected_test_files": [
+      "rootscope/tests/test_runtime_v3_contracts.py",
+      "rootscope/tests/test_v3_fault_matrix.py",
+      "rootscope/tests/test_system_v3_coordinator.py",
+      "rootscope/tests/test_v3_evaluation_receipts.py",
+      "rootscope/tests/test_rootmind_v3.py",
+      "rootscope/tests/test_rag2_bm25_runtime.py",
+      "rootscope/tests/test_release_v3_builder.py",
+      "rootscope/tests/test_native_libdnn_contract_v3.py",
+      "rootscope/tests/test_x5_v3_live_camera_gate.py",
+      "rootscope_v3/rag2/tests",
+      "rootscope_v3/tests"
+    ],
+    "stdout_sha256": "94bcb949e7352f628b29c506ed62f63ec4f6d49b03068773fde2c991112ca024"
+  },
+  "authority": {
+    "execution_authority": false,
+    "external_network": false,
+    "serial_write": false,
+    "gpio_write": false,
+    "pump_command": false,
+    "state_machine_write": false,
+    "physical_completion": false
+  },
+  "pending_x5_gates": [
+    "identity",
+    "cpu_replay",
+    "persistent_native_libdnn_replay",
+    "resource_soak",
+    "live_camera",
+    "stm32",
+    "physical_closure"
+  ],
+  "pc_completion_scope": {
+    "vision": "STATIC_FIXTURE_CPU_PARITY_ONLY",
+    "llm": "RTX4050_STRUCTURED_CONTRACT_ONLY",
+    "rag": "PC_BM25_QUALIFIED",
+    "resource": "CONTRACT_ONLY_NOT_EVALUATED_ON_X5",
+    "physical": "SIMULATION_ONLY"
+  },
+  "contract_root_sha256": "5a033933f853f8caca7a0d6a70b988f696d6b8ee447b6b8e9473eaa05acb5f69"
+}

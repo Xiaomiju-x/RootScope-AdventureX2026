@@ -1,0 +1,82 @@
+{
+  "schema": "rootscope.v3.teacher-registry.v1",
+  "frozen_at": "2026-07-24",
+  "secret_policy": {
+    "secret_values_stored": false,
+    "environment_variable_names_only": true,
+    "allowed_environment_variable_names": [
+      "ROOTSCOPE_QWEN_API_KEY",
+      "ROOTSCOPE_DEEPSEEK_API_KEY"
+    ],
+    "redact_request_headers": true,
+    "redact_environment_values": true
+  },
+  "teachers": [
+    {
+      "teacher_id": "qwen3.7-plus",
+      "provider": "QWEN_COMPATIBLE_API",
+      "status": "PLANNED_NOT_CALLED",
+      "role": ["SCENE_DESCRIPTION", "GROUNDING", "STRUCTURED_SAMPLE_DRAFT"],
+      "credential_environment_variable": "ROOTSCOPE_QWEN_API_KEY",
+      "logit_access": false,
+      "distillation_label": "BLACK_BOX_SEQUENCE_LEVEL",
+      "physical_authority": false
+    },
+    {
+      "teacher_id": "deepseek-v4-pro",
+      "provider": "DEEPSEEK_COMPATIBLE_API",
+      "status": "PLANNED_NOT_CALLED",
+      "role": ["COUNTERFACTUAL_REASONING", "FAILURE_ANALYSIS", "DEFENSE_QA"],
+      "credential_environment_variable": "ROOTSCOPE_DEEPSEEK_API_KEY",
+      "logit_access": false,
+      "distillation_label": "BLACK_BOX_SEQUENCE_LEVEL",
+      "physical_authority": false
+    },
+    {
+      "teacher_id": "deepseek-v4-flash",
+      "provider": "DEEPSEEK_COMPATIBLE_API",
+      "status": "PLANNED_NOT_CALLED",
+      "role": ["BATCH_REWRITE", "CROSS_REVIEW"],
+      "credential_environment_variable": "ROOTSCOPE_DEEPSEEK_API_KEY",
+      "logit_access": false,
+      "distillation_label": "BLACK_BOX_SEQUENCE_LEVEL",
+      "physical_authority": false
+    },
+    {
+      "teacher_id": "qwen2.5-vl-3b-local",
+      "provider": "LOCAL_PC",
+      "status": "PREEXISTING_PC_ONLY",
+      "role": ["VISION_DATA_AUDIT_CHALLENGER"],
+      "credential_environment_variable": null,
+      "logit_access": true,
+      "distillation_label": "LOCAL_TEACHER_CANDIDATE_NOT_SELECTED",
+      "physical_authority": false
+    },
+    {
+      "teacher_id": "siglip2-local",
+      "provider": "LOCAL_PC",
+      "status": "PREEXISTING_PC_ONLY",
+      "role": ["VISUAL_EMBEDDING_AUDIT_CHALLENGER"],
+      "credential_environment_variable": null,
+      "logit_access": true,
+      "distillation_label": "LOCAL_TEACHER_CANDIDATE_NOT_SELECTED",
+      "physical_authority": false
+    }
+  ],
+  "required_provenance_per_call": [
+    "teacher_id",
+    "provider_model_id_returned",
+    "request_schema_version",
+    "prompt_sha256",
+    "input_record_ids",
+    "temperature",
+    "max_tokens",
+    "response_sha256",
+    "usage_tokens",
+    "cost_currency",
+    "cost_amount",
+    "started_at_utc",
+    "completed_at_utc",
+    "validation_status"
+  ]
+}

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability / 安全漏洞
+    url: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/security/advisories/new
+    about: Report credentials, supply-chain, privacy, or actuator-safety issues privately.
+  - name: Support guide / 支持说明
+    url: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/blob/main/SUPPORT.md
+    about: Check scope, sanitization rules, and troubleshooting before opening an issue.

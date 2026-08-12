@@ -1,0 +1,50 @@
+{
+  "schema": "rootscope.readonly_llm_release_spec.v1",
+  "status": "STAGING_SPEC_READ_ONLY_LOCAL_LLM_NOT_X5_QUALIFIED",
+  "release_id": "rootscope_readonly_llm_qwen2_05b_q4km_v1",
+  "selected_artifact": {
+    "source_relative_to_adventurex": "../models/qwen2_05b_distill.Q4_K_M.gguf",
+    "output_relative_to_adventurex": "output/rootscope_llm_readonly_release_v1",
+    "filename": "qwen2_05b_distill.Q4_K_M.gguf",
+    "size_bytes": 397805120,
+    "sha256": "6c8adc95de81b1d0103fcf900a5f369d5936d234e42ed64881dad56e0104e77b",
+    "copy_contract": "MECHANICAL_BYTE_COPY_HASH_AND_SIZE_EXACT"
+  },
+  "runtime_contract": {
+    "role": "CPU_LLAMA_CPP_READ_ONLY_EVIDENCE_EXPLANATION",
+    "default_enabled": false,
+    "manual_start_only": true,
+    "host": "127.0.0.1",
+    "port": 9080,
+    "chat_path": "/v1/chat/completions",
+    "health_path": "/health",
+    "external_network_allowed": false,
+    "read_only": true,
+    "tool_execution": false,
+    "actuator_access": false
+  },
+  "llama_cpp_dependency": {
+    "bundled": false,
+    "source": "EXTERNAL_EXACT_X5_BINARY_OR_EXISTING_XRD_DEPLOYMENT",
+    "executable_sha256_required_before_start": true,
+    "x5_binary_selected": false
+  },
+  "formal_flags": {
+    "human_reviewed": false,
+    "data_locked": false,
+    "model_candidate": false,
+    "model_qualified": false,
+    "x5_validated": false,
+    "latency_measured": false,
+    "llama_cpp_bundled": false,
+    "service_started": false,
+    "hardware_touched": false,
+    "network_touched": false,
+    "external_network_allowed": false,
+    "tool_execution": false,
+    "actuator_access": false,
+    "execution_authority": false,
+    "physical_authority": false,
+    "physical_completion": false
+  }
+}

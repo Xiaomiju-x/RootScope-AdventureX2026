@@ -1,0 +1,51 @@
+{
+  "schema": "rootscope.v3.physical-loop-evaluation.v1",
+  "trial_id": "physical-pc-simulation-20260724",
+  "created_at_utc": "2026-07-23T21:11:27.897420Z",
+  "execution_mode": "SIMULATION",
+  "hardware": {
+    "x5_identity": null,
+    "stm32_boot_id": null,
+    "firmware_build_id": null,
+    "pump_channel": null,
+    "hx711_id": null
+  },
+  "action_contract": {
+    "contract_id": "pc-simulation-contract-1",
+    "contract_sha256": "494ef60b3e277b98f268c471d46383db3794f2d69b558abd2bd22a897cc232fd",
+    "sequence": 0,
+    "requested_mass_g": 15.0,
+    "max_mass_g": 80.0
+  },
+  "safety": {
+    "operator_present": false,
+    "estop_tested": false,
+    "watchdog_tested": false,
+    "link_loss_tested": false,
+    "actuator_power_connected": false
+  },
+  "actuation": {
+    "serial_opened": false,
+    "serial_write_count": 0,
+    "ack_received": false,
+    "ack_sequence": null,
+    "pump_energized": false
+  },
+  "feedback": {
+    "mass_before_g": null,
+    "mass_after_g": null,
+    "mass_delta_g": null,
+    "target_coverage": null,
+    "neighbor_spill": null,
+    "center_offset_ratio": null,
+    "moisture_delta": null
+  },
+  "outcome": {
+    "status": "SIMULATED_ONLY",
+    "mass_gate_passed": null,
+    "wetting_gate_passed": null,
+    "spill_gate_passed": null,
+    "manual_repair_required": false
+  },
+  "claim_boundary": "PC schema/logic simulation only. No X5, STM32, USB-TTL, HX711, moisture sensor, camera, pump, water, ACK, or physical closure."
+}

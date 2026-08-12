@@ -1,0 +1,55 @@
+"""RootScope hardware boundaries; imports are zero-I/O."""
+
+from .device_identity import UsbDeviceIdentity
+from .physical_serial import (
+    DisabledPhysicalSerialOpener,
+    PhysicalSerialDisabled,
+    PhysicalSerialOpenRequest,
+    PhysicalSerialOpener,
+    PosixExplicitSerialOpener,
+    ROOTSCOPE_F103_ALIAS,
+    ROOTSCOPE_F407_ALIAS,
+    ROOTSCOPE_F407_BAUDRATE,
+    SerialByteTransport,
+)
+from .serial_writer import (
+    CancellationReason,
+    ScheduledCommand,
+    SerialCancellationReceipt,
+    SerialWriteReceipt,
+    SerialWriterError,
+    SerialWriterLocked,
+    SerialWriterOwnershipError,
+    SerialWriterQueueFull,
+    SerialWriterScheduler,
+    StopConfirmation,
+    WriteStatus,
+    WriterBarrier,
+    WriterPriority,
+)
+
+__all__ = [
+    "DisabledPhysicalSerialOpener",
+    "PhysicalSerialDisabled",
+    "PhysicalSerialOpenRequest",
+    "PhysicalSerialOpener",
+    "PosixExplicitSerialOpener",
+    "ROOTSCOPE_F103_ALIAS",
+    "ROOTSCOPE_F407_ALIAS",
+    "ROOTSCOPE_F407_BAUDRATE",
+    "CancellationReason",
+    "ScheduledCommand",
+    "SerialCancellationReceipt",
+    "SerialByteTransport",
+    "SerialWriteReceipt",
+    "SerialWriterError",
+    "SerialWriterLocked",
+    "SerialWriterOwnershipError",
+    "SerialWriterQueueFull",
+    "SerialWriterScheduler",
+    "StopConfirmation",
+    "UsbDeviceIdentity",
+    "WriteStatus",
+    "WriterBarrier",
+    "WriterPriority",
+]

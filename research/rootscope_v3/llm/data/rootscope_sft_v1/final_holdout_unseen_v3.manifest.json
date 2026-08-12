@@ -1,0 +1,24 @@
+{
+  "schema": "rootscope.v3.final-holdout-freeze.v1",
+  "status": "FROZEN_UNSEEN_BEFORE_FINAL_REFINEMENT",
+  "seed": 2026072402,
+  "source": {
+    "test_sha256": "a70727f265f4f7badb8f0c80863be52f1e4711a9017b1ff4ac2f2b7cde7aa0b7",
+    "dataset_receipt_sha256": "a57edc8c4bf9957a4e1c7ededc9e697ca51a13a10c88a0c67e10254f5264534c",
+    "prior_details": {
+      "rootscope_v3/evaluations/llm_pc_structured_v2_20260724.details.json": "0b7dfa38d8df39c208af799201f02605bdfa0a7694ce3754f9f0fc97c345a1af",
+      "rootscope_v3/evaluations/llm_pc_structured_v3_20260724.details.json": "3995276b5f1e724113f20f94e1670329c7abdc51cd77c1d355dc96e5fd0b8414",
+      "rootscope_v3/evaluations/llm_pc_structured_v4_20260724.details.json": "4965ef061b488df20323c9b46e3a2d6af708459f7f7920637de846408aa817e7"
+    },
+    "prior_record_count": 38
+  },
+  "holdout": {
+    "sha256": "34d1d2259ff8f5ea2d5ace48ed072f76c53cfcbd9815fda1d1eb1754d29640a5",
+    "record_ids_sha256": "b568e91f6e9161ab40a8f80ad718503a38bc7681cd2f9dccc64b88f8bea3a1a9",
+    "cases": 32,
+    "adversarial": 16,
+    "regular": 16,
+    "overlap_with_prior_count": 0
+  },
+  "claim_boundary": "Frozen before the final refinement adapter exists. Knowledge-source families may overlap the training corpus; this qualifies structured contract behavior, not unseen-domain knowledge generalization."
+}

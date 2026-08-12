@@ -1,0 +1,17 @@
+{
+  "schema": "rootscope.rag2.embedding-matrix.v1",
+  "model_id": "BAAI/bge-small-zh-v1.5",
+  "model_revision": "7999e1d3359715c523056ef9478215996d62a620",
+  "model_file_sha256": "3f813fea8dbd30a883032affb2b0020add20a1dd31639bd2f6dae0b9e6665f6c",
+  "pooling": "attention-mask mean pooling plus L2 normalization",
+  "document_instruction": null,
+  "query_instruction": "为这个句子生成表示以用于检索相关文章：",
+  "dtype": "float16",
+  "shape": [
+    42,
+    512
+  ],
+  "row_order": "rootscope_rag_corpus.v2.jsonl",
+  "matrix_sha256": "9c69d196392b34c32e83621cea032b75a694c402cef172b8a35456c1595356b8",
+  "status": "PC_ONLY_X5_PENDING"
+}

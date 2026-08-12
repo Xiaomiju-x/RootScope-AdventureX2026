@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">RootScope 固定式根区灌溉舱供电与急停安全图</title>
+  <desc id="desc">外部直流电源经总保险和总开关后分为常供逻辑域与由 K1 切断的三泵执行器域。急停和护罩直接使 K1 线圈失电，F407 只能撤销执行器许可。急停时 RDK X5、F407 和相机保持上电记录。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fbfcfe"/><stop offset="1" stop-color="#f2f6f8"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#16324a" flood-opacity="0.12"/></filter>
+    <marker id="aN" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#304f63"/></marker>
+    <marker id="aG" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#15836c"/></marker>
+    <marker id="aR" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#c93f3f"/></marker>
+    <style>
+      .title{font:700 34px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#102a43}
+      .sub{font:500 17px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#526d82}
+      .h{font:700 20px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#102a43}
+      .t{font:500 16px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#29475c}
+      .s{font:500 14px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#526d82}
+      .mono{font:600 14px Consolas,'Microsoft YaHei',monospace;fill:#274760}
+      .box{fill:#fff;stroke:#c4d3dc;stroke-width:2;rx:17;filter:url(#shadow)}
+      .logic{fill:#e9f8f3;stroke:#43a58b;stroke-width:2;rx:15}
+      .act{fill:#fff0f0;stroke:#db6a6a;stroke-width:2;rx:15}
+      .ctrl{fill:#edf5fb;stroke:#5593b5;stroke-width:2;rx:15}
+      .warn{fill:#fff6e5;stroke:#e39a35;stroke-width:2;rx:15}
+      .n{fill:none;stroke:#304f63;stroke-width:4;marker-end:url(#aN)}
+      .g{fill:none;stroke:#15836c;stroke-width:4;marker-end:url(#aG)}
+      .r{fill:none;stroke:#c93f3f;stroke-width:4;marker-end:url(#aR)}
+      .rd{fill:none;stroke:#c93f3f;stroke-width:3;stroke-dasharray:10 7;marker-end:url(#aR)}
+    </style>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1600" height="9" fill="#d34c4c"/>
+  <text x="70" y="62" class="title">RootScope 固定式根区灌溉舱｜供电与硬急停（P0）</text>
+  <text x="70" y="94" class="sub">急停切执行器能量，不切日志；所有电压、电流、保险和线径按最终实物铭牌与实测冻结</text>
+
+  <rect x="70" y="150" width="225" height="100" class="box"/>
+  <text x="100" y="189" class="h">外部合规直流电源</text>
+  <text x="100" y="220" class="s">额定按三泵实物确定</text>
+  <path d="M295 200 L360 200" class="n"/>
+
+  <rect x="360" y="150" width="150" height="100" class="warn"/>
+  <text x="405" y="190" class="h">F0</text>
+  <text x="385" y="220" class="s">总保险</text>
+  <path d="M510 200 L575 200" class="n"/>
+
+  <rect x="575" y="150" width="170" height="100" class="warn"/>
+  <text x="614" y="190" class="h">总开关</text>
+  <text x="600" y="220" class="s">防误触 / 带状态</text>
+
+  <circle cx="805" cy="200" r="9" fill="#304f63"/>
+  <path d="M745 200 L805 200 L805 330" class="n"/>
+  <path d="M805 200 L805 520" class="r"/>
+
+  <rect x="885" y="120" width="645" height="300" class="logic"/>
+  <text x="915" y="158" class="h">常供逻辑域｜急停后保持记录</text>
+  <rect x="915" y="188" width="180" height="88" class="ctrl"/>
+  <text x="954" y="222" class="h">DC/DC X5</text>
+  <text x="940" y="251" class="s">按板卡规范设定</text>
+  <rect x="1130" y="188" width="175" height="88" class="ctrl"/>
+  <text x="1169" y="222" class="h">RDK X5</text>
+  <text x="1151" y="251" class="s">视觉 / 决策 / 落盘</text>
+  <path d="M1095 232 L1130 232" class="g"/>
+  <rect x="915" y="305" width="180" height="88" class="ctrl"/>
+  <text x="937" y="339" class="h">逻辑稳压支路</text>
+  <text x="943" y="368" class="s">按模块规范设定</text>
+  <rect x="1130" y="305" width="175" height="88" class="ctrl"/>
+  <text x="1152" y="339" class="h">F407 / HX711</text>
+  <text x="1153" y="368" class="s">互锁 / 看门狗</text>
+  <path d="M1095 349 L1130 349" class="g"/>
+  <rect x="1340" y="188" width="160" height="88" class="ctrl"/>
+  <text x="1377" y="222" class="h">UVC 相机</text>
+  <text x="1366" y="251" class="s">由 X5 USB 供电</text>
+  <path d="M1305 232 L1340 232" class="g"/>
+  <path d="M805 330 L885 330" class="g"/>
+
+  <rect x="70" y="480" width="1460" height="290" class="act"/>
+  <text x="100" y="520" class="h">可切断执行器域｜K1 释放后三台泵全部失电</text>
+
+  <rect x="100" y="555" width="155" height="90" class="warn"/>
+  <text x="144" y="590" class="h">F1</text>
+  <text x="126" y="620" class="s">执行器分支保护</text>
+  <path d="M805 520 L255 520 L255 600" class="r"/>
+  <path d="M255 600 L320 600" class="r"/>
+
+  <rect x="320" y="555" width="220" height="90" class="warn"/>
+  <text x="354" y="588" class="h">K1 常开主触点</text>
+  <text x="350" y="619" class="s">线圈掉电 → 主触点断开</text>
+  <path d="M540 600 L605 600" class="r"/>
+
+  <rect x="605" y="555" width="190" height="90" class="act"/>
+  <text x="638" y="590" class="h">执行器母线</text>
+  <text x="633" y="620" class="s">K1 后再分路保护</text>
+
+  <rect x="865" y="545" width="170" height="110" class="act"/>
+  <text x="895" y="583" class="h">P30 蠕动泵</text>
+  <text x="887" y="615" class="s">独立驱动 / 标定 / 保护</text>
+  <rect x="1090" y="545" width="170" height="110" class="act"/>
+  <text x="1120" y="583" class="h">P60 蠕动泵</text>
+  <text x="1112" y="615" class="s">独立驱动 / 标定 / 保护</text>
+  <rect x="1315" y="545" width="170" height="110" class="act"/>
+  <text x="1345" y="583" class="h">P90 蠕动泵</text>
+  <text x="1337" y="615" class="s">独立驱动 / 标定 / 保护</text>
+  <path d="M795 600 L865 600" class="r"/>
+  <path d="M795 600 L830 600 L830 690 L1175 690 L1175 655" class="r"/>
+  <path d="M1175 690 L1400 690 L1400 655" class="r"/>
+
+  <rect x="100" y="675" width="590" height="72" class="box"/>
+  <text x="125" y="705" class="h">K1 许可链（硬件串联）</text>
+  <text x="125" y="733" class="mono">总开关 ∧ 急停 NC-A ∧ 护罩 NC ∧ ACT_ENABLE → K1 线圈</text>
+
+  <rect x="730" y="702" width="300" height="45" class="ctrl"/>
+  <text x="750" y="731" class="t">F407 ACT_ENABLE：只能撤销许可</text>
+  <path d="M730 724 L690 724" class="rd"/>
+  <path d="M1217 393 L1217 453 L880 453 L880 702" class="g"/>
+
+  <rect x="1070" y="702" width="205" height="45" class="warn"/>
+  <text x="1090" y="731" class="t">急停 NC-B → F407 只读</text>
+  <path d="M1172 702 L1055 702 L1055 446 L1172 446 L1172 393" class="rd"/>
+
+  <rect x="1315" y="702" width="190" height="45" class="warn"/>
+  <text x="1334" y="731" class="t">漏水 → 锁存撤权</text>
+  <path d="M1410 702 L1288 702 L1288 468 L1255 468 L1255 393" class="rd"/>
+
+  <rect x="70" y="812" width="1460" height="58" rx="16" fill="#102a43"/>
+  <text x="96" y="847" style="font:600 16px 'Microsoft YaHei','Noto Sans CJK SC',sans-serif;fill:#fff">急停 / 护罩打开 / 串口失联 / F407 复位 → K1 掉电 → 三泵失能；X5、F407、UVC 保持上电，记录 ABORTED_LOCKED。禁止自动恢复。</text>
+</svg>

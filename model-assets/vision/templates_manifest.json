@@ -1,0 +1,34 @@
+[
+  {
+    "action_level": 1,
+    "class_id": "grass_clump",
+    "display_name": "草丛 / GRASS",
+    "path": "templates/grass_clump.jpg",
+    "sha256": "e917301376d491eb91e5d58e854d34d07dfb70d216dbe677f1424405a8707ea1",
+    "source_sequence": 1
+  },
+  {
+    "action_level": 2,
+    "class_id": "low_shrub",
+    "display_name": "灌木 / SHRUB",
+    "path": "templates/low_shrub.jpg",
+    "sha256": "cf002e6013f0d431230333d0640ed5bb703479c940fb414a6e7789669d62a144",
+    "source_sequence": 2
+  },
+  {
+    "action_level": 3,
+    "class_id": "young_tree",
+    "display_name": "幼树 / TREE",
+    "path": "templates/young_tree.jpg",
+    "sha256": "af66c7c258a27f489361ac8a5e0a63d78f8572aa30283b7eb3cdd92d33e04158",
+    "source_sequence": 2
+  },
+  {
+    "action_level": 0,
+    "class_id": "non_target",
+    "display_name": "纯沙 / HOLD",
+    "path": "templates/non_target.jpg",
+    "sha256": "a925a854ce827c2f38a5d73d22b91c168fde65327ec08d1f1e66859339ab371d",
+    "source_sequence": 4
+  }
+]

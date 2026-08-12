@@ -1,0 +1,6 @@
+# RootScope competition STM32F103 V15 USB-TTL binding.
+# The CH340 has no unique serial number, so the commissioned X5 USB path is
+# part of the identity. Insta360 occupies 1.3; CH340 is frozen on 1.4.
+# Replace @ROOTSCOPE_SERIAL_ID_PATH@ with the value recorded during local
+# commissioning (`udevadm info --query=property --name=/dev/ttyUSB0`).
+SUBSYSTEM=="tty", KERNEL=="ttyUSB*", ENV{ID_VENDOR_ID}=="1a86", ENV{ID_MODEL_ID}=="7523", ENV{ID_PATH}=="@ROOTSCOPE_SERIAL_ID_PATH@", ENV{ID_USB_INTERFACE_NUM}=="00", SYMLINK+="rootscope_stm32", GROUP="dialout", MODE="0660", TAG+="systemd"

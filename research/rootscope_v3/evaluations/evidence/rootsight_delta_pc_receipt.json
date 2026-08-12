@@ -1,0 +1,88 @@
+{
+  "schema_version": "rootscope.rootsight-delta-pc-evaluation.v1",
+  "generated_at_utc": "2026-07-23T19:21:42.078912+00:00",
+  "status": "PASS_PC_ONLY_ZERO_AUTHORITY",
+  "host": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.10.20"
+  },
+  "tests": {
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.118s\n\nOK\n",
+    "test_file_sha256": "0c71984a7d12c983fe9ae87852bfcab80f90a76ad84f2590bc016e51fa65584c"
+  },
+  "data_audit": {
+    "provisional_manifest_records": 78,
+    "provisional_class_counts": {
+      "grass_clump": 15,
+      "low_shrub": 19,
+      "unknown": 31,
+      "young_tree": 13
+    },
+    "provisional_training_eligible_true": 0,
+    "provisional_human_reviewed_true": 0,
+    "capture_records": 20,
+    "capture_class_counts": {
+      "grass_clump": 5,
+      "low_shrub": 5,
+      "non_target": 5,
+      "young_tree": 5
+    },
+    "capture_truth_boundary": [
+      "OPERATOR_LABELLED_LAPTOP_CAPTURE_NOT_HOLDOUT"
+    ],
+    "capture_group_split_audit": {
+      "schema_version": "rootscope.capture-group-split-audit.v1",
+      "status": "PASS",
+      "record_count": 20,
+      "group_count": 1,
+      "split_counts": {
+        "train": 20
+      },
+      "group_leak_count": 0,
+      "hash_leak_count": 0,
+      "group_leaks": [],
+      "hash_leaks": [],
+      "truth_boundary": "SPLIT_INTEGRITY_ONLY_NOT_MODEL_ACCURACY"
+    }
+  },
+  "model_inventory": {
+    "cpu_seed17_onnx": {
+      "present": false,
+      "bytes": null,
+      "sha256": null,
+      "path": "private://models/rootscope_seed17_resnet18.onnx"
+    },
+    "bpu_r7_bin": {
+      "present": true,
+      "bytes": 12519415,
+      "sha256": "4dc4bc24741332bb6bc6da184dd1d6f954ae539ba740330490339d76eb200285",
+      "path": "output\\rootscope_bpu_seed17_quant_variant_r7_default_int16_all_nodes\\model_output\\rootscope_seed17_resnet18_224x224_rgb_ddr_r7_default_int16_all_nodes.bin"
+    }
+  },
+  "selection": {
+    "cpu_primary": "EXISTING_SEED17_FROZEN_NO_REPLACEMENT",
+    "bpu": "EXISTING_R7_SHADOW_CANDIDATE",
+    "learned_wetting_segmentation": "NOT_TRAINED_NO_PHYSICAL_PAIRED_WETTING_DATA",
+    "rootsight_delta": "DETERMINISTIC_CANDIDATE_READY_FOR_X5_STATIC_AND_LIVE_QUALIFICATION"
+  },
+  "implemented": [
+    "reproducible yellow-light/exposure/gamma/blur/perspective/moire/JPEG augmentation",
+    "capture-session/source-group split with group/hash leakage audit",
+    "optical quality plus logits OOD HOLD",
+    "multi-frame temporal median and agreement HOLD",
+    "phase-correlation before/after registration",
+    "reference-patch color correction and Lab delta",
+    "morphology/component filtering, target coverage, neighbor spill, center offset, wetting front",
+    "mass/visual consistency gate"
+  ],
+  "truth_boundary": {
+    "x5_powered": false,
+    "x5_tested": false,
+    "gpu_used": false,
+    "physical_wetting_pairs_available": false,
+    "accuracy_claim": false,
+    "physical_authority": false
+  }
+}

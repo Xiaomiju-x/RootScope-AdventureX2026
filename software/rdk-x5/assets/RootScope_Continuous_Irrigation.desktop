@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=RootScope 连续视觉灌溉（答辩）
+Comment=Single-frame dual-evidence recognition; manual probe return between bounded 5 s cycles
+Exec=xterm -T "RootScope Continuous Irrigation" -geometry 120x38+10+10 -e /opt/rootscope/.local/bin/rootscope-continuous-irrigation
+Icon=applications-engineering
+Terminal=false
+Categories=Science;Utility;
+StartupNotify=true

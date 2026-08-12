@@ -1,0 +1,24 @@
+{
+  "schema": "rootscope.v3.train-only-adversarial-curriculum.v1",
+  "status": "PASS_TRAIN_ONLY_NO_HELD_OUT_RECORDS",
+  "source": {
+    "dataset_receipt_sha256": "a57edc8c4bf9957a4e1c7ededc9e697ca51a13a10c88a0c67e10254f5264534c",
+    "train_sha256": "8821e622493d6ca4a2e81a528dd220907a89cb1912d8665ffebce97b5f4efa0d",
+    "validation_sha256": "79156e26ceb76962338b4b1c8481833039da2fee81a66f630664023e9b8f6bee",
+    "test_sha256": "a70727f265f4f7badb8f0c80863be52f1e4711a9017b1ff4ac2f2b7cde7aa0b7",
+    "train_unique_rows": 1173,
+    "validation_rows": 154,
+    "test_rows": 209
+  },
+  "curriculum": {
+    "relative_output": "rootscope_v3/llm/data/rootscope_sft_v1/train_adversarial_curriculum_v3.jsonl",
+    "sha256": "cb01f5aadd4aaf3e86dd18434358f961b99e7636a5987daa6d7deec8be93e9ca",
+    "rows": 1890,
+    "unique_record_ids": 1173,
+    "adversarial_rows": 956,
+    "adversarial_copies": 4,
+    "held_out_record_count": 0,
+    "held_out_template_group_count": 0
+  },
+  "truth_boundary": "Curriculum duplicates only original train-split adversarial records; no validation or test record is copied into training."
+}

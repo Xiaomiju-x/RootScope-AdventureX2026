@@ -1,0 +1,109 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONDONTWRITEBYTECODE: "1"
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+
+jobs:
+  build-and-publish:
+    name: Verify, attest and publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - name: Check out tagged source and materialize LFS
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          lfs: true
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install public reference test dependencies
+        run: |
+          python -m pip install -e ".[dev]"
+          python -m pip install -e "software/rdk-x5[hardware,test]"
+      - name: Verify LFS, publication policy, licences and model digests
+        run: |
+          git lfs fsck
+          python tools/audit_public_release.py --include-git-history
+          python tools/check_license_inventory.py
+          python tools/verify_model_assets.py
+      - name: Run Python reference and governance tests
+        run: python -m pytest -q tests
+      - name: Run research and RAG contracts
+        env:
+          PYTHONPATH: research
+        run: >-
+          python -m pytest -q
+          research/rootscope_v3/tests
+          research/rootscope_v3/rag2/tests
+          research/rootscope_v3/evaluations/test_rootsight_delta.py
+      - name: Run portable RDK X5 control contracts
+        env:
+          PYTHONPATH: software/rdk-x5
+        run: >-
+          python -m pytest -q
+          software/rdk-x5/tests/test_probe_depth.py
+          software/rdk-x5/tests/test_state_machine.py
+          software/rdk-x5/tests/test_serial_frame.py
+          software/rdk-x5/tests/test_read_only_explainer.py
+          software/rdk-x5/tests/test_competition_llm.py
+          software/rdk-x5/tests/test_card_geometric_matcher.py
+          software/rdk-x5/tests/test_visual_irrigation_autopilot.py
+          software/rdk-x5/tests/test_visual_irrigation_kiosk.py
+          software/rdk-x5/tests/test_visual_irrigation_serial_reliability.py
+      - name: Compile and run STM32 fail-safe host tests
+        working-directory: firmware/stm32f103-v15
+        run: |
+          gcc -std=c11 -Wall -Wextra -Werror \
+            -ITests/mock -ICore/Inc \
+            Core/Src/stepper.c Core/Src/app.c Tests/test_app.c \
+            -o /tmp/rootscope-stm32-host-tests
+          /tmp/rootscope-stm32-host-tests
+      - name: Build and verify deterministic release
+        run: |
+          test -z "$(git status --porcelain --untracked-files=all)"
+          python tools/build_release_bundle.py --output dist --version "${GITHUB_REF_NAME}"
+          python tools/verify_release_bundle.py dist
+      - name: Attest every release artifact
+        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        with:
+          subject-path: |
+            dist/*.tar.gz
+            dist/*.spdx.json
+            dist/RELEASE_MANIFEST.json
+            dist/SHA256SUMS
+      - name: Retain verified release artifacts
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: rootscope-${{ github.ref_name }}-verified-release
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "${GITHUB_REF_NAME}" dist/*
+          --verify-tag
+          --generate-notes
+          --title "RootScope ${GITHUB_REF_NAME} — AdventureX 2026 D-Robotics Silver Award · Final 2nd Place"
+          --notes "Verified public source, evidence, media, firmware and the four content-bound model artifacts. See RELEASE_MANIFEST.json, SHA256SUMS and the SPDX 2.3 SBOM before reuse."

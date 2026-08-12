@@ -1,0 +1,58 @@
+{
+  "schema": "rootscope.native-libdnn.x5-compile-contract.v1",
+  "status": "PASS_REPRODUCIBLE_TWO_BUILD",
+  "target_arch": "aarch64",
+  "protocol": "rootscope.native-libdnn.protocol.v1",
+  "source": {
+    "path": "rootscope/app/runtime_v3/native/rootscope_libdnn_worker.cpp",
+    "sha256": "49344f27a155e796c49b3265c683a6e87c679c7bee06f501841a594a6e4e03eb"
+  },
+  "build_host": {
+    "hostname": "rootscope-x5",
+    "kernel": "Linux 6.1.83",
+    "architecture": "aarch64"
+  },
+  "compiler": {
+    "path": "/usr/bin/g++",
+    "version": "g++ (Ubuntu 11.2.0-19ubuntu1) 11.2.0",
+    "sha256": "92e3234cad53e6fc748c6db44ba30928c39fb5794b381680ce2b49d3785858a1"
+  },
+  "inputs": {
+    "/usr/include/dnn/hb_dnn.h": "9ff988a229979613cf323316fb51114b3bc715ba7665bbf5251f6f39ea473016",
+    "/usr/include/dnn/hb_sys.h": "72d3e3794a192ecd6badef8d62f5b9c803cb7fa47ef0c6c003f1a08fa8f9f6dc",
+    "/usr/lib/libdnn.so": "661bac161124921eb9065fb9cd8d311144ea3f899fee28d61dfd0d7255074ace"
+  },
+  "command": [
+    "/usr/bin/g++",
+    "-std=c++17",
+    "-O2",
+    "-fno-ident",
+    "-fno-record-gcc-switches",
+    "-Wl,--build-id=none",
+    "rootscope_libdnn_worker.cpp",
+    "-o",
+    "rootscope-native-libdnn-worker",
+    "-ldnn"
+  ],
+  "reproducibility": {
+    "independent_build_count": 2,
+    "build_1_sha256": "e3582f3dfb55741dbaabc9b3091329e5d76f1ba831b4766d8adc6462ac363dec",
+    "build_2_sha256": "e3582f3dfb55741dbaabc9b3091329e5d76f1ba831b4766d8adc6462ac363dec",
+    "byte_identical": true
+  },
+  "binary": {
+    "source_path": "output/rootscope_native_libdnn_bridge_x5_20260724/bin/rootscope-native-libdnn-worker",
+    "package_path": "bin/rootscope-native-libdnn-worker",
+    "bytes": 35760,
+    "mode": "0555",
+    "sha256": "e3582f3dfb55741dbaabc9b3091329e5d76f1ba831b4766d8adc6462ac363dec",
+    "file_type": "ELF 64-bit LSB PIE executable, ARM aarch64"
+  },
+  "runtime_contract": {
+    "model_load_count": 1,
+    "input": "uint8 NCHW [1,3,224,224], 150528 contiguous valid bytes",
+    "output": "four finite float32 logits",
+    "aligned_shape_override": "input.properties.alignedShape = input.properties.validShape",
+    "authority": "ZERO_AUTHORITY_INFERENCE_ONLY"
+  }
+}

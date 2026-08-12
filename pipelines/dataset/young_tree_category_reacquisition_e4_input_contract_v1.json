@@ -1,0 +1,40 @@
+{
+  "authority": {
+    "data_locked": false,
+    "dataset_manifest_write": false,
+    "human_review": false,
+    "model_qualification": false,
+    "print_eligibility": false,
+    "rights_approval": false,
+    "split_assignment": false,
+    "training_eligibility": false,
+    "visual_truth": false
+  },
+  "biological_age_verified": false,
+  "collection_generation": "E4",
+  "default_output_dataset": "desert_plants_young_tree_category_reacquisition_e4",
+  "metadata_youth_gate_required": true,
+  "mature_and_detail_reject_required": true,
+  "existing_manifests_must_remain_unchanged_through_run": true,
+  "network_collection_executed_by_this_delivery": false,
+  "overlap_rejection_axes": [
+    "pageid",
+    "commons_sha1",
+    "download_sha256",
+    "dhash64_hamming_distance"
+  ],
+  "required_exclusion_datasets": [
+    "desert_plants_v1",
+    "desert_plants_wikimedia_staging_e0",
+    "desert_plants_whole_plant_reacquisition_e1",
+    "desert_plants_young_tree_reacquisition_e2",
+    "desert_plants_young_tree_reacquisition_e3"
+  ],
+  "run_authorization_status": "NOT_RUN_PENDING_POST_E3_DECISION",
+  "schema_version": "rootscope.young_tree_category_reacquisition_input_contract.e4.v1",
+  "split": "UNASSIGNED_DO_NOT_TRAIN",
+  "status": "MACHINE_ACQUIRED_YOUNG_TREE_E4_CATEGORY_CANDIDATES_NOT_TRAIN_READY",
+  "training_eligible": false,
+  "print_eligible": false,
+  "visual_whole_plant_verified": false
+}

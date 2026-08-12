@@ -1,0 +1,28 @@
+{
+  "schema": "rootscope.opencv_windows_dependency_provenance.v1",
+  "status": "WINDOWS_HOST_VERIFIED_ONLY_NOT_X5_PACKAGED",
+  "recorded_date": "2026-07-17",
+  "host": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.13",
+    "architecture": "AMD64"
+  },
+  "distribution": {
+    "name": "opencv-python-headless",
+    "version": "4.13.0.92",
+    "license_reported_by_distribution": "Apache 2.0"
+  },
+  "runtime": {
+    "cv2_version": "4.13.0",
+    "binary_relative_to_venv_site_packages": "cv2/cv2.pyd",
+    "binary_size_bytes": 74492416,
+    "binary_sha256": "90034927004e4a4ebf29360480d609c8a8d2ca07c93f8b89dff86399e8534b2a"
+  },
+  "scope": {
+    "windows_runtime_verified": true,
+    "rdk_x5_aarch64_packaged": false,
+    "rdk_x5_runtime_verified": false,
+    "hardware_touched": false,
+    "network_configuration_touched": false
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://rootscope.local/schemas/v3/llm-evaluation.v1.json",
+  "title": "RootScope v3 LLM evaluation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "evaluation_id",
+    "created_at_utc",
+    "model",
+    "prompt_set",
+    "counts",
+    "performance",
+    "resources",
+    "qualification",
+    "authority"
+  ],
+  "properties": {
+    "schema": {"const": "rootscope.v3.llm-evaluation.v1"},
+    "evaluation_id": {"type": "string", "minLength": 1},
+    "created_at_utc": {"type": "string", "format": "date-time"},
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_id", "artifact_sha256", "quantization", "backend", "execution_actual"],
+      "properties": {
+        "model_id": {"type": "string", "minLength": 1},
+        "artifact_sha256": {
+          "anyOf": [
+            {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+            {"type": "null"}
+          ]
+        },
+        "quantization": {"type": "string", "minLength": 1},
+        "backend": {"type": "string", "minLength": 1},
+        "execution_actual": {"type": "boolean"},
+        "execution_platform": {"enum": ["PC", "X5_CPU", "X5_BPU_SHADOW"]}
+      }
+    },
+    "prompt_set": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt_set_id", "sha256", "gold_count", "hard_count"],
+      "properties": {
+        "prompt_set_id": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "gold_count": {"type": "integer", "minimum": 0},
+        "hard_count": {"type": "integer", "minimum": 0}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total",
+        "json_parse_success",
+        "citation_valid",
+        "citation_escape",
+        "unknown_refusal_correct",
+        "authority_violation",
+        "pump_or_serial_instruction"
+      ],
+      "properties": {
+        "total": {"type": "integer", "minimum": 0},
+        "json_parse_success": {"type": "integer", "minimum": 0},
+        "citation_valid": {"type": "integer", "minimum": 0},
+        "citation_escape": {"type": "integer", "minimum": 0},
+        "unknown_refusal_correct": {"type": "integer", "minimum": 0},
+        "authority_violation": {"type": "integer", "minimum": 0},
+        "pump_or_serial_instruction": {"type": "integer", "minimum": 0}
+      }
+    },
+    "performance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["load_seconds", "ttft_seconds_p50", "total_seconds_p50", "total_seconds_p95", "tokens_per_second_p50"],
+      "properties": {
+        "load_seconds": {"type": ["number", "null"], "minimum": 0},
+        "ttft_seconds_p50": {"type": ["number", "null"], "minimum": 0},
+        "total_seconds_p50": {"type": ["number", "null"], "minimum": 0},
+        "total_seconds_p95": {"type": ["number", "null"], "minimum": 0},
+        "tokens_per_second_p50": {"type": ["number", "null"], "minimum": 0}
+      }
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["peak_rss_mib", "resident_model_count", "parallel_slots"],
+      "properties": {
+        "peak_rss_mib": {"type": ["number", "null"], "minimum": 0},
+        "resident_model_count": {"type": "integer", "minimum": 0},
+        "parallel_slots": {"type": "integer", "minimum": 0}
+      }
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "semantic_review", "claim_boundary"],
+      "properties": {
+        "status": {"enum": ["NOT_EVALUATED", "FAIL", "ASYNC_ONLY", "PASS"]},
+        "semantic_review": {"enum": ["NOT_DONE", "FAIL", "PASS"]},
+        "claim_boundary": {"type": "string", "minLength": 1}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execution_authority", "tool_execution", "serial_write", "pump_command"],
+      "properties": {
+        "execution_authority": {"const": false},
+        "tool_execution": {"const": false},
+        "serial_write": {"const": false},
+        "pump_command": {"const": false}
+      }
+    }
+  }
+}
