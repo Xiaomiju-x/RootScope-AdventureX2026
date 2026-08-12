@@ -4,4 +4,4 @@ from .contracts import ActionProposal, Decision, EvidenceBundle
 from .gate import evaluate_evidence
 
 __all__ = ["ActionProposal", "Decision", "EvidenceBundle", "evaluate_evidence"]
-__version__ = "1.0.2"
+__version__ = "1.0.3"

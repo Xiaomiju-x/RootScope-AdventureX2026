@@ -66,7 +66,6 @@ def test_public_media_manifest_binds_every_derivative() -> None:
         (ROOT / "assets/media/ASSET_PROVENANCE.json").read_text(encoding="utf-8")
     )
     entries = manifest["assets"]
-    assert len(entries) == 19
     seen: set[str] = set()
     for entry in entries:
         relative = entry["public_path"]
@@ -76,3 +75,52 @@ def test_public_media_manifest_binds_every_derivative() -> None:
         assert path.is_file(), relative
         assert path.stat().st_size == entry["bytes"], relative
         assert sha256_file(path) == entry["public_sha256"], relative
+
+    manifest_files = {
+        "assets/media/ASSET_PROVENANCE.json",
+        "assets/media/ASSET_PROVENANCE.csv",
+    }
+    actual = {
+        path.relative_to(ROOT).as_posix()
+        for path in (ROOT / "assets/media").rglob("*")
+        if path.is_file() and path.relative_to(ROOT).as_posix() not in manifest_files
+    }
+    assert seen == actual
+
+
+def test_readme_video_previews_are_lightweight_gifs() -> None:
+    for relative in (
+        "assets/media/demo/probe-descent-preview.gif",
+        "assets/media/demo/water-delivery-preview.gif",
+    ):
+        path = ROOT / relative
+        assert path.stat().st_size < 5 * 1024 * 1024, relative
+        assert path.read_bytes()[:6] in {b"GIF87a", b"GIF89a"}, relative
+
+
+def test_readme_references_every_public_media_asset() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    manifest = json.loads(
+        (ROOT / "assets/media/ASSET_PROVENANCE.json").read_text(encoding="utf-8")
+    )
+    missing = [
+        entry["public_path"]
+        for entry in manifest["assets"]
+        if entry["public_path"] not in readme
+    ]
+    assert not missing, "README does not expose public media:\n" + "\n".join(missing)
+
+
+def test_demo_bottle_is_preserved_in_all_video_derivatives() -> None:
+    manifest = json.loads(
+        (ROOT / "assets/media/ASSET_PROVENANCE.json").read_text(encoding="utf-8")
+    )
+    demo_entries = [
+        entry
+        for entry in manifest["assets"]
+        if entry["source_name"] == "mmexport1786529983379.mp4"
+    ]
+    assert len(demo_entries) == 6
+    assert all("bottle" in entry["transform"] for entry in demo_entries)
+    assert all("preserved" in entry["transform"] for entry in demo_entries)
+    assert all("redacted" not in entry["transform"] for entry in demo_entries)

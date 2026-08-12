@@ -49,7 +49,7 @@ def test_release_identity_requires_strict_semver_and_matching_versions():
 
 
 def test_checked_in_release_versions_are_consistent():
-    assert identity.project_version() == identity.package_version() == "1.0.2"
+    assert identity.project_version() == identity.package_version() == "1.0.3"
 
 
 def test_checkout_free_publish_job_has_explicit_repository_context():

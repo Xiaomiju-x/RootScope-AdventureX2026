@@ -18,6 +18,7 @@
   <a href="docs/QUICKSTART.md">Quickstart</a> ·
   <a href="docs/ARCHITECTURE.md">Architecture</a> ·
   <a href="docs/DEMO.md">Demo</a> ·
+  <a href="#实拍与视频">Gallery</a> ·
   <a href="docs/REPRODUCIBILITY.md">Reproduce</a>
 </p>
 
@@ -82,16 +83,126 @@ LLM 不直接控制泵、电机、串口或 GPIO。模型输出不能覆盖确�
 
 原始、可核验的公开回执位于 [`evidence/public/`](evidence/public/)，指标解释见 [`docs/RESULTS_AND_BOUNDARIES.md`](docs/RESULTS_AND_BOUNDARIES.md)。仓库不会把测试夹具、回放结果或人工观察写成持续在线性能。
 
-### 演示
+### 实拍与视频
+
+下面不是概念渲染，而是 RootScope 决赛装置、真实动作和 AdventureX 现场记录。完整媒体来源、原文件与公开文件 SHA-256、裁切和隐私处理方式见 [`ASSET_PROVENANCE.json`](assets/media/ASSET_PROVENANCE.json)。
+
+#### 完整实机演示
 
 <p align="center">
-  <a href="assets/media/demo/rootscope-probe-and-irrigation-demo.mp4">
-    <img alt="RootScope probe and irrigation demo storyboard" src="assets/media/demo/demo-overview.jpg" width="760">
+  <a href="assets/media/demo/rootscope-probe-and-irrigation-demo.mp4?raw=1">
+    <img alt="RootScope 真实注水演示；矿泉水接水瓶保持原貌" src="assets/media/demo/demo-overview.jpg" width="420">
   </a><br>
-  <sub>点击图片观看探针下降与注水演示；完整分镜、边界和素材清单位于 <a href="docs/DEMO.md">docs/DEMO.md</a>。</sub>
+  <sub>真实现场画面：探针下降、出水和接水瓶。瓶身及标签按项目方要求保持原貌；点击图片下载/打开 33.5 秒完整无声演示。</sub>
 </p>
 
-![AdventureX 2026 award](assets/media/award/team-award.jpg)
+GitHub 对仓库内较大的 MP4 不一定提供网页播放器，因此首页同时提供两个由原视频直接抽帧的动态预览。它们不是生成画面，也没有改变动作顺序。
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="assets/media/demo/probe-descent.mp4?raw=1"><img src="assets/media/demo/probe-descent-preview.gif" alt="齿轮齿条探针下降动态预览" width="280"></a><br>
+      <strong>探针下降</strong><br>
+      <sub>README 预览取自 10–18 s；点击打开 6–24 s 分段视频</sub>
+    </td>
+    <td width="50%" align="center">
+      <a href="assets/media/demo/water-delivery.mp4?raw=1"><img src="assets/media/demo/water-delivery-preview.gif" alt="RootScope 向矿泉水瓶注水的动态预览" width="280"></a><br>
+      <strong>真实出水</strong><br>
+      <sub>README 预览取自 24–31.5 s；矿泉水瓶未打码；点击打开分段视频</sub>
+    </td>
+  </tr>
+</table>
+
+视频入口：**[完整演示 · 33.5 s](assets/media/demo/rootscope-probe-and-irrigation-demo.mp4?raw=1)** · **[探针下降 · 18 s](assets/media/demo/probe-descent.mp4?raw=1)** · **[注水过程 · 7.5 s](assets/media/demo/water-delivery.mp4?raw=1)** · [逐段讲解与真实性边界](docs/DEMO.md)
+
+#### 视觉识别与双证据门控
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="assets/media/demo/rootsight-live-inference.jpg" alt="RootScope 整机与屏幕上的 RootSight 实时识别" width="100%"><br>
+      <strong>RootSight 现场识别</strong><br>
+      <sub>固定答辩卡、实体装置与端侧界面同框</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="assets/media/demo/dual-evidence-grass-clump.jpg" alt="草丛卡 CNN 与 AKAZE RANSAC 双证据确认" width="100%"><br>
+      <strong>CNN + AKAZE/RANSAC</strong><br>
+      <sub>同帧语义证据与几何证据一致后才生成档位提案</sub>
+    </td>
+  </tr>
+</table>
+
+#### 硬件与机械结构
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="assets/media/hardware/rootscope-rig-top-view.jpg" alt="RootScope 顶视布线、水路与龙门结构" width="100%"><br>
+      <strong>整机顶视</strong> · 储水、水泵、布线、控制器与固定龙门
+    </td>
+    <td width="50%" align="center">
+      <img src="assets/media/hardware/rack-pinion-probe-gantry.jpg" alt="齿轮齿条探针与水管龙门" width="100%"><br>
+      <strong>齿轮齿条探针</strong> · 单向下降机构与注水管路
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="assets/media/hardware/rdk-x5-edge-computer.jpg" alt="RootScope 使用的 RDK X5 边缘计算板" width="100%"><br>
+      <strong>RDK X5</strong> · 视觉、证据判定与本地解释主脑
+    </td>
+    <td width="50%" align="center">
+      <img src="assets/media/hardware/stm32-control-stack.jpg" alt="STM32F103 控制和供电栈" width="100%"><br>
+      <strong>STM32F103 控制栈</strong> · 电机、继电器、看门狗与最终关泵权威
+    </td>
+  </tr>
+</table>
+
+#### 获奖与比赛现场
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="assets/media/award/team-award.jpg" alt="RootScope 团队银奖合影" width="100%"><br>
+      <strong>团队获奖记录</strong> · 银地瓜奖牌与两台 RDK X5 奖品
+    </td>
+    <td width="50%" align="center">
+      <img src="assets/media/award/award-stage.jpg" alt="AdventureX 2026 地瓜机器人赛道颁奖舞台" width="100%"><br>
+      <strong>D-Robotics 赛道颁奖现场</strong> · 舞台图用于赛事场景佐证
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="assets/media/event/team-building-at-hackathon.jpg" alt="RootScope 团队在 AdventureX 现场开发" width="100%"><br>
+      <strong>团队现场开发</strong>
+    </td>
+    <td width="50%" align="center">
+      <img src="assets/media/event/hackathon-workbench-night.jpg" alt="AdventureX 夜间开发工位" width="100%"><br>
+      <strong>夜间开发工位</strong>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="assets/media/event/adventurex-venue-entrance.jpg" alt="AdventureX 2026 比赛场馆入口" width="100%"><br>
+      <strong>AdventureX 场馆入口</strong>
+    </td>
+    <td width="50%" align="center">
+      <img src="assets/media/event/adventurex-campus-banners.jpg" alt="AdventureX 2026 园区旗帜" width="100%"><br>
+      <strong>AdventureX 2026 园区</strong>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="assets/media/event/adventurex-campus-sunset.jpg" alt="AdventureX 比赛园区日落" width="100%"><br>
+      <strong>比赛园区日落</strong>
+    </td>
+    <td width="50%" align="center">
+      <img src="assets/media/event/adventurex-campus-lakeside.jpg" alt="AdventureX 比赛园区湖畔" width="100%"><br>
+      <strong>比赛园区湖畔</strong>
+    </td>
+  </tr>
+</table>
+
+舞台远景本身不单独证明具体名次；银奖和最终第 2 名由团队获奖记录、项目结果说明与赛事上下文共同呈现。现场照片仍保留必要的人像、屏幕与定位隐私处理，但演示中的矿泉水接水瓶不再遮挡。
 
 ### 5 分钟软件快速开始（不连接设备）
 
