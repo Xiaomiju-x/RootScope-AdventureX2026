@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "rootscope-public"
-version = "1.0.0"
+version = "1.0.1"
 description = "Complete reproducible source for the AdventureX 2026 D-Robotics Silver Award and 2nd Place RootScope irrigation chamber"
 readme = "README.md"
 requires-python = ">=3.10"

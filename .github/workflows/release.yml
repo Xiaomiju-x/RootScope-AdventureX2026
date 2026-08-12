@@ -15,31 +15,37 @@ concurrency:
 env:
   PYTHONDONTWRITEBYTECODE: "1"
   PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  RELEASE_ARTIFACT_NAME: rootscope-${{ github.ref_name }}-verified-release
 
 jobs:
-  build-and-publish:
-    name: Verify, attest and publish
-    runs-on: ubuntu-latest
+  verify:
+    name: Verify exact release assets
+    runs-on: ubuntu-24.04
     timeout-minutes: 30
     permissions:
-      contents: write
-      id-token: write
-      attestations: write
+      contents: read
     steps:
       - name: Check out tagged source and materialize LFS
-        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
           lfs: true
+          persist-credentials: false
+      - name: Fetch the trusted main reference
+        run: git fetch --no-tags origin +refs/heads/main:refs/remotes/origin/main
+      - name: Bind SemVer tag, main ancestry, and package version
+        run: >-
+          python tools/verify_release_identity.py
+          --tag "${GITHUB_REF_NAME}"
+          --commit "${GITHUB_SHA}"
       - name: Set up Python
-        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
           cache: pip
-      - name: Install public reference test dependencies
-        run: |
-          python -m pip install -e ".[dev]"
-          python -m pip install -e "software/rdk-x5[hardware,test]"
+          cache-dependency-path: requirements/release-py312-linux.lock
+      - name: Install hash-locked release verification dependencies
+        run: python -m pip install --require-hashes -r requirements/release-py312-linux.lock
       - name: Verify LFS, publication policy, licences and model digests
         run: |
           git lfs fsck
@@ -47,6 +53,8 @@ jobs:
           python tools/check_license_inventory.py
           python tools/verify_model_assets.py
       - name: Run Python reference and governance tests
+        env:
+          PYTHONPATH: src
         run: python -m pytest -q tests
       - name: Run research and RAG contracts
         env:
@@ -83,27 +91,81 @@ jobs:
           test -z "$(git status --porcelain --untracked-files=all)"
           python tools/build_release_bundle.py --output dist --version "${GITHUB_REF_NAME}"
           python tools/verify_release_bundle.py dist
-      - name: Attest every release artifact
-        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+          test "$(find dist -maxdepth 1 -type f | wc -l)" -eq 6
+      - name: Retain exact verified release assets
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: ${{ env.RELEASE_ARTIFACT_NAME }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 30
+
+  attest:
+    name: Attest verified release assets
+    needs: verify
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+    steps:
+      - name: Download the verified asset set
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: ${{ env.RELEASE_ARTIFACT_NAME }}
+          path: dist
+      - name: Require the exact six-asset set
+        run: |
+          test "$(find dist -maxdepth 1 -type f | wc -l)" -eq 6
+          test -f dist/RELEASE_MANIFEST.json
+          test -f dist/SHA256SUMS
+          test "$(find dist -maxdepth 1 -type f -name '*.tar.gz' | wc -l)" -eq 3
+          test "$(find dist -maxdepth 1 -type f -name '*.spdx.json' | wc -l)" -eq 1
+      - name: Attest every verified release asset
+        uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
         with:
           subject-path: |
             dist/*.tar.gz
             dist/*.spdx.json
             dist/RELEASE_MANIFEST.json
             dist/SHA256SUMS
-      - name: Retain verified release artifacts
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+
+  publish:
+    name: Publish complete immutable release
+    needs: [verify, attest]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - name: Download the verified asset set
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
-          name: rootscope-${{ github.ref_name }}-verified-release
-          path: dist/
-          if-no-files-found: error
-          retention-days: 30
-      - name: Create GitHub release
+          name: ${{ env.RELEASE_ARTIFACT_NAME }}
+          path: dist
+      - name: Require the exact six-asset set
+        run: |
+          test "$(find dist -maxdepth 1 -type f | wc -l)" -eq 6
+          test -f dist/RELEASE_MANIFEST.json
+          test -f dist/SHA256SUMS
+          test "$(find dist -maxdepth 1 -type f -name '*.tar.gz' | wc -l)" -eq 3
+          test "$(find dist -maxdepth 1 -type f -name '*.spdx.json' | wc -l)" -eq 1
+      - name: Create complete draft, then publish once
         env:
           GH_TOKEN: ${{ github.token }}
-        run: >-
-          gh release create "${GITHUB_REF_NAME}" dist/*
-          --verify-tag
-          --generate-notes
-          --title "RootScope ${GITHUB_REF_NAME} — AdventureX 2026 D-Robotics Silver Award · Final 2nd Place"
-          --notes "Verified public source, evidence, media, firmware and the four content-bound model artifacts. See RELEASE_MANIFEST.json, SHA256SUMS and the SPDX 2.3 SBOM before reuse."
+        run: |
+          test "$(find dist -maxdepth 1 -type f | wc -l)" -eq 6
+          test -f dist/RELEASE_MANIFEST.json
+          test -f dist/SHA256SUMS
+          test "$(find dist -maxdepth 1 -type f -name '*.tar.gz' | wc -l)" -eq 3
+          test "$(find dist -maxdepth 1 -type f -name '*.spdx.json' | wc -l)" -eq 1
+          gh release create "${GITHUB_REF_NAME}" \
+            --draft \
+            --verify-tag \
+            --generate-notes \
+            --title "RootScope ${GITHUB_REF_NAME} — AdventureX 2026 D-Robotics Silver Award · Final 2nd Place" \
+            --notes "Verified public source, evidence, media, firmware and the four content-bound model artifacts. See RELEASE_MANIFEST.json, SHA256SUMS and the SPDX 2.3 SBOM before reuse."
+          gh release upload "${GITHUB_REF_NAME}" dist/* --clobber=false
+          test "$(gh release view "${GITHUB_REF_NAME}" --json assets --jq '.assets | length')" -eq 6
+          gh release edit "${GITHUB_REF_NAME}" --draft=false

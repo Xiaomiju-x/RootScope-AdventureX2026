@@ -14,11 +14,22 @@ updates:
     schedule:
       interval: monthly
     open-pull-requests-limit: 5
+    ignore:
+      # OpenCV 5 currently breaks the frozen portable control contracts.
+      # Keep receiving 4.x fixes, but require an explicit compatibility PR
+      # before lifting the validated major-version boundary.
+      - dependency-name: opencv-python-headless
+        update-types: [version-update:semver-major]
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: monthly
     open-pull-requests-limit: 5
+    ignore:
+      # Major action upgrades change runner/runtime contracts and are reviewed
+      # as dedicated human-authored supply-chain changes.
+      - dependency-name: "*"
+        update-types: [version-update:semver-major]
     groups:
       github-actions:
         patterns: ["*"]
