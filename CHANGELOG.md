@@ -9,6 +9,13 @@ All notable changes to the public RootScope release are documented here. The for
 - Community-reviewed reproduction reports and portability fixes.
 - Documentation corrections that preserve the frozen competition facts.
 
+## [1.0.2] - 2026-08-13
+
+### Fixed
+
+- Give the checkout-free, least-privilege publish job explicit `GH_REPO`
+  context so GitHub CLI verifies the remote tag through the API.
+
 ## [1.0.1] - 2026-08-13
 
 ### Security
@@ -43,6 +50,7 @@ All notable changes to the public RootScope release are documented here. The for
 - Excluded and detected credentials, private device/network identity, absolute user paths, unsanitized receipts, and unlicensed assets.
 - Documented actuator-power isolation, staged bring-up, watchdog/timeout/latching behavior, and private vulnerability reporting.
 
-[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.2...HEAD
+[1.0.2]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/releases/tag/v1.0.0

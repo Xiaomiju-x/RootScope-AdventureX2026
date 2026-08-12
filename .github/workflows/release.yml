@@ -154,6 +154,10 @@ jobs:
       - name: Create complete draft, then publish once
         env:
           GH_TOKEN: ${{ github.token }}
+          # The least-privilege publish job deliberately does not check out
+          # source. Give GitHub CLI explicit API context instead of asking it
+          # to infer a repository from a local .git directory.
+          GH_REPO: ${{ github.repository }}
         run: |
           test "$(find dist -maxdepth 1 -type f | wc -l)" -eq 6
           test -f dist/RELEASE_MANIFEST.json
