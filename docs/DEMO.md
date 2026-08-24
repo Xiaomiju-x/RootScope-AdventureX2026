@@ -33,6 +33,7 @@
 |---|---|---|
 | [`assets/media/hero/rootscope-hero.jpg`](../assets/media/hero/rootscope-hero.jpg) | 最终装置整体 | 固定龙门、探针、水路与承载布局；可见轮式底盘只作承载 |
 | [`assets/media/demo/demo-overview.jpg`](../assets/media/demo/demo-overview.jpg) | 注水视频封面 | 原录像 27 秒处的真实出水画面；矿泉水接水瓶未打码 |
+| [`assets/media/award/adventurex-gallery-drobotics-second-prize.jpg`](../assets/media/award/adventurex-gallery-drobotics-second-prize.jpg) | AdventureX 官方 Gallery 奖项记录 | 项目“溯根（E33）”、地瓜机器人赛道“二等奖｜赛道奖”原文；与“银奖 · 最终第 2 名”为同奖异称 |
 | [`assets/media/award/award-stage.jpg`](../assets/media/award/award-stage.jpg) | AdventureX D-Robotics 赛道舞台远景 | 赛事现场与赛道场景；**不能单独证明具体奖项/名次** |
 | [`assets/media/award/team-award.jpg`](../assets/media/award/team-award.jpg) | 团队获奖合影 | 银地瓜奖牌、两台 RDK X5 奖品和团队现场记录；奖项表述同时以项目获奖记录与结果说明为准 |
 
@@ -40,7 +41,9 @@
 
 ![RootScope team award](../assets/media/award/team-award.jpg)
 
-RootScope 在 AdventureX 2026 D-Robotics「Give AI a Body」赛道获得银奖、最终第 2 名。舞台远景只用于说明赛事现场；不把它单独当作名次证明。团队奖项合影中的奖牌/奖品提供视觉佐证，正式技术表述与边界集中在 [`RESULTS_AND_BOUNDARIES.md`](RESULTS_AND_BOUNDARIES.md)。
+![AdventureX Gallery D-Robotics Second Prize record](../assets/media/award/adventurex-gallery-drobotics-second-prize.jpg)
+
+RootScope（官方登记名“溯根”）在 AdventureX 2026 D-Robotics「Give AI a Body」赛道获得二等奖（赛道奖）；“银奖 · 最终第 2 名”是同一奖项的现场/既有表述。舞台远景只用于说明赛事现场；团队合影中的奖牌/奖品提供视觉佐证，正式技术表述与边界集中在 [`RESULTS_AND_BOUNDARIES.md`](RESULTS_AND_BOUNDARIES.md)。
 
 ## 4. 两次完整草丛链
 
@@ -68,4 +71,4 @@ RootScope 在 AdventureX 2026 D-Robotics「Give AI a Body」赛道获得银奖�
 
 ## English summary
 
-The public technical video is a cropped, transcoded, metadata-stripped excerpt of the original event recording. The personal conversation/portrait segment at the end is excluded. The stage photo establishes event context only; it does not independently prove the award rank. The team award photo shows the silver trophy and two RDK X5 prizes as visual context, while the formal award statement and technical boundaries are documented separately. Step counts are not physical or biological depth.
+The public technical video is a cropped, transcoded, metadata-stripped excerpt of the original event recording. The personal conversation/portrait segment at the end is excluded. The official Gallery screenshot records the D-Robotics track Second Prize for “溯根” (RootScope); “Silver Award · Final 2nd Place” is an alternate event/project description of that same award. The stage and team photos provide event context. Step counts are not physical or biological depth.

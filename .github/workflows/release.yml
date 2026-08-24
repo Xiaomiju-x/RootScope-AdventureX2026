@@ -168,7 +168,7 @@ jobs:
             --draft \
             --verify-tag \
             --generate-notes \
-            --title "RootScope ${GITHUB_REF_NAME} — AdventureX 2026 D-Robotics Silver Award · Final 2nd Place" \
+            --title "RootScope ${GITHUB_REF_NAME} — D-Robotics Track Second Prize (Silver Award · Final 2nd Place)" \
             --notes "Verified public source, evidence, media, firmware and the four content-bound model artifacts. See RELEASE_MANIFEST.json, SHA256SUMS and the SPDX 2.3 SBOM before reuse."
           gh release upload "${GITHUB_REF_NAME}" dist/* --clobber=false
           test "$(gh release view "${GITHUB_REF_NAME}" --json assets --jq '.assets | length')" -eq 6
