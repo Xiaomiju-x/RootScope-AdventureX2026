@@ -111,36 +111,20 @@ def test_readme_references_every_public_media_asset() -> None:
     assert not missing, "README does not expose public media:\n" + "\n".join(missing)
 
 
-def test_official_award_wording_records_two_independent_track_awards() -> None:
+def test_awards_are_stated_naturally_without_gallery_screenshots() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert "二等奖（赛道奖）" in readme
-    assert "三等奖（赛道奖）" in readme
+    assert "二等奖（银奖 · 最终第 2 名）" in readme
+    assert "赛道三等奖" in readme
     assert "superun.ai「不比代码，比谁离问题最近」" in readme
-    assert "银奖 · 最终第 2 名" in readme
-    assert "两项独立赛道奖" in readme
-    assert "同一项奖的不同表述" in readme
 
     manifest = json.loads(
         (ROOT / "assets/media/ASSET_PROVENANCE.json").read_text(encoding="utf-8")
     )
-    official = next(
-        entry
-        for entry in manifest["assets"]
-        if entry["public_path"]
-        == "assets/media/award/adventurex-gallery-drobotics-second-prize.jpg"
-    )
-    assert "evidentiary use only" in official["rights_basis"]
-    assert "not CC BY 4.0" in official["rights_basis"]
-
-    both_awards = next(
-        entry
-        for entry in manifest["assets"]
-        if entry["public_path"]
-        == "assets/media/award/adventurex-gallery-two-track-awards.jpg"
-    )
-    assert "D-Robotics track Second Prize" in both_awards["caption"]
-    assert "superun.ai track Third Prize" in both_awards["caption"]
-    assert "evidentiary use only" in both_awards["rights_basis"]
+    public_paths = {entry["public_path"] for entry in manifest["assets"]}
+    assert not any("gallery" in path for path in public_paths)
+    assert "adventurex-gallery" not in readme
+    assert "同一奖项" not in readme
+    assert "同奖" not in readme
 
 
 def test_demo_bottle_is_preserved_in_all_video_derivatives() -> None:

@@ -41,13 +41,6 @@ PUBLIC_RIGHTS_BASIS = (
     "RootScope team archive; public release directed by the project owner on "
     "2026-08-12; likeness and trademark rights do not imply endorsement"
 )
-OFFICIAL_GALLERY_RIGHTS_BASIS = (
-    "Official AdventureX Gallery screenshot supplied by the project owner for award verification; "
-    "page UI, event marks and third-party content remain with their respective rightsholders; "
-    "evidentiary use only, not CC BY 4.0"
-)
-
-
 @dataclass(frozen=True)
 class Photo:
     source: Path
@@ -75,22 +68,6 @@ PHOTOS = (
     Photo(DOWNLOADS / "1786530040428.jpg", "event/adventurex-campus-sunset.jpg", "AdventureX campus at sunset.", (0.00, 0.00, 1.00, 0.75)),
     Photo(DOWNLOADS / "1786530040445.jpg", "event/adventurex-campus-lakeside.jpg", "AdventureX campus lakeside.", (0.00, 0.00, 1.00, 0.75)),
     Photo(PRIVATE_ARCHIVE / "evidence" / "award" / "AdventureX2026_DRobotics_银奖第二名_团队合影.jpg", "award/team-award.jpg", "RootScope team with the Silver Award display and two RDK X5 prizes."),
-    Photo(
-        DOWNLOADS / "Screenshot_2026-08-23-22-31-04-544_com.quark.browser.jpg",
-        "award/adventurex-gallery-drobotics-second-prize.jpg",
-        "Official AdventureX Gallery entry for 溯根 (RootScope), recording the D-Robotics track Second Prize.",
-        (0.015625, 0.051498, 0.953125, 0.758427),
-        rights_basis=OFFICIAL_GALLERY_RIGHTS_BASIS,
-        transform="EXIF/device metadata removed; cropped to the AdventureX event, project and D-Robotics award record; unrelated lower award omitted; max 2400x1800 JPEG",
-    ),
-    Photo(
-        DOWNLOADS / "Screenshot_2026-08-23-22-31-04-544_com.quark.browser.jpg",
-        "award/adventurex-gallery-two-track-awards.jpg",
-        "Official AdventureX Gallery entry for 溯根 (RootScope), recording both the D-Robotics track Second Prize and the superun.ai track Third Prize.",
-        (0.015625, 0.051498, 0.953125, 0.965356),
-        rights_basis=OFFICIAL_GALLERY_RIGHTS_BASIS,
-        transform="EXIF/device metadata removed; cropped to the AdventureX event, project and both official track-award records; max 2400x1800 JPEG",
-    ),
 )
 
 

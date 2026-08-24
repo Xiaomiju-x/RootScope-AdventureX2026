@@ -197,11 +197,6 @@ class _BytesReader:
 
 
 def licence_for_path(relative: str) -> str:
-    if relative in {
-        "assets/media/award/adventurex-gallery-drobotics-second-prize.jpg",
-        "assets/media/award/adventurex-gallery-two-track-awards.jpg",
-    }:
-        return "NOASSERTION"
     if relative.startswith("model-assets/"):
         return "Apache-2.0"
     if relative.startswith("hardware/design/"):
@@ -224,11 +219,6 @@ def licence_for_path(relative: str) -> str:
 
 
 def package_for_path(relative: str) -> str:
-    if relative in {
-        "assets/media/award/adventurex-gallery-drobotics-second-prize.jpg",
-        "assets/media/award/adventurex-gallery-two-track-awards.jpg",
-    }:
-        return "SPDXRef-Package-OfficialEvidence"
     if relative.startswith("model-assets/"):
         return "SPDXRef-Package-Models"
     if relative.startswith("hardware/design/"):
@@ -251,7 +241,6 @@ def build_spdx(files: list[Path], version: str, revision: str, epoch: int) -> di
         ("SPDXRef-Package-Firmware", "RootScope STM32F103 V15 firmware", "NOASSERTION"),
         ("SPDXRef-Package-Hardware", "RootScope hardware design", "CERN-OHL-S-2.0"),
         ("SPDXRef-Package-Content", "RootScope documentation and public evidence", "CC-BY-4.0"),
-        ("SPDXRef-Package-OfficialEvidence", "AdventureX official award evidence", "NOASSERTION"),
         ("SPDXRef-Package-Models", "RootScope reviewed model artifacts", "Apache-2.0"),
     ]
     package_records = [

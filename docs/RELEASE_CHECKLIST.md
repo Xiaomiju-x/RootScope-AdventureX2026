@@ -29,7 +29,7 @@ Use this checklist from a clean clone of the candidate tag. A release is rejecte
 
 ## Documentation and claims
 
-- [ ] Title/description state both independent track awards: D-Robotics Second Prize and superun.ai Third Prize; “Silver Award · Final 2nd Place” remains an alternate label only for the D-Robotics award.
+- [ ] Title/description naturally state the D-Robotics Second Prize (Silver Award · Final 2nd Place) and superun.ai Third Prize without argumentative award wording.
 - [ ] README says stationary chamber; wheeled base is carrier/power stand only.
 - [ ] Fixed cards are not described as open-world plants.
 - [ ] Steps are not converted to length/root depth; 5 seconds is not converted to water volume/savings.

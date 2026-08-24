@@ -33,20 +33,14 @@
 |---|---|---|
 | [`assets/media/hero/rootscope-hero.jpg`](../assets/media/hero/rootscope-hero.jpg) | 最终装置整体 | 固定龙门、探针、水路与承载布局；可见轮式底盘只作承载 |
 | [`assets/media/demo/demo-overview.jpg`](../assets/media/demo/demo-overview.jpg) | 注水视频封面 | 原录像 27 秒处的真实出水画面；矿泉水接水瓶未打码 |
-| [`assets/media/award/adventurex-gallery-drobotics-second-prize.jpg`](../assets/media/award/adventurex-gallery-drobotics-second-prize.jpg) | AdventureX 官方 Gallery 奖项记录 | 项目“溯根（E33）”、地瓜机器人赛道“二等奖｜赛道奖”原文；与“银奖 · 最终第 2 名”为同奖异称 |
-| [`assets/media/award/adventurex-gallery-two-track-awards.jpg`](../assets/media/award/adventurex-gallery-two-track-awards.jpg) | AdventureX 官方 Gallery 双奖项记录 | 页面“2 奖项”计数；地瓜机器人赛道二等奖与 superun.ai「不比代码，比谁离问题最近」赛道三等奖，两项均为赛道奖 |
-| [`assets/media/award/award-stage.jpg`](../assets/media/award/award-stage.jpg) | AdventureX D-Robotics 赛道舞台远景 | 赛事现场与赛道场景；**不能单独证明具体奖项/名次** |
-| [`assets/media/award/team-award.jpg`](../assets/media/award/team-award.jpg) | 团队获奖合影 | 银地瓜奖牌、两台 RDK X5 奖品和团队现场记录；奖项表述同时以项目获奖记录与结果说明为准 |
+| [`assets/media/award/award-stage.jpg`](../assets/media/award/award-stage.jpg) | AdventureX D-Robotics 赛道舞台远景 | 赛事现场与赛道场景 |
+| [`assets/media/award/team-award.jpg`](../assets/media/award/team-award.jpg) | 团队获奖合影 | RootScope 团队的 AdventureX 2026 现场记录 |
 
 ![AdventureX track stage](../assets/media/award/award-stage.jpg)
 
 ![RootScope team award](../assets/media/award/team-award.jpg)
 
-![AdventureX Gallery D-Robotics Second Prize record](../assets/media/award/adventurex-gallery-drobotics-second-prize.jpg)
-
-![AdventureX Gallery two-track awards record](../assets/media/award/adventurex-gallery-two-track-awards.jpg)
-
-RootScope（官方登记名“溯根”）获得两项独立赛道奖：AdventureX 2026 D-Robotics「Give AI a Body」赛道二等奖，以及 superun.ai「不比代码，比谁离问题最近」赛道三等奖。“银奖 · 最终第 2 名”只是地瓜机器人二等奖的现场/既有表述。舞台远景只用于说明赛事现场；团队合影中的奖牌/奖品提供视觉佐证，正式技术表述与边界集中在 [`RESULTS_AND_BOUNDARIES.md`](RESULTS_AND_BOUNDARIES.md)。
+RootScope（参赛登记名“溯根”）获得 AdventureX 2026 D-Robotics「Give AI a Body」赛道二等奖（银奖 · 最终第 2 名）和 superun.ai「不比代码，比谁离问题最近」赛道三等奖。舞台与团队照片用于呈现赛事现场，技术结果与边界集中在 [`RESULTS_AND_BOUNDARIES.md`](RESULTS_AND_BOUNDARIES.md)。
 
 ## 4. 两次完整草丛链
 
@@ -74,4 +68,4 @@ RootScope（官方登记名“溯根”）获得两项独立赛道奖：Adventur
 
 ## English summary
 
-The public technical video is a cropped, transcoded, metadata-stripped excerpt of the original event recording. The personal conversation/portrait segment at the end is excluded. The official Gallery screenshot records two independent track awards for “溯根” (RootScope): D-Robotics Second Prize and superun.ai Third Prize. “Silver Award · Final 2nd Place” is an alternate event/project description of the D-Robotics award. The stage and team photos provide event context. Step counts are not physical or biological depth.
+The public technical video is a cropped, transcoded, metadata-stripped excerpt of the original event recording. The personal conversation/portrait segment at the end is excluded. RootScope received the D-Robotics Track Second Prize (Silver Award · Final 2nd Place) and the superun.ai Track Third Prize. The stage and team photos provide event context. Step counts are not physical or biological depth.

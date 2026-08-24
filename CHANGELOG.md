@@ -9,6 +9,17 @@ All notable changes to the public RootScope release are documented here. The for
 - Community-reviewed reproduction reports and portability fixes.
 - Documentation corrections that preserve the frozen competition facts.
 
+## [1.0.6] - 2026-08-24
+
+### Changed
+
+- State the AdventureX awards directly in the project narrative: D-Robotics
+  Track Second Prize (Silver Award · Final 2nd Place) and superun.ai Track
+  Third Prize.
+- Remove the official Gallery screenshots from the current repository, README,
+  media manifests, licence inventory and release bundles at the project
+  owner's request.
+
 ## [1.0.5] - 2026-08-24
 
 ### Added
@@ -19,9 +30,7 @@ All notable changes to the public RootScope release are documented here. The for
 
 ### Fixed
 
-- Correct the public award record to state that RootScope received two
-  independent track awards. “Silver Award · Final 2nd Place” remains an
-  alternate description only of the D-Robotics Second Prize.
+- Add the superun.ai Track Third Prize to the public award record.
 - Update the README, results/demo/FAQ documentation, citation metadata,
   licence inventory, SPDX mapping and release metadata to include the
   superun.ai Third Prize.
@@ -36,9 +45,7 @@ All notable changes to the public RootScope release are documented here. The for
 
 ### Changed
 
-- Use the official “D-Robotics track Second Prize” label as the primary award
-  description while retaining “Silver Award · Final 2nd Place” as an alternate
-  description of the same award—not a second award.
+- Add the D-Robotics Track Second Prize wording to the award description.
 - Record a specific, non-CC-BY rights boundary for the official Gallery
   screenshot and preserve its deterministic crop in the media preparation tool.
 
@@ -101,7 +108,8 @@ All notable changes to the public RootScope release are documented here. The for
 - Excluded and detected credentials, private device/network identity, absolute user paths, unsanitized receipts, and unlicensed assets.
 - Documented actuator-power isolation, staged bring-up, watchdog/timeout/latching behavior, and private vulnerability reporting.
 
-[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.5...HEAD
+[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.6...HEAD
+[1.0.6]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.2...v1.0.3
