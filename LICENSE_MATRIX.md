@@ -17,6 +17,7 @@ dataset terms. Resolve a file's licence in this order:
 | `hardware/design/**` original editable hardware source | CERN-OHL-S-2.0 | `LICENSES/CERN-OHL-S-2.0.txt`, source location |
 | `docs/**`, root Markdown/CFF policy files | CC-BY-4.0, except quoted/vendor material and nearer notices | `LICENSES/CC-BY-4.0.txt`, attribution |
 | `assets/media/**`, `evidence/public/images/**`, `evidence/public/video/**` created by the RootScope team | CC-BY-4.0, subject to recorded portrait/privacy consent | `LICENSES/CC-BY-4.0.txt`, asset manifest |
+| `assets/media/award/adventurex-gallery-drobotics-second-prize.jpg` | Official AdventureX Gallery screenshot included as award evidence; **not relicensed** by this repository | `THIRD_PARTY_NOTICES.md`, asset manifest; AdventureX and named rightsholders retain their rights |
 | `assets/print-cards/**` | Per-source CC-BY-SA-4.0 or public domain | adjacent manifest and `THIRD_PARTY_NOTICES.md` |
 | `firmware/stm32f103-v15/Drivers/CMSIS/Include/**` | Apache-2.0 | original file headers, `LICENSE` |
 | `firmware/stm32f103-v15/Drivers/STM32F1xx_HAL_Driver/**` | BSD-3-Clause | original file headers, `LICENSES/BSD-3-Clause.txt` |

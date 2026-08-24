@@ -71,6 +71,19 @@ RDK, D-Robotics, Arm, Keil, STM32, STM32Cube, GitHub, Qwen and other names are
 marks of their respective owners. Their mention is descriptive and does not
 imply endorsement.
 
+## AdventureX Gallery award screenshot
+
+- Path: `assets/media/award/adventurex-gallery-drobotics-second-prize.jpg`
+- Source: the official AdventureX 2026 Gallery page, captured and supplied by
+  the project owner for award verification
+- Content shown: project “溯根” (RootScope), D-Robotics “Give AI a Body”
+  track, `二等奖` (`赛道奖`)
+- Status: included for evidentiary and descriptive use; the Gallery interface,
+  event marks and third-party content are not relicensed under CC-BY-4.0
+
+The public derivative removes device metadata and unrelated lower-page award
+content. It does not alter the project name, award label or track wording.
+
 ## Reporting omissions
 
 Please report a missing attribution or licence through the private security

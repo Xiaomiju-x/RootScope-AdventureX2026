@@ -9,6 +9,22 @@ All notable changes to the public RootScope release are documented here. The for
 - Community-reviewed reproduction reports and portability fixes.
 - Documentation corrections that preserve the frozen competition facts.
 
+## [1.0.4] - 2026-08-24
+
+### Added
+
+- Add a metadata-stripped derivative of the official AdventureX Gallery award
+  record, showing project “溯根” (E33), the D-Robotics track and `二等奖`
+  (`赛道奖`) wording directly in the README and media documentation.
+
+### Changed
+
+- Use the official “D-Robotics track Second Prize” label as the primary award
+  description while retaining “Silver Award · Final 2nd Place” as an alternate
+  description of the same award—not a second award.
+- Record a specific, non-CC-BY rights boundary for the official Gallery
+  screenshot and preserve its deterministic crop in the media preparation tool.
+
 ## [1.0.3] - 2026-08-13
 
 ### Added
@@ -49,7 +65,7 @@ All notable changes to the public RootScope release are documented here. The for
 
 ### Added
 
-- Full reproducible source release for the AdventureX 2026 D-Robotics “Give AI a Body” Silver Award, 2nd-place RootScope project.
+- Full reproducible source release for the AdventureX 2026 D-Robotics “Give AI a Body” track Second Prize (Silver Award, final 2nd-place) RootScope project.
 - Final RDK X5 application, RootSight/RootMind/RAG2 research code, tests, and release/data/model pipelines.
 - STM32F103C8T6 V15 firmware source and archived release checksum contract.
 - Hardware, electrical, mechanical, build, deployment, reproduction, safety, data-governance, and troubleshooting documentation.
@@ -68,7 +84,8 @@ All notable changes to the public RootScope release are documented here. The for
 - Excluded and detected credentials, private device/network identity, absolute user paths, unsanitized receipts, and unlicensed assets.
 - Documented actuator-power isolation, staged bring-up, watchdog/timeout/latching behavior, and private vulnerability reporting.
 
-[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.4...HEAD
+[1.0.4]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.1...v1.0.2
 [1.0.1]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.0...v1.0.1

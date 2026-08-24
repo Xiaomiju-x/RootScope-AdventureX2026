@@ -29,7 +29,7 @@ Use this checklist from a clean clone of the candidate tag. A release is rejecte
 
 ## Documentation and claims
 
-- [ ] Title/description state AdventureX 2026 D-Robotics “Give AI a Body,” Silver Award, 2nd Place.
+- [ ] Title/description state the official D-Robotics track Second Prize and retain “Silver Award · Final 2nd Place” as an alternate label for the same award.
 - [ ] README says stationary chamber; wheeled base is carrier/power stand only.
 - [ ] Fixed cards are not described as open-world plants.
 - [ ] Steps are not converted to length/root depth; 5 seconds is not converted to water volume/savings.

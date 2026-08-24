@@ -111,6 +111,26 @@ def test_readme_references_every_public_media_asset() -> None:
     assert not missing, "README does not expose public media:\n" + "\n".join(missing)
 
 
+def test_official_award_wording_is_one_result_with_two_labels() -> None:
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    assert "二等奖（赛道奖）" in readme
+    assert "银奖 · 最终第 2 名" in readme
+    assert "同一项赛道奖的不同表述" in readme
+    assert "并非两次获奖" in readme
+
+    manifest = json.loads(
+        (ROOT / "assets/media/ASSET_PROVENANCE.json").read_text(encoding="utf-8")
+    )
+    official = next(
+        entry
+        for entry in manifest["assets"]
+        if entry["public_path"]
+        == "assets/media/award/adventurex-gallery-drobotics-second-prize.jpg"
+    )
+    assert "evidentiary use only" in official["rights_basis"]
+    assert "not CC BY 4.0" in official["rights_basis"]
+
+
 def test_demo_bottle_is_preserved_in_all_video_derivatives() -> None:
     manifest = json.loads(
         (ROOT / "assets/media/ASSET_PROVENANCE.json").read_text(encoding="utf-8")
