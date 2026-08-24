@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import hashlib
 import json
 from pathlib import Path
@@ -88,6 +89,24 @@ def test_public_media_manifest_binds_every_derivative() -> None:
     assert seen == actual
 
 
+def test_public_media_csv_matches_json_inventory() -> None:
+    manifest = json.loads(
+        (ROOT / "assets/media/ASSET_PROVENANCE.json").read_text(encoding="utf-8")
+    )
+    with (ROOT / "assets/media/ASSET_PROVENANCE.csv").open(
+        encoding="utf-8", newline=""
+    ) as stream:
+        rows = list(csv.DictReader(stream))
+    json_index = {
+        entry["public_path"]: (entry["public_sha256"], str(entry["bytes"]))
+        for entry in manifest["assets"]
+    }
+    csv_index = {
+        row["public_path"]: (row["public_sha256"], row["bytes"]) for row in rows
+    }
+    assert csv_index == json_index
+
+
 def test_readme_video_previews_are_lightweight_gifs() -> None:
     for relative in (
         "assets/media/demo/probe-descent-preview.gif",
@@ -125,6 +144,34 @@ def test_awards_are_stated_naturally_without_gallery_screenshots() -> None:
     assert "adventurex-gallery" not in readme
     assert "同一奖项" not in readme
     assert "同奖" not in readme
+
+
+def test_official_certificates_are_originals_with_full_page_previews() -> None:
+    manifest = json.loads(
+        (ROOT / "assets/media/ASSET_PROVENANCE.json").read_text(encoding="utf-8")
+    )
+    entries = {
+        entry["public_path"]: entry
+        for entry in manifest["assets"]
+        if "-certificate." in entry["public_path"]
+    }
+    expected = {
+        "assets/media/award/adventurex2026-drobotics-second-prize-certificate.pdf",
+        "assets/media/award/adventurex2026-drobotics-second-prize-certificate.png",
+        "assets/media/award/adventurex2026-superun-third-prize-certificate.pdf",
+        "assets/media/award/adventurex2026-superun-third-prize-certificate.png",
+    }
+    assert set(entries) == expected
+    for relative, entry in entries.items():
+        assert "no repository content licence is asserted" in entry["rights_basis"]
+        payload = (ROOT / relative).read_bytes()
+        if relative.endswith(".pdf"):
+            assert payload.startswith(b"%PDF-")
+            assert "byte-for-byte" in entry["transform"]
+            assert entry["public_sha256"] == entry["source_sha256"]
+        else:
+            assert payload.startswith(b"\x89PNG\r\n\x1a\n")
+            assert "no crop or redaction" in entry["transform"]
 
 
 def test_demo_bottle_is_preserved_in_all_video_derivatives() -> None:

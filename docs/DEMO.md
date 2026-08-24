@@ -33,8 +33,14 @@
 |---|---|---|
 | [`assets/media/hero/rootscope-hero.jpg`](../assets/media/hero/rootscope-hero.jpg) | 最终装置整体 | 固定龙门、探针、水路与承载布局；可见轮式底盘只作承载 |
 | [`assets/media/demo/demo-overview.jpg`](../assets/media/demo/demo-overview.jpg) | 注水视频封面 | 原录像 27 秒处的真实出水画面；矿泉水接水瓶未打码 |
+| [`assets/media/award/adventurex2026-drobotics-second-prize-certificate.pdf`](../assets/media/award/adventurex2026-drobotics-second-prize-certificate.pdf) | 地瓜机器人「Give AI a Body」赛道二等奖电子奖状 | AdventureX 2026 原始单页 PDF；预览见下图 |
+| [`assets/media/award/adventurex2026-superun-third-prize-certificate.pdf`](../assets/media/award/adventurex2026-superun-third-prize-certificate.pdf) | superun.ai「不比代码，比谁离问题最近」赛道三等奖电子奖状 | AdventureX 2026 原始单页 PDF；预览见下图 |
 | [`assets/media/award/award-stage.jpg`](../assets/media/award/award-stage.jpg) | AdventureX D-Robotics 赛道舞台远景 | 赛事现场与赛道场景 |
 | [`assets/media/award/team-award.jpg`](../assets/media/award/team-award.jpg) | 团队获奖合影 | RootScope 团队的 AdventureX 2026 现场记录 |
+
+![D-Robotics track Second Prize certificate](../assets/media/award/adventurex2026-drobotics-second-prize-certificate.png)
+
+![superun.ai track Third Prize certificate](../assets/media/award/adventurex2026-superun-third-prize-certificate.png)
 
 ![AdventureX track stage](../assets/media/award/award-stage.jpg)
 
@@ -63,6 +69,7 @@ RootScope（参赛登记名“溯根”）获得 AdventureX 2026 D-Robotics「Gi
 - 视频裁切为技术段、浏览器兼容转码并移除不必要元数据；
 - 保留原始文件 SHA-256 与公开文件 SHA-256 的内部映射，不公开原设备身份；
 - 团队确认可发布的合影才进入公开仓。
+- 两份电子奖状 PDF 保持 AdventureX Gallery 生成文件的原始字节，未裁切、未改写元数据；PNG 仅为完整页面预览，姓名、二维码、签名和印章均按项目方本次公开指示原样保留。
 
 媒体版权、处理方法与第三方权利见 [`assets/media/ASSET_PROVENANCE.json`](../assets/media/ASSET_PROVENANCE.json) 和相关许可文件。图片中的赛事标识、硬件品牌和第三方商标归各自权利人所有；使用照片不得暗示赛事方或硬件厂商对二次项目背书。
 

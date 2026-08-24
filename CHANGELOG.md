@@ -9,6 +9,15 @@ All notable changes to the public RootScope release are documented here. The for
 - Community-reviewed reproduction reports and portability fixes.
 - Documentation corrections that preserve the frozen competition facts.
 
+## [1.0.7] - 2026-08-24
+
+### Added
+
+- Publish the original AdventureX 2026 electronic certificates for the
+  D-Robotics Track Second Prize and superun.ai Track Third Prize.
+- Add full-page PNG previews to the README and media guide, with SHA-256-bound
+  provenance and a specific third-party rights boundary.
+
 ## [1.0.6] - 2026-08-24
 
 ### Changed
@@ -108,7 +117,8 @@ All notable changes to the public RootScope release are documented here. The for
 - Excluded and detected credentials, private device/network identity, absolute user paths, unsanitized receipts, and unlicensed assets.
 - Documented actuator-power isolation, staged bring-up, watchdog/timeout/latching behavior, and private vulnerability reporting.
 
-[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.6...HEAD
+[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.7...HEAD
+[1.0.7]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.6...v1.0.7
 [1.0.6]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.5...v1.0.6
 [1.0.5]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.3...v1.0.4

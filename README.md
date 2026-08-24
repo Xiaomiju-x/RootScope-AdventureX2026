@@ -160,6 +160,27 @@ GitHub 对仓库内较大的 MP4 不一定提供网页播放器，因此首页�
 
 #### 获奖与比赛现场
 
+两份 AdventureX 2026 电子奖状现已按原始 PDF 完整公开；点击奖状预览可查看或下载对应 PDF。
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <a href="assets/media/award/adventurex2026-drobotics-second-prize-certificate.pdf">
+        <img src="assets/media/award/adventurex2026-drobotics-second-prize-certificate.png" alt="AdventureX 2026 地瓜机器人 Give AI a Body 赛道二等奖电子奖状" width="100%">
+      </a><br>
+      <strong>地瓜机器人「Give AI a Body」赛道二等奖</strong><br>
+      <sub>银奖 · 最终第 2 名 · 点击查看原始 PDF</sub>
+    </td>
+    <td width="50%" align="center">
+      <a href="assets/media/award/adventurex2026-superun-third-prize-certificate.pdf">
+        <img src="assets/media/award/adventurex2026-superun-third-prize-certificate.png" alt="AdventureX 2026 superun.ai 不比代码比谁离问题最近赛道三等奖电子奖状" width="100%">
+      </a><br>
+      <strong>superun.ai「不比代码，比谁离问题最近」赛道三等奖</strong><br>
+      <sub>点击查看原始 PDF</sub>
+    </td>
+  </tr>
+</table>
+
 <table>
   <tr>
     <td width="50%" align="center">
@@ -262,13 +283,15 @@ docs/                       架构、搭建、复现、安全与故障排查
 
 欢迎修复可复现性、文档、测试和安全边界问题。提交前请阅读 [`CONTRIBUTING.md`](CONTRIBUTING.md)、[`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) 和 [`GOVERNANCE.md`](GOVERNANCE.md)。安全问题请按 [`SECURITY.md`](SECURITY.md) 私下报告。
 
-论文、课程、展览或二次开发引用请使用 [`CITATION.cff`](CITATION.cff)。项目采用分路径许可：自研代码主要为 [Apache License 2.0](LICENSE)，硬件设计为 CERN-OHL-S-2.0，文档/团队媒体为 CC BY 4.0，第三方文件保留原许可；以 [`LICENSE_MATRIX.md`](LICENSE_MATRIX.md)、[`NOTICE`](NOTICE) 与邻近清单为准。相关商标归各自权利人所有。
+论文、课程、展览或二次开发引用请使用 [`CITATION.cff`](CITATION.cff)。项目采用分路径许可：自研代码主要为 [Apache License 2.0](LICENSE)，硬件设计为 CERN-OHL-S-2.0，文档/团队媒体为 CC BY 4.0，第三方文件保留原许可；两份官方电子奖状及其预览仅作获奖记录展示，不授予复用许可。以 [`LICENSE_MATRIX.md`](LICENSE_MATRIX.md)、[`NOTICE`](NOTICE) 与邻近清单为准。相关商标归各自权利人所有。
 
 ---
 
 ## English
 
 RootScope is a **stationary root-zone irrigation robot prototype** built for AdventureX 2026 as **溯根 (E33)**. It received the **D-Robotics “Give AI a Body” Track Second Prize (Silver Award · Final 2nd Place)** and the **superun.ai “不比代码，比谁离问题最近” Track Third Prize**.
+
+The original one-page electronic certificates are available for the [D-Robotics Track Second Prize](assets/media/award/adventurex2026-drobotics-second-prize-certificate.pdf) and [superun.ai Track Third Prize](assets/media/award/adventurex2026-superun-third-prize-certificate.pdf); full-page previews appear in the gallery above.
 
 The RDK X5 produces camera evidence, checks semantic/geometric agreement, runs a local read-only LLM/RAG explanation layer, and proposes a bounded tier. An STM32F103C8T6 independently enforces timed motion, heartbeat/watchdog behavior, latching stop, and pump-off authority.
 
@@ -319,6 +342,6 @@ This path is deliberately device-free: it cannot open a serial port, camera, GPI
 
 ### License and safety
 
-Project-authored software is primarily Apache-2.0, original hardware design is CERN-OHL-S-2.0, and project documentation/team media is CC BY 4.0. Third-party HAL/CMSIS, models, datasets, and print cards retain their applicable terms; see [`LICENSE_MATRIX.md`](LICENSE_MATRIX.md). Do not use this prototype as an unattended irrigation controller or safety-certified product. See [`SECURITY.md`](SECURITY.md).
+Project-authored software is primarily Apache-2.0, original hardware design is CERN-OHL-S-2.0, and project documentation/team media is CC BY 4.0. Third-party HAL/CMSIS, models, datasets, print cards, and the official certificate artwork retain their applicable terms; see [`LICENSE_MATRIX.md`](LICENSE_MATRIX.md). Do not use this prototype as an unattended irrigation controller or safety-certified product. See [`SECURITY.md`](SECURITY.md).
 
 If this release helps your research, course, or robot project, please cite the repository using [`CITATION.cff`](CITATION.cff).

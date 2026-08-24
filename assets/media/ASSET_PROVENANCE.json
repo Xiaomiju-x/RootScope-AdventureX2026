@@ -215,6 +215,46 @@
       "caption": "README-native animated preview derived from the physical demonstration.",
       "rights_basis": "RootScope team archive; public release directed by the project owner on 2026-08-12; likeness and trademark rights do not imply endorsement",
       "transform": "preview from 24.0-31.5s; sampled at 5.0 fps; 280px maximum width; 48-color GIF; bottle and label preserved; audio absent; metadata removed"
+    },
+    {
+      "source_name": "E91D77AF4911C4D5.pdf",
+      "source_sha256": "3033157c78e79a8b5f348c0ed018d2077f07f4d4d5e2db7e2f9738961a4c7942",
+      "public_path": "assets/media/award/adventurex2026-drobotics-second-prize-certificate.pdf",
+      "public_sha256": "3033157c78e79a8b5f348c0ed018d2077f07f4d4d5e2db7e2f9738961a4c7942",
+      "bytes": 387524,
+      "caption": "AdventureX 2026 D-Robotics Give AI a Body track Second Prize certificate.",
+      "rights_basis": "Official AdventureX-issued certificate supplied by the project owner for public award-record display; no repository content licence is asserted",
+      "transform": "Original AdventureX-issued PDF copied byte-for-byte; name, QR code, signature identifier, seals and metadata preserved at project owner's direction"
+    },
+    {
+      "source_name": "E91D77AF4911C4D5.pdf",
+      "source_sha256": "3033157c78e79a8b5f348c0ed018d2077f07f4d4d5e2db7e2f9738961a4c7942",
+      "public_path": "assets/media/award/adventurex2026-drobotics-second-prize-certificate.png",
+      "public_sha256": "7ba6569a0d69870bb79c7060c35c9bc81e48aef772dbe18070cb278f107314f5",
+      "bytes": 523046,
+      "caption": "Full-page PNG preview of AdventureX 2026 D-Robotics Give AI a Body track Second Prize certificate.",
+      "rights_basis": "Official AdventureX-issued certificate supplied by the project owner for public award-record display; no repository content licence is asserted",
+      "transform": "Complete first page rendered from the original PDF at 150 dpi; no crop or redaction; name, QR code, signature identifier and seals preserved"
+    },
+    {
+      "source_name": "34C07182FE415424.pdf",
+      "source_sha256": "62cc14d51afed1f9805730cdc96a06891112450a28a71900c3741992e980a463",
+      "public_path": "assets/media/award/adventurex2026-superun-third-prize-certificate.pdf",
+      "public_sha256": "62cc14d51afed1f9805730cdc96a06891112450a28a71900c3741992e980a463",
+      "bytes": 381780,
+      "caption": "AdventureX 2026 superun.ai track Third Prize certificate.",
+      "rights_basis": "Official AdventureX-issued certificate supplied by the project owner for public award-record display; no repository content licence is asserted",
+      "transform": "Original AdventureX-issued PDF copied byte-for-byte; name, QR code, signature identifier, seals and metadata preserved at project owner's direction"
+    },
+    {
+      "source_name": "34C07182FE415424.pdf",
+      "source_sha256": "62cc14d51afed1f9805730cdc96a06891112450a28a71900c3741992e980a463",
+      "public_path": "assets/media/award/adventurex2026-superun-third-prize-certificate.png",
+      "public_sha256": "4e68478ef20314e428d5cd020b77231f9d5f29bedcda397974efb81cd671d242",
+      "bytes": 515615,
+      "caption": "Full-page PNG preview of AdventureX 2026 superun.ai track Third Prize certificate.",
+      "rights_basis": "Official AdventureX-issued certificate supplied by the project owner for public award-record display; no repository content licence is asserted",
+      "transform": "Complete first page rendered from the original PDF at 150 dpi; no crop or redaction; name, QR code, signature identifier and seals preserved"
     }
   ]
 }

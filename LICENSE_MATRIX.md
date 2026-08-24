@@ -16,6 +16,7 @@ dataset terms. Resolve a file's licence in this order:
 | `model-assets/**` team-authored final artifacts and metadata | Apache-2.0; upstream base weights are not redistributed | `model-assets/MANIFEST.json`, per-directory model cards, `THIRD_PARTY_NOTICES.md` |
 | `hardware/design/**` original editable hardware source | CERN-OHL-S-2.0 | `LICENSES/CERN-OHL-S-2.0.txt`, source location |
 | `docs/**`, root Markdown/CFF policy files | CC-BY-4.0, except quoted/vendor material and nearer notices | `LICENSES/CC-BY-4.0.txt`, attribution |
+| `assets/media/award/*-certificate.pdf` and matching `*-certificate.png` previews | Official AdventureX-issued certificates; included for award-record display only; **no repository content licence is asserted** | `assets/media/ASSET_PROVENANCE.json`, `THIRD_PARTY_NOTICES.md`, embedded certificate marks/notices |
 | `assets/media/**`, `evidence/public/images/**`, `evidence/public/video/**` created by the RootScope team | CC-BY-4.0, subject to recorded portrait/privacy consent | `LICENSES/CC-BY-4.0.txt`, asset manifest |
 | `assets/print-cards/**` | Per-source CC-BY-SA-4.0 or public domain | adjacent manifest and `THIRD_PARTY_NOTICES.md` |
 | `firmware/stm32f103-v15/Drivers/CMSIS/Include/**` | Apache-2.0 | original file headers, `LICENSE` |

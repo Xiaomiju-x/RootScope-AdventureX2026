@@ -121,12 +121,19 @@ def check_policy_documents(failures: list[Failure]) -> None:
             "firmware/stm32f103-v15/Drivers/CMSIS/Include/**",
             "firmware/stm32f103-v15/Drivers/STM32F1xx_HAL_Driver/**",
             "assets/print-cards/**",
+            "assets/media/award/*-certificate.pdf",
         ),
     )
     notices = require_text(
         failures,
         "THIRD_PARTY_NOTICES.md",
-        ("Arm CMSIS", "STMicroelectronics", "Wikimedia", "Qwen"),
+        (
+            "Arm CMSIS",
+            "STMicroelectronics",
+            "Wikimedia",
+            "Qwen",
+            "AdventureX 2026 electronic certificates",
+        ),
     )
     require_text(
         failures,

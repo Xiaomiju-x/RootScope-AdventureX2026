@@ -197,6 +197,8 @@ class _BytesReader:
 
 
 def licence_for_path(relative: str) -> str:
+    if relative.startswith("assets/media/award/") and "-certificate." in relative:
+        return "NOASSERTION"
     if relative.startswith("model-assets/"):
         return "Apache-2.0"
     if relative.startswith("hardware/design/"):

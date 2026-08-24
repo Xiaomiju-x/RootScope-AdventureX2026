@@ -14,6 +14,8 @@ import csv
 import hashlib
 import json
 import os
+import shutil
+import subprocess
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -50,6 +52,36 @@ class Photo:
     blur_boxes: tuple[tuple[float, float, float, float], ...] = ()
     rights_basis: str = PUBLIC_RIGHTS_BASIS
     transform: str = "EXIF removed; privacy crop; documented screen/label blur where applicable; max 2400x1800 JPEG"
+
+
+@dataclass(frozen=True)
+class Certificate:
+    source: Path
+    public_pdf: str
+    public_preview: str
+    caption: str
+
+
+CERTIFICATE_RIGHTS_BASIS = (
+    "Official AdventureX-issued certificate supplied by the project owner for "
+    "public award-record display; no repository content licence is asserted"
+)
+
+
+CERTIFICATES = (
+    Certificate(
+        DOWNLOADS / "E91D77AF4911C4D5.pdf",
+        "award/adventurex2026-drobotics-second-prize-certificate.pdf",
+        "award/adventurex2026-drobotics-second-prize-certificate.png",
+        "AdventureX 2026 D-Robotics Give AI a Body track Second Prize certificate.",
+    ),
+    Certificate(
+        DOWNLOADS / "34C07182FE415424.pdf",
+        "award/adventurex2026-superun-third-prize-certificate.pdf",
+        "award/adventurex2026-superun-third-prize-certificate.png",
+        "AdventureX 2026 superun.ai track Third Prize certificate.",
+    ),
+)
 
 
 PHOTOS = (
@@ -106,6 +138,68 @@ def process_photo(item: Photo) -> dict[str, str | int]:
         "rights_basis": item.rights_basis,
         "transform": item.transform,
     }
+
+
+def process_certificate(item: Certificate) -> list[dict[str, str | int]]:
+    """Copy an issued PDF byte-for-byte and render its complete first page."""
+
+    if not item.source.is_file():
+        raise RuntimeError(f"Certificate source is missing: {item.source}")
+    pdftoppm = shutil.which("pdftoppm")
+    if not pdftoppm:
+        raise RuntimeError("pdftoppm is required to render certificate previews")
+
+    pdf_target = OUT / item.public_pdf
+    preview_target = OUT / item.public_preview
+    pdf_target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(item.source, pdf_target)
+    preview_prefix = preview_target.with_suffix("")
+    subprocess.run(
+        [
+            pdftoppm,
+            "-f",
+            "1",
+            "-l",
+            "1",
+            "-singlefile",
+            "-png",
+            "-r",
+            "150",
+            str(item.source),
+            str(preview_prefix),
+        ],
+        check=True,
+    )
+
+    source_digest = sha256(item.source)
+    return [
+        {
+            "source_name": item.source.name,
+            "source_sha256": source_digest,
+            "public_path": pdf_target.relative_to(REPO).as_posix(),
+            "public_sha256": sha256(pdf_target),
+            "bytes": pdf_target.stat().st_size,
+            "caption": item.caption,
+            "rights_basis": CERTIFICATE_RIGHTS_BASIS,
+            "transform": (
+                "Original AdventureX-issued PDF copied byte-for-byte; name, QR code, "
+                "signature identifier, seals and metadata preserved at project owner's direction"
+            ),
+        },
+        {
+            "source_name": item.source.name,
+            "source_sha256": source_digest,
+            "public_path": preview_target.relative_to(REPO).as_posix(),
+            "public_sha256": sha256(preview_target),
+            "bytes": preview_target.stat().st_size,
+            "caption": f"Full-page PNG preview of {item.caption}",
+            "rights_basis": CERTIFICATE_RIGHTS_BASIS,
+            "transform": (
+                "Complete first page rendered from the original PDF at 150 dpi; no crop or "
+                "redaction; name, QR code, signature identifier and seals preserved"
+            ),
+        },
+    ]
 
 
 def write_video(source: Path, public: str, start: float, end: float) -> dict[str, str | int | float]:
@@ -233,6 +327,8 @@ def make_gif_preview(
 
 def main() -> None:
     records: list[dict[str, str | int | float]] = [process_photo(item) for item in PHOTOS]
+    for certificate in CERTIFICATES:
+        records.extend(process_certificate(certificate))
     video = DOWNLOADS / "mmexport1786529983379.mp4"
     records.extend(
         [

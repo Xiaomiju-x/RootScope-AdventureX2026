@@ -71,6 +71,22 @@ RDK, D-Robotics, Arm, Keil, STM32, STM32Cube, GitHub, Qwen and other names are
 marks of their respective owners. Their mention is descriptive and does not
 imply endorsement.
 
+## AdventureX 2026 electronic certificates
+
+- Paths:
+  - `assets/media/award/adventurex2026-drobotics-second-prize-certificate.pdf`
+  - `assets/media/award/adventurex2026-drobotics-second-prize-certificate.png`
+  - `assets/media/award/adventurex2026-superun-third-prize-certificate.pdf`
+  - `assets/media/award/adventurex2026-superun-third-prize-certificate.png`
+- Source: AdventureX Gallery-generated electronic certificates supplied by the
+  project owner for public project documentation.
+- Status: the original PDFs are reproduced byte-for-byte; the PNG files are
+  full-page raster previews. No repository content licence is asserted for the
+  certificate artwork, seals, QR codes, signatures, names or organizer marks.
+- Use: award-record display only. Their inclusion does not license AdventureX,
+  D-Robotics, superun.ai or organizer names and marks, and does not imply
+  endorsement of derivative projects.
+
 ## Reporting omissions
 
 Please report a missing attribution or licence through the private security
