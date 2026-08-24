@@ -49,7 +49,7 @@ def test_release_identity_requires_strict_semver_and_matching_versions():
 
 
 def test_checked_in_release_versions_are_consistent():
-    assert identity.project_version() == identity.package_version() == "1.0.4"
+    assert identity.project_version() == identity.package_version() == "1.0.5"
 
 
 def test_checkout_free_publish_job_has_explicit_repository_context():
@@ -78,6 +78,12 @@ def test_licence_mapping_is_path_specific():
         "firmware/stm32f103-v15/Drivers/STM32F1xx_HAL_Driver/Src/hal.c"
     ) == "BSD-3-Clause"
     assert builder.licence_for_path("docs/QUICKSTART.md") == "CC-BY-4.0"
+    assert (
+        builder.licence_for_path(
+            "assets/media/award/adventurex-gallery-two-track-awards.jpg"
+        )
+        == "NOASSERTION"
+    )
     assert builder.licence_for_path("assets/print-cards/card.pdf") == "NOASSERTION"
     assert (
         builder.licence_for_path(

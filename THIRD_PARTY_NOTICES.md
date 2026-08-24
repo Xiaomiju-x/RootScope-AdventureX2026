@@ -73,16 +73,19 @@ imply endorsement.
 
 ## AdventureX Gallery award screenshot
 
-- Path: `assets/media/award/adventurex-gallery-drobotics-second-prize.jpg`
+- Paths: `assets/media/award/adventurex-gallery-drobotics-second-prize.jpg` and
+  `assets/media/award/adventurex-gallery-two-track-awards.jpg`
 - Source: the official AdventureX 2026 Gallery page, captured and supplied by
   the project owner for award verification
 - Content shown: project “溯根” (RootScope), D-Robotics “Give AI a Body”
-  track, `二等奖` (`赛道奖`)
+  track `二等奖` (`赛道奖`), and superun.ai “不比代码，比谁离问题最近”
+  track `三等奖` (`赛道奖`)
 - Status: included for evidentiary and descriptive use; the Gallery interface,
   event marks and third-party content are not relicensed under CC-BY-4.0
 
-The public derivative removes device metadata and unrelated lower-page award
-content. It does not alter the project name, award label or track wording.
+The public derivatives remove device metadata. The focused crop contains the
+D-Robotics award; the complete crop contains both official award cards. Neither
+alters the project name, award labels or track wording.
 
 ## Reporting omissions
 

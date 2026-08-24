@@ -2,9 +2,12 @@
 
 ## 1. 比赛结果
 
-RootScope 在 **AdventureX 2026 D-Robotics「Give AI a Body」赛道**获得**二等奖（赛道奖）**。AdventureX 官方 Gallery 的项目登记名为“溯根（E33）”；本仓库项目名为“RootScope 固定式根区灌溉舱”。比赛现场及既有项目记录使用的“**银奖 · 最终第 2 名**”与“二等奖”指**同一项赛道奖**，不是两个奖项。
+AdventureX 官方 Gallery 以“溯根（E33）”登记 RootScope，并记录**两项独立赛道奖**：
 
-公开媒体包含[官方 Gallery 奖项截图](../assets/media/award/adventurex-gallery-drobotics-second-prize.jpg)、赛事舞台远景和团队获奖合影。官方截图记录项目、赛道与“二等奖｜赛道奖”原文；舞台远景只说明现场/赛道背景，团队合影中的银地瓜奖牌和两台 RDK X5 奖品提供现场视觉佐证。仓库按来源并列保留同奖异称，不依据奖品数量或照片自行推导其他奖项等级。
+1. D-Robotics「Give AI a Body」赛道**二等奖（赛道奖）**；比赛现场及既有项目记录中的“**银奖 · 最终第 2 名**”是这一奖项的另一种表述，不另计奖项。
+2. superun.ai「不比代码，比谁离问题最近」赛道**三等奖（赛道奖）**。
+
+公开媒体包含[官方 Gallery 双奖项截图](../assets/media/award/adventurex-gallery-two-track-awards.jpg)、[地瓜机器人奖项细节图](../assets/media/award/adventurex-gallery-drobotics-second-prize.jpg)、赛事舞台远景和团队获奖合影。完整截图直接记录“2 奖项”、两张奖项卡、赛道与奖项原文；舞台远景只说明现场/赛道背景，团队合影中的奖牌和奖品提供现场视觉佐证。仓库不依据奖品数量或照片自行推导额外奖项等级。
 
 ## 2. 最终作品事实
 
@@ -67,4 +70,4 @@ LLM 运行在 CPU；BPU 用于视觉。三类 RootMind 角色按需换入，不�
 
 ## English summary
 
-The official AdventureX Gallery records RootScope (registered as “溯根”) as a Second Prize winner in the AdventureX 2026 D-Robotics “Give AI a Body” track. “Second Prize” and the event/project wording “Silver Award · Final 2nd Place” describe the same track result, not separate awards. Its verified scope is a stationary, controlled-card prototype: four fixed cards, three relative downward presets, two complete supervised grass-card irrigation chains, on-device fixed-input BPU replays, and read-only CPU LLM/RAG. These results do not establish open-world plant accuracy, physical depth, water savings, agronomic benefit, unattended reliability, or safety certification.
+The official AdventureX Gallery records two independent awards for RootScope (registered as “溯根”): Second Prize in the D-Robotics “Give AI a Body” track and Third Prize in the superun.ai “不比代码，比谁离问题最近” track. “Silver Award · Final 2nd Place” is an alternate description of the D-Robotics Second Prize, not another award. The verified technical scope is a stationary, controlled-card prototype: four fixed cards, three relative downward presets, two complete supervised grass-card irrigation chains, on-device fixed-input BPU replays, and read-only CPU LLM/RAG. These results do not establish open-world plant accuracy, physical depth, water savings, agronomic benefit, unattended reliability, or safety certification.

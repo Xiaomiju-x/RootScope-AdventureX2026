@@ -83,6 +83,14 @@ PHOTOS = (
         rights_basis=OFFICIAL_GALLERY_RIGHTS_BASIS,
         transform="EXIF/device metadata removed; cropped to the AdventureX event, project and D-Robotics award record; unrelated lower award omitted; max 2400x1800 JPEG",
     ),
+    Photo(
+        DOWNLOADS / "Screenshot_2026-08-23-22-31-04-544_com.quark.browser.jpg",
+        "award/adventurex-gallery-two-track-awards.jpg",
+        "Official AdventureX Gallery entry for 溯根 (RootScope), recording both the D-Robotics track Second Prize and the superun.ai track Third Prize.",
+        (0.015625, 0.051498, 0.953125, 0.965356),
+        rights_basis=OFFICIAL_GALLERY_RIGHTS_BASIS,
+        transform="EXIF/device metadata removed; cropped to the AdventureX event, project and both official track-award records; max 2400x1800 JPEG",
+    ),
 )
 
 

@@ -9,6 +9,23 @@ All notable changes to the public RootScope release are documented here. The for
 - Community-reviewed reproduction reports and portability fixes.
 - Documentation corrections that preserve the frozen competition facts.
 
+## [1.0.5] - 2026-08-24
+
+### Added
+
+- Add a metadata-stripped official Gallery crop that preserves the “2 奖项”
+  count and both award cards: D-Robotics track Second Prize and superun.ai
+  “不比代码，比谁离问题最近” track Third Prize.
+
+### Fixed
+
+- Correct the public award record to state that RootScope received two
+  independent track awards. “Silver Award · Final 2nd Place” remains an
+  alternate description only of the D-Robotics Second Prize.
+- Update the README, results/demo/FAQ documentation, citation metadata,
+  licence inventory, SPDX mapping and release metadata to include the
+  superun.ai Third Prize.
+
 ## [1.0.4] - 2026-08-24
 
 ### Added
@@ -84,7 +101,8 @@ All notable changes to the public RootScope release are documented here. The for
 - Excluded and detected credentials, private device/network identity, absolute user paths, unsanitized receipts, and unlicensed assets.
 - Documented actuator-power isolation, staged bring-up, watchdog/timeout/latching behavior, and private vulnerability reporting.
 
-[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.5...HEAD
+[1.0.5]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.4...v1.0.5
 [1.0.4]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.3...v1.0.4
 [1.0.3]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.2...v1.0.3
 [1.0.2]: https://github.com/Xiaomiju-x/RootScope-AdventureX2026/compare/v1.0.1...v1.0.2

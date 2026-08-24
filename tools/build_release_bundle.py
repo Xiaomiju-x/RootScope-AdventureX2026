@@ -197,7 +197,10 @@ class _BytesReader:
 
 
 def licence_for_path(relative: str) -> str:
-    if relative == "assets/media/award/adventurex-gallery-drobotics-second-prize.jpg":
+    if relative in {
+        "assets/media/award/adventurex-gallery-drobotics-second-prize.jpg",
+        "assets/media/award/adventurex-gallery-two-track-awards.jpg",
+    }:
         return "NOASSERTION"
     if relative.startswith("model-assets/"):
         return "Apache-2.0"
@@ -221,7 +224,10 @@ def licence_for_path(relative: str) -> str:
 
 
 def package_for_path(relative: str) -> str:
-    if relative == "assets/media/award/adventurex-gallery-drobotics-second-prize.jpg":
+    if relative in {
+        "assets/media/award/adventurex-gallery-drobotics-second-prize.jpg",
+        "assets/media/award/adventurex-gallery-two-track-awards.jpg",
+    }:
         return "SPDXRef-Package-OfficialEvidence"
     if relative.startswith("model-assets/"):
         return "SPDXRef-Package-Models"

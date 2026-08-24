@@ -162,6 +162,16 @@
       "transform": "EXIF/device metadata removed; cropped to the AdventureX event, project and D-Robotics award record; unrelated lower award omitted; max 2400x1800 JPEG"
     },
     {
+      "source_name": "Screenshot_2026-08-23-22-31-04-544_com.quark.browser.jpg",
+      "source_sha256": "7037334768bf3ccdb9329dd02dcf2b5a0dd497e561ccd971ec2fc0c2b0cbe81c",
+      "public_path": "assets/media/award/adventurex-gallery-two-track-awards.jpg",
+      "public_sha256": "068d1afb2927f3faa1fa160aeef7e1324b82f437a45befb3a3ef311bc7ab6cd0",
+      "bytes": 313322,
+      "caption": "Official AdventureX Gallery entry for 溯根 (RootScope), recording both the D-Robotics track Second Prize and the superun.ai track Third Prize.",
+      "rights_basis": "Official AdventureX Gallery screenshot supplied by the project owner for award verification; page UI, event marks and third-party content remain with their respective rightsholders; evidentiary use only, not CC BY 4.0",
+      "transform": "EXIF/device metadata removed; cropped to the AdventureX event, project and both official track-award records; max 2400x1800 JPEG"
+    },
+    {
       "source_name": "mmexport1786529983379.mp4",
       "source_sha256": "1703b1c9946f3b3c9b04fdc3148df6754b6cf4e852536fdbcf45352c703de0e1",
       "public_path": "assets/media/demo/demo-overview.jpg",

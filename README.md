@@ -1,14 +1,15 @@
-# RootScope（溯根）— AdventureX 2026 地瓜机器人赛道二等奖（银奖 · 最终第 2 名）
+# RootScope（溯根）— AdventureX 2026 双赛道获奖：地瓜机器人二等奖（银奖 · 最终第 2 名）＋ superun.ai 三等奖
 
 <p align="center">
   <strong>RDK X5 × STM32F103C8T6 固定式根区灌溉舱</strong><br>
-  <em>AdventureX 2026 · D-Robotics “Give AI a Body” · Track Second Prize (Silver Award · Final 2nd Place)</em>
+  <em>地瓜机器人赛道二等奖（银奖 · 最终第 2 名）· superun.ai「不比代码，比谁离问题最近」赛道三等奖</em>
 </p>
 
 <p align="center">
   <a href="https://github.com/Xiaomiju-x/RootScope-AdventureX2026/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/Xiaomiju-x/RootScope-AdventureX2026/actions/workflows/ci.yml/badge.svg"></a>
   <a href="LICENSE"><img alt="Apache-2.0" src="https://img.shields.io/badge/code-Apache--2.0-4c1.svg"></a>
   <a href="docs/RESULTS_AND_BOUNDARIES.md"><img alt="D-Robotics Track Second Prize" src="https://img.shields.io/badge/D--Robotics-Track%20Second%20Prize-c0c0c0.svg"></a>
+  <a href="docs/RESULTS_AND_BOUNDARIES.md"><img alt="superun.ai Track Third Prize" src="https://img.shields.io/badge/superun.ai-Track%20Third%20Prize-cd7f32.svg"></a>
   <a href="docs/REPRODUCIBILITY.md"><img alt="Reproducible" src="https://img.shields.io/badge/reproducibility-evidence--bound-brightgreen.svg"></a>
   <a href="SECURITY.md"><img alt="Safety" src="https://img.shields.io/badge/control-fail--closed-orange.svg"></a>
 </p>
@@ -26,7 +27,7 @@
 
 ## 中文
 
-RootScope 是一台面向受控实验与科普演示的**固定式根区灌溉机器人原型**。RDK X5 负责相机感知、双证据判定、本地 LLM/RAG 只读解释和可审计决策；STM32F103C8T6 负责有界动作、心跳看门狗、急停锁存和最终关泵。[AdventureX 官方 Gallery](https://gallery.adventure-x.org/?event=advx-2026) 以“**溯根**”登记本项目，奖项原文为地瓜机器人「Give AI a Body」赛道**二等奖（赛道奖）**；这与比赛现场及既有项目记录中的“**银奖 · 最终第 2 名**”是**同一项赛道奖的不同表述**，并非两次获奖。
+RootScope 是一台面向受控实验与科普演示的**固定式根区灌溉机器人原型**。RDK X5 负责相机感知、双证据判定、本地 LLM/RAG 只读解释和可审计决策；STM32F103C8T6 负责有界动作、心跳看门狗、急停锁存和最终关泵。[AdventureX 官方 Gallery](https://gallery.adventure-x.org/?event=advx-2026) 以“**溯根（E33）**”登记本项目，并记录两项独立赛道奖：地瓜机器人「Give AI a Body」赛道**二等奖（赛道奖）**，以及 superun.ai「不比代码，比谁离问题最近」赛道**三等奖（赛道奖）**。其中“**地瓜机器人赛道二等奖**”与比赛现场及既有项目记录中的“**银奖 · 最终第 2 名**”是同一项奖的不同表述；superun.ai 三等奖是另一项独立奖项。
 
 > 重要澄清：照片中可见的 Scout Mini 轮式底盘只被复用为承载架和供电底座。决赛作品不依靠移动、导航或底盘驱动，最终演示链中没有 SLAM、Nav2 或轮式运动。
 
@@ -161,20 +162,20 @@ GitHub 对仓库内较大的 MP4 不一定提供网页播放器，因此首页�
 
 <p align="center">
   <a href="https://gallery.adventure-x.org/?event=advx-2026">
-    <img src="assets/media/award/adventurex-gallery-drobotics-second-prize.jpg" alt="AdventureX 官方 Gallery：溯根获得地瓜机器人赛道二等奖（赛道奖）" width="100%">
+    <img src="assets/media/award/adventurex-gallery-two-track-awards.jpg" alt="AdventureX 官方 Gallery：溯根获得地瓜机器人赛道二等奖与 superun.ai 赛道三等奖" width="100%">
   </a><br>
-  <sub><strong>官方 Gallery 奖项记录</strong> · 项目登记名“溯根（E33）” · 地瓜机器人赛道“二等奖｜赛道奖”。它与“银奖 · 最终第 2 名”指同一项奖。</sub>
+  <sub><strong>官方 Gallery 双奖项记录</strong> · 项目登记名“溯根（E33）” · 地瓜机器人赛道“二等奖｜赛道奖” · superun.ai「不比代码，比谁离问题最近」赛道“三等奖｜赛道奖”。</sub>
 </p>
 
 <table>
   <tr>
     <td width="50%" align="center">
-      <img src="assets/media/award/team-award.jpg" alt="RootScope 团队银奖合影" width="100%"><br>
-      <strong>团队获奖记录</strong> · 银地瓜奖牌与两台 RDK X5 奖品
+      <img src="assets/media/award/adventurex-gallery-drobotics-second-prize.jpg" alt="AdventureX 官方 Gallery 地瓜机器人赛道二等奖细节" width="100%"><br>
+      <strong>地瓜机器人奖项细节</strong> · “二等奖｜赛道奖”，与“银奖 · 最终第 2 名”为同奖异称
     </td>
     <td width="50%" align="center">
-      <img src="assets/media/award/award-stage.jpg" alt="AdventureX 2026 地瓜机器人赛道颁奖舞台" width="100%"><br>
-      <strong>D-Robotics 赛道颁奖现场</strong> · 舞台图用于赛事场景佐证
+      <img src="assets/media/award/team-award.jpg" alt="RootScope 团队银奖合影" width="100%"><br>
+      <strong>团队获奖记录</strong> · 银地瓜奖牌与两台 RDK X5 奖品
     </td>
   </tr>
   <tr>
@@ -207,9 +208,19 @@ GitHub 对仓库内较大的 MP4 不一定提供网页播放器，因此首页�
       <strong>比赛园区湖畔</strong>
     </td>
   </tr>
+  <tr>
+    <td width="50%" align="center">
+      <img src="assets/media/award/award-stage.jpg" alt="AdventureX 2026 地瓜机器人赛道颁奖舞台" width="100%"><br>
+      <strong>D-Robotics 赛道颁奖现场</strong> · 舞台图用于赛事场景佐证
+    </td>
+    <td width="50%" align="center">
+      <strong>两项独立赛道奖</strong><br>
+      <sub>① 地瓜机器人赛道二等奖（银奖 · 最终第 2 名）<br>② superun.ai 赛道三等奖</sub>
+    </td>
+  </tr>
 </table>
 
-官方 Gallery 截图提供“二等奖｜赛道奖”的原始页面记录；团队合影与舞台照片补充比赛现场语境。“二等奖”与“银奖 · 最终第 2 名”是同一项地瓜机器人赛道奖的不同表述，不重复计算。现场照片仍保留必要的人像、屏幕与定位隐私处理，但演示中的矿泉水接水瓶不再遮挡。
+官方 Gallery 完整截图提供两张奖项卡的原始页面记录：地瓜机器人赛道“二等奖｜赛道奖”和 superun.ai「不比代码，比谁离问题最近」赛道“三等奖｜赛道奖”，共两项独立赛道奖。“二等奖”与“银奖 · 最终第 2 名”只是在描述第一项地瓜机器人赛道奖，不重复计算。团队合影与舞台照片补充比赛现场语境；现场照片仍保留必要的人像、屏幕与定位隐私处理，但演示中的矿泉水接水瓶不再遮挡。
 
 ### 5 分钟软件快速开始（不连接设备）
 
@@ -274,7 +285,7 @@ docs/                       架构、搭建、复现、安全与故障排查
 
 ## English
 
-RootScope is a **stationary root-zone irrigation robot prototype** built for AdventureX 2026. The [official AdventureX Gallery](https://gallery.adventure-x.org/?event=advx-2026) registers it under the Chinese name **溯根** and records a **D-Robotics track Second Prize** (`二等奖`, track award). This is the same result described in the event and project records as **Silver Award · Final 2nd Place**, not an additional award.
+RootScope is a **stationary root-zone irrigation robot prototype** built for AdventureX 2026. The [official AdventureX Gallery](https://gallery.adventure-x.org/?event=advx-2026) registers it as **溯根 (E33)** and records two independent track awards: the **D-Robotics “Give AI a Body” Track Second Prize** (`二等奖`, track award) and the **superun.ai “不比代码，比谁离问题最近” Track Third Prize** (`三等奖`, track award). **Silver Award · Final 2nd Place** is an alternate description of the D-Robotics result, not a third award.
 
 The RDK X5 produces camera evidence, checks semantic/geometric agreement, runs a local read-only LLM/RAG explanation layer, and proposes a bounded tier. An STM32F103C8T6 independently enforces timed motion, heartbeat/watchdog behavior, latching stop, and pump-off authority.
 
